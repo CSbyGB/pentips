@@ -1,20 +1,20 @@
 # Summary
 
 ## Web Pentesting
-* [Web Pentesting](page1/README.md)
-  * [Misc Tips](page1/Misc-Tips.md)
-  * [API](page1/API.md)
-  * [Clickjacking](page1/clickjacking.md)
+* [Web Pentesting](web pentest/README.md)
+  * [Misc Tips](web pentest/Misc-Tips.md)
+  * [API](web pentest/API.md)
+  * [Clickjacking](web pentest/clickjacking.md)
 
 ## Tools
-* [Tools](page2/README.md)
-  * [Evil Winrm](page2/evil-winrm.md)
-  * [Meterpreter](page2/meterpreter.md)
+* [Tools](Tools/README.md)
+  * [Evil Winrm](Tools/evil-winrm.md)
+  * [Meterpreter](Tools/meterpreter.md)
 
 ## Linux
-* [Linux](page3/README.md)
-  * [Enumeration](page3/enumeration.md)
+* [Linux](linux/README.md)
+  * [Enumeration](linux/enumeration.md)
 
 ## Binary Exploitation
-* [Binary Exploitation](page4/README.md)
-  * [Assembly](page4/Assembly.md)
+* [Binary Exploitation](Binary-Exploitation/README.md)
+  * [Assembly](Binary-Exploitation/Assembly.md)
