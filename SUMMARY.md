@@ -1,7 +1,7 @@
 # Summary
 
 ## CS By GB - PenTips Gitbook
-* [Welcome](README.md)
+* [Welcome To CS By GB PenTips](README.md)
 
 ## Web Pentesting
 * [Web Pentesting](web-pentest/README.md)
