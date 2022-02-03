@@ -1,6 +1,6 @@
 # Summary
 
-## CS By GB - Pentesting notes
+## CS By GB - PenTips Gitbook
 * [Welcome](README.md)
 
 ## Web Pentesting
