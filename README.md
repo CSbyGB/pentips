@@ -1,4 +1,4 @@
-# Welcome to CSbyGB Pentest Gitbook
+# Welcome to CSbyGB PenTips
 ![CSbyGB](https://csbygb.github.io/img/csbygb.png)
 ## $ whoami /priv
 Ethical Hacker 🏳 |🏆 Pentest Ninja Award W.S Cyberjutsu | 🇨🇦 Top 20 Women in Cybersecurity #DoWeLookLikeHackers 🏳️‍🌈
