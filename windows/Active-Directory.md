@@ -1,3 +1,3 @@
 # Active Directory
 ## Domain Controllers
-![Domain Controllers](/.res/domain-controllers.png)
+![Domain Controllers](../.res/domain-controllers.png)
