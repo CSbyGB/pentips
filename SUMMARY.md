@@ -4,10 +4,9 @@
 * [CS By GB PenTips](README.md)
 
 ## Web Pentesting
-* [Web Pentesting](web-pentest/README.md)
-  * [Misc Tips](web-pentest/Misc-Tips.md)
-  * [API](web-pentest/API.md)
-  * [Clickjacking](web-pentest/clickjacking.md)
+* [Misc Tips](web-pentest/Misc-Tips.md)
+* [API](web-pentest/API.md)
+* [Clickjacking](web-pentest/clickjacking.md)
 
 ## Tools
 * [Tools](Tools/README.md)
