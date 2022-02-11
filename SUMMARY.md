@@ -3,6 +3,9 @@
 ## CS By GB - PenTips Gitbook
 * [Welcome](README.md)
 
+## External Pentest
+* [External Pentest](External-Pentest/external-pentest.md)
+
 ## Web Pentesting
 * [Misc Tips](web-pentest/Misc-Tips.md)
 * [API](web-pentest/API.md)
