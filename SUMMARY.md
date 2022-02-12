@@ -20,28 +20,23 @@
 * [Enumeration](linux/enumeration.md)
 
 ## Windows
-
-### Active Directory
 * [Active Directory](windows/Active-Directory.md)
-
-### Attacking Active Directory
 * [Attacking Active Directory](windows/Attacking-AD.md)
   * [LLMNR Poisoning](windows/llmnr.md)
   * [SMB Relay Attacks](windows/smb-relay-attack.md)
   * [Shell Access](windows/shell-access.md)
   * [IPv6 Attacks](windows/ipv6-attacks.md)
   * [Passback Attacks](windows/passback.md)
+  * [Abusing ZeroLogon](windows/zerologon.md)
 * [Post-Compromise Enumeration](windows/post-compromise-enum.md)
-
-### Post Compromise Attack
-* [Pass the Password / Hash](windows/pass-hash.md)
-* [Token Impersonation](windows/token-impersonation.md)
-* [Kerberoasting](windows/kerberoasting.md)
-* [GPP/cPassword Attacks](windows/gpp.md)
-* [URL File Attack](windows/url-file-attack.md)
-* [PrintNightmare](windows/printNightmare.md)
-* [Mimikatz](windows/mimikatz.md)
-* [Abusing ZeroLogon](windows/zerologon.md)
+* [Post Compromise Attacks](windows/post-compromise-attack.md)
+  * [Pass the Password / Hash](windows/pass-hash.md)
+  * [Token Impersonation](windows/token-impersonation.md)
+  * [Kerberoasting](windows/kerberoasting.md)
+  * [GPP/cPassword Attacks](windows/gpp.md)
+  * [URL File Attack](windows/url-file-attack.md)
+  * [PrintNightmare](windows/printNightmare.md)
+  * [Mimikatz](windows/mimikatz.md)
 
 ## Binary Exploitation
 * [Assembly](Binary-Exploitation/Assembly.md)
