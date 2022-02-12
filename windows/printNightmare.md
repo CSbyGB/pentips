@@ -21,7 +21,7 @@
 
 *Note: With patches it might be necessary to use obfuscations techniques*
 
-## - PrintNightmare - LPE
+## PrintNightmare - LPE
 
 - Create an user admin from the compromised machine:
 ```
