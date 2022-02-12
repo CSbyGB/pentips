@@ -26,7 +26,7 @@
 
 ### Attacking Active Directory
 * [Attacking Active Directory](windows/Attacking-AD.md)
-  * [LLMNR Poisoning]((windows/llmnr.md)
+  * [LLMNR Poisoning](windows/llmnr.md)
   * [SMB Relay Attacks](windows/smb-relay-attack.md)
   * [Shell Access](windows/shell-access.md)
   * [IPv6 Attacks](windows/ipv6-attacks.md)
