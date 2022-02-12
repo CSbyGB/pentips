@@ -29,6 +29,7 @@
   * [Passback Attacks](windows/passback.md)
   * [Abusing ZeroLogon](windows/zerologon.md)
 * [Post-Compromise Enumeration](windows/post-compromise-enum.md)
+  * [AD Manual Enumeration](windows/manual-enum-ad.md) 
 * [Post Compromise Attacks](windows/post-compromise-attack.md)
   * [Pass the Password / Hash](windows/pass-hash.md)
   * [Token Impersonation](windows/token-impersonation.md)
