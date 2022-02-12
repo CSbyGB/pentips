@@ -36,7 +36,6 @@
   * [GPP/cPassword Attacks](windows/gpp.md)
   * [URL File Attack](windows/url-file-attack.md)
   * [PrintNightmare](windows/printNightmare.md)
-  * [Mimikatz](windows/mimikatz.md)
 
 ## Binary Exploitation
 * [Assembly](Binary-Exploitation/Assembly.md)
