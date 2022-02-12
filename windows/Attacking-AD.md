@@ -5,7 +5,7 @@ It will be complemented with notes from my practice and from other classes like 
 
 ## Methodology
 
-- Useful tool to install in kali is [pimpmykali](https://github.com/Dewalt-arch/pimpmykali)
+- Useful tool to install in kali is [pimpmykali](https://github.com/Dewalt-arch/pimpmykali) (choose 0 in option menu)
 - First thing to do is launch responder (along with scans to generate traffic)
 - LLMNR Poisoning
 - SMB Relay Attack
