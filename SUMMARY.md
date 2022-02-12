@@ -31,9 +31,7 @@
   * [Shell Access](windows/shell-access.md)
   * [IPv6 Attacks](windows/ipv6-attacks.md)
   * [Passback Attacks](windows/passback.md)
-
-### Post Compromise Enumeration
-  * [Post-Compromise Enumeration](windows/post-compromise-enum.md)
+* [Post-Compromise Enumeration](windows/post-compromise-enum.md)
 
 ### Post Compromise Attack
 * [Pass the Password / Hash](windows/pass-hash.md)
