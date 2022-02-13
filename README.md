@@ -4,8 +4,8 @@
 Ethical Hacker 🏳 |🏆 Pentest Ninja Award W.S Cyberjutsu | 🇨🇦 Top 20 Women in Cybersecurity #DoWeLookLikeHackers 🏳️‍🌈
 
 ## What is this?
-This is a gitbook with my pentest tips and notes from my learning journey as pentester.  
-It is a work in progress and it will be filled up on the go as I learn new things everyday.
+This is a gitbook with my pentest tips and notes from my learning journey as pentester (more than 400 pages to transfer here 😅).  
+It is a work in progress and it will be filled up asap with my notes and on the go as I learn new things everyday.
 
 ## Credits
 I took these notes will working but also when using different resources.  
