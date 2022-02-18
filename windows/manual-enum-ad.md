@@ -24,6 +24,12 @@
   Get-ADUser -Filter'name -eq "jane doe"'
   ```
 
+## Basic LDAP Filters
+
+- `&` and
+- `|` or
+- `!` not
+
 ## Example of useful queries
 
 - `Get-ADGroup -Identity "<GROUP NAME" -Properties *` Get information about an AD group
@@ -33,20 +39,24 @@
 - `runas /netonly /user:htb.local\jackie.may powershell`  Run a utility as another user 
 - `Get-ADObject -LDAPFilter '(objectClass=group)' \| select cn` LDAP query to return all AD groups
 - `Get-ADUser -LDAPFilter '(userAccountControl:1.2.840.113556.1.4.803:=2)' \| select name` List disabled users 
-- `Get-ADUser -SearchBase "OU=Employees,DC=INLANEFREIGHT,DC=LOCAL" -Filter *).count` Count all users in an OU
+- `Get-ADUser -SearchBase "OU=Employees,DC=DOMAIN-NAME,DC=LOCAL" -Filter *).count` Count all users in an OU
 - `get-ciminstance win32_product \| fl` Query for installed software
 - `get-ciminstance win32_product -Filter "NOT Vendor like '%Microsoft%'" | fl` Query for software that are not microsoft
 - `Get-ADComputer  -Filter "DNSHostName -like 'SQL*'"` Get hostnames with the word "SQL" in their hostname
 - `Get-ADGroup -Filter "adminCount -eq 1" \| select Name` Get all administrative groups
 - `Get-ADUser -Filter {adminCount -eq '1' -and DoesNotRequirePreAuth -eq 'True'}` Find admin users that don't require Kerberos Pre-Auth
 - `Get-ADUser -Filter {adminCount -gt 0} -Properties admincount,useraccountcontrol` Enumerate UAC values for admin users
-- `Get-WmiObject -Class win32_group -Filter "Domain='INLANEFREIGHT'"` Get AD groups using WMI
+- `Get-WmiObject -Class win32_group -Filter "Domain='DOMAIN-NAME'"` Get AD groups using WMI
 - `([adsisearcher]"(&(objectClass=Computer))").FindAll()` Use ADSI to search for all computers
 - `(Get-ADGroup -Identity "Help Desk" -Properties *).Member.Count` Get number of users in Help Desk Group
 - `(Get-ADUser -filter * | select Name).count`Get number of Users in domain
 - `(Get-ADComputer -filter * | select Name).count` Get number of Computers in domain
 - `(Get-ADGroup -filter * | select Name).count` Get number of groups in domain
 - `Get-ADUser -Filter {adminCount -eq '1' -and DoesNotRequirePreAuth -eq 'True'}` Filter Admin users
+- `(Get-ADUser -Filter * -SearchBase "OU=IT,OU=Employees,DC=DOMAIN-NAME,DC=LOCAL").count` Find the number of users in the IT OU
+- `(Get-ADUser -SearchBase "OU=Employees,DC=DOMAIN-NAME,DC=LOCAL" -Filter *).count` Count all AD Users
+- `Get-ADUser -Properties * -LDAPFilter '(userAccountControl:1.2.840.113556.1.4.803:=524288)' | select Name,memberof,servicePrincipalName,TrustedForDelegation` Find user accounts marked trusted for delegation
+- `Get-ADUser -Filter * -SearchBase "OU=Pentest,OU=Employees,DC=DOMAIN-NAME,DC=LOCAL"` | List user in Pentest OU
 
 ## Resources
 
