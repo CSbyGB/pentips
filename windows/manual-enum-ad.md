@@ -63,3 +63,6 @@
 - [AD on HTB Academy](https://academy.hackthebox.com/)
 - [Get AD User Data via Powershell](http://woshub.com/get-aduser-getting-active-directory-users-data-via-powershell/)
 - [Powershell commands for managing AD](https://vschamarti.wordpress.com/2019/11/02/powershell-commands-for-managing-active-directory/)
+- [User Attributes - Inside Active Directory](http://www.kouti.com/tables/userattributes.htm)
+- [Base Attributes - Inside Active Directory](http://www.kouti.com/tables/baseattributes.htm)
+- [LDAP Wiki](https://ldapwiki.com/wiki/)
