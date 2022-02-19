@@ -57,3 +57,11 @@
 - In Analysis we can now click to Find all Domains
 - We can also find the shortest path to the domain admins
 - We want to find boxes where a domain admin is logged in.
+
+## ldapsearch - cmd line
+
+- `ldapsearch -x -h IP-ADRESS -b "dc=DOMAIN-NAME,dc=LOCAL"` will send back a lot of useful info including user enum. Very efficient when you can leverage anonymous bind
+
+## Other tools
+
+- [ldapsearch-ad.py - yaap7](https://github.com/yaap7/ldapsearch-ad)
