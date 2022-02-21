@@ -1,25 +1,31 @@
 # Summary
 
 ## CS By GB - PenTips Gitbook
+
 * [Welcome](README.md)
 
 ## External Pentest
+
 * [External Pentest](External-Pentest/external-pentest.md)
 
 ## Web Pentesting
+
 * [Misc Tips](web-pentest/Misc-Tips.md)
 * [API](web-pentest/API.md)
 * [Clickjacking](web-pentest/clickjacking.md)
 
 ## Tools
+
 * [Evil Winrm](Tools/evil-winrm.md)
 * [Meterpreter](Tools/meterpreter.md)
 * [Mimikatz](windows/mimikatz.md)
 
 ## Linux
+
 * [Enumeration](linux/enumeration.md)
 
 ## Windows
+
 * [Active Directory](windows/Active-Directory.md)
 * [Attacking Active Directory](windows/Attacking-AD.md)
   * [LLMNR Poisoning](windows/llmnr.md)
@@ -39,4 +45,9 @@
   * [PrintNightmare](windows/printNightmare.md)
 
 ## Binary Exploitation
+
 * [Assembly](Binary-Exploitation/Assembly.md)
+
+## Reporting
+
+* [How to report your findings](reporting/pentest-report.md)
