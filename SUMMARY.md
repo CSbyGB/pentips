@@ -47,7 +47,7 @@
 ## Binary Exploitation
 
 * [Assembly](Binary-Exploitation/Assembly.md)
-* [Buffer Overflow - Stack based - Winx86](buffer-overflow-stack-win86.md)
+* [Buffer Overflow - Stack based - Winx86](Binary-Exploitation/buffer-overflow-stack-win86.md)
 
 ## Reporting
 
