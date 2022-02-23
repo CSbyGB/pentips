@@ -3,7 +3,7 @@
 - We compromised a user what can we do with it
 - How can we get Domain Admin
 
-## Powerview
+## Powerview or SharpView (.NET equivalent)
 
 - Get it from [here](https://raw.githubusercontent.com/PowerShellEmpire/PowerTools/master/PowerView/powerview.ps1) and put it in the compromised machine
 - From a cmd in the target: `powershell -ep bypass` 
@@ -29,6 +29,11 @@
 - Get smb shared in the network: `Invoke-ShareFinder`
 - Get group policies: `Get-NetGPO`
 - Filter the info: `Get-NetGroup -GroupName "Domain Admins" `
+- `.\SharpView.exe ConvertTo-SID -Name first.last` Find SID of a user
+- `.\SharpView.exe Convert-ADName -ObjectName SID` find user with SID
+- `Get-DomainPolicy` View the domain password policy
+- `Get-DomainUser first.last  \| ConvertFrom-UACValue -showall` List all UAC values
+
 
 ### Powerview - Resources
 
