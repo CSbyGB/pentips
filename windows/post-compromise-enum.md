@@ -33,6 +33,37 @@
 - `.\SharpView.exe Convert-ADName -ObjectName SID` find user with SID
 - `Get-DomainPolicy` View the domain password policy
 - `Get-DomainUser first.last  \| ConvertFrom-UACValue -showall` List all UAC values
+- `.\SharpView.exe Get-Domain` View information about the current domain
+- `.\SharpView.exe Get-DomainOU` List all OUs
+- `.\SharpView.exe Get-DomainUser -KerberosPreauthNotRequired` Find ASREPRoastable users
+- `Get-DomainComputer ` Get a listing of domain computers
+- `.\SharpView.exe Get-DomainGPO  \| findstr displayname` List all GPO names
+- ` Get-DomainGPO -ComputerIdentity HOSTNAME` List GPOs on a specific host
+- `Test-AdminAccess -ComputerName HOSTNAME` Test local admin access on a remote host 
+- `.\SharpView.exe Get-NetShare -ComputerName HOSTNAME` Enumerate open shares on a remote computer 
+- `Find-DomainUserLocation` Find machines where domain users are logged in 
+- `Get-DomainTrust` View a list of domain trusts 
+- `(Get-DomainUser).count` Count all domain users 
+- `.\SharpView.exe Get-DomainUser -Help` Get help about a SharpView function 
+- `Get-DomainUser -Properties samaccountname,description \| Where {$_.description -ne $null}` Find non-blank user description fields
+- `.\SharpView.exe Get-DomainUser -SPN` Find users with SPNs set
+- `Find-ForeignGroup` Find foreign domain users
+- `Get-DomainGroup -Properties Name` List domain groups
+- `.\SharpView.exe Get-DomainGroupMember -Identity 'Help Desk'` Get members of a domain group
+- `.\SharpView.exe Get-DomainGroup -AdminCount` List protected groups
+- `.\SharpView.exe Find-ManagedSecurityGroups` List managed security groups
+- `Get-NetLocalGroup -ComputerName WS01` Get local groups on a host
+- `.\SharpView.exe Get-NetLocalGroupMember -ComputerName HOSTNAME` Get members of a local group
+- `.\SharpView.exe Get-DomainComputer -Unconstrained` Find computers that allow unconstrained delegation
+- `Get-DomainComputer -TrustedToAuth` Find computers set with constrained delegation
+- `Get-DomainObjectAcl -Identity first.last` Enumerate ACLs on a user
+- `Find-InterestingDomainAcl` Find objects in the domain with modification rights over non built-in objects
+- `Get-PathAcl "\\HOSTNAME\Directory"` Find the ACLs set on a directory 
+- ` gpresult /r /S HOSTNAME` Get a report of all GPOs applied to a host
+- ` Get-DomainGPO  \| Get-ObjectAcl` Find GPO permissions
+- `Get-DomainTrustMapping` Enumerate trusts for our domain/reachable domains
+
+*Note: If you do not get result with powerview, you can try this in powershell `Import-Module .\PowerView.ps1`*
 
 
 ### Powerview - Resources
