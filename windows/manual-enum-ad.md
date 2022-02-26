@@ -62,6 +62,8 @@
 ## Other useful native tools or cmd
 
 - `gpresult /h gpo_report.html` Enumerate infos on Group Policy Objects (collection of policy settings) in html
+- `gpresult /r /user:first.last` Get GPO for user
+- `gpresult /r /S HOST` Get GPO for host
 
 
 ## Resources
