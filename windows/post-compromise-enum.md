@@ -62,6 +62,11 @@
 - ` gpresult /r /S HOSTNAME` Get a report of all GPOs applied to a host
 - ` Get-DomainGPO  \| Get-ObjectAcl` Find GPO permissions
 - `Get-DomainTrustMapping` Enumerate trusts for our domain/reachable domains
+- `Get-NetShare -ComputerName COMPUTER` List share on computer
+- `Get-DomainGPO` list all gpo and related info
+- `Get-DomainGPO | select displayname` list all gpo names
+- `Get-DomainGPO | select displayname,objectguid` list gpo names with their guid
+- `Get-DomainTrustMapping` enumerate all trusts for our current domain and other reachable domains
 
 *Note: If you do not get result with powerview, you can try this in powershell `Import-Module .\PowerView.ps1`*
 
