@@ -63,6 +63,7 @@
 
 - `gpresult /h gpo_report.html` Enumerate infos on Group Policy Objects (collection of policy settings) in html
 
+
 ## Resources
 
 - [AD on HTB Academy](https://academy.hackthebox.com/)
