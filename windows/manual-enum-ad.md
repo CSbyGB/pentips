@@ -59,6 +59,10 @@
 - `Get-ADUser -Filter * -SearchBase "OU=Pentest,OU=Employees,DC=DOMAIN-NAME,DC=LOCAL"` | List user in Pentest OU
 - `Get-ADGroup -filter * -Properties MemberOf | Where-Object {$_.MemberOf -ne $null} | Select-Object Name,MemberOf` Find all nested groups in the Domain
 
+## Other useful native tools or cmd
+
+- `gpresult /h gpo_report.html` Enumerate infos on Group Policy Objects (collection of policy settings) in html
+
 ## Resources
 
 - [AD on HTB Academy](https://academy.hackthebox.com/)
