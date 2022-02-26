@@ -31,7 +31,7 @@
 - Filter the info: `Get-NetGroup -GroupName "Domain Admins" `
 - `.\SharpView.exe ConvertTo-SID -Name first.last` Find SID of a user
 - `.\SharpView.exe Convert-ADName -ObjectName SID` find user with SID
-- `Get-DomainPolicy` View the domain password policy
+- `Get-DomainPolicy` View the domain password policy (will show passwordhistorysize)
 - `Get-DomainUser first.last  \| ConvertFrom-UACValue -showall` List all UAC values
 - `.\SharpView.exe Get-Domain` View information about the current domain
 - `.\SharpView.exe Get-DomainOU` List all OUs
