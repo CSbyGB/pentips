@@ -44,6 +44,10 @@
   * [URL File Attack](windows/url-file-attack.md)
   * [PrintNightmare](windows/printNightmare.md)
 
+## Useful tricks
+
+* [Transfert files between target and machine](useful-tricks/file-transfert.md)
+
 ## Binary Exploitation
 
 * [Assembly](Binary-Exploitation/Assembly.md)
