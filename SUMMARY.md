@@ -46,7 +46,7 @@
 
 ## Useful tricks
 
-* [Transfert files between target and machine](useful-tricks/file-transfert.md)
+* [Transfert files between target and attacking machine](useful-tricks/file-transfert.md)
 
 ## Binary Exploitation
 
