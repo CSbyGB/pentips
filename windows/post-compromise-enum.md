@@ -202,7 +202,7 @@
 - `python3 ldapsearch-ad.py -l TARGET-IP -u firstname.lastname -p 'password' -d DOMAIN.LOCAL -t pass-pols` You will get the password policy
 - `python3 ldapsearch-ad.py -l 10.129.42.188 -u firstname.lastname -p 'password' -d DOMAIN.LOCAL -t search -s '(&(objectCategory=person)(userAccountControl:1.2.840.113556.1.4.803:=128))'` user account has their userAccountControl value set to ENCRYPTED_TEXT_PWD_ALLOWED
 
-## Other tools
+## Tools
 
 - [ldapsearch-ad.py - yaap7](https://github.com/yaap7/ldapsearch-ad)
 
