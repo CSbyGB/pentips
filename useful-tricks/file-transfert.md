@@ -1,4 +1,4 @@
-# Transfert file between target and attack machines
+# Transfert file between target and attacking machines
 
 ## SMB
 
