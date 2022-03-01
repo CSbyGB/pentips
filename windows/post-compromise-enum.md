@@ -209,6 +209,9 @@
 ## Resources
 
 - [List of AD property flags for ldap queries](https://docs.microsoft.com/en-us/troubleshoot/windows-server/identity/useraccountcontrol-manipulate-account-properties#list-of-property-flags)
+- [Custom queries in Bloodhound - awsmhacks](https://github.com/awsmhacks/awsmBloodhoundCustomQueries)
+- [Custom queries in Bloodhound - Compass Security](https://github.com/CompassSecurity/BloodHoundQueries/blob/master/customqueries.json)
+- [Custom queries in Bloodhound - Hausec](https://github.com/hausec/Bloodhound-Custom-Queries)
 - [ACTIVE DIRECTORY BLOODHOUND on HTB Academy](https://academy.hackthebox.com/course/preview/active-directory-bloodhound)
 - [sans institute cheat sheet with custom db queries](https://sansorg.egnyte.com/dl/zscX9KYH5M)
 - [The dog whisperer handbook](https://ernw.de/download/BloodHoundWorkshop/ERNW_DogWhispererHandbook.pdf)
