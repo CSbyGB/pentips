@@ -143,12 +143,52 @@
   - Abuse Info	Specific tools/commands/techniques that can be used to abuse the privilege.
   - Opsec Considerations	Opsec Considerations are also documented on the BloodHound wiki. This provides info on how "noisy" a particular command can be and what type of event log ID it will generate.
   - References	Additional reading on tactics/tools/techniques that can be used to abuse the privilege.
+([Source: ACTIVE DIRECTORY BLOODHOUND on HTB Academy](https://academy.hackthebox.com/course/preview/active-directory-bloodhound))
+
+### Icons in Bloodhound
+
+- This icon is used to represent a user: ![User Icon](../.res/user-icon.png)
+  
+- This icon is used to represent a group: ![Group Icon](../.res/Group-Icon.png)
+  
+- This icon is used to represent a GPO: ![GPO Icon](../.res/GPO-icon.png) we can click on it and check the Node Info
+
+### Cypher Query Language for custom queries
 
 ([Source: ACTIVE DIRECTORY BLOODHOUND on HTB Academy](https://academy.hackthebox.com/course/preview/active-directory-bloodhound))
+
+#### Structure of query
+
+- `MATCH (A)-[B]->(C) RETURN A,B,C` Here A and C are nodes B is the relationship between A and C
+- `MATCH (n:User),(m:Group) MATCH p=(n)-[r:MemberOf*1..3]->(m) RETURN p`
+
+#### Most commin Keywords
+
+- `MATCH` Used before describing the search pattern for finding one or more nodes or relationships.
+- `WHERE` Used to add more constraints to specific patterns or filter out unwanted patterns.
+- `RETURN` Used to specify the results format and organizes the resulting data. Results can be returned with specific properties, lists, ordering, etc.
+- `CREATE` and `DELETE` - Used to create and delete nodes/relationships
+- `SET` and `REMOVE` - Used to set values to properties and add labels to nodes
+- `MERGE` - Used to create nodes uniquely without any duplicates.
+
+#### Example of query
+
+- `MATCH p=(n:User)-[r:MemberOf*1..]->(m:Group {highvalue:true}) RETURN p` Find the members of all groups deemed to be "high-value targets."
+- `MATCH (u:User) WHERE ANY (x IN u.serviceprincipalnames WHERE toUpper(x) CONTAINS 'SQL')RETURN u` Find users with a keyword in their Service Principal Name (SPN)
+- `MATCH (u:User {dontreqpreauth: true}) RETURN u` Find users who do not require Kerberos pre-authentication 
+- `MATCH (u:User) WHERE u.description IS NOT NULL RETURN u.name,u.description` Find all users with a description field that is not blank
+
+#### Edge relationships in Bloodhound
+
+- MemberOf	One node (user, group, or computer) is a member of a second node (group)
+- AdminTo	One node (user, group, or computer) has local admin rights on a second node (computer)
+- HasSession	One node (user) has a session on a second node (computer)
+- TrustedBy	One node (domain) is trusted by a second node (domain)
 
 ### Bloodhound - Resources
 
 - [Cypher Query Language](https://neo4j.com/developer/cypher/)
+- [Edges in Bloodhound](https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html)
 - [SharpHound: Target Selection and API Usage - CptJesus](https://blog.cptjesus.com/posts/sharphoundtargeting)
 
 ## ldapsearch - cmd line
@@ -170,3 +210,5 @@
 
 - [List of AD property flags for ldap queries](https://docs.microsoft.com/en-us/troubleshoot/windows-server/identity/useraccountcontrol-manipulate-account-properties#list-of-property-flags)
 - [ACTIVE DIRECTORY BLOODHOUND on HTB Academy](https://academy.hackthebox.com/course/preview/active-directory-bloodhound)
+- [sans institute cheat sheet with custom db queries](https://sansorg.egnyte.com/dl/zscX9KYH5M)
+- [The dog whisperer handbook](https://ernw.de/download/BloodHoundWorkshop/ERNW_DogWhispererHandbook.pdf)
