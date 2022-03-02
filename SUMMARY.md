@@ -49,7 +49,7 @@
 * [Transfert files between target and attacking machine](post-exploitation/files-transfert.md)
 * [Maintaining Access](post-exploitation/maintaining-access.md)
 * [Pivoting](post-exploitation/pivoting.md)
-
+* [Cleaning up](cleanup.md)
 
 ## Binary Exploitation
 
