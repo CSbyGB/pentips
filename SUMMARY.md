@@ -47,7 +47,7 @@
 ## Post Exploitation
 
 * [Transfert files between target and attacking machine](post-exploitation/files-transfert.md)
-* [Maintening Access](post-exploitation/maintaining-access.md)
+* [Maintaining Access](post-exploitation/maintaining-access.md)
 
 ## Binary Exploitation
 
