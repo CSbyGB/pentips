@@ -55,6 +55,7 @@
 
 * [Assembly](Binary-Exploitation/Assembly.md)
 * [Buffer Overflow - Stack based - Winx86](Binary-Exploitation/buffer-overflow-stack-win86.md)
+* [Buffer Overflow - Stack based - Linux x86](Binary-Exploitation/buffer-overflow-stack-linux.md)
 
 ## Reporting
 
