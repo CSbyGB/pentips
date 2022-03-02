@@ -46,7 +46,7 @@
 
 ## Post Exploitation
 
-* [Transfert files between target and attacking machine](useful-tricks/file-transfert.md)
+* [Transfert files between target and attacking machine](post-exploitation/files-transfert.md)
 
 ## Binary Exploitation
 
