@@ -44,7 +44,7 @@
   * [URL File Attack](windows/url-file-attack.md)
   * [PrintNightmare](windows/printNightmare.md)
 
-## Useful tricks
+## Post Exploitation
 
 * [Transfert files between target and attacking machine](useful-tricks/file-transfert.md)
 
