@@ -43,6 +43,7 @@
   * [GPP/cPassword Attacks](windows/gpp.md)
   * [URL File Attack](windows/url-file-attack.md)
   * [PrintNightmare](windows/printNightmare.md) 
+* [Weaponization](windows/weaponization.md)
 
 ## Post Exploitation
 
