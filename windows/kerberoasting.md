@@ -36,7 +36,7 @@
     19900 | Kerberos 5, etype 18, Pre-Auth                   | Network Protocols
   ```
 - We need TGS which is 13100
-- Crack the hash with hachcat
+- Crack the hash with hachcat (for it to work I needed to have 4gb on my vm)
   ```
   ┌──(root💀kali)-[~/active-directory]
   └─# hashcat -m 13100 hashkerb.txt /usr/share/wordlists/rockyou.txt -O filename
