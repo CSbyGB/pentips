@@ -19,6 +19,7 @@
 
 * [Evil Winrm](Tools/evil-winrm.md)
 * [Metasploit](Tools/Metasploit.md)
+* [Covenant](Tools/covenant.md)
 * [Mimikatz](windows/mimikatz.md)
 
 ## Linux
