@@ -18,7 +18,7 @@
 ## Tools
 
 * [Evil Winrm](Tools/evil-winrm.md)
-* [Metasploit](Tools/metasploit.md)
+* [Metasploit](Tools/Metasploit.md)
 * [Mimikatz](windows/mimikatz.md)
 
 ## Linux
