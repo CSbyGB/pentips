@@ -10,6 +10,7 @@
 
 ## Web Pentesting
 
+* [Enumeration](web-pentest/enumeration.md)
 * [Misc Tips](web-pentest/Misc-Tips.md)
 * [API](web-pentest/API.md)
 * [Clickjacking](web-pentest/clickjacking.md)
