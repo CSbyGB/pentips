@@ -1,23 +1,25 @@
-# Catch a shell with meterpreter
+# Metasploit
 
-## Generate shell with msfvenom:
+## Catch a shell with meterpreter
+
+### Generate shell with msfvenom:
 
 `msfvenom --list payloads | grep meterpreter`
 
-## List formats
+### List formats
 `msfvenom --list formats`
 
-## To generate payload take in account
+### To generate payload take in account
 - Target OS (Win, Linux, Mac)
 - Language you need (Python, PHP, ...)
 - Netwok connection types (TCP, HTTPS,...) 
 
-## Cath the shell
+### Cath the shell
 `use exploit/multi/handler`
 If you want meterpreter commands choose type of payload with meterpreter
 Set `LHOST` and `LPORT` and `run` to catch the shell
 
-## Meterpreter Commands
+### Meterpreter Commands
 You can see this when typing `help`
 ```
 meterpreter > help
@@ -37,7 +39,7 @@ Core Commands
 ```
 Note: the commands can change depending on your version of meterpreter
 
-### Core commands
+#### Core commands
 
 ```
 background: Backgrounds the current session
@@ -52,7 +54,7 @@ run: Executes a Meterpreter script or Post module
 sessions: Quickly switch to another session
 ```
 
-### File system commands
+#### File system commands
 
 ```
 cd: Will change directory
@@ -66,7 +68,7 @@ upload: Will upload a file or directory
 download: Will download a file or directory
 ```
 
-### Networking commands
+#### Networking commands
 ```
 arp: Displays the host ARP (Address Resolution Protocol) cache
 ifconfig: Displays network interfaces available on the target system
@@ -87,7 +89,7 @@ shutdown: Shuts down the remote computer
 sysinfo: Gets information about the remote system, such as OS
 ```
 
-### Others Commands
+#### Others Commands
 ```
 idletime: Returns the number of seconds the remote user has been idle
 keyscan_dump: Dumps the keystroke buffer
