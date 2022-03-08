@@ -1,5 +1,21 @@
 # Metasploit
 
+## Local Enumeration
+
+- Let's suppose we have a shell
+- We interact with it using `sessions -i number-of-session`
+- `sysinfo` will give info on win version, architecture etc
+- `getuid` to have current user info
+- `ipconfig` to get network info
+- `arp` other information about network
+- `netstat -ano` to get info on listener and other
+- `ps to check processes
+- `run post/windows/gather/enum_services` enumerate services
+- `run post/windows/gather/enum_applications` enumerate applications
+- `run post/windows/gather/enum_domains` enumerate domains (works better on msf5 than 6)
+- `route` check out routes
+
+
 ## Catch a shell with meterpreter
 
 ### Generate shell with msfvenom:
@@ -7,9 +23,11 @@
 `msfvenom --list payloads | grep meterpreter`
 
 ### List formats
+
 `msfvenom --list formats`
 
 ### To generate payload take in account
+
 - Target OS (Win, Linux, Mac)
 - Language you need (Python, PHP, ...)
 - Netwok connection types (TCP, HTTPS,...) 
@@ -69,6 +87,7 @@ download: Will download a file or directory
 ```
 
 #### Networking commands
+
 ```
 arp: Displays the host ARP (Address Resolution Protocol) cache
 ifconfig: Displays network interfaces available on the target system
@@ -90,6 +109,7 @@ sysinfo: Gets information about the remote system, such as OS
 ```
 
 #### Others Commands
+
 ```
 idletime: Returns the number of seconds the remote user has been idle
 keyscan_dump: Dumps the keystroke buffer
