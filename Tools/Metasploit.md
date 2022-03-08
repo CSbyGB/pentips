@@ -3,7 +3,7 @@
 ## Local Enumeration
 
 - Let's suppose we have a shell
-- We interact with it using `sessions -i number-of-session`
+- We interact with it using `sessions -i number-of-session` (type `sessions` to list the available sessions)
 - `sysinfo` will give info on win version, architecture etc
 - `getuid` to have current user info
 - `ipconfig` to get network info
