@@ -63,3 +63,7 @@
 ## Reporting
 
 * [How to report your findings](reporting/pentest-report.md)
+
+## Resources
+
+* [A list of random resources](resources.md)
