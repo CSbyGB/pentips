@@ -4,8 +4,12 @@
 
 - Suppose we have a grunt (a shell on the target) so we want to enumerate the target
 - Click on the grunt > Interact
-- Launch Seatbelt `Seatbelt -group=all`
-- 
+- Use Seatbelt `Seatbelt -group=all`
+  - We will get useful info: local users, dns info (such as email domain and all), interesting files, etc.
+- Use the cmd `GetDomainUser` to enumerate domain users
+- Use the cmd `GetNetLoggedOnUser`to have a list of logged on users
+- Use the cmd `GetNetLocalGroup` to have a list of local group
+- etc.
 
 ## hta Email Phishing
 
