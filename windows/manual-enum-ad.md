@@ -65,6 +65,9 @@
 - `gpresult /r /user:first.last` Get GPO for user
 - `gpresult /r /S HOST` Get GPO for host
 
+## Useful Powershell cmd
+
+- `Set-ExecutionPolicy Unrestricted` will let you execute any ps1 script, answer A to the prompt 
 
 ## Resources
 
