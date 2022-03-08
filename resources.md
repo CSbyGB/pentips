@@ -5,4 +5,4 @@
 - [The Mayor Pentesting notes on Notion](https://themayor.notion.site/themayor/Pentesting-Notes-9c46a29fdead4d1880c70bfafa8d453a)
 - [Hacktricks by Carlos Polop](https://book.hacktricks.xyz/)
 
--TODO: add list of peeps to follow, and add the full list of resources and link to notion guide
+<!-- -TODO: add list of peeps to follow, and add the full list of resources and link to notion guide -->
