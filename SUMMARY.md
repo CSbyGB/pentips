@@ -45,6 +45,8 @@
   * [GPP/cPassword Attacks](windows/gpp.md)
   * [URL File Attack](windows/url-file-attack.md)
   * [PrintNightmare](windows/printNightmare.md) 
+  * [AutoLogon exploitation](windows/autoLogon.md)
+  * [Always Installed Elevated exploitation](windows/alwaysinstallelevated.md)
 * [Weaponization](windows/weaponization.md)
 
 ## Post Exploitation
