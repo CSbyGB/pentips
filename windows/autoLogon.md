@@ -2,7 +2,7 @@
 
 ## Target requirements
 
-- The target need to have those values in the registrery key in `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WinLogon`
+- The target need to have those values in the registry in `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WinLogon`
   - AutoAdminLogon set to 1
   - DefaultDomainName with a valid domain set
   - DefaultUserName with a valid admin username
