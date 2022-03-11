@@ -17,3 +17,25 @@
 - 
 
 <!-- -TODO: add list of peeps to follow, and add the full list of resources and link to notion guide -->
+
+## Passwords
+
+## Default Passwords
+
+When you find a login it is always worth to check and see if you can login using default credentials.  
+You can find some default password here:
+- [Passwords - CIRT](https://cirt.net/passwords)
+- [Default Password](https://default-password.info/)
+- [Default Passwords - Data recovery](https://datarecovery.com/rd/default-passwords/)
+
+## Weak and Leaked Passwords
+
+There are plenty of lists with weak or leaked passwords that are worth trying for an engagement
+
+- [The section passwords of the very famous SecLists](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
+- [The Leaked Databases section of the very famous SecLists](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Leaked-Databases)
+- [List of password on skull security](https://wiki.skullsecurity.org/index.php?title%3DPasswords&sa=D&source=editors&ust=1643985817318602&usg=AOvVaw1ybsnRhjoTFCnUxZoMELlO)
+ 
+## Online Passwords crackers
+
+- [Cisco Password Cracker](https://www.ifm.net.nz/cookbooks/passwordcracker.html)
