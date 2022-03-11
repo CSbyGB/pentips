@@ -47,6 +47,7 @@
   * [PrintNightmare](windows/printNightmare.md) 
   * [AutoLogon exploitation](windows/autoLogon.md)
   * [Always Installed Elevated exploitation](windows/alwaysinstallelevated.md)
+  * [UAC Bypass](windows/UACbypass.md)
 * [Weaponization](windows/weaponization.md)
 
 ## Binary Exploitation
