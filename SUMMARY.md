@@ -21,6 +21,7 @@
 * [Metasploit](Tools/Metasploit.md)
 * [Covenant](Tools/covenant.md)
 * [Mimikatz](windows/mimikatz.md)
+* [Password Tools](Tools/passwords-tools.md)
 
 ## Linux
 
