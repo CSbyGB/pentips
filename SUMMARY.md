@@ -48,6 +48,7 @@
   * [AutoLogon exploitation](windows/autoLogon.md)
   * [Always Installed Elevated exploitation](windows/alwaysinstallelevated.md)
   * [UAC Bypass](windows/UACbypass.md)
+* [Persistence](windows/persistence.md)
 * [Weaponization](windows/weaponization.md)
 
 ## Binary Exploitation
