@@ -49,18 +49,18 @@
   * [Always Installed Elevated exploitation](windows/alwaysinstallelevated.md)
 * [Weaponization](windows/weaponization.md)
 
+## Binary Exploitation
+
+* [Assembly](Binary-Exploitation/Assembly.md)
+* [Buffer Overflow - Stack based - Winx86](Binary-Exploitation/buffer-overflow-stack-win86.md)
+* [Buffer Overflow - Stack based - Linux x86](Binary-Exploitation/buffer-overflow-stack-linux.md)
+
 ## Post Exploitation
 
 * [Transfert files between target and attacking machine](post-exploitation/files-transfert.md)
 * [Maintaining Access](post-exploitation/maintaining-access.md)
 * [Pivoting](post-exploitation/pivoting.md)
 * [Cleaning up](post-exploitation/cleanup.md)
-
-## Binary Exploitation
-
-* [Assembly](Binary-Exploitation/Assembly.md)
-* [Buffer Overflow - Stack based - Winx86](Binary-Exploitation/buffer-overflow-stack-win86.md)
-* [Buffer Overflow - Stack based - Linux x86](Binary-Exploitation/buffer-overflow-stack-linux.md)
 
 ## Reporting
 
