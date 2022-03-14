@@ -46,7 +46,7 @@ CUPP is a very cool tool that will ask you question about your target in order t
 
 ## Resources
 
-- [CeWL](https://github.com/digininja/CeWL)
-- [Username Generator](https://github.com/shroudri/username_generator)
-- [Crunch](https://www.kali.org/tools/crunch/)
-- [CUPP - Common User Passwords Profiler](https://github.com/Mebus/cupp)
+{% embed url="https://github.com/digininja/CeWL" %} CeWL {% endembed %}
+{% embed url="https://github.com/shroudri/username_generator" %} Username Generator {% endembed %}
+{% embed url="https://www.kali.org/tools/crunch/" %} Crunch {% endembed %}
+{% embed url="https://github.com/Mebus/cupp" %} CUPP - Common User Passwords Profiler {% endembed %}
