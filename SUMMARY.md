@@ -23,6 +23,10 @@
 * [Mimikatz](windows/mimikatz.md)
 * [Password Tools](Tools/passwords-tools.md)
 
+## VM and Labs
+
+* [General tips](lab/labstips.md)
+
 ## Linux
 
 * [Enumeration](linux/enumeration.md)
