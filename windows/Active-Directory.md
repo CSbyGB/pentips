@@ -44,8 +44,8 @@ Domain => Tree => Forest
 
 ## Resources to make your own practice lab
 
-*Note: If you want a nice crash course about Active Directory (with the lab setup) I really recommend this one by [TCM-Security Academy](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)*
-
+*Note: If you want a nice crash course about Active Directory (with the lab setup) I really recommend this one by TCM-Security Academy:*
+{% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} TCM-Security Academy {% endembed %}
 {% embed url="https://www.microsoft.com/en-us/evalcenter/" %} Microsoft Evaluation Center {% endembed %}
 {% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise" %} Windows 10 {% endembed %}
 {% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019" %} Windows Server 2019 {% endembed %}
