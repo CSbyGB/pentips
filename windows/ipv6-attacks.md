@@ -15,5 +15,5 @@ There's no dns for IPv6 (only for IPv4) so we can spoof it with mitm6
 
 ### Mitm6 - Resources
 
-- [Mitm6](https://blog.fox-it.com/2018/01/11/mitm6-compromising-ipv4-networks-via-ipv6/)
-- [Combining NTLM Relaying and Kerberos delegation](https://dirkjanm.io/worst-of-both-worlds-ntlm-relaying-and-kerberos-delegation/)
+{% embed url="https://blog.fox-it.com/2018/01/11/mitm6-compromising-ipv4-networks-via-ipv6/" %} Mitm6 {% endembed %}
+{% embed url="https://dirkjanm.io/worst-of-both-worlds-ntlm-relaying-and-kerberos-delegation/" %} Combining NTLM Relaying and Kerberos delegation {% endembed %}
