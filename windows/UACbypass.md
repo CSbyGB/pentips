@@ -35,5 +35,6 @@
 
 ## Resources
 
-- [Bypassing Defender The Easy Way – FodHelper by Joe Helle](https://tcm-sec.com/bypassing-defender-the-easy-way-fodhelper/) to understand more about Fodhelper
-- [TCM security Academy -  Movement pivoting and persistence for pentesters and ethical hacker](https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers)
+- To understand more about Fodhelper
+{% embed url="https://tcm-sec.com/bypassing-defender-the-easy-way-fodhelper/" %} Bypassing Defender The Easy Way – FodHelper by Joe Helle {% endembed %}
+{% embed url="https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers" %} TCM security Academy -  Movement pivoting and persistence for pentesters and ethical hacker {% endembed %}
