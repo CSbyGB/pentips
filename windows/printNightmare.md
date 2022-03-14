@@ -50,7 +50,7 @@ Info: Establishing connection to remote endpoint
 
 ### PrintNightmare - Resources
 
-- [cube0x0 RCE](https://github.com/cube0x0/CVE-2021-1675)
-- [calebstewart LPE](https://github.com/calebstewart/CVE-2021-1675)
-- [Playing with PrintNightmare - 0xdf hacks stuff](https://0xdf.gitlab.io/2021/07/08/playing-with-printnightmare.html#target)
-- [PrintNightmare - TheMayor Pentesting notes](https://themayor.notion.site/d7a4f698bd2d453cbb55a60c6458542e?v=ec41d2f3c44743949e47237c03e82b1b&p=136a31bb0933493d852f3b9d38e8544f)
+{% embed url="https://github.com/cube0x0/CVE-2021-1675" %} cube0x0 RCE {% endembed %}
+{% embed url="https://github.com/calebstewart/CVE-2021-1675" %} calebstewart LPE {% endembed %}
+{% embed url="https://0xdf.gitlab.io/2021/07/08/playing-with-printnightmare.html#target" %} Playing with PrintNightmare - 0xdf hacks stuff {% endembed %}
+{% embed url="https://themayor.notion.site/d7a4f698bd2d453cbb55a60c6458542e?v=ec41d2f3c44743949e47237c03e82b1b&p=136a31bb0933493d852f3b9d38e8544f" %} PrintNightmare - TheMayor Pentesting notes {% endembed %}
