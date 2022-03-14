@@ -4,6 +4,10 @@
 
 * [Welcome](README.md)
 
+## Networking
+
+* [Basics](networking/basics.md)
+
 ## External Pentest
 
 * [External Pentest](External-Pentest/external-pentest.md)
