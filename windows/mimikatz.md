@@ -122,5 +122,6 @@ Golden ticket for 'AnyDoesNotNeedToExist @ marvel.local' successfully submitted 
     ```
 
 ## Mimikatz - Resources
-- [Mimikatz](https://github.com/gentilkiwi/mimikatz)
-- [Mimikatz - Wiki](https://github.com/gentilkiwi/mimikatz/wiki)
+
+{% embed url="https://github.com/gentilkiwi/mimikatz" %} Mimikatz {% endembed %}
+{% embed url="https://github.com/gentilkiwi/mimikatz/wiki" %} Mimikatz - Wiki {% endembed %}
