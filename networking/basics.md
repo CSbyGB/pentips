@@ -9,5 +9,5 @@
 
 ## Resources
 
-- [Getting Started with Cisco Packet Tracer (this tool is very fun and useful to use when trying to understand networking)](https://skillsforall.com/course/getting-started-cisco-packet-tracer)
-- [Networking Essentials by Cisco](https://skillsforall.com/course/networking-essentials)
+{% embed url="https://skillsforall.com/course/getting-started-cisco-packet-tracer" %} Getting Started with Cisco Packet Tracer (this tool is very fun and useful to use when trying to understand networking) {% endembed %}
+{% embed url="https://skillsforall.com/course/networking-essentials" %} Networking Essentials by Cisco {% endembed %}
