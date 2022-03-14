@@ -71,9 +71,9 @@
 
 ## Resources
 
-- [AD on HTB Academy](https://academy.hackthebox.com/)
-- [Get AD User Data via Powershell](http://woshub.com/get-aduser-getting-active-directory-users-data-via-powershell/)
-- [Powershell commands for managing AD](https://vschamarti.wordpress.com/2019/11/02/powershell-commands-for-managing-active-directory/)
-- [User Attributes - Inside Active Directory](http://www.kouti.com/tables/userattributes.htm)
-- [Base Attributes - Inside Active Directory](http://www.kouti.com/tables/baseattributes.htm)
-- [LDAP Wiki](https://ldapwiki.com/wiki/)
+{% embed url="https://academy.hackthebox.com/path/preview/active-directory-enumeration" %} AD on HTB Academy {% endembed %}
+{% embed url="http://woshub.com/get-aduser-getting-active-directory-users-data-via-powershell/" %} Get AD User Data via Powershell {% endembed %}
+{% embed url="https://vschamarti.wordpress.com/2019/11/02/powershell-commands-for-managing-active-directory/" %} Powershell commands for managing AD {% endembed %}
+{% embed url="http://www.kouti.com/tables/userattributes.htm" %} User Attributes - Inside Active Directory {% endembed %}
+{% embed url="http://www.kouti.com/tables/baseattributes.htm" %} Base Attributes - Inside Active Directory {% endembed %}
+{% embed url="https://ldapwiki.com/wiki/" %} LDAP Wiki {% endembed %}
