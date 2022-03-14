@@ -41,6 +41,6 @@ I had to enlarge a win VM because I made some bad calculation when I created it.
 ## Resources
 
 - A helpful colleague :D, thanks Keven!
-- [How to enlarge VM - Howtogeek](https://www.howtogeek.com/124622/how-to-enlarge-a-virtual-machines-disk-in-virtualbox-or-vmware/)
-- [How to delete recovery partition - superuser](https://superuser.com/questions/1023765/how-to-delete-the-recovery-partition-in-windows-10)
-- [How to delete recovery partition - tenforums](https://www.tenforums.com/tutorials/157296-how-delete-recovery-partition-windows-10-a.html)
+{% embed url="https://www.howtogeek.com/124622/how-to-enlarge-a-virtual-machines-disk-in-virtualbox-or-vmware/" %} How to enlarge VM - Howtogeek {% endembed %}
+{% embed url="https://superuser.com/questions/1023765/how-to-delete-the-recovery-partition-in-windows-10" %} How to delete recovery partition - superuser {% endembed %}
+{% embed url="https://www.tenforums.com/tutorials/157296-how-delete-recovery-partition-windows-10-a.html" %} How to delete recovery partition - tenforums {% endembed %}
