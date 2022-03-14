@@ -55,5 +55,5 @@
 
 ## Resources
 
-- [Get Covenant here](https://github.com/cobbr/Covenant)
-- [Movement Pivoting and Persistence - TCM Security Academy](https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers)
+{% embed url="https://github.com/cobbr/Covenant" %} Get Covenant here {% endembed %}
+{% embed url="https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers" %} Movement Pivoting and Persistence - TCM Security Academy {% endembed %}
