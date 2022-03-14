@@ -22,4 +22,5 @@
 ## Scripts for enumerations
 
 ## Resources
-- [gtfobins](https://gtfobins.github.io/)
+
+{% embed url="https://gtfobins.github.io/" %} gtfobins {% endembed %}
