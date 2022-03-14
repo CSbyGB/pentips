@@ -70,4 +70,4 @@ We will use Covenant and Metasploit here.
 
 ## Resources
 
-- [TCM security Academy -  Movement pivoting and persistence for pentesters and ethical hacker](https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers)
+{% embed url="https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers" %} TCM security Academy -  Movement pivoting and persistence for pentesters and ethical hacker {% endembed %}
