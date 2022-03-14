@@ -46,8 +46,8 @@ Domain => Tree => Forest
 
 *Note: If you want a nice crash course about Active Directory (with the lab setup) I really recommend this one by [TCM-Security Academy](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)*
 
-- [Microsoft Evaluation Center](https://www.microsoft.com/en-us/evalcenter/)
-- [Windows 10](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise)
-- [Windows Server 2019](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019)  
-  *Note: To unlock Win Server 2019 and access the login screen from virtual box, the combinaison is ctrl+suppr*
-- [Kali Linux](https://www.kali.org/)
+{% embed url="https://www.microsoft.com/en-us/evalcenter/" %} Microsoft Evaluation Center {% endembed %}
+{% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise" %} Windows 10 {% endembed %}
+{% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019" %} Windows Server 2019 {% endembed %}
+*Note: To unlock Win Server 2019 and access the login screen from virtual box, the combinaison is ctrl+suppr*
+{% embed url="https://www.kali.org/" %} Kali Linux {% endembed %}
