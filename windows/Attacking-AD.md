@@ -18,8 +18,8 @@ It will be complemented with notes from my practice and from other classes like 
 
 ## Resources
 
-- [Hacktricks - Active Directory Methodology](https://book.hacktricks.xyz/windows/active-directory-methodology)
-- [TCM-Security Academy](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)
-- [Top Five Ways I Got Domain Admin - Adam Toscher](https://medium.com/@adam.toscher/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa)
-- [Active Directory Security Blog](https://adsecurity.org/)
-- [Harmj0y Blog](http://blog.harmj0y.net/)
+{% embed url="https://book.hacktricks.xyz/windows/active-directory-methodology" %} Hacktricks - Active Directory Methodology {% endembed %}
+{% embed url="TCM-Security Academy" %} https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course {% endembed %}
+{% embed url="Top Five Ways I Got Domain Admin - Adam Toscher" %} https://medium.com/@adam.toscher/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa {% endembed %}
+{% embed url="https://adsecurity.org/" %} Active Directory Security Blog {% endembed %}
+{% embed url="http://blog.harmj0y.net/" %} Harmj0y Blog {% endembed %}
