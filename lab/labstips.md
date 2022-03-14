@@ -20,6 +20,8 @@ I had to enlarge a win VM because I made some bad calculation when I created it.
 ### Recovery partition in the way of the extention
 
 ***If you can not extend it probably means that the recovery partition is in the way of the extention, no worries!***
+- If your disk management looks like this it means your recovery partition is blocking the extension of the C Drive  
+  ![Partitions with recovery in the middle](../.res/partitions.png)  
 - You will need to delete the recovery partition so that you can extend C with the new space you added
 - Search for diskpart in the start menu and launch it as admin
 
