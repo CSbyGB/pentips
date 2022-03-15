@@ -1,4 +1,4 @@
-# Passwords and wordlist tools
+# Passwords, Hashes and wordlist tools
 
 Here is a how to for tools useful for passwords attack or generating wordlists
 
@@ -44,9 +44,45 @@ done
 CUPP is a very cool tool that will ask you question about your target in order to generate a personnalized wordlist for your target. It can use different languages  
 - `python3 cupp.py -i` launch this to start answering question about the target
 
+## hash-identifier
+
+- `hash-identifier`
+- Enter your hash
+- You will get a list of possible hashs
+
+## hashid
+
+- `hashid <hash-here>`
+- You will get a list of possible hashs
+
+## hashcat
+
+- It is a tool that can help crack hashes using a wordlist.
+- `hashcat -h` will print help
+- `hashcat -m 1000 hashes.txt /usr/share/wordlists/rockyou.txt`
+- the flag `-m` will define the hash mode see all modes [here](https://hashcat.net/wiki/doku.php?id=example_hashes)
+- You can find also the proper module using this `hashcat --help | grep <service-you-need>` See the example below
+  ```
+  ┌──(root💀kali)-[~/active-directory]
+  └─# hashcat --help | grep Kerberos
+   7500 | Kerberos 5, etype 23, AS-REQ Pre-Auth            | Network Protocols
+  13100 | Kerberos 5, etype 23, TGS-REP                    | Network Protocols
+  18200 | Kerberos 5, etype 23, AS-REP                     | Network Protocols
+  19600 | Kerberos 5, etype 17, TGS-REP                    | Network Protocols
+  19700 | Kerberos 5, etype 18, TGS-REP                    | Network Protocols
+  19800 | Kerberos 5, etype 17, Pre-Auth                   | Network Protocols
+  19900 | Kerberos 5, etype 18, Pre-Auth                   | Network Protocols
+  ```
+- the flag `-a` will set the attack mode
+- We can either give it a single hash or a file
+- Adding `--show` will show the crack value if the hash is cracked
+- We can use it for Brute-force attack: `-a 3` will specify it is bruteforce `?d?d?d` will use 3 digits from 000 to 999.
+- Example: `hashcat -a 3 -m 0 HASH-HERE ?d?d?d`
+
 ## Resources
 
 {% embed url="https://github.com/digininja/CeWL" %} CeWL {% endembed %}
 {% embed url="https://github.com/shroudri/username_generator" %} Username Generator {% endembed %}
 {% embed url="https://www.kali.org/tools/crunch/" %} Crunch {% endembed %}
 {% embed url="https://github.com/Mebus/cupp" %} CUPP - Common User Passwords Profiler {% endembed %}
+{% embed url="https://www.kali.org/tools/hash-identifier/" %} hash-identifier on kali {% endembed %}
