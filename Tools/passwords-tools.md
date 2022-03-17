@@ -79,6 +79,11 @@ CUPP is a very cool tool that will ask you question about your target in order t
 - We can use it for Brute-force attack: `-a 3` will specify it is bruteforce `?d?d?d` will use 3 digits from 000 to 999.
 - Example: `hashcat -a 3 -m 0 HASH-HERE ?d?d?d`
 
+### Using hashcat with rules
+
+- In kali rules are located in `/usr/share/hashcat/rules`
+- `hashcat -a 0 -m 1000 <HASH-HERE> -r /usr/share/hashcat/rules/OneRuleToRuleThemAll.rule /usr/share/wordlists/rockyou.txt`
+
 ## Resources
 
 {% embed url="https://github.com/digininja/CeWL" %} CeWL {% endembed %}
