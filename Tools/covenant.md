@@ -58,7 +58,7 @@
 - In a high grunt
 - We can use this to see if any plaintext info might come out `Mimikatz token::elevate lsadump::secrets`
 - Will dump the sam file (where password hashes are stored in windows)`Mimikatz token::elevate lsadump::sam`
-- Covenant will save tge Crendentials in the Data section as well
+- Covenant will save the Crendentials in the Data section as well
 
 ## Resources
 
