@@ -68,6 +68,21 @@
 - `Get-DomainGPO | select displayname,objectguid` list gpo names with their guid
 - `Get-DomainTrustMapping` enumerate all trusts for our current domain and other reachable domains
 
+### Enumerating Users
+
+- `get-netuser` will output all infos about users in the domain
+- `get-netuser | select cn` will list all users 
+- `get-netuser | select -expandproperty samaccountname` will list users but only samccountname
+- `find-userfield -SearchField description "password"` will list description fields of users with a grep on "password"
+
+### Enumerating Groups
+
+- `get-netgroup` will list all the different groups in the domain
+- `get-netgroup -Username "f.lastname"` will show group of user f.lastname
+- `get-netgroup -GroupName "domain admins" -FullData` will show details of the group
+
+### Enumerating Domain Computers and Shares
+
 *Note: If you do not get result with powerview, you can try this in powershell `Import-Module .\PowerView.ps1`*
 
 
@@ -214,4 +229,5 @@
 {% embed url="https://github.com/hausec/Bloodhound-Custom-Queries" %} Custom queries in Bloodhound - Hausec {% endembed %}
 {% embed url="https://academy.hackthebox.com/course/preview/active-directory-bloodhound" %} ACTIVE DIRECTORY BLOODHOUND on HTB Academy {% endembed %}
 {% embed url="https://sansorg.egnyte.com/dl/zscX9KYH5M" %} sans institute cheat sheet with custom db queries {% endembed %}
+{% embed url="https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers" %} Movement, Pivoting, and Persistence {% endembed %}
 {% embed url="https://ernw.de/download/BloodHoundWorkshop/ERNW_DogWhispererHandbook.pdf" %} The dog whisperer handbook {% endembed %}
