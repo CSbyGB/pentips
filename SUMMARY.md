@@ -59,6 +59,7 @@
   * [UAC Bypass](windows/UACbypass.md)
 * [Persistence](windows/persistence.md)
 * [Weaponization](windows/weaponization.md)
+* [Useful commands in Powershell](windows/powershell.md)
 
 ## Binary Exploitation
 
