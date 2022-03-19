@@ -23,6 +23,15 @@
 - We want to find boxes where a domain admin is logged in.
 - `xfreerdp /v:IP /u:user /drive:data,/tmp` Transfer data to and from the target host with drive redirection
 
+### Grab Data with Sharphound.exe through a Covenant grunt
+
+- Upload Sharphound.exe with the command `upload` on Covenant
+- launch it using `shell sharphound.exe -c all`
+- Once it's done we can copy the file name of the generated zip
+- And use the Covenant download command
+- Once done we can click on the file name it should open a pop up and you will be able to choose where to put the file
+- 
+
 ## Bloodhound Python
 
 - *Note: slower than the PowerShell and C# ingestors*
@@ -107,6 +116,10 @@
 - AdminTo	One node (user, group, or computer) has local admin rights on a second node (computer)
 - HasSession	One node (user) has a session on a second node (computer)
 - TrustedBy	One node (domain) is trusted by a second node (domain)
+
+## Other Tips Bloodhound
+
+- If we click on a blade in the graph and select help we will have useful info about the specific blade selected
 
 ## Bloodhound - Resources
 
