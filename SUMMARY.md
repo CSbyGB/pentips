@@ -49,6 +49,7 @@
   * [Powerview or SharpView (.NET equivalent)](/windows/powerview-sharpview.md)
   * [AD Manual Enumeration](windows/manual-enum-ad.md) 
   * [Bloodhound](windows/bloodhound.md)
+  * [Post Compromise Enumeration - Resources](windows/post-compromise-enumeration-resources.md)
 * [Post Compromise Attacks](windows/post-compromise-attack.md)
   * [Pass the Password / Hash](windows/pass-hash.md)
   * [Token Impersonation](windows/token-impersonation.md)
