@@ -83,8 +83,35 @@
 
 ### Enumerating Domain Computers and Shares
 
-*Note: If you do not get result with powerview, you can try this in powershell `Import-Module .\PowerView.ps1`*
+- `Get-NetComputer -OperatingSystem "*Windows 10*"` Get computer with Win 10 OS
+- `Get-NetComputer -OperatingSystem "*server*"` Get the server
+- `Invoke-ShareFinder` will list shares
+- `Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC` will list sharw without standard print and IPC
 
+### Find interesting files
+
+- `Invoke-FileFinder`
+
+### Enumerate Local Admin Users
+
+- `Invoke-EnumerateLocalAdmin`
+
+### Enumerating Group Policy Objects
+
+- `get-netgpo`
+
+### Enumerating Access Control Lists
+
+- `get-objectacl`
+- `get-objectacl -SamAccountName "name" -ResolveGUIDs`
+
+### Enumerating the domain
+
+- `get-netdomain`
+- `Get-DomainPolicy`
+- `Get-domainsid` useful for golden tickets
+
+*Note: If you do not get result with powerview, you can try this in powershell `Import-Module .\PowerView.ps1`*
 
 ### Powerview - Resources
 
