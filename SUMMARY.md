@@ -60,6 +60,7 @@
   * [AutoLogon exploitation](windows/autoLogon.md)
   * [Always Installed Elevated exploitation](windows/alwaysinstallelevated.md)
   * [UAC Bypass](windows/UACbypass.md)
+  * [Abusing ACL](windows/abusing-acl.md)
 * [Persistence](windows/persistence.md)
 * [Weaponization](windows/weaponization.md)
 * [Useful commands in Powershell](windows/powershell.md)
