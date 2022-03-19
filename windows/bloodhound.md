@@ -119,7 +119,7 @@
 
 ## Other Tips Bloodhound
 
-- If we click on a blade in the graph and select help we will have useful info about the specific blade selected
+- If we click on a blade in the graph and select help we will have useful info about the specific blade selected. It is really worth having a look at the help and abuse info to have more info and tips on ways of exploitation.
 
 ## Bloodhound - Resources
 
