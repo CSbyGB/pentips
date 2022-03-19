@@ -15,13 +15,20 @@
 ## Lists and mindmaps
 
 - [A lot of mindmaps inforsec related - Aman Hardikar](https://www.amanhardikar.com/mindmaps.html)
-- 
+
+## Mobile App
+
+- [Android Application Testing Using Windows 11 and Windows Subsystem for Android](https://sensepost.com/blog/2021/android-application-testing-using-windows-11-and-windows-subsystem-for-android/)
+
+## Code Review
+
+- [How to Analyze Code for Vulnerabilities - Vickie Lee](https://youtu.be/A8CNysN-lOM)
 
 <!-- -TODO: add list of peeps to follow, and add the full list of resources and link to notion guide -->
 
 ## Passwords
 
-## Default Passwords
+### Default Passwords
 
 When you find a login it is always worth to check and see if you can login using default credentials.  
 You can find some default password here:
@@ -29,7 +36,7 @@ You can find some default password here:
 - [Default Password](https://default-password.info/)
 - [Default Passwords - Data recovery](https://datarecovery.com/rd/default-passwords/)
 
-## Weak and Leaked Passwords
+### Weak and Leaked Passwords
 
 There are plenty of lists with weak or leaked passwords that are worth trying for an engagement
 
@@ -37,6 +44,21 @@ There are plenty of lists with weak or leaked passwords that are worth trying fo
 - [The Leaked Databases section of the very famous SecLists](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Leaked-Databases)
 - [List of password on skull security](https://wiki.skullsecurity.org/index.php?title%3DPasswords&sa=D&source=editors&ust=1643985817318602&usg=AOvVaw1ybsnRhjoTFCnUxZoMELlO)
  
-## Online Passwords crackers
+### Online Passwords crackers
 
 - [Cisco Password Cracker](https://www.ifm.net.nz/cookbooks/passwordcracker.html)
+
+## Practice
+
+### API
+
+- [vAPI is Vulnerable Adversely Programmed Interface](https://github.com/roottusk/vapi)
+- [VAmPI - The Vulnerable API (Based on OpenAPI 3)](https://github.com/erev0s/VAmPI)
+
+### Mobile App
+
+- [Reverse Engineering iOS Applications](https://github.com/ivRodriguezCA/RE-iOS-Apps)
+
+### Graphql
+
+- [Damn Vulnerable Graphql Application](https://github.com/dolevf/Damn-Vulnerable-GraphQL-Application)
