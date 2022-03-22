@@ -1,6 +1,6 @@
 # Summary
 
-## CS By GB - PenTips Gitbook
+## CS By GB - PenTips
 
 * [Welcome](README.md)
 
