@@ -2,7 +2,7 @@
 
 ## CS By GB - PenTips
 
-* [Welcome to CS by GB Pentips](README.md)
+* [Welcome to CSbyGB's Pentips](README.md)
 
 ## Networking
 
