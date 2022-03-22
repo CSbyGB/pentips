@@ -20,6 +20,10 @@
 
 - [Android Application Testing Using Windows 11 and Windows Subsystem for Android](https://sensepost.com/blog/2021/android-application-testing-using-windows-11-and-windows-subsystem-for-android/)
 
+### Tools
+
+- [AERoot is a command line tool that allows you to give the root privileges on-the-fly to any process running on the Android emulator with Google Play flavors AVDs.](https://github.com/quarkslab/AERoot)
+
 ## Code Review
 
 - [How to Analyze Code for Vulnerabilities - Vickie Lee](https://youtu.be/A8CNysN-lOM)
