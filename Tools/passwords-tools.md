@@ -84,6 +84,18 @@ CUPP is a very cool tool that will ask you question about your target in order t
 - In kali rules are located in `/usr/share/hashcat/rules`
 - `hashcat -a 0 -m 1000 <HASH-HERE> -r /usr/share/hashcat/rules/OneRuleToRuleThemAll.rule /usr/share/wordlists/rockyou.txt`
 
+## John the Ripper
+
+### Rule-Based Attack
+
+- John the ripper has a config file that contains rule sets, which is located at /etc/john/john.conf or /opt/john/john.conf depending on your distro or how john was installed. You can read /etc/john/john.conf and look for List.Rules to see all the available rules:  
+`cat /etc/john/john.conf|grep "List.Rules:" | cut -d"." -f3 | cut -d":" -f2 | cut -d"]" -f1 | awk NF`  
+- We can create a rule and add it to the conf file, for example this rule will add a symbol at the beginning of the word and a number at the end: 
+  ```
+  [List.Rules:My-own-rule]
+  Az"[0-9]" ^[!@#$]
+  ```
+
 ## Resources
 
 {% embed url="https://github.com/digininja/CeWL" %} CeWL {% endembed %}
