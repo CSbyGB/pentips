@@ -1,13 +1,22 @@
 # Welcome to CSbyGB PenTips
+
 ![CSbyGB](https://csbygb.github.io/img/csbygb.png)
+
 ## $ whoami /priv
+
 Ethical Hacker 🏳 |🏆 Pentest Ninja Award W.S Cyberjutsu | 🇨🇦 Top 20 Women in Cybersecurity #DoWeLookLikeHackers 🏳️‍🌈
 
 ## What is this?
+
 This is a gitbook with my pentest tips and notes from my learning journey as pentester (more than 400 pages to transfer here 😅).  
 It is a work in progress and it will be filled up asap with my notes and on the go as I learn new things everyday.
 
+## Disclamer
+
+**Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in illegal activity using these resources**
+
 ## Credits
+
 I took these notes will working but also when using different resources.  
 Here is a list :
 - [TCM-Security](https://academy.tcm-sec.com/)
