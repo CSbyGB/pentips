@@ -21,6 +21,7 @@
 
 ## Tools
 
+* [nmap](Tools/nmap.md)
 * [Evil Winrm](Tools/evil-winrm.md)
 * [Metasploit](Tools/Metasploit.md)
 * [Covenant](Tools/covenant.md)
