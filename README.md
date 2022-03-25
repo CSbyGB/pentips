@@ -13,7 +13,7 @@ It is a work in progress and it will be filled up asap with my notes and on the 
 
 ## Disclamer
 
-**Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in illegal activity using these resources**
+**Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in any illegal activity using these resources**
 
 ## Credits
 
