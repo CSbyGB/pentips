@@ -22,3 +22,7 @@
 - `Enter-PSSession -ComputerName workstation-01`
 - `Enter-PSSession -ComputerName workstation-01 -Credential domain\Username`
 - ` Invoke-Command -ScriptBlock {whoami;hostname} -ComputerName workstation-01 -Credential domain\Username` connect to a remote powershell and excute command with ScriptBlock. other command we could do with scriptblock: `ipconfig`, `net user`,...
+
+## Misc
+
+- `Install-Module ActiveDirectoryModule -ScopeCurrentUser` Install a module without admin rights
