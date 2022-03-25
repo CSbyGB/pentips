@@ -1,6 +1,6 @@
 # Search engines
 
-## Google Doks and Search Engine operators
+## Google Dorks and Search Engine operators
 
 - `site:website.com` get results from a specific website
 - `AND` using `keyword AND otherkeyword` will get results that have both the keywords
