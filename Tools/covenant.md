@@ -21,6 +21,7 @@ sudo git clone --recurse-submodules https://github.com/ZeroPointSecurity/Covenan
 cd /opt/Covenant/Covenant
 sudo dotnet run
 ```
+- Navigate to https://127.0.0.1:7443 set up your user and you should be good to go
 
 ## Local Enumeration
 
