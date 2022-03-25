@@ -1,5 +1,27 @@
 # Covenant
 
+## Installation
+
+### Install Dotnet
+
+```
+cd /tmp  
+wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 
+sudo dpkg -i packages-microsoft-prod.deb 
+sudo apt update -y  
+sudo apt-get install -y apt-transport-https dnsutils 
+sudo apt-get update  
+sudo apt-get install -y dotnet-sdk-3.1 
+```
+
+### Install and launch Covenant
+
+```
+sudo git clone --recurse-submodules https://github.com/ZeroPointSecurity/Covenant.git /opt/Covenant 
+cd /opt/Covenant/Covenant
+sudo dotnet run
+```
+
 ## Local Enumeration
 
 - Suppose we have a grunt (a shell on the target) so we want to enumerate the target
