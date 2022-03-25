@@ -72,6 +72,12 @@
 * [Buffer Overflow - Stack based - Winx86](Binary-Exploitation/buffer-overflow-stack-win86.md)
 * [Buffer Overflow - Stack based - Linux x86](Binary-Exploitation/buffer-overflow-stack-linux.md)
 
+## OSINT
+
+* [OSINT](OSINT/osint.md)
+* [Sock Puppets](OSINT/sock-puppets.md)
+* [Search engines](search-engines.md)
+
 ## Post Exploitation
 
 * [Transfert files between target and attacking machine](post-exploitation/files-transfert.md)
