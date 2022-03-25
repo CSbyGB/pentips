@@ -76,7 +76,7 @@
 
 * [OSINT](OSINT/osint.md)
 * [Sock Puppets](OSINT/sock-puppets.md)
-* [Search engines](search-engines.md)
+* [Search engines](OSINT/search-engines.md)
 
 ## Post Exploitation
 
