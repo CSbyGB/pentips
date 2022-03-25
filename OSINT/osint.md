@@ -1,7 +1,5 @@
 # OSINT
 
-**Everything mentioned here is for ETHICAL USE related to you work. Just like for pentest**
-
 ## Definition
 
 - Open Source Interlligence: Gather information and data publicly available.
