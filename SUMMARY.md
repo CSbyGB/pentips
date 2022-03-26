@@ -39,6 +39,8 @@
 
 ## Windows
 
+* [Initial Foothold](windows/initial-foothold.md)
+* [Privilege Escalation](windows/privesc.md)
 * [Active Directory](windows/Active-Directory.md)
 * [Attacking Active Directory](windows/Attacking-AD.md)
   * [LLMNR Poisoning](windows/llmnr.md)
@@ -90,6 +92,10 @@
 ## Reporting
 
 * [How to report your findings](reporting/pentest-report.md)
+
+## Writeups
+
+* [Hackthebox - Devel](/writeups/HTB-Devel.md)
 
 ## Resources
 
