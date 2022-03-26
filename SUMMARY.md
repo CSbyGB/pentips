@@ -96,6 +96,8 @@
 ## Writeups
 
 * [Hackthebox - Devel](/writeups/HTB-Devel.md)
+* [Hackthebox - Chatterbox](/writeups/HTB-chatterbox.md)
+* [Hackthebox - Active](/writeups/HTB-active.md)
 
 
 ## Resources
