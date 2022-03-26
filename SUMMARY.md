@@ -68,7 +68,7 @@
   * [Unconstrained Delegation](windows/unconstrained-delegation.md)
 * [Persistence](windows/persistence.md)
 * [Weaponization](windows/weaponization.md)
-* [Useful commands in Powershell](windows/powershell.md)
+* [Useful commands in Powershell and CMD](windows/powershell-cmd.md)
 
 ## Binary Exploitation
 
