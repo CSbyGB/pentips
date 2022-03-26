@@ -31,7 +31,7 @@
 
 ## CMD
 
-### Misc
+### System Enumeration
 
 - If we want to grep on specific information we can use `findstr`  
   `systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"`  
@@ -43,3 +43,34 @@
   System Type:               X86-based PC
   ```
   
+- If we want to see patches and update `wmic qfe`
+- List the drives `wmic logicaldisk` `list drives`
+
+### User Enumeration
+
+- `whoami`will give info on the current user
+- `whoami /priv` will give info on the current user and their priv
+- `whoami /groups` will give info on groups the current user is in
+- `net user` will list the user on the machine
+- `net user username` will list info about the with the username mentionned
+- `net localgroup` `net localgroup groupname` will give info on group
+
+### Network Enumeration
+
+- `ipconfig` or `ipconfig /all`
+- `arp -a`
+- `route print`
+- `netstat -ano` list active connections
+
+### Hunting passwords
+
+- `findstr /si password *.txt` will search for the string "password" in txt files
+- `findstr /si password *.txt *.ini *.config *.sql` same but also in ini, sql and config files
+
+### AV Enumeration
+
+- `sc query windefend` will show if Defender is running
+- `sc queryex type= service` will list all running service
+- `netsh advfirewall firewall dump` check for firewall
+- `netsh firewall show state` similar older command
+- `netsh firewall show config` will show the config of the firewall, useful to see blocked ports and other
