@@ -1,4 +1,4 @@
-# Useful commandes with Powershell and cmd
+# Useful commands with Powershell and cmd
 
 ## Powershell
 
