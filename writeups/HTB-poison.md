@@ -40,7 +40,7 @@ Nmap done: 1 IP address (1 host up) scanned in 25.11 seconds
 
 ## Port 80
 
-- If we go on the website we have this page
+- If we go on the website we have this page  
 ![Website](/.res/htb-poison-website.png)
 
 - The listfiles.php seems interesting  
