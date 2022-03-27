@@ -57,7 +57,7 @@ And it works!!
 
 ![Poison decrypted](/.res/htb-poison-cyberchef-password.png)
 
-- On the website using the tool we can show /etc/passwd
+- On the website using the form we can show /etc/passwd
 ```
 # $FreeBSD: releng/11.1/etc/master.passwd 299365 2016-05-10 12:47:36Z bcr $
 #
