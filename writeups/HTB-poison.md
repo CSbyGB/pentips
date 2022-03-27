@@ -54,6 +54,7 @@ This password is secure, it's encoded atleast 13 times.. what could go wrong rea
 It says the password has been encoded at list 13 times.  
 Let's go to cyberchef and try to add the recipe "frombase64" 13 times or more until it gets decrypted.  
 And it works!!  
+
 ![Poison decrypted](/.res/htb-poison-cyberchef-password.png)
 
 - On the website using the tool we can show /etc/passwd
