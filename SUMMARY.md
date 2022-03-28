@@ -35,8 +35,8 @@
 
 ## Linux
 
-* [Enumeration](linux/enumeration.md)
 * [Useful commands and tools on Linux](linux/useful.md)
+* [Privilege Escalation](linux/privesc.md)
 
 ## Windows
 
