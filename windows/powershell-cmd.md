@@ -49,16 +49,21 @@
   ```
   
 - If we want to see patches and update `wmic qfe`
+  - `wmic qfe get Caption,Description,HotFixID,InstalledOn`
 - List the drives `wmic logicaldisk` `list drives`
+- `schtasks` query scheduled task
+  - `schtasks /query /fo LIST /v`
+- `driverquery` will list installed drivers
 
 ### User Enumeration
 
 - `whoami`will give info on the current user
 - `whoami /priv` will give info on the current user and their priv
 - `whoami /groups` will give info on groups the current user is in
-- `net user` will list the user on the machine
+- `net user` or `net users` will list the user on the machine
 - `net user username` will list info about the with the username mentionned
 - `net localgroup` `net localgroup groupname` will give info on group
+- `qwinsta` or  `query session` other users logged in simultaneously
 
 ### Network Enumeration
 
@@ -66,10 +71,14 @@
 - `arp -a`
 - `route print`
 - `netstat -ano` list active connections
+  - `-a`: Displays all active connections and listening ports on the target system.
+  - `-n`: Prevents name resolution. IP Addresses and ports are displayed with numbers instead of attempting to resolves names using DNS.
+  - `-o`: Displays the process ID using each listed connection.
+  - Any port listed as “LISTENING” that was not discovered with the external port scan can present a potential local service. This is when we might need to use port forwarding to investigate the service.
 
 ### Hunting passwords
 
-- `findstr /si password *.txt` will search for the string "password" in txt files
+- `findstr /si password *.txt` will search for the string "password" in txt files `/si` means it searches in the current directory and all subdirectories (s) and ignore the case (i).
 - `findstr /si password *.txt *.ini *.config *.sql` same but also in ini, sql and config files
 
 ### AV Enumeration
@@ -79,3 +88,7 @@
 - `netsh advfirewall firewall dump` check for firewall
 - `netsh firewall show state` similar older command
 - `netsh firewall show config` will show the config of the firewall, useful to see blocked ports and other
+
+## Resources
+
+{% embed url="https://docs.microsoft.com/en-us/powershell/scripting/learn/ps101/07-working-with-wmi?view=powershell-7.1" %} Working with wmic {% endembed %}  
