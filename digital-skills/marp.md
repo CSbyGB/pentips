@@ -20,7 +20,7 @@ paginate: true
 _paginate: false        # Remove page number of page 1
 ---
 ```
-- You can use .svg images or any other format amd insert them as usual in markdown `![Image name or legend](image.link)`
+- You can use .svg images or any other format amd insert them as usual in markdown `![](image.link)` to redmension and image you can add `width:400px` between the "[]"
 - You can change the style (you can use color code instead of color name just like in html
 ```
 <style>
