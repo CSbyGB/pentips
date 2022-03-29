@@ -6,6 +6,20 @@
 
 ## How to
 
+- At the begining of the file you need to specify that it is a marp slideck
+```
+---
+marp: true
+title: Presentation title
+author: Author Name
+description: presentation description
+size: 16:9
+header: 'Put a header here'
+footer: 'Put a footer here'
+paginate: true
+_paginate: false        # Remove page number of page 1
+---
+```
 - You can use .svg images or any other format amd insert them as usual in markdown `![Image name or legend](image.link)`
 - You can change the style (you can use color code instead of color name just like in html
 ```
