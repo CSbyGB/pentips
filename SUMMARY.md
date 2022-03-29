@@ -101,6 +101,9 @@
 * [Hackthebox - Active](/writeups/HTB-active.md)
 * [Hackthebox - Poison](/writeups/HTB-poison.md)
 
+## Digital skills
+
+* [Marp](/digital-skills/marp.md)
 
 ## Resources
 
