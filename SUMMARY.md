@@ -100,6 +100,7 @@
 * [Hackthebox - Chatterbox](/writeups/HTB-chatterbox.md)
 * [Hackthebox - Active](/writeups/HTB-active.md)
 * [Hackthebox - Poison](/writeups/HTB-poison.md)
+* [Tryhackme - Overpass3](/writeups/THM-overpass3.md)
 
 ## Digital skills
 
