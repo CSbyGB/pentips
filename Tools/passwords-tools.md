@@ -96,6 +96,18 @@ CUPP is a very cool tool that will ask you question about your target in order t
   Az"[0-9]" ^[!@#$]
   ```
 
+## Hydra
+
+- Hydra is a very handy tool for when you need to bruteforce auth. It supports a lot of protocols.
+
+### SSH
+
+- `hydra -L users -P pass 10.10.4.129 -t 4 ssh ` will use the user list and password list mentioned if you put minus l or minus p you can just specify one user or one password.
+
+### FTP
+
+- It is pretty much the same for ftp except you need to add ftp instead of ssh in the end: `hydra -L users -P pass 10.10.4.129 -t 4 ftp`
+
 ## Resources
 
 {% embed url="https://github.com/digininja/CeWL" %} CeWL {% endembed %}
