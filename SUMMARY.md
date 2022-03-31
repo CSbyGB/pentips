@@ -101,7 +101,7 @@
 * [Hackthebox - Active](/writeups/HTB-active.md)
 * [Hackthebox - Poison](/writeups/HTB-poison.md)
 * [TryHackMe - Overpass3](/writeups/THM-overpass3.md)
-* [TryHackMe - Wonderland](THM-wonderland.md)
+* [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 
 ## Digital skills
 
