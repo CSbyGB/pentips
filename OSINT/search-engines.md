@@ -14,13 +14,6 @@
 - `inurl:keyword` look for url with a specific keyword in them
 - `intitle:keyword` look for title with a specific keyword in the title
 
-## Reverse Image Searching
-
-- Pretty straightforward we can use this link to do reverse Image searching, you just need to upload the image you are looking for information about
-  - [Google Image Search](https://images.google.com)
-  - [TinEye](https://tineye.com)  
-  - [Yandex](https://yandex.com/)
-
 ## Resources
 
 {% embed url="https://www.google.com/" %} Google {% endembed %}  
@@ -32,5 +25,4 @@
 {% embed url="https://duckduckgo.com/" %} DuckDuckGo {% endembed %}  
 {% embed url="https://help.duckduckgo.com/duckduckgo-help-pages/results/syntax/" %} DuckDuckGo Search Guide {% endembed %}  
 {% embed url="http://www.baidu.com/" %} Baidu {% endembed %}  
-{% embed url="https://images.google.com" %} Google Image Search {% endembed %}  
-{% embed url="https://tineye.com" %} TinEye {% endembed %}  
+ 
