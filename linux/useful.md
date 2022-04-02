@@ -39,6 +39,10 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 - `Ctrl+A Ctrl+K` - move the cursor at the beginning of the line and clear all the current line from the beginning to the end.
 - `Ctrl+C` - cancel the current command line, which implies clear all the current line no matter where the cursor is. (you can't recall the cleared line anymore).
 - `Alt+Shift+#` - comment the current line, keep it in the history and bring up your prompt on a new line.
+- `Ctrl+Shit+C` - copy something you previously selected
+- `Ctrl+Shit+V` - paste something
+- `Home` - Go to the begining of your prompt 
+- `End` - Go to the end of your prompt
 
 ## Resources
 
