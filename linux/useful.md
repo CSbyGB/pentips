@@ -28,3 +28,18 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 - `ctrl+b x` kill current session
 - `tmux a -t sessionName` or `tmux a -t sessionId` join an existing session
 - `tmux  ctrl+b pageup` to scroll and `q` to leave scroll mode
+
+## Useful shortcuts to use the terminal quickly
+
+- `Ctrl+U` - clear all the current line from the end to the beginning only if the cursor is at the end of the line.
+- `Ctrl+Y` - recall the cleared line 
+- `Ctrl+K` - clear all the current line from the beginning to the end only if the cursor is at the beginning of the line.
+- `Ctrl+W` - clear the previous word in the current line. For example if you have typed a command like `git diff /path/to/some/file` and you want to delete just the last parameter to the command, Ctrl+W is very useful.
+- `Ctrl+E Ctrl+U` - move the cursor to the end of the line and clear all the current line from the end to the beginning.
+- `Ctrl+A Ctrl+K` - move the cursor at the beginning of the line and clear all the current line from the beginning to the end.
+- `Ctrl+C` - cancel the current command line, which implies clear all the current line no matter where the cursor is. (you can't recall the cleared line anymore).
+- `Alt+Shift+#` - comment the current line, keep it in the history and bring up your prompt on a new line.
+
+## Resources
+
+{% embed url="https://askubuntu.com/questions/470966/shortcut-to-clear-command-line-terminal" %} Shortcut to clear command line terminal {% endembed %}
