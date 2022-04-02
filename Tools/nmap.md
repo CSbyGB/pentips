@@ -8,6 +8,10 @@
 
 - `sudo nmap -T4 -sC -sV -p- --min-rate=1000 IP-ADR`
 
+## Aggressive scan of all port (will output OS as if you used `-O` and service versions as with `-sV` )
+
+- `nmap -T4 -A -p- 10.10.10.97`
+
 ## Host discovery on a network
 
 - `sudo nmap -sn 10.10.110.0-254`
