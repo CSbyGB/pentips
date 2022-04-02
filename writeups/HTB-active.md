@@ -58,27 +58,6 @@ Nmap done: 1 IP address (1 host up) scanned in 124.66 seconds
 
 ## SMB
 
-```
-┌──(kali㉿kali)-[~]
-└─$ smbclient -L \\\\10.10.10.100   
-Enter WORKGROUP\kali's password: 
-Anonymous login successful
-
-        Sharename       Type      Comment
-        ---------       ----      -------
-        ADMIN$          Disk      Remote Admin
-        C$              Disk      Default share
-        IPC$            IPC       Remote IPC
-        NETLOGON        Disk      Logon server share 
-        Replication     Disk      
-        SYSVOL          Disk      Logon server share 
-        Users           Disk      
-Reconnecting with SMB1 for workgroup listing.
-do_connect: Connection to 10.10.10.100 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
-Unable to connect with SMB1 -- no workgroup available
-
-```
-
 ### enum4linux
 ```
 ┌──(kali㉿kali)-[~]
@@ -237,10 +216,32 @@ enum4linux complete on Sat Mar  5 17:56:07 2022
 
 ### Anonymous connect with smbclient
 
+```
+┌──(kali㉿kali)-[~]
+└─$ smbclient -L \\\\10.10.10.100   
+Enter WORKGROUP\kali's password: 
+Anonymous login successful
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        ADMIN$          Disk      Remote Admin
+        C$              Disk      Default share
+        IPC$            IPC       Remote IPC
+        NETLOGON        Disk      Logon server share 
+        Replication     Disk      
+        SYSVOL          Disk      Logon server share 
+        Users           Disk      
+Reconnecting with SMB1 for workgroup listing.
+do_connect: Connection to 10.10.10.100 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
+Unable to connect with SMB1 -- no workgroup available
+
+```
+
 - We can connect to a share anonymously
 ```
 smbclient --no-pass \\\\10.10.10.100\\Replication
 ```
+
 - We have a group.xml file here 
 ```
 smb: \active.htb\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\MACHINE\Preferences\Groups\> get Groups.xml 
