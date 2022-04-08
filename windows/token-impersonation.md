@@ -91,7 +91,10 @@
 
 ## Potato Attacks
 
+- See [here](../writeups/HTB-Jeeves.md) an example of a potato attack
+
 ## Resources
 
 {% embed url="https://foxglovesecurity.com/2016/09/26/rotten-potato-privilege-escalation-from-service-accounts-to-system/" %} Rotten Potato - Foxglove Security {% endembed %}  
 {% embed url="https://github.com/ohpe/juicy-potato" %} Juicy Potato {% endembed %}  
+{% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security - Windows privilege escalation {% endembed %}  
