@@ -102,6 +102,7 @@
 * [Hackthebox - Active](/writeups/HTB-active.md)
 * [Hackthebox - Poison](/writeups/HTB-poison.md)
 * [Hackthebox - SecNotes](writeups/HTB-secnotes.md)
+* [Hackthebox - Jeeves](writeups/HTB-Jeeves.md)
 * [TryHackMe - Overpass3](/writeups/THM-overpass3.md)
 * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 
