@@ -1,4 +1,4 @@
-# Hackthebox - Secnotes
+# Hackthebox - Secnotes - Windows
 
 ## Nmap
 
