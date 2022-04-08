@@ -88,3 +88,10 @@
   ```
 - If we hashdump again it will not work so we can rev2self to get back to the initial user
 - Any user that has logged in the target will have a token there until the target reboots
+
+## Potato Attacks
+
+## Resources
+
+{% embed url="https://foxglovesecurity.com/2016/09/26/rotten-potato-privilege-escalation-from-service-accounts-to-system/" %} Rotten Potato - Foxglove Security {% endembed %}  
+{% embed url="https://github.com/ohpe/juicy-potato" %} Juicy Potato {% endembed %}  
