@@ -1,4 +1,4 @@
-# Hackthebox - Chatterbox
+# Hackthebox - Chatterbox - Windows
 
 ## Nmap
 
