@@ -1,5 +1,11 @@
 # Token Impersonation
 
+## What is it
+
+- Token are temp keys that give access to a system or network without credentials.
+
+## How to
+
 - Launch Metasploit `msfconsole`
 - Choose the exploit: `use exploit/windows/smb/psexec`
 - Set: rhosts, smbdomain, smbpass, smbuser, target (we can use `show targets` to have a list), payload
