@@ -1,4 +1,4 @@
-# Active retired machine
+# Hackthebox - Active - Windows
 
 - https://app.hackthebox.com/machines/Active
 
