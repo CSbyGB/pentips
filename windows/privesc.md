@@ -70,6 +70,20 @@ Abuse of the research methodology of executable of windows. We will try to place
 - Enumerate with automatic tools or this command: `wmic service get name,displayname,pathname,startmode` (it will list the running services)
 - Check if we can write in the folder of the service 
 
+## Runas
+
+### What is it
+
+- It is the possibility of running a command as another user
+
+### Enumerate
+
+- `cmdkey /list`
+
+### How to
+
+- Check the writeup for Access on HTB [here](../writeups/HTB-access.md) to have an example of privesc using runas
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
