@@ -9,12 +9,12 @@
 
 ### What is a kernel
 
-![Kernel](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Kernel_Layout.svg/1024px-Kernel_Layout.svg.png)
+![Kernel](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Kernel_Layout.svg/1024px-Kernel_Layout.svg.png)  
 - [See the definition on Wikipedia](https://en.wikipedia.org/wiki/Kernel_(operating_system))
 
 #### Windows kernel
 
-![Windows kernel](https://www.thewindowsclub.com/wp-content/uploads/2019/08/Windows-Kernel.png)
+![Windows kernel](https://www.thewindowsclub.com/wp-content/uploads/2019/08/Windows-Kernel.png)  
 - [Windows kernel in detail here](https://www.thewindowsclub.com/what-is-a-kernel-in-os-what-are-the-types-of-kernel)
 
 ### Kernel Exploits
@@ -97,11 +97,13 @@ Abuse of the research methodology of executable of windows. We will try to place
 
 - Check that the program you found that allows FILE_ALL_ACCESS to Everyone using [Windows internals - accesschk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk) in our example we would type this in the cmd `C:\Users\User\Desktop\Tools\Accesschk\accesschk64.exe -wvu "C:\Program Files\Autorun Program"`  
 ![image](https://user-images.githubusercontent.com/96747355/162574634-d6459714-366e-4afa-9735-d469eb8e3ab9.png)  
+
 **OR**  
+
 - With [PowerUp](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1):
   - In a win cmd type `powershell -ep bypass`
   - Then `. .\PowerUp.ps1` to load powerUp
-  - `Invoke-AllChecks`
+  - `Invoke-AllChecks`  
 ![image](https://user-images.githubusercontent.com/96747355/162574989-40f208c1-12ac-47d6-99b7-3035cf9b4297.png)  
 
 ### How to exploit
