@@ -104,6 +104,7 @@
 * [Hackthebox - SecNotes](writeups/HTB-secnotes.md)
 * [Hackthebox - Jeeves](writeups/HTB-Jeeves.md)
 * [Hackthebox - Access](writeups/HTB-access.md)
+* [Hackthebox - Lame](writeups/HTB-Lame.md)
 * [TryHackMe - Overpass3](/writeups/THM-overpass3.md)
 * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 
