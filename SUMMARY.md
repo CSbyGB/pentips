@@ -57,7 +57,7 @@
   * [Post Compromise Enumeration - Resources](windows/post-compromise-enumeration-resources.md)
 * [Post Compromise Attacks](windows/post-compromise-attack.md)
   * [Pass the Password / Hash](windows/pass-hash.md)
-  * [Token Impersonation](windows/token-impersonation.md)
+  * [Token Impersonation - Potato attacks](windows/token-impersonation.md)
   * [Kerberoasting](windows/kerberoasting.md)
   * [GPP/cPassword Attacks](windows/gpp.md)
   * [URL File Attack](windows/url-file-attack.md)
