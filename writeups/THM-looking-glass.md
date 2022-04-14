@@ -16,5 +16,14 @@ PORT      STATE SERVICE    VERSION
 9200/tcp  open  ssh        Dropbear sshd (protocol 2.0)
 | ssh-hostkey: 
 |_  2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
-
+|_  2048 ff:f4:db:79:a9:bc:b8:8a:d4:3f:56:c2:cf:cb:7d:11 (RSA)
+9100/tcp  open  jetdirect?
+9101/tcp  open  jetdirect?
+9102/tcp  open  jetdirect?
+9103/tcp  open  jetdirect?
+9110/tcp  open  ssh        Dropbear sshd (protocol 2.0)
 ```
+
+- Let's try to connect to one of the port 
+- On port 22 we get asked for the root password
+- 
