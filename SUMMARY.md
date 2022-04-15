@@ -107,6 +107,7 @@
 * [Hackthebox - Lame](writeups/HTB-Lame.md)
 * [TryHackMe - Overpass3](/writeups/THM-overpass3.md)
 * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
+* [TryHackMe - Blaster](/writeups/THM-Blaster.md)
 
 ## Digital skills
 
