@@ -1,4 +1,4 @@
-# Useful commands with Powershell and cmd
+# Useful commands with Powershell, cmd and Sysinternals
 
 ## Powershell
 
@@ -24,10 +24,16 @@
 - `Enter-PSSession -ComputerName workstation-01`
 - `Enter-PSSession -ComputerName workstation-01 -Credential domain\Username`
 - ` Invoke-Command -ScriptBlock {whoami;hostname} -ComputerName workstation-01 -Credential domain\Username` connect to a remote powershell and excute command with ScriptBlock. other command we could do with scriptblock: `ipconfig`, `net user`,...
+- `Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections` List AppLocker rules
 
 ### Misc
 
 - `Install-Module ActiveDirectoryModule -ScopeCurrentUser` Install a module without admin rights
+- `Get-MpComputerStatus` Check Windows Defender Status
+- `Get-AppLockerPolicy -Local | Test-AppLockerPolicy -path C:\Windows\System32\cmd.exe -User Everyone` Test AppLocker policy
+- `Get-HotFix | ft -AutoSize` display hotfixes
+- `Get-WmiObject -Class Win32_Product |  select Name, Version` display installed software
+- `gci (Get-ChildItem)` list named pipes
 
 ## CMD
 
@@ -54,6 +60,9 @@
 - `schtasks` query scheduled task
   - `schtasks /query /fo LIST /v`
 - `driverquery` will list installed drivers
+- `tasklist /svc` get the list of running processes
+- `set` display all environment variables
+- `wmic product get name` display installed software
 
 ### User Enumeration
 
@@ -61,9 +70,12 @@
 - `whoami /priv` will give info on the current user and their priv
 - `whoami /groups` will give info on groups the current user is in
 - `net user` or `net users` will list the user on the machine
+- `query user` logged in users
+- `echo %USERNAME%` current user
 - `net user username` will list info about the with the username mentionned
 - `net localgroup` `net localgroup groupname` will give info on group
 - `qwinsta` or  `query session` other users logged in simultaneously
+- `net accounts` Get Password Policy & Other Account Information
 
 ### Network Enumeration
 
@@ -75,6 +87,11 @@
   - `-n`: Prevents name resolution. IP Addresses and ports are displayed with numbers instead of attempting to resolves names using DNS.
   - `-o`: Displays the process ID using each listed connection.
   - Any port listed as “LISTENING” that was not discovered with the external port scan can present a potential local service. This is when we might need to use port forwarding to investigate the service.
+- Check what service runs on a specific port (in the example we will use 8080
+  - `netstat -ano | findstr 8080`  
+  ![image](https://user-images.githubusercontent.com/96747355/163686732-6f1b095a-70f0-4a04-a3a5-cc64a988b1e1.png)  
+  - From this output we can take the pid and checkout which service it is using tasklist `tasklist | findstr 2164`  
+  ![image](https://user-images.githubusercontent.com/96747355/163686766-1aa8da58-8584-4902-9dda-188fba31021f.png)  
 
 ### Hunting passwords
 
@@ -88,6 +105,20 @@
 - `netsh advfirewall firewall dump` check for firewall
 - `netsh firewall show state` similar older command
 - `netsh firewall show config` will show the config of the firewall, useful to see blocked ports and other
+
+## Sysinternals
+
+### Pipelist
+
+[Pipelist](https://docs.microsoft.com/en-us/sysinternals/downloads/pipelist) is useful to enumerate instances of pipes  
+- `pipelist.exe /accepteula` enumerate instances of named pipes.
+
+### Accesschk
+
+[Accesschk](https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk) is useful to enumerate permissions  
+- `accesschk.exe /accepteula`
+- `accesschk.exe -wuvc Everyone *` list service we can write and to which everyone has access
+- `.\accesschk64.exe /accepteula -uwdq "C:\Program Files\"` List of user groups with read and write privs
 
 ## Resources
 
