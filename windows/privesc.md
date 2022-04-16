@@ -34,22 +34,31 @@
 
 #### Executables
 
-- [WinPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS)
-- [Watson](https://github.com/rasta-mouse/Watson)
-- [Seatbelt](https://github.com/GhostPack/Seatbelt)
-- [SharpUp](https://github.com/GhostPack/SharpUp)
+- [WinPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS) WinPEAS is a script that searches for possible paths to escalate privileges on Windows hosts.
+- [Watson](https://github.com/rasta-mouse/Watson) is a .NET tool designed to enumerate missing KBs and suggest exploits for Privilege Escalation vulnerabilities.
+- [Seatbelt](https://github.com/GhostPack/Seatbelt) C# project for performing a wide variety of local privilege escalation checks
+- [SharpUp](https://github.com/GhostPack/SharpUp) C# version of PowerUp
 
 #### PowerShell
 
 - [Sherlock](https://github.com/rasta-mouse/Sherlock)
-- [PowerUp](https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc)
-- [JAWS](https://github.com/411Hall/JAWS)
+- [PowerUp](https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc) is a powershell script for finding common Windows privilege escalation vectors that rely on misconfigurations. It can also be used to exploit some of the issues found.
+- [JAWS](https://github.com/411Hall/JAWS) is PowerShell script designed to help penetration testers (and CTFers) quickly identify potential privilege escalation vectors on Windows systems. It is written using PowerShell 2.0 so 'should' run on every Windows version since Windows 7.
 
 #### Other
 
-- [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)
+- [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester) is a python script that will provide the list of vulnerabilities the OS is vulnerable to using systeminfo
 - [Metasploit Local Exploit Suggester](https://blog.rapid7.com/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more/)
 - [Precompiled kernel exploits](https://github.com/SecWiki/windows-kernel-exploits)
+- [SessionGopher](https://github.com/Arvanaghi/SessionGopher) is a PowerShell tool that finds and decrypts saved session information for remote access tools. It extracts PuTTY, WinSCP, SuperPuTTY, FileZilla, and RDP saved session information.
+- [LaZagne](https://github.com/AlessandroZ/LaZagne) is a tool used for retrieving passwords stored on a local machine from web browsers, chat tools, databases, Git, email, memory dumps, PHP, sysadmin tools, wireless network configurations, internal Windows password storage mechanisms, and more
+- [Sysinternals Suite](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) is a suite of tools that is used to monitor, manage and troubleshoot the Windows operating system owned by Microsoft. It is really useful for enumeration.
+
+#### Pre-compiled binaries. 
+
+It can be usefule to have precompiled binaries just ready to run
+- [GhostPack-Compiled Binaries - harmj0y](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries)
+- [LaZagne releases](https://github.com/AlessandroZ/LaZagne/releases/)
 
 ## Unquoted Service Path Vulnerabilities
 
