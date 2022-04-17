@@ -281,7 +281,24 @@ Abuse of the research methodology of executable of windows. We will try to place
 - We can then take the dump to our attack machine et use pypykatz 
   - `pypykatz lsa minidump lsass.DMP`
 
+### SeTakeOwnershipPrivilege
 
+- With this privilege, a user could take ownership of any file or object and make changes that could involve access to sensitive data, Remote Code Execution (RCE) or Denial-of-Service (DOS). In this case we need a file to target.
+
+#### Enumeration
+
+- `whoami /priv` SeTakeOwnershipPrivilege should be listed  
+![image](https://user-images.githubusercontent.com/96747355/163725780-10a9f805-e181-42af-afe3-8d28f2cc5648.png)  
+
+#### Exploitation
+
+- If necessary enable the privilege using [this script](https://raw.githubusercontent.com/fashionproof/EnableAllTokenPrivs/master/EnableAllTokenPrivs.ps1) 
+  - `Import-Module .\Enable-Privilege.ps1`
+  - `.\EnableAllTokenPrivs.ps1`  
+  ![image](https://user-images.githubusercontent.com/96747355/163725814-fde11deb-34a3-4c08-9c60-6313293833b1.png)  
+- Take ownership of a flag using [takeown](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/takeown) ` 
+- 
+  
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
@@ -293,3 +310,5 @@ Abuse of the research methodology of executable of windows. We will try to place
 {% embed url="https://github.com/TCM-Course-Resources/Windows-Privilege-Escalation-Resources" %} Windows-Privilege-Escalation-Resources - TCM Course Resources - Gr1mmie {% endembed %}  
 {% embed url="https://book.hacktricks.xyz/windows/checklist-windows-privilege-escalation" %} Windows PrivEsc Checklist - Hacktricks {% endembed %}  
 {% embed url="https://github.com/gtworek/Priv2Admin" %} Priv2Admin {% endembed %}  
+{% embed url="https://www.leeholmes.com/adjusting-token-privileges-in-powershell/" %} ADJUSTING TOKEN PRIVILEGES IN POWERSHELL - LEE HOLMES {% endembed %}  
+{% embed url="https://medium.com/@markmotig/enable-all-token-privileges-a7d21b1a4a77" %} Enable All Token Privileges - Mark Mo{% endembed %}  
