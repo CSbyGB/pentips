@@ -297,7 +297,9 @@ Abuse of the research methodology of executable of windows. We will try to place
   - `.\EnableAllTokenPrivs.ps1`  
   ![image](https://user-images.githubusercontent.com/96747355/163725814-fde11deb-34a3-4c08-9c60-6313293833b1.png)  
 - Take ownership of a flag using [takeown](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/takeown) ` 
-- 
+- Check the change of ownership worked `PS C:\htb> Get-ChildItem -Path 'C:\Path\To\File' | select name,directory, @{Name="Owner";Expression={(Get-ACL $_.Fullname).Owner}}`
+- Modify the file ACL with [icalcs](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls) `icacls 'C:\Path\To\File' /grant user:F`
+- Use the file you have ownership now! :D
   
 ## Resources
 
