@@ -83,6 +83,7 @@
 * [Sock Puppets](OSINT/sock-puppets.md)
 * [Search engines](OSINT/search-engines.md)
 * [OSINT Images](OSINT/image-osint.md)
+* [OSINT Email](OSINT/email.md)
 
 ## Post Exploitation
 
