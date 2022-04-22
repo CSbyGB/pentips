@@ -7,6 +7,7 @@
 - [Hacktricks by Carlos Polop](https://book.hacktricks.xyz/)
 - [Pentest Monkey](https://pentestmonkey.net/category/blog)
 - [Pentesting bible - Ammar Amer](https://github.com/blaCCkHatHacEEkr/PENTESTING-BIBLE)
+- [Blog 0dayslab](https://blog.0daylabs.com/)
 
 ## Cryptography
 
