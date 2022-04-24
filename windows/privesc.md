@@ -397,6 +397,9 @@ PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=dom
 ![image](https://user-images.githubusercontent.com/96747355/164989997-57ddd8d9-3994-4ff0-ac14-8e07dd81800a.png)  
 - Finally we can launch the exploit using [ExploitCapcom.exe](https://github.com/tandasat/ExploitCapcom) it will launch a shell as authority system
 
+### Server Operators
+
+Coming soon
 
 ## Resources
 
