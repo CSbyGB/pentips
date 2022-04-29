@@ -98,6 +98,7 @@
 
 - `findstr /si password *.txt` will search for the string "password" in txt files `/si` means it searches in the current directory and all subdirectories (s) and ignore the case (i).
 - `findstr /si password *.txt *.ini *.config *.sql` same but also in ini, sql and config files
+- `findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml`
 
 ### AV Enumeration
 
