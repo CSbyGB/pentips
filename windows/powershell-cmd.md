@@ -63,6 +63,7 @@
 - `tasklist /svc` get the list of running processes
 - `set` display all environment variables
 - `wmic product get name` display installed software
+- `icacls c:\Windows\System32\config\SAM` check permissions on the SAM file
 
 ### User Enumeration
 
