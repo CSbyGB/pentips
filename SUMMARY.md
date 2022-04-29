@@ -84,6 +84,8 @@
 * [Search engines](OSINT/search-engines.md)
 * [OSINT Images](OSINT/image-osint.md)
 * [OSINT Email](OSINT/email.md)
+* [OSINT Password](OSINT/password.md)
+* [OSINT Usernames](OSINT/usernames.md)
 
 ## Post Exploitation
 
