@@ -86,6 +86,7 @@
 * [OSINT Email](OSINT/email.md)
 * [OSINT Password](OSINT/password.md)
 * [OSINT Usernames](OSINT/usernames.md)
+* [OSINT People](OSINT/people.md)
 
 ## Post Exploitation
 
