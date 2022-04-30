@@ -43,6 +43,9 @@
   PS C:\htb> $db = 'C:\Users\user\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite'
   PS C:\htb> Invoke-SqliteQuery -Database $db -Query "SELECT Text FROM Note" | ft -wrap
   ```
+- Enumerate schedule task with [Get-ScheduledTask](https://docs.microsoft.com/en-us/powershell/module/scheduledtasks/get-scheduledtask?view=windowsserver2019-ps) `Get-ScheduledTask | select TaskName,State`
+- `Get-LocalUser` check the description field of local users
+- `Get-WmiObject -Class Win32_OperatingSystem | select Description` Print computer description fields
 
 ## CMD
 
@@ -178,6 +181,11 @@ C:\Program Files\Windows PowerShell\*
 - `accesschk.exe /accepteula`
 - `accesschk.exe -wuvc Everyone *` list service we can write and to which everyone has access
 - `.\accesschk64.exe /accepteula -uwdq "C:\Program Files\"` List of user groups with read and write privs
+
+### schtasks
+
+[schtasks](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks) will let us enumerate scheduled tasks
+- `schtasks /query /fo LIST /v`
 
 ## LOLBAS (living off the land binaries)
 
