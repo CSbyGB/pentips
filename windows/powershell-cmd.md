@@ -34,6 +34,15 @@
 - `Get-HotFix | ft -AutoSize` display hotfixes
 - `Get-WmiObject -Class Win32_Product |  select Name, Version` display installed software
 - `gci (Get-ChildItem)` list named pipes
+- `select-string -Path C:\Users\htb-student\Documents\*.txt -Pattern password` Search file contents
+- `Get-ChildItem C:\ -Recurse -Include *.rdp, *.config, *.vnc, *.cred -ErrorAction Ignore` search for file extensions
+- View Sticky Notes data
+  ```
+  PS C:\htb> cd .\PSSQLite\
+  PS C:\htb> Import-Module .\PSSQLite.psd1
+  PS C:\htb> $db = 'C:\Users\user\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite'
+  PS C:\htb> Invoke-SqliteQuery -Database $db -Query "SELECT Text FROM Note" | ft -wrap
+  ```
 
 ## CMD
 
@@ -64,6 +73,8 @@
 - `set` display all environment variables
 - `wmic product get name` display installed software
 - `icacls c:\Windows\System32\config\SAM` check permissions on the SAM file
+- `[environment]::OSVersion.Version` check OS version
+- `cmd /c echo %PATH%` review path variable
 
 ### User Enumeration
 
@@ -98,7 +109,42 @@
 
 - `findstr /si password *.txt` will search for the string "password" in txt files `/si` means it searches in the current directory and all subdirectories (s) and ignore the case (i).
 - `findstr /si password *.txt *.ini *.config *.sql` same but also in ini, sql and config files
-- `findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml`
+- `findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml` Search file contents for string
+- `findstr /spin "password" *.*` another way
+- Unattend.xml files might have passwords in plaintext or base64 encoded
+- `C:\Users\username>\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt` powershell cmd history is also worth looking at
+  - To check where it is we can use this command `(Get-PSReadLineOption).HistorySavePath`
+  - We can try to read it `gc (Get-PSReadLineOption).HistorySavePath`
+  - `foreach($user in ((ls C:\users).fullname)){cat "$user\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt" -ErrorAction SilentlyContinue}` Retrieve the contents of all Powershell history files that we can access as our current user
+- Powershell credentials are protected with DPAPI. If we can read them we could recover then in cleartext 
+  - `$credential = Import-Clixml -Path 'C:\scripts\pass.xml'`
+  - `$credential.GetNetworkCredential().username`
+  - `$credential.GetNetworkCredential().password`
+- `dir /S /B *pass*.txt == *pass*.xml == *pass*.ini == *cred* == *vnc* == *.config*` search for file extensions
+- `where /R C:\ *.config` another way
+- `C:\Users\<user>\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite` Looking for passwords in Sticky notes
+- `strings plum.sqlite-wal` Using strings to view DB File contents
+- Other files worth checking
+```
+%SYSTEMDRIVE%\pagefile.sys
+%WINDIR%\debug\NetSetup.log
+%WINDIR%\repair\sam
+%WINDIR%\repair\system
+%WINDIR%\repair\software, %WINDIR%\repair\security
+%WINDIR%\iis6.log
+%WINDIR%\system32\config\AppEvent.Evt
+%WINDIR%\system32\config\SecEvent.Evt
+%WINDIR%\system32\config\default.sav
+%WINDIR%\system32\config\security.sav
+%WINDIR%\system32\config\software.sav
+%WINDIR%\system32\config\system.sav
+%WINDIR%\system32\CCM\logs\*.log
+%USERPROFILE%\ntuser.dat
+%USERPROFILE%\LocalS~1\Tempor~1\Content.IE5\index.dat
+%WINDIR%\System32\drivers\etc\hosts
+C:\ProgramData\Configs\*
+C:\Program Files\Windows PowerShell\*
+```
 
 ### AV Enumeration
 
