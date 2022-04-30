@@ -13,9 +13,9 @@ It is a work in progress and it will be filled up asap with my notes and on the 
 
 ## Disclamer
 
-<span style="color: red; font-weight:bold;">
-Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in any illegal activity using these resources
-</span>
+❗🔴
+**Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in any illegal activity using these resources**
+❗🔴
 
 ## Credits
 
