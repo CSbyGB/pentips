@@ -147,7 +147,6 @@ C:\Program Files\Windows PowerShell\*
 ```
 - `cmdkey /list` list saved credentials
 - `runas /savecred /user:domain\user "COMMAND HERE"` run command as another user
-- 
 
 ### AV Enumeration
 
