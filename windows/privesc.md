@@ -502,6 +502,15 @@ PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=dom
   - `sc start service` start the service
   - `sc query service` check that service is running
 
+## Privesc with found credentials
+
+- You can read more about hunting credentials [here](powershell-cmd.md#hunting-passwords) and [here](powershell-cmd.md#misc)
+
+### Browser Credentials
+
+- We can use [SharpChrome](https://github.com/GhostPack/SharpDPAPI) to retrive cookies and saved logins from Google Chrome
+
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners" %} TCM Security Academy - Windows Privilege Escalation {% endembed %}  
