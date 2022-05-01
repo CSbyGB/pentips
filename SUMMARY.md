@@ -111,7 +111,7 @@
 * [Hackthebox - Access](writeups/HTB-access.md)
 * [Hackthebox - Lame](writeups/HTB-Lame.md)
 * [Hackthebox - Good games](writeups/HTB-goodgames.md)
-* [Hackthebox - Driver](writeup/HTB-driver.md)
+* [Hackthebox - Driver](writeups/HTB-driver.md)
 * [TryHackMe - Overpass3](/writeups/THM-overpass3.md)
 * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 * [TryHackMe - Blaster](/writeups/THM-Blaster.md)
