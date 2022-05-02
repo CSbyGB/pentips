@@ -29,6 +29,11 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 - `tmux a -t sessionName` or `tmux a -t sessionId` join an existing session
 - `tmux  ctrl+b pageup` to scroll and `q` to leave scroll mode
 
+## Which architecture
+
+- `lscpu` will tell you if you are 32 or 64
+- `uname -m` similar but less verbose
+
 ## Useful shortcuts to use the terminal quickly
 
 - `Ctrl+U` - clear all the current line from the end to the beginning only if the cursor is at the end of the line.
