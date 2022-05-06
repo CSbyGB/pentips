@@ -25,3 +25,18 @@
 - [Tweetbeaver](https://tweetbeaver.com/)
 - [Spoonbill.io](http://spoonbill.io/)
 - [Tinfoleak](https://tinfoleak.com/)
+
+### Tweetdeck
+
+- [Tweetdeck](https://tweetdeck.twitter.com)
+- We can add columns and add a home page for instance
+- We can add a column to track a specific user 
+- We can make search with search operators and add it as a column
+
+## Facebook
+
+- Difficult to keep up because facebook changes all the time.
+- We can search for `photos of firstname lastname` we will get photos of those who tagged the user we are interested in
+- We can use tools
+  - [Sowdust Github](https://sowdust.github.io/fb-search/)
+  - [IntelligenceX Facebook Search](https://intelx.io/tools?tab=facebook)
