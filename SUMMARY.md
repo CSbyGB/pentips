@@ -38,6 +38,7 @@
 * [Useful commands and tools on Linux](linux/useful.md)
 * [Privilege Escalation](linux/privesc.md)
   * [Kernel Exploits](linux/kernel.md)
+  * [Password and file permission](linux/pass-file-perm.md)
 
 ## Windows
 
