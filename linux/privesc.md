@@ -66,5 +66,9 @@
 
 ## Resources
 
-- [Basic Linux Privesc](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
-- [GTFoBins a curated list of Unix binaries](https://gtfobins.github.io/ )
+{% embed url="https://academy.tcm-sec.com/p/linux-privilege-escalation" %} Linux Privesc on TCM-Security Academy {% endembed %}  
+{% embed url="https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/" %} Basic Linux Privesc {% endembed %}  
+{% embed url="https://gtfobins.github.io/" %} GTFoBins a curated list of Unix binaries {% endembed %}  
+{% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md" %} Linux - Privilege Escalation - Payload all the things {% endembed %}  
+{% embed url="https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist" %} Checklist - Linux Privilege Escalation {% endembed %}  
+{% embed url="https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html" %} Sushant 747's Guide (Country dependant - may need VPN){% endembed %}  
