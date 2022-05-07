@@ -37,6 +37,7 @@
 
 * [Useful commands and tools on Linux](linux/useful.md)
 * [Privilege Escalation](linux/privesc.md)
+  * [Kernel Exploits](linux/kernel.md)
 
 ## Windows
 
