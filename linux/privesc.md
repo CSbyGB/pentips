@@ -72,3 +72,4 @@
 {% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md" %} Linux - Privilege Escalation - Payload all the things {% endembed %}  
 {% embed url="https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist" %} Checklist - Linux Privilege Escalation {% endembed %}  
 {% embed url="https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html" %} Sushant 747's Guide (Country dependant - may need VPN){% endembed %}  
+{% embed url="hhttps://github.com/TCM-Course-Resources/Linux-Privilege-Escalation-Resources" %} Linux-Privilege-Escalation-Resources {% endembed %}  
