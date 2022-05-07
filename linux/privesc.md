@@ -4,21 +4,25 @@
 
 - `hostname` will return the hostname of the target machine
 - `uname -a` Will print system information
-- `/proc/version` provides information about the target system processes
-- `/etc/issue` contains some information about the operating system but can be changed
+- `cat /proc/version` provides information about the target system processes
+- `cat /etc/issue` contains some information about the operating system but can be changed
 - `ps` see the running processes
   - `ps -A` View all running processes
   - `ps axjf` View process tree
   - `ps aux` The aux option will show processes for all users (a), display the user that launched the process (u), and show processes that are not attached to a terminal (x). 
 - `env` will show environmental variables
+- `lscpu` gives info about the architecture
 
 ## User enumeration
 
+- `whoami` gives username
 - `ìd` general overview of the user’s privilege level and group memberships
-- `/etc/passwd` list of users on the system
+- `cat /etc/passwd` list of users on the system
   - `cat /etc/passwd | grep home | cut -d ":" -f 1` this should return only users (and no service accounts)
+- `cat /etc/shadow` hash store file
+- `cat /etc/groups`
 - `history` will show previous commands
-- `sudo -l` example
+- `sudo -l` what ca we run as sudo. Example
 
   ```
   sudo -l
@@ -29,7 +33,6 @@
 	  (vimuser) NOPASSWD: /usr/bin/vim
 	  (nmapuser) NOPASSWD: /usr/bin/nmap
   ```
-
 - `sudo -u phantom cat /home/phantom/flag.txt` execute a command with another user
 
 ## Network Enumeration
@@ -37,6 +40,7 @@
 - `ifconfig` information about the network interfaces of the system
 - `ip add` (similar to ifconfig)
 - `ip route` show network routes
+- `arp -a` or `ìp neigh`
 - `netstat` gather information on existing connections
   - `netstat -a` shows all listening ports and established connections.
   - `netstat -at` or `netstat -au` can also be used to list TCP or UDP protocols respectively.
@@ -46,6 +50,11 @@
   - `netstat -ltp` list connections with the service name and PID information and listening ports.
   - `netstat -i` Shows interface statistics.
   - `netstat -ano` `-a` Display all sockets, `-n` Do not resolve names, `-o` Display timers
+
+## Password Hunting
+
+- `grep --color=auto -rnw '/' -ie "PASSWORD" --color=always 2> /dev/null` we can also search for "PASSWORD=" to narrow the search
+- We can also hunt down SSH keys `find / -name authorized_keys 2> /dev/null` or `find / -name id_rsa 2> /dev/null`
 
 ## Misc CTF tricks
 
@@ -59,10 +68,15 @@
   Nmap done: 0 IP addresses (0 hosts up) scanned in 0.04 seconds
   ```
   
-## Tools
+## Automated Tools
 
-- [LinEnum](https://github.com/rebootuser/LinEnum )
+- We can run one tool and if we do not see anything try another one
 - [LinPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite)
+  - The color code is very useful we definitely have to investingate things in red and yellow or just in red
+- [LinEnum](https://github.com/rebootuser/LinEnum )
+- [Linux Exploit Suggester](https://github.com/mzet-/linux-exploit-suggester)
+- [Linux Priv Checker](https://github.com/sleventyeleven/linuxprivchecker)
+
 
 ## Resources
 
