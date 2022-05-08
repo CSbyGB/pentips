@@ -115,6 +115,7 @@
 * [Hackthebox - Lame](writeups/HTB-Lame.md)
 * [Hackthebox - Good games](writeups/HTB-goodgames.md)
 * [Hackthebox - Driver](writeups/HTB-driver.md)
+* [TryHackMe - Vulnversity](/writeups/THM-vulnversity.md)
 * [TryHackMe - Sudo Security Bypass](writeups/THM-SudoSecurityBypass.md)
 * [TryHackMe - SimpleCTF](writeups/THM-SimpleCTF.md)
 * [TryHackMe - Overpass3](/writeups/THM-overpass3.md)
