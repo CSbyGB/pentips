@@ -22,10 +22,6 @@
 - It works  
 ![image](https://user-images.githubusercontent.com/96747355/167296030-dd82bef4-4640-4ded-8357-0b2f32ca9638.png)
 
-## Resources
-
-{% embed url="https://academy.tcm-sec.com/p/linux-privilege-escalation" %} Linux Privesc on TCM-Security Academy {% endembed %}
-
 ## Intended Functionality
 
 ### Example with Apache2
@@ -72,3 +68,8 @@ void _init() {
 - This one is a buffer overflow
 - If we see that we have password feedback on (we can try any sudo command to check for this), it means that the option `pwfeedback` is turned on in `/etc/sudoers` and that makes it vulnerable to buffer overflow
 - We basically just need to run the provided exploit. Pour pratice on this check out [this box](https://tryhackme.com/room/sudovulnsbof) on trhyhackme
+
+
+## Resources
+
+{% embed url="https://academy.tcm-sec.com/p/linux-privilege-escalation" %} Linux Privesc on TCM-Security Academy {% endembed %}
