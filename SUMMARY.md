@@ -40,6 +40,7 @@
   * [Kernel Exploits](linux/kernel.md)
   * [Password and file permission](linux/pass-file-perm.md)
   * [Sudo](linux/sudo.md)
+  * [SUID](linux/suid.md)
 
 ## Windows
 
