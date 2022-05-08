@@ -60,3 +60,15 @@ void _init() {
 - We should be root  
 ![image](https://user-images.githubusercontent.com/96747355/167297390-ce9c76ed-72c5-4bfb-bea9-9b380478cb9d.png)  
 
+## CVE-2019-14287
+
+- [CVE-2019-14287 on exploit-db](https://www.exploit-db.com/exploits/47502)
+- This vulnerability allows us to change our user id, we need to have some sudo rights delegated to us this works very well with right on `/bin/bash`
+- Checkout [here](../writeups/THM-SudoSecurityBypass.md) a writeup of an example of exploitation
+
+## CVE-2019-18634
+
+- [CVE-2019-18634 exploit by saleemrashid](https://github.com/saleemrashid/sudo-cve-2019-18634)
+- This one is a buffer overflow
+- If we see that we have password feedback on (we can try any sudo command to check for this), it means that the option `pwfeedback` is turned on in `/etc/sudoers` and that makes it vulnerable to buffer overflow
+- We basically just need to run the provided exploit. Pour pratice on this check out [this box](https://tryhackme.com/room/sudovulnsbof) on trhyhackme
