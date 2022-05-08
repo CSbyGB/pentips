@@ -8,9 +8,9 @@
 
 ## Exploitation
 
-- Here again we can use [GTFOBins](https://gtfobins.github.io/#+suid) and check if our is in there and has documented exploitation
+- Here again we can use [GTFOBins](https://gtfobins.github.io/#+suid) and check if our command is in there and has documented exploitation
 
 
 ## Practice
 
-- You see and example of this exploit with in [this writeup](../writeups/THM-vulnversity.md)
+- You see and example of this exploit in [this writeup](../writeups/THM-vulnversity.md)
