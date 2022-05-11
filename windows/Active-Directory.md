@@ -68,11 +68,16 @@ Domain => Tree => Forest
 The relationship between AD and LDAP can be compared to Apache and HTTP. The same way Apache is a web server that uses the HTTP protocol, Active Directory is a directory server that uses the LDAP protocol.  
 While uncommon, you may come across organizations while performing an assessment that does not have AD but does have LDAP, meaning that they most likely use another type of LDAP server such as [OpenLDAP](https://en.wikipedia.org/wiki/OpenLDAP).  
 
-## Resources to make your own practice lab
+## Resources
+
+### Learn about AD
 
 *Note: If you want a nice crash course about Active Directory (with the lab setup) I really recommend this one by TCM-Security Academy:*
 {% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} TCM-Security Academy {% endembed %}
 {% embed url="https://academy.hackthebox.com/course/preview/active-directory-ldap" %} HTB Academy - Active Directory LDAP {% endembed %}
+
+### Make your own Practice lab
+
 {% embed url="https://www.microsoft.com/en-us/evalcenter/" %} Microsoft Evaluation Center {% endembed %}
 {% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise" %} Windows 10 {% endembed %}
 {% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019" %} Windows Server 2019 {% endembed %}
