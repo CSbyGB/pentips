@@ -208,7 +208,7 @@ Requests/sec.: 148.3885
 ![image](https://user-images.githubusercontent.com/96747355/168395032-136a74ef-a343-4643-8409-768ef5cde59d.png)  
 - OMG!!! It worked  
 ![image](https://user-images.githubusercontent.com/96747355/168395074-24fb0f80-cb94-4773-a772-6efb79657209.png)  
-- Let's try to login as admin
+- Let's try to login as admin  
 ![image](https://user-images.githubusercontent.com/96747355/168395465-7f8de44c-5223-4667-bca7-ee7f546b0b15.png)  
 - It works!  
 ![image](https://user-images.githubusercontent.com/96747355/168395506-5acd9406-c327-4b79-b291-1d1ad8a3ae01.png)
@@ -217,7 +217,7 @@ Requests/sec.: 148.3885
 ![image](https://user-images.githubusercontent.com/96747355/168395765-41602c3a-fec1-48bc-a131-d71e1f92b718.png)  
 - We get an error. It seems like we need to get the jwt token so for this we have to fing the secret  
 ![image](https://user-images.githubusercontent.com/96747355/168396013-12c1ec2b-08a5-4cdf-8d3b-e705a75a8b76.png)  
-- However if we try to get a file it works
+- However if we try to get a file it works  
 ![image](https://user-images.githubusercontent.com/96747355/168396151-02022922-7949-49b9-87bb-63a607e91d6c.png)  
 - According to the passwd we have a user htb, let's keep a note of this info
 - Let's play a little with this request in the repeater. Let's try to see /proc/self/environ
