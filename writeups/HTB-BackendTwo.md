@@ -178,8 +178,13 @@ import asyncio\nimport os\n\nwith open('pid','w') as f:\n    f.write( str(os.get
 - We can not write file because it is asking for a debug key (just like the firdt backend)
 - This line in the main.py app could help us `app.core.config import settings`
 - Let's try to see `/home/htb/app/core/config.py`  
-![image](https://user-images.githubusercontent.com/96747355/168454341-3a9307ef-b9b6-40c0-a7cd-b3fabebcd9a8.png)
+![image](https://user-images.githubusercontent.com/96747355/168454341-3a9307ef-b9b6-40c0-a7cd-b3fabebcd9a8.png)  
 - we apply changes and fetch it  
-![image](https://user-images.githubusercontent.com/96747355/168454355-48636377-5d66-4967-aaa4-84226af2d8d0.png)
-- And we see in the settings that it gets it's secret from an env var `JWT_SECRET: str = os.environ['API_KEY']`
-https://0xdf.gitlab.io/2022/05/02/htb-backendtwo.html
+![image](https://user-images.githubusercontent.com/96747355/168454355-48636377-5d66-4967-aaa4-84226af2d8d0.png)  
+- And we see in the settings that it gets it's secret from an env var `JWT_SECRET: str = os.environ['API_KEY']`  
+- We need to get the `/proc/self/environ`
+![image](https://user-images.githubusercontent.com/96747355/168485600-e4fb8e31-d235-41ac-90c8-0e65f3d12e4f.png)  
+- We have the private key: `API_KEY=68b329da9893e34099c7d8ad5cb9c940`
+
+
+
