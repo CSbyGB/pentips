@@ -184,7 +184,7 @@ import asyncio\nimport os\n\nwith open('pid','w') as f:\n    f.write( str(os.get
 - we apply changes and fetch it  
 ![image](https://user-images.githubusercontent.com/96747355/168454355-48636377-5d66-4967-aaa4-84226af2d8d0.png)  
 - And we see in the settings that it gets it's secret from an env var `JWT_SECRET: str = os.environ['API_KEY']`  
-- We need to get the `/proc/self/environ`
+- We need to get the `/proc/self/environ`  
 ![image](https://user-images.githubusercontent.com/96747355/168485600-e4fb8e31-d235-41ac-90c8-0e65f3d12e4f.png)  
 - We have the private key: `API_KEY=68b329da9893e34099c7d8ad5cb9c940`
 - Now we just need to modify our token on jwt.io with the private key and add the debug to true. Let's take the token and paste it in there and make the changes  
