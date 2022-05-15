@@ -1,5 +1,7 @@
 # Hackthebox BackendTwo - Linux
 
+- [Box on HTB](https://app.hackthebox.com/machines/BackendTwo)
+
 ## Nmap
 
 ```
@@ -261,8 +263,6 @@ A the m is not at the begining of the word it let's try `chmod`, it works
 ![image](https://user-images.githubusercontent.com/96747355/168491277-10897e27-dbc8-4e66-9c73-9c545e0ae38f.png)  
 And we can run all the commands so let's just grab the flag with cat  `sudo cat /root/root.txt`
 
-
-
 ## Bonus
 
 - If you do not want to manually fetch the file with burp you can use this script from ippsec's video writeup (see link in resource), it will fetch the files without the annoying chars by using tr
@@ -277,5 +277,6 @@ b64url=$(echo -n $1 | base64 | tr '/+' '_-' | tr -d '=')
 curl -s http://10.10.11.162/api/v1/admin/file/${b64url} -H "Authorization: Bearer $TOKEN" | jq .file -r
 ```
 
-
 ## Resources
+
+- [Ippsec walkthrough of the box](https://youtu.be/QfAh47RlZjw)
