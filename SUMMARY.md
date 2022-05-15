@@ -117,6 +117,7 @@
 * [Hackthebox - Good games](writeups/HTB-goodgames.md)
 * [Hackthebox - Driver](writeups/HTB-driver.md)
 * [Hackthebox - Backend](writeups/HTB-Backend.md)
+* [Hackthebox - BackendTwo](/writeups/HTB-BackendTwo.md)
 * [TryHackMe - Vulnversity](/writeups/THM-vulnversity.md)
 * [TryHackMe - Sudo Security Bypass](writeups/THM-SudoSecurityBypass.md)
 * [TryHackMe - SimpleCTF](writeups/THM-SimpleCTF.md)
