@@ -2,7 +2,7 @@
 
 ## Enumeration
 
-- `find / -perm -u=s -type f 2>/dev/null` will list all the files with the suid perm
+- `find / -perm -u=s -type f 2>/dev/null` or ` find / -type f -perm -04000 -ls 2>/dev/null` will list all the files with the suid perm
 - You can see the suid perm in the permissions as an `s` like here:  
 ![image](https://user-images.githubusercontent.com/96747355/167308910-5b0a0157-6586-46bd-a213-42c229e996e8.png)  
 
