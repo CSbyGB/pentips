@@ -42,6 +42,7 @@
   * [Sudo](linux/sudo.md)
   * [SUID](linux/suid.md)
   * [Capabilities](linux/capabilities.md)
+  * [Scheduled tasks](linux/cron.md)
 
 ## Windows
 
