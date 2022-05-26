@@ -43,6 +43,7 @@
   * [SUID](linux/suid.md)
   * [Capabilities](linux/capabilities.md)
   * [Scheduled tasks](linux/cron.md)
+  * [NFS Root Squashing](linux/nfs-root-squashing.md)
 
 ## Windows
 
