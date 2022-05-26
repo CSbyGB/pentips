@@ -12,6 +12,9 @@
   - `ps aux` The aux option will show processes for all users (a), display the user that launched the process (u), and show processes that are not attached to a terminal (x). 
 - `env` will show environmental variables
 - `lscpu` gives info about the architecture
+- `ls -la /etc/cron.daily/` check daily cronjobs
+- `cat /etc/crontab` check the crontab
+- `lsblk` check for file system and additional drives
 
 ## User enumeration
 
@@ -22,7 +25,7 @@
 - `cat /etc/shadow` hash store file
 - `cat /etc/groups`
 - `history` will show previous commands
-- `sudo -l` what ca we run as sudo. Example
+- `sudo -l` what can we run as sudo. Example
 
   ```
   sudo -l
@@ -34,6 +37,9 @@
 	  (nmapuser) NOPASSWD: /usr/bin/nmap
   ```
 - `sudo -u phantom cat /home/phantom/flag.txt` execute a command with another user
+- `find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null` Find writable directories
+- `find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null` Find writable files
+- 
 
 ## Network Enumeration
 
