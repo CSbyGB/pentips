@@ -79,7 +79,7 @@ Requests/sec.: 34.31311
 - Which other non-standard port is used? `31331`
 - Which software using this port? `Apache`
 - Which GNU/Linux distribution seems to be used? `Ubuntu`
-- The software using the port 8081 is a REST api, how many of its routes are used by the web application? (response is find using wfuzz) `2`
+- The software using the port 8081 is a REST api, how many of its routes are used by the web application? (response is found using wfuzz) `2`
 
 ## Task 3
 
