@@ -127,6 +127,7 @@
 * [TryHackMe - Overpass3](/writeups/THM-overpass3.md)
 * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 * [TryHackMe - Blaster](/writeups/THM-Blaster.md)
+* [TryHackMe - Ultratech](/writeups/THM-UltraTech.md)
 
 ## Digital skills
 
