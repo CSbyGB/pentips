@@ -10,9 +10,10 @@
 
 ### Enumerate
 
-- `uname -a`
+- `uname -a` or `cat /etc/lsb-release `
 - We can then google the version we get and see if anything comes out
 - We can also use Linux exploit suggester and investigate the results
+
 
 ### Dirty Cow
 
