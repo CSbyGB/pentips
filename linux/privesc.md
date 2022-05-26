@@ -16,6 +16,12 @@
 - `cat /etc/crontab` check the crontab
 - `lsblk` check for file system and additional drives
 
+### PSPY
+
+- PSPY is a tool to look for running processes
+- We can get it [here](https://github.com/DominicBreuker/pspy)
+- And then we just need to launch it `./pspy64 -pf -i 1000`
+
 ## User enumeration
 
 - `whoami` gives username
