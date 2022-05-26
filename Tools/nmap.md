@@ -17,6 +17,12 @@
 
 - `sudo nmap -sn 10.10.110.0-254`
 
+## Debug
+
+- If you get this error `Warning: 10.10.64.180 giving up on port because retransmission cap hit (2)`
+- Try using `-T4` instead of `-T5`
+- Check this post [here](https://stackoverflow.com/questions/14736530/nmap-warning-giving-up-on-port-because-retransmission-cap-hit-2) for more info on this error
+
 ## Resources
 
 {% embed url="https://nmap.org/book/man.html" %} Nmap Reference Guide {% endembed %}  
