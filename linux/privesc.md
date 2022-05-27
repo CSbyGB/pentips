@@ -45,7 +45,6 @@
 - `sudo -u phantom cat /home/phantom/flag.txt` execute a command with another user
 - `find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null` Find writable directories
 - `find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null` Find writable files
-- 
 
 ## Network Enumeration
 
