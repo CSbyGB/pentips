@@ -1,6 +1,6 @@
 # Escalation via Scheduled task (Cron)
 
-## Path
+## Cron Path
 
 ### Enumeration
 
@@ -16,7 +16,7 @@
 - `/tmp/bash -p` we execute it and we get root  
 ![image](https://user-images.githubusercontent.com/96747355/170377045-4b98a2fb-2d52-43ea-bfc7-1b84f8d78e5a.png)  
 
-## Wildcards
+## Cron Wildcards
 
 ### Enumeration
 
