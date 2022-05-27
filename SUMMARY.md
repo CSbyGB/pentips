@@ -47,6 +47,7 @@
   * [Services](linux/services.md)
   * [PATH Abuse](linux/path.md)
   * [Wildcard Abuse](linux/wildcard.md)
+  * [Privileged groups](linux/groups.md)
 
 ## Windows
 
