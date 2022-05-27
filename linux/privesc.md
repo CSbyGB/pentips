@@ -20,7 +20,7 @@
 
 - PSPY is a tool to look for running processes
 - We can get it [here](https://github.com/DominicBreuker/pspy)
-- And then we just need to launch it `./pspy64 -pf -i 1000`
+- And then we just need to launch it `./pspy64 -pf -i 1000` The -pf flag tells the tool to print commands and file system events and -i 1000 tells it to scan profcs every 1000ms (or every second).
 
 ## User enumeration
 
