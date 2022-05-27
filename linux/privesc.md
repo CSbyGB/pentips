@@ -10,6 +10,7 @@
   - `ps -A` View all running processes
   - `ps axjf` View process tree
   - `ps aux` The aux option will show processes for all users (a), display the user that launched the process (u), and show processes that are not attached to a terminal (x). 
+  - `ps aux | grep root`
 - `env` will show environmental variables
 - `lscpu` gives info about the architecture
 - `ls -la /etc/cron.daily/` check daily cronjobs
@@ -51,7 +52,7 @@
 - `ifconfig` information about the network interfaces of the system
 - `ip add` (similar to ifconfig)
 - `ip route` show network routes
-- `arp -a` or `ìp neigh`
+- `arp -a` or `ip neigh`
 - `netstat` gather information on existing connections
   - `netstat -a` shows all listening ports and established connections.
   - `netstat -at` or `netstat -au` can also be used to list TCP or UDP protocols respectively.
