@@ -91,6 +91,8 @@
 
 ## Potato Attacks
 
+- These attacks requires the `SeImpersonatePrivilege` or `SeAssignPrimaryTokenPrivilege` to be enabled on the machine.
+
 ### Hot potato
 
 - We can use [Tater](https://github.com/Kevin-Robertson/Tater)
