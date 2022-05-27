@@ -46,6 +46,7 @@
   * [NFS Root Squashing](linux/nfs-root-squashing.md)
   * [Services](linux/services.md)
   * [PATH Abuse](linux/path.md)
+  * [Wildcard Abuse](linux/wildcard.md)
 
 ## Windows
 
