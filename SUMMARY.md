@@ -45,6 +45,7 @@
   * [Scheduled tasks](linux/cron.md)
   * [NFS Root Squashing](linux/nfs-root-squashing.md)
   * [Services](linux/services.md)
+  * [PATH Abuse](linux/path.md)
 
 ## Windows
 
