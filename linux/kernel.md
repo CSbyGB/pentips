@@ -18,7 +18,7 @@
 ### Dirty Cow
 
 - We can use this [exploit](https://www.exploit-db.com/exploits/40839)
-- `gcc -pthread c0w.c -o cow`
+- `gcc -pthread cow.c -o cow -lcrypt`
 - We are a low privilege user for now  
 ![image](https://user-images.githubusercontent.com/96747355/167271901-78383711-70af-455a-8120-f221f8375bcc.png)  
 - `./cow`  
