@@ -40,3 +40,32 @@
 - We can use tools
   - [Sowdust Github](https://sowdust.github.io/fb-search/)
   - [IntelligenceX Facebook Search](https://intelx.io/tools?tab=facebook)
+
+## Instagram
+
+- Check who they are following
+- Do not underestimate Google "username site: instagram.com"
+- [Wopita](https://wopita.com/)
+- [Code of a Ninja](https://codeofaninja.com/tools/find-instagram-user-id/)
+- [InstaDP](https://www.instadp.com/)
+- [ImgInn](https://imginn.com/)
+
+## Snapchat
+
+- [Snapchat Maps](https://map.snapchat.com)
+
+## Reddit
+
+- we can use the reddit search
+- We can search with google "username site:reddit.com"
+
+## LinkedIn
+
+- Check the contact info
+- Do reverse image search 
+- Check recommendations received and given
+
+## TikTok
+
+- Search for a username tiktok.com/@username
+- Google
