@@ -91,6 +91,7 @@
 ## OSINT
 
 * [OSINT](OSINT/osint.md)
+* [Create an OSINT lab](OSINT/lab.md)
 * [Sock Puppets](OSINT/sock-puppets.md)
 * [Search engines](OSINT/search-engines.md)
 * [OSINT Images](OSINT/image-osint.md)
@@ -102,6 +103,7 @@
 * [OSINT Websites](OSINT/website.md)
 * [OSINT Business](OSINT/business.md)
 * [OSINT Wireless](OSINT/wireless.md)
+* [OSINT Tools](OSINT/tools.md)
 
 ## Post Exploitation
 
