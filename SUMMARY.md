@@ -99,6 +99,7 @@
 * [OSINT Usernames](OSINT/usernames.md)
 * [OSINT People](OSINT/people.md)
 * [OSINT Social Media](OSINT/social-media.md)
+* [OSINT Websites](OSINT/website.md)
 
 ## Post Exploitation
 
