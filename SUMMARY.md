@@ -100,6 +100,7 @@
 * [OSINT People](OSINT/people.md)
 * [OSINT Social Media](OSINT/social-media.md)
 * [OSINT Websites](OSINT/website.md)
+* [OSINT Business](OSINT/business.md)
 
 ## Post Exploitation
 
