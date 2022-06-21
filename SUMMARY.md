@@ -104,6 +104,7 @@
 * [OSINT Business](OSINT/business.md)
 * [OSINT Wireless](OSINT/wireless.md)
 * [OSINT Tools](OSINT/tools.md)
+* [Write an OSINT report](OSINT/report.md)
 
 ## Post Exploitation
 
