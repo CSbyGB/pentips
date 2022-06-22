@@ -82,6 +82,10 @@
 * [Weaponization](windows/weaponization.md)
 * [Useful commands in Powershell, CMD and Sysinternals](windows/powershell-cmd.md)
 
+## Programming
+
+* [Python programming](programming/python.md)
+
 ## Binary Exploitation
 
 * [Assembly](Binary-Exploitation/Assembly.md)
