@@ -1,5 +1,34 @@
 # Useful commands and tools on Linux
 
+## Network commands
+
+- `ifconfig`
+- `ip a`
+- `iwconfig` wireless connection
+- `arp -a`
+- `ip n`
+- `ip r` 
+- `route` get the routing table
+- `ping IP-ADD-OR-HOST` check if a host is up
+- `netstat` 
+
+### Pingsweep in bash
+
+- On his course Practical Ethical Hacking Heath Adams shares this script that is really convenient to make an ip sweep.
+```bash
+#!/bin/bash
+if [ "$1" == "" ]
+then
+echo "You forgot an IP address!"
+echo "Syntax: ./ipsweep.sh 192.168.1"
+
+else
+for ip in `seq 1 254`; do
+ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
+done
+fi
+```
+
 ## xclip
 
 ### Install
@@ -66,7 +95,6 @@ Source: [Chmod tutorial by Ryan Morrison](https://medium.com/@razl/chmod-tutoria
 
 - [This website](https://explainshell.com/) is relly helpful to understand what a specific linux command does. Here is an example with `rm -rf file`  
 ![image](https://user-images.githubusercontent.com/96747355/175054655-9a49193f-38a3-4cc7-92dc-e1d6f716aaab.png)
-
 
 ## Resources
 
