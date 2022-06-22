@@ -28,6 +28,7 @@ ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
 done
 fi
 ```
+- To automate this further we could add an nmap script to run on the alive ip found.
 
 ## xclip
 
