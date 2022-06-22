@@ -1,5 +1,74 @@
 # Networking basics
 
+## IP Addresses
+
+- Address to communicate on a network (Layer 3 of OSI model) = routing
+
+| Network class | Network numbers | Network mask | Nb. of networks | No. of hosts per network |
+|---------------|-----------------|--------------|-----------------|--------------------------|
+| Class A       | 10.0.0.0        | 255.0.0.0    | 126             | 12 646 144               |
+| Class B       | 172.16.0.0 to 172.31.0.0 | 255.255.0.0| 16 383 | 65 024                     |
+| Class C       | 192.168.0.0 to 192.168.255.255 | 255.255.255.0 | 2 097 151 | 254            |
+| Loopback (localhost) | 127.0.0.0 to  127.0.0.7 | 255.255.255.0 | | |
+
+## MAC Addresses
+
+- Media Access Control, Physical address  (Layer 2 of OSI model). Useful to know which device is which.
+- It looks like this `00:1a:3f:f1:4c:c6`
+- We can lookup the the OUI (3 first octets) to get find out the manufacturer of the device
+![image](https://miro.medium.com/max/1200/1*FLrfO7JzkOWSBkPBYly37w.png)
+Source: [What is a MAC Address - Lakshan Mamalgaha](https://medium.com/@lakshanmamalgaha/what-is-a-mac-address-and-why-you-should-know-about-it-9f970b3ba3fd)
+- Detailed info [here](https://en.wikipedia.org/wiki/MAC_address)
+
+## TCP, UDP and the Three way handshake
+
+### TCP 
+- Transmission Control Protocol. It is a connection oriented protocol. http, ftp, etc all utilize this.
+
+#### Three way handshake
+
+- TCP uses 3 way handshake
+- SYN > SYN ACK > SYN : Asking to connect to a port > Port is open > connection occurs
+
+### UDP
+- User Datagram protocol. It is a connectionless protocol. Streaming service, voip etc. all utilize this.
+
+## Common ports and protocol
+
+![image](https://user-images.githubusercontent.com/96747355/175028740-e00258bf-cbcf-4ee5-b2ba-0776caec5c8c.png)  
+Source: TCM Security Academy - Course Practical Ethical Hacking   
+- TCP
+  - FTP = File Transfer protocol
+  - SSH and Telnet: connect to a device remotely ssh is encrypted telnet is not
+  - SMTP, POP3 and IMAP: related to mail protocol
+  - DNS: resolves ip addresses to name
+  - HTTP and HTTPS : websites. HTTPS is encrypted
+  - SMB: file share (aka SAMBA)
+- UDP
+  - DHCP: will assign IP address
+  - TFTP = trivial FTP
+  - SNMP: Simple Network Management Protocol
+
+## The OSI Model
+
+| Number | Layer           | Examples or use |
+|--------|-----------------|---------|
+| 1      | Physical layer | Data cables |
+| 2      | Data | Switches, MAC Addresses |
+| 3      | Network | IP addresses, routing |
+| 4      | Transport | TCP/UDP |
+| 5      | Session | Session management |
+| 6      | Presentation | WMV, JPEG, MOV |
+| 7      | Application | HTTP, SMTP |
+
+- (Mnemonic: Please Do Not Throw Sausage Pizza Away)
+
+## Subnetting
+
+![image](https://user-images.githubusercontent.com/96747355/175038701-8d9041e0-3021-4f72-a970-2b103ab0b574.png)  
+Source: TCM Security Academy  - Course Practical Ethical Hacking  
+
+
 ## End Device Addressing
 
 - IP address - This identifies the host on the network.
@@ -15,3 +84,4 @@
 
 {% embed url="https://skillsforall.com/course/getting-started-cisco-packet-tracer" %} Getting Started with Cisco Packet Tracer (this tool is very fun and useful to use when trying to understand networking) {% endembed %}
 {% embed url="https://skillsforall.com/course/networking-essentials" %} Networking Essentials by Cisco {% endembed %}
+{% embed url="https://youtu.be/ZxAwQB8TZsM" %} Professor Messer 7 second subnetting {% endembed %}
