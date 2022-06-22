@@ -120,4 +120,38 @@ test_or2 = (7 > 5) or (5 > 7) # True
 test_not = not True # False
 ```
 
+## Conditional Statements
 
+```python
+#!/bin/python3
+
+def drink(money):
+  if money >= 2:
+    return "You got a drink"
+  else:
+    return "no drink for you"
+
+print(drink(3))
+print(drink(1))
+
+def alcohol(age, money):
+  if (age >= 21) and (money >= 5):
+    return "We're getting a drink"
+  elif (age >= 21) and (money < 5):
+    return "Come back with more money"
+  elif (age < 21) and (money >= 5):
+    return "Nice try kid!"
+  else:
+    return "You're too poor and too young"
+
+print(alcohol(21,5))
+print(alcohol(21,4))
+print(alcohol(20,4))
+```    
+
+## Resources
+
+{% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} Practical Ethical Hacking - TCM Security {% endembed %}
+{% embed url="https://academy.tcm-sec.com/p/python-101-for-hackers" %} Python 101 for Hackers - TCM Security {% endembed %}
+{% embed url="https://academy.tcm-sec.com/p/python-201-for-hackers" %} Python 201 for Hackers - TCM Security {% endembed %}
+{% embed url="https://checkio.org/" %} Checkio programming challenges to learn Python {% endembed %}
