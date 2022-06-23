@@ -149,6 +149,23 @@ print(alcohol(21,4))
 print(alcohol(20,4))
 ```    
 
+## Lists
+
+```python
+#!/bin/python3
+
+movies=["When Harry met Sally","movie2","movie 3","movi 4"] # this is a list
+print(movies[0]) # return first item
+print(movies[1:4]) # will print from 2nd item to 3rd
+print(movies[1:]) # will print from 2nd item to last item
+print(movies[:2]) # will print from begining of the list until the 1st item (so here only the first item)
+print(movies[-1]) # will print the very last item of the list
+movies.append("another movie") # add an item to the end of the list
+movies.pop() # will remove the last item of the list
+movies.pop(0) # will remove the first item of the list
+
+```
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} Practical Ethical Hacking - TCM Security {% endembed %}
