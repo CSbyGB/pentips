@@ -3,10 +3,10 @@
 ## Lookup using websites
 
 - [Hunter](https://hunter.io/) 50 free searches/month
-We can use this tool to look for email address with a company name for instance
+We can use this tool to look for email address with a company name for instance. It is also useful to identify patterns on how the email address are built.
 - [Phonebook](https://phonebook.cz/)
 - [Voilà Norbert](https://www.voilanorbert.com/)
-- [Clearbit connect](https://chrome.google.com/webstore/detail/clearbit-connect-supercha/pmnhcgfcafcnkbengdcanjablaabjplo?hl=en) need to be added on google chrome, but very powerful. Lots of filters, returns lot of info as well,..
+- [Clearbit connect](https://chrome.google.com/webstore/detail/clearbit-connect-supercha/pmnhcgfcafcnkbengdcanjablaabjplo?hl=en) need to be added on google chrome, but very powerful. Lots of filters, returns lots of info as well,..
 
 ## Methodology
 
