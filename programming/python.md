@@ -1,7 +1,7 @@
 # Python programming
 
 - It is really useful for a pentester to know about python and be able to script something. Being able to automate things can definitely help us go quicker in our daily practice.
-
+Of course we do not need to be a developer but it is very helpful to be able to read code.
 
 ## shebang
 
@@ -149,7 +149,7 @@ print(alcohol(21,4))
 print(alcohol(20,4))
 ```    
 
-## Lists
+## Lists (mutable)
 
 ```python
 #!/bin/python3
@@ -163,8 +163,110 @@ print(movies[-1]) # will print the very last item of the list
 movies.append("another movie") # add an item to the end of the list
 movies.pop() # will remove the last item of the list
 movies.pop(0) # will remove the first item of the list
-
+print(len(movies) # print length of list
 ```
+
+## Tuples (immutable)
+
+- It is immutable meaning we can not use pop or append on them once it is declared it can not be modified.
+
+```python
+#!/bin/python3
+
+grades=(""a,"b","c","d","e","f")
+print(grades[1]) # will print b
+```
+
+## Looping
+
+### For loops
+
+- Start to finish of an iterate
+
+```python
+#!/bin/python3
+
+vegetables=["cucumber", "spinach", "cabbage"]
+for x in vegetables:
+  print(x)
+```
+
+### While loops
+
+- Execute as long as true
+
+```python
+#!/bin/python3
+
+i=1
+
+while 1<10:
+  print(i)
+  i++
+```
+
+## Importing modules
+
+```python
+#!/bin/python3
+import sys # systems functions and parameters
+from datetime import datetime as dt # import with alias + plus using from makes it to import only part of the module
+
+print(sys.version)
+print(dt.now())
+```
+
+## Advanced strings
+
+```python
+#!/bin/python3
+
+my_name="myname"
+print(my_name[0])
+print(my_name[-1])
+
+sentence = "This is a sentence"
+print(sentence.split()) # will split using space as a delimiter so it will take each word separately
+sentence_split = sentence.split()
+sentence_join = ' '.join(sentence_split)
+quote = "he said 'give me all your money'" # we can use single quotes in double quotes to keep the double quote from being escaped (would also work the other way around)
+quote = "he said \"give me all your money\"" # we can also escape characters with \
+too_much_space = "               hello                  "
+print(too_much_space.strip())
+print("A" in "Apple") # will print True
+print("A" in "apple") # will print False
+letter = "A"
+word = "Apple"
+print(letter.lower() in word.lower()) # improved
+movie = "movie"
+print("my favorite movie is {}.".format(movie))
+```
+
+## Dictionaries
+
+- Key value pairs
+
+```python
+#!/bin/python3
+
+drinks = {"Drink1": 7, "Drink2": 10, "Drink3": 8} # drink is the key, price is the value
+print(drinks)
+
+employees = { "Finance": ["Bob", "Linda", "Tina"], "IT": ["Gene", "Louise", "Nicole"], "HR": ["Jimmy", "Marty"]
+print(employees)
+
+employees['Legal'] = ["Mr. Frond"] # Add new key:value pair
+print(employees)
+
+employees.update({"Sales": ["Adie", "Ollie"]}) # Add new key:value pair
+print(employees)
+
+drinks["Drink1"] = 8
+print(drinks)
+print(drinks.get("drink1"))
+```
+
+
 
 ## Resources
 
