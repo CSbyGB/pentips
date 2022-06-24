@@ -20,7 +20,7 @@
 - With google we can look for a specific website using `site:name` and add `inurl:admin` or `inurl:dev` we can also remove subdomain with `-www`
 - [Pentest-Tools Subdomain Finder](https://pentest-tools.com/information-gathering/find-subdomains-of-domain#)
 - [Spyse](https://spyse.com/)
-- [crt.sh](https://crt.sh/)
+- [crt.sh](https://crt.sh/) we can use a wildcard to search for example `%.domain.com`
 
 ## Must to use tools
 
