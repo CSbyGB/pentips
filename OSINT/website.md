@@ -27,6 +27,12 @@
 - [Shodan](https://shodan.io) we can use dorks to filter our search with words like `city:` `port:` `org:`
 - [Wayback Machine](https://web.archive.org/)
 
+## Methodology for subdomain enum
+
+- We look up with the tools if we can find subdomains
+- We check if they are alive with a tool like httpprobe
+- We check the subdomains to see what we can do, we can use a tool like Photon that will make screenshot of the list of active subdomains found. This will make our work faster.
+
 ## Automate website OSINT
 
 - We can use this code. It was made by Heath Adams on his OSINT course. You can check out this course here(https://academy.tcm-sec.com/p/osint-fundamentals)
