@@ -5,7 +5,7 @@ Of course we do not need to be a developer but it is very helpful to be able to 
 
 ## shebang
 
-- For python our script need to have this shebang in the first line `#!/bin/python3`
+- For python our script need to have this shebang in the first line `#!/bin/python3` this will allow us to launch the script using `./ myscript.py` instead of `python3 myscript.py`
 
 ## Strings
 
@@ -266,7 +266,73 @@ print(drinks)
 print(drinks.get("drink1"))
 ```
 
+## Sockets
 
+- We use socket to connect to an open port and an IP addess
+```python
+#!/bin/python3
+import socket
+
+HOST='127.0.0.1'
+PORT='7777'
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # AF_INET is IPV4 SOCK_STREAM is the port
+s.connect((HOST,PORT))
+```
+
+- To test our script we can launch netcat
+- `nc -nlvp 7777`
+
+### Building a port scanner
+
+- We can use socket to build a port scanner
+
+```python
+#!/bin/python3
+import sys
+import socket
+from datetime import datetime
+
+# usage: python3 scanner.py <IP-ADR>
+
+# Define our target
+if len(sys.argv) == 2:
+  target = socket.gethostbyname(sys.argv[1]) # Translate host name to IPV4
+else:
+  print("Invalid amount of arguments")
+  print("Syntax python3 scanner.py <IP-ADR>")
+
+# Add a banner
+print("-" * 50)
+print("Scanning target "+target)
+print("Time started: "+str(datetime.now()))
+print("-" * 50)
+
+try:
+  for port in range(1,65535):
+  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  socket.setdefaultitmeout(1)
+  result = s.connect_ex((target,port)) # returns an error indicator if connection successful will return 0 otherwise will return 1
+  if result == 0:
+    print("Port {} is open".format(port))
+  s.close()
+
+# Make a clean exit if there is a keyboard interruption like ctrl+c
+except KeyboardInterrupt:
+  print("\nExiting program. ")
+  sys.exit()
+
+except socket.gaierror:
+  print("Hostname could not be resolved.")
+  sys.exit()
+  
+except socket.error:
+  print("Could not connect to server.")
+  sys.exit()
+```
+- This script is just and exercise (done in the PEH TCM course) so it definitely could be improved:
+  - Handle other type of errors
+  - ...
 
 ## Resources
 
