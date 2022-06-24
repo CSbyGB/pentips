@@ -1,6 +1,6 @@
 # OSINT - Website
 
-- Check out also the possible tools you can use for website OSINT [here](tools.md#tools-for-website-osint)
+- Check out also the possible tools you can use for website OSINT [here](tools.md#tools-for-website-osint). They are all instalable in you Kali VM some of them are even preinstalled on Kali.
 
 ## Search
 
