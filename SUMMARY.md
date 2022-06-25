@@ -8,6 +8,11 @@
 
 * [Basics](networking/basics.md)
 
+## Ethical Hacking - General Methodology
+
+* [Introduction](ethical-hacking-general-methodology/intro.md)
+* [Information Gathering](ethical-hacking-general-methodology/information-gathering.md)
+
 ## External Pentest
 
 * [External Pentest](External-Pentest/external-pentest.md)
