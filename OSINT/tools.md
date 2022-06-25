@@ -1,5 +1,7 @@
 # OSINT Tools
 
+- In this part you will find tools installable in your machine or VM to perform some OSINT task
+
 ## Exiftool
 
 - Tool to get information from a file (image or pdf)
