@@ -29,6 +29,14 @@ In the case of a pentest it will be defined in the document called **Rules of En
 
 - Check this article about [Website OSINT](/OSINT/website.md) and this one about[Tools for website OSINT](/OSINT/tools.md#tools-for-website-osint)
 
+## Using search engines
+
+- Check out this article about [Search Engines](/OSINT/search-engines.md)
+
+## Using Social Media
+
+- Check out this article about [Social Media OSINT](/OSINT/social-media.md)
+
 ## Tools
 
 - Lots of tools are available for the OSINT / Recon part, check this article about this [here](/OSINT/tools.md#osint-tools)
