@@ -95,7 +95,7 @@
 
 - Tool to find subdomains. See about it [here](https://github.com/aboul3la/Sublist3r)
 - `apt install sublist3r` Install it
-- 
+- `sublist3r --domain [domain_name]` launch it
 
 #### Subfinder
 
@@ -127,6 +127,12 @@
 - We can also go through our findings and get screenshots of them using gowitness
 - Find GoWitness [here](https://github.com/sensepost/gowitness/wiki/Installation)
 - `gowitness file -f ./alive-findings.txt -P ./screenshots --no-http` this command will go through every finding and make a screenshot
+
+### Burp Suite
+
+- The community edition is preinstalled on kali
+- You can get it [here](https://portswigger.net/burp)
+- We can use burpsuite as well and check the response headers of our targeted website to see if it discloses any interesting information.
 
 ## OSINT Frameworks
 
