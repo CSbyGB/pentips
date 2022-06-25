@@ -76,36 +76,51 @@
 
 ## Tools for website OSINT
 
-### Wappalyzer
+### Identifying website technology
+
+#### Wappalyzer
 
 - We can use the browser add on [Wappalyzer](https://www.wappalyzer.com/) to see the technologies used on the website
 
-### Subfinder
+#### Whatweb
+
+- It is preinstalled on Kali. You can find the githb page [here](https://github.com/urbanadventurer/WhatWeb)
+- `whatweb webiste.com`
+
+### Hunting subdomain
+
+#### Sublist3r
+
+- Tool to find subdomains. See about it [here](https://github.com/aboul3la/Sublist3r)
+- `apt install sublist3r` Install it
+- 
+
+#### Subfinder
 
 - Tool to find subdomains
 - Available [here](https://github.com/projectdiscovery/subfinder)
 - `subfinder -d domain`
 
-### Assetfinder
+#### Assetfinder
 
 - Another tool to find subdomains
 - Available [here](https://github.com/tomnomnom/assetfinder)
 - `assetfinder domain`
 
-### Amass
+#### Amass
 
 - Tool for subdomain enumeration
 - Available [here](https://github.com/OWASP/Amass)
 - `amass enum -d domain`
 
-### httprobe
+#### httprobe
 
 - After finding multiple subdomains we can use httprobe to check if they are alive or not
 - Find httprobe [here](https://github.com/tomnomnom/httprobe)
 - We could use a command like this `cat findings.txt | sort -u | httprobe -s -p https:443` we can limit our results to port 443
 - We can put our result in a file named `alive-findings.txt` (we then need to strip `https://`, `http://` and `:443` and use it in gowitness
 
-### Gowitness
+#### Gowitness
 
 - We can also go through our findings and get screenshots of them using gowitness
 - Find GoWitness [here](https://github.com/sensepost/gowitness/wiki/Installation)
