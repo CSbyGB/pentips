@@ -1,6 +1,7 @@
 # Scanning and Enumeration
 
 - The machine use in the lab here for the example is Kioptrix from vulnhub
+- During this stage it is really important to take good notes. We have to write versions we find any information disclosed during this phase.
 
 ## Scanning with nmap
 
@@ -83,3 +84,93 @@ HOP RTT     ADDRESS
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 22.74 seconds
 ```
+
+## Enumerating HTTP and HTTPS
+
+### Default web page
+
+- We can go check the page in the browser and see what we find if we have 30 or 443 open (or both)
+- Default web page = automatic finding. Disclose info about the tecnology used: web server, version, hostname etc. = Information Disclosure
+
+### Nikto
+
+- We can also launch nikto `nikto -h http://host.com`
+  - Example of nikto result  
+![image](https://user-images.githubusercontent.com/96747355/175832200-f1f6511c-b3c7-4543-8f5b-ae7720829cdf.png)  
+  - It finds possible vulnerability
+  - Will even do some directory busting
+
+### Dirbuster
+
+- We can use dirbuster or gobuster to check if we find hidden directories (directory busting). Here is an example with dirbuster  
+![image](https://user-images.githubusercontent.com/96747355/175832562-7dcac6df-58c6-4385-92b9-f2d4e11384e1.png)  
+- Example of results in tree view  
+![image](https://user-images.githubusercontent.com/96747355/175832618-f4e4f9e6-7f72-44c7-bb08-3e243faa5073.png)
+- Example of results in list  
+![image](https://user-images.githubusercontent.com/96747355/175832640-313cbe72-ce8a-49c0-9e4e-1327aa17f280.png)
+
+### Source code
+
+- We can select view source in the browser.
+- In there we can check for comments, usernames, passwords, keys etc.
+
+### Burpsuite
+
+- We can use the repeater to inspect a request modify it and analyze the response
+
+## Enumerate SMB
+
+- Fileshare 
+
+### Metasploit
+
+- `msfconsole`
+- `use auxiliary/scanner/smb/smb_version`
+- `options`
+- `set RHOSTS IP-ADD` (in my example instead of IP-ADD I will put 10.0.2.4)
+- `run`
+![image](https://user-images.githubusercontent.com/96747355/175833442-8a36eb1a-d065-4b7d-8b55-af90ba1d75fb.png)  
+- We see the version of Samba so it is something that is going to be worth writing down in our notes.
+
+### smbclient
+
+- Tool that will help us to list shares or see useful info
+- `smbclient -L IP-ADD` (in my example instead of IP-ADD I will put 10.0.2.4)  
+![image](https://user-images.githubusercontent.com/96747355/175833616-0eb455e8-ed55-48e6-abfb-64908fac28a8.png)  
+
+## Enumerate SSH
+
+- We need to keep notes of the ssh version
+- We can try to ssh to our target `ssh IP-ADD`. In our example we get this  
+![image](https://user-images.githubusercontent.com/96747355/175833787-a2b8bcbd-05a9-4ecb-ac37-b584c896253c.png)  
+- For this error we can try this `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 `  
+![image](https://user-images.githubusercontent.com/96747355/175834000-bc2e9cbe-5949-4836-88d7-c9d399f95054.png)  
+- For this error we can try this `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa `  
+![image](https://user-images.githubusercontent.com/96747355/175834033-1c9a18f8-bb6f-4961-bbc1-3550da4dba45.png)  
+- Finally for this error we can use this and will try to connect `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc`
+
+## Research 
+
+- After this enumeration we can look up things we wrote down in our notes.
+
+### Search Engines
+
+- Usually we can try to google `technology version exploit` for example `mod_ssl 2.8.4 exploit` If anything shows up we can add it in our notes along with link to exploits to try them out later
+
+### searchsploit
+
+- On kali we can use searchsploit `searchsploit technology partial-version` for example `searchsploit Samba 2` or `searchsploit Samba`
+
+## Vulnerability Sanning with Nessus
+
+- Get it [here](https://www.tenable.com/downloads/nessus?loginAttempted=true)
+- `dpkg -i Nessus-10.2.0-ubuntu1110_amd64.deb` install it
+- `/bin/systemctl start nessusd.service` start the service
+- Then we go to https://127.0.0.1:8834/ to finish the install and configure it
+- If you are in the login page you can find out which username is installed with `/opt/nessus/sbin/nessuscli lsuser`
+- You can then change your password with `/opt/nessus/sbin/nessuscli chpasswd username`
+- If you are in the setup it is going to ask which version, you need to choose essentials (this version is free and will allow you to scan only private IP address) and then you will be able to register a user.
+- Here is and example of scan result (we ordered the vuln by severity by choosing disable groups in the settings wheel) 
+![image](https://user-images.githubusercontent.com/96747355/175835352-16616ab5-4784-48da-80f8-37641bcca200.png) 
+- We can then check the vulns out and see if we can exploit them.
+
