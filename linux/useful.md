@@ -97,6 +97,20 @@ Source: [Chmod tutorial by Ryan Morrison](https://medium.com/@razl/chmod-tutoria
 - [This website](https://explainshell.com/) is relly helpful to understand what a specific linux command does. Here is an example with `rm -rf file`  
 ![image](https://user-images.githubusercontent.com/96747355/175054655-9a49193f-38a3-4cc7-92dc-e1d6f716aaab.png)
 
+## Route your scripts through burp
+
+- `export https_proxy=http://server-ip:port/` for example `export https_proxy=http://127.0.0.1:8080/`
+- You will need to add a cert
+ - Generate a burp.der cert
+ - Convert it to pem `openssl x509 -inform der -in burp.der -out burp.pem`
+ - Install Burp certificate:  
+   - `cp burp.pem /etc/ssl/certs/` (will need sudo if not root)
+   - `update-ca-certificates` (will need sudo if not root)
+   - `cp burp.pem burp.crt`
+   - `sudo cp burp.crt /usr/local/share/ca-certificates/`
+   - `sudo cp burp.crt /usr/share/ca-certificates/`
+- Everytime you launch a script you should see the traffic in burp
+
 ## Resources
 
 {% embed url="https://askubuntu.com/questions/470966/shortcut-to-clear-command-line-terminal" %} Shortcut to clear command line terminal {% endembed %}
