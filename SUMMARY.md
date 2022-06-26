@@ -13,6 +13,7 @@
 * [Introduction](ethical-hacking-general-methodology/intro.md)
 * [Information Gathering](ethical-hacking-general-methodology/information-gathering.md)
 * [Scanning & Enumeration](ethical-hacking-general-methodology/scanenum.md)
+* [Exploitation (basics)](ethical-hacking-general-methodology/exploitation.md)
 
 ## External Pentest
 
