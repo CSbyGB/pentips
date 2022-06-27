@@ -22,6 +22,7 @@
 ## Web Pentesting
 
 * [Enumeration](web-pentest/enumeration.md)
+* [OWASP Top 10](web-pentest/owaspTop10.md)
 * [Misc Tips](web-pentest/Misc-Tips.md)
 * [API](web-pentest/API.md)
 * [Clickjacking](web-pentest/clickjacking.md)
