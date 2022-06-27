@@ -107,7 +107,8 @@
 
 - Another tool to find subdomains
 - Available [here](https://github.com/tomnomnom/assetfinder)
-- `assetfinder domain`
+- `assetfinder domain` we can put our results in a file by adding `> results.txt` if you already have a file with results you can append it with `>>` instead of `>`
+- 
 
 #### Amass
 
