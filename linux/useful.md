@@ -30,6 +30,13 @@ fi
 ```
 - To automate this further we could add an nmap script to run on the alive ip found.
 
+## read .db file
+
+- `apt-get install db-util` install db-util
+- Show everything that’s in the file database.db `db_dump -p database.db`
+- List the databases in the file database.db `db_dump -l database.db`
+- Show only the content of the database mydb in the file database.db `db_dump -p -s mydb database.db`
+
 ## xclip
 
 ### Install
