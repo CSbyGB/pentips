@@ -127,7 +127,7 @@ lrwxrwxrwx 1 root root 35 Feb  6  2020 /etc/apache2/sites-enabled/000-default.co
 - Let's check this file `/opt/.password.bak`  
 ![image](https://user-images.githubusercontent.com/96747355/176259230-96bf43f5-7bd2-4b84-b7f8-50b34028b1d9.png)  
 - We have another password
-- Let's try it if we su andre it works! let's ssh as andre
+- Let's try it if we su andre it works! let's ssh as andre  
 ![image](https://user-images.githubusercontent.com/96747355/176259522-58a59463-1c0c-474e-b8d7-b082ec8e0329.png)  
 - Let's grab the user flag  
 ![image](https://user-images.githubusercontent.com/96747355/176260214-7478952b-3cac-45e3-851f-db27f15fd50a.png)  
