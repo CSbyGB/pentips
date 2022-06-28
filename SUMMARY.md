@@ -39,6 +39,7 @@
 * [Covenant](Tools/covenant.md)
 * [Mimikatz](windows/mimikatz.md)
 * [Passwords, Hashes and wordlist tools](Tools/passwords-tools.md)
+* [WFuzz](Tools/wfuzz.md)
 * [WPScan](Tools/wpscan.md)
 
 ## VM and Labs
