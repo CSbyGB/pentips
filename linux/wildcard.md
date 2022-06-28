@@ -10,4 +10,4 @@ A wildcard character can be used as a replacement for other characters and are i
 |`~`	|A tilde at the beginning expands to the name of the user home directory or can have another username appended to refer to that user's home directory.|
 |`-`	|A hyphen within brackets will denote a range of characters.|
 
-- See [here](cron.md#cron-wildcards) to have an example of wildcard abuse
+- See [here](cron.md#cron-wildcards) and [here](writeups/THM-CMesS.md) for examples of wildcard abuse
