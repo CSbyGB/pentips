@@ -1,5 +1,7 @@
 # TryHackMe - LazyAdmin - Linux
 
+- [Room on TryHackme](https://tryhackme.com/room/lazyadmin)
+
 ## Nmap
 
 ```bash
