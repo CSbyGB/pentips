@@ -19,7 +19,7 @@ It is a work in progress and it will be filled up asap with my notes and on the 
 
 ## Credits
 
-I took these notes will working but also when using different resources.  
+I took these notes while working but also when using different resources.  
 Here is a list :
 - [TCM-Security](https://academy.tcm-sec.com/)
 - [Tryhackme](https://tryhackme.com/)
