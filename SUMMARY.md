@@ -148,6 +148,7 @@
 * [Hackthebox - Driver](writeups/HTB-driver.md)
 * [Hackthebox - Backend](writeups/HTB-Backend.md)
 * [Hackthebox - BackendTwo](/writeups/HTB-BackendTwo.md)
+* [TryHackMe - Anonymous](writeups/THM-Anonymous.md)
 * [TryHackMe - CMesS](writeups/THM-CMesS.md)
 * [TryHackMe - LazyAdmin](writeups/THM-LazyAdmin.md)
 * [TryHackMe - Vulnversity](/writeups/THM-vulnversity.md)
