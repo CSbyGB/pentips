@@ -158,6 +158,13 @@ lxc exec mycontainer /bin/sh
 ![image](https://user-images.githubusercontent.com/96747355/176962259-df97417d-b029-4cba-8fc8-23d738145dc2.png)  
 - We can grab the last flag. We need to access to the point where the system is mounted `cd /mnt/root` and we grab the flag `cat root/root.txt`!  
 
+## Privesc alternative quicker way
+
+- Note for this way it is really important to not forget to use a tty shell we can get it after catching our shell with this command `python -c 'import pty; pty.spawn("/bin/sh")'`
+- The suid bit is set on env so we can use it to privesc with the command that can be found [here](https://gtfobins.github.io/gtfobins/env/#suid)  
+![image](https://user-images.githubusercontent.com/96747355/176964962-96b6f283-6a29-428b-a6a2-58a78108fd94.png)  
+- It works
+
 ## Questions
 
 1. Enumerate the machine.  How many ports are open? `4`
