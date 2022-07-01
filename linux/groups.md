@@ -20,4 +20,4 @@ Members of the adm group are able to read all logs stored in /var/log. This does
 
 ### LXC/LXD
 
-Check out this [writeup](../writeups/THM-Anonymous.md#privilege-escalation) to have an example of privesc using this way.
+Check out this [writeup](/writeups/THM-Anonymous.md) to have an example of privesc using this way.
