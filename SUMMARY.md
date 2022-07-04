@@ -154,6 +154,7 @@
 * [TryHackMe - Vulnversity](/writeups/THM-vulnversity.md)
 * [TryHackMe - Sudo Security Bypass](writeups/THM-SudoSecurityBypass.md)
 * [TryHackMe - SimpleCTF](writeups/THM-SimpleCTF.md)
+* [TryHackMe - Tomghost](writeups/THM-tomghost.md)
 * [TryHackMe - Overpass3](/writeups/THM-overpass3.md)
 * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 * [TryHackMe - Blaster](/writeups/THM-Blaster.md)
