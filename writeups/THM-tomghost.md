@@ -50,8 +50,6 @@ Nmap done: 1 IP address (1 host up) scanned in 548.88 seconds
 ![image](https://user-images.githubusercontent.com/96747355/177050281-8c89a45b-b168-4bbb-8e59-417cf7d0077f.png)
 - We can not access Server Status, manager app and host manager (access denied)
 
-### Gobuster
-
 ## Port 8009
 
 - This port was unexpected. When looking up online there is a reference to CVE-2020-1938 aka Ghostcat so with the name of the room this is a big hint that we need to use it.
@@ -60,9 +58,28 @@ Nmap done: 1 IP address (1 host up) scanned in 548.88 seconds
 - It is specify that we need to launch it like this `usage: 48143 [-h] [-p PORT] [-f FILE] target`
 - Let's first try to get `WEB-INF/web.xml` And it works we have creds!  
 ![image](https://user-images.githubusercontent.com/96747355/177053568-a50be767-3b09-4b54-b642-6a951c822c4d.png)  
-- The creds works for ssh 
+- The creds works for ssh  
 ![image](https://user-images.githubusercontent.com/96747355/177053674-b5e9376b-7d5c-4a02-a324-41e97a30375c.png)  
-- If we do an ls on the home folder, we have 2 directories merlin and the one of the user we got initially. The user.txt flag is in the merlin directory.  
+- If we do an ls on the home folder, we have 2 directories merlin and the one of the user we got initially. The user.txt flag is in the merlin directory.   
 ![image](https://user-images.githubusercontent.com/96747355/177053844-db23a335-4dd7-4020-b601-60ba6060ce00.png)  
-- 
-**COMING SOON**
+- In the home of our initial user there are 2 interesting files that are worth checking `tryhackme.asc` and `credential.pgp`
+- We take them in our kali using ftp in our kali we type `python3 -m pyftpdlib -p 21 --write`
+- From our target we connect to our kali with ftp and put both files
+- We can now try to crack the file `gpg2john tryhackme.asc > hash` and then we can try to crack it using rockyou.txt as wordlist. It works we get a password  
+![image](https://user-images.githubusercontent.com/96747355/177224792-dc40752b-144b-42f2-a4e2-7e6a0a32818e.png)  
+
+
+## Lateral movement
+
+- Using the password found we can now read the pgp file
+- In our target we type `gpg --decrypt credential.pgp` it works we get merlin credentials and can laterally move to this user using `su merlin`  
+![image](https://user-images.githubusercontent.com/96747355/177224932-e40c5e18-005f-40a8-a354-e06af3098a43.png)  
+
+## Privesc
+
+- If we `sudo -l` with our new user here is what we get  
+![image](https://user-images.githubusercontent.com/96747355/177225087-baa37e47-33bb-4359-a197-49b7978226fc.png)
+- Let's checkout [gtfobins](https://gtfobins.github.io/gtfobins/zip/)
+- Using the commande provided we get root and can get our flag  
+![image](https://user-images.githubusercontent.com/96747355/177225348-3f765593-7812-43a1-b279-3f4d18149d4d.png)  
+
