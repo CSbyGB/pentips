@@ -65,7 +65,7 @@ Nmap done: 1 IP address (1 host up) scanned in 548.88 seconds
 - In the home of our initial user there are 2 interesting files that are worth checking `tryhackme.asc` and `credential.pgp`
 - We take them in our kali using ftp in our kali we type `python3 -m pyftpdlib -p 21 --write`
 - From our target we connect to our kali with ftp and put both files
-- We can now try to crack the file `gpg2john tryhackme.asc > hash` and then we can try to crack it using rockyou.txt as wordlist. It works we get a password  
+- We can now try to crack the file `gpg2john tryhackme.asc > hash` and then we can try to crack it using rockyou.txt as wordlist `john --wordlist=/usr/share/wordlists/rockyou.txt hash`. It works we get a password  
 ![image](https://user-images.githubusercontent.com/96747355/177224792-dc40752b-144b-42f2-a4e2-7e6a0a32818e.png)  
 
 
