@@ -1,5 +1,7 @@
 # TryHackMe - ConvertMyVideo - Linux
 
+- [Room](https://tryhackme.com/room/convertmyvideo)
+
 ## Nmap
 
 ```
@@ -44,3 +46,33 @@ Nmap done: 1 IP address (1 host up) scanned in 1381.76 seconds
 - We have a page with a file upload functionality to convert a video  
 ![image](https://user-images.githubusercontent.com/96747355/177418155-b8a3bc88-c5ac-4aaf-b492-462d01e2611a.png)  
 
+### Gobuster
+
+```
+┌──(root💀kali)-[/home/kali/Documents]
+└─# gobuster dir -u http://10.10.158.186/ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt                                                                                                            1 ⨯
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.158.186/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Timeout:                 10s
+===============================================================
+2022/07/06 17:18:46 Starting gobuster in directory enumeration mode
+===============================================================
+/images               (Status: 301) [Size: 315] [--> http://10.10.158.186/images/]
+/admin                (Status: 401) [Size: 460]                                   
+/js                   (Status: 301) [Size: 311] [--> http://10.10.158.186/js/]    
+/tmp                  (Status: 301) [Size: 312] [--> http://10.10.158.186/tmp/]
+```
+
+## Questions
+
+- What is the name of the secret folder? `admin` (we get this using gobuster, see above)
+- What is the user to access the secret folder?
+- I let you find the flags on your own :)
