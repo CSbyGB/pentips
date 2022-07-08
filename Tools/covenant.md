@@ -118,6 +118,13 @@ sudo dotnet run
   CredentialBlob : Password123!
   ```
 
+## Common issues with Covenant
+
+- Issue - The dashboard is acting weird and not allowing the creation of listeners, payloads, etc.
+   - Solution - Delete /opt/Covenant/Covenant/data/Covenant.db and restart Covenant.
+- Issue - I can get a Grunt to connect back to Covenant, but when attempting to run commands it just sits on uninitialized and doesn't execute.
+  - Solution - This is likely an issue with the Grunt kill date.  It's your responsibility to pay attention to the kill date in the launcher generator to ensure it is a date and time in the future.  In rare circumstances the UI may not allow changing the date.  This can be fixed by deleting the `/opt/Covenant/Covenant/data/Covenant.db` file and restarting the service.  Note you will lose all data and need to create a new user to log in with.  This is a known issue with Covenant.
+
 ## Resources
 
 {% embed url="https://github.com/cobbr/Covenant" %} Get Covenant here {% endembed %}
