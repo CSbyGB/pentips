@@ -40,5 +40,5 @@ Madhav Bhatt  {% endembed %}
 {% embed url="https://youtu.be/QIXZ0DS9arc" %}Permission Mining in GCP - Colin Estep  {% endembed %}  
 {% embed url="https://fwdcloudsec.org/presentations/2021/Permission_mining_GCP.pdf {% endembed %}  
 {% embed url="https://youtu.be/Ml09R38jpok" %} Compromise any GCP Org Via Cloud API Lateral Movement and Privilege Escalation: Blackhat/Defcon 2020 {% endembed %}  
-{% embed url=https://github.com/allisonis/gcp-iam-sentinel-examples" %} Google Cloud Platform IAM Sentinel Policies  {% endembed %}  
-{% embed url=https://services.google.com/fh/files/misc/google-cloud-security-foundations-guide.pdf" %} Google Cloud security foundations guide{% endembed %}  
+{% embed url="https://github.com/allisonis/gcp-iam-sentinel-examples" %} Google Cloud Platform IAM Sentinel Policies  {% endembed %}  
+{% embed url="https://services.google.com/fh/files/misc/google-cloud-security-foundations-guide.pdf" %} Google Cloud security foundations guide{% endembed %}  
