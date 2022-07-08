@@ -31,6 +31,10 @@
 
 * [Wireless pentest](wireless-pentest/wireless.md)
 
+## Cloud Pentest
+
+* [Google Cloud Platform](cloud/gcp.md)
+
 ## Tools
 
 * [nmap](Tools/nmap.md)
