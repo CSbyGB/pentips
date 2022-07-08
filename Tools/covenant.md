@@ -35,7 +35,7 @@ sudo dotnet run
 
 - We can go to Launcher and choose one we need. For example if we have an initial foothold on a win machine we could use a powershell launcher  
 ![image](https://user-images.githubusercontent.com/96747355/178056997-81d23254-184d-4e41-a220-c758ea55d6a4.png)  
-- Say we wanted a powershell, we need to choose a listener so we can select the http one we just created then we just have to click generate (or Download depending on how you will use it) and use the given code.  
+- Say we wanted a powershell, we need to choose a listener so we can select the http one we just created then we just have to click generate (or Download depending on how you will use it) and use the given code. (Note: make sure to use a date later in time for the killDate)  
 ![image](https://user-images.githubusercontent.com/96747355/178057272-f4d74fdf-7ac5-4aa3-9ad0-996578935f82.png)  
 - Once the powershell code used you see a grunt has popped
 
