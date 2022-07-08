@@ -27,7 +27,7 @@ sudo dotnet run
 
 - This one of the first thing to do it go to the listener tab and click on create  
 ![image](https://user-images.githubusercontent.com/96747355/178054727-6633f276-24ea-4b9d-ac93-316f3a812d3c.png)  
-- Fill the field as you wish. Here is mine  
+- Fill the field as you wish. Here is mine (Note: When playing on HTB or THM the ip will be your tun ip)  
 ![image](https://user-images.githubusercontent.com/96747355/178057695-41943d70-cefc-41ac-9396-bad4cd9bce56.png)  
 
 
