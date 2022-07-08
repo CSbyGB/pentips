@@ -23,6 +23,23 @@ sudo dotnet run
 ```
 - Navigate to https://127.0.0.1:7443 set up your user and you should be good to go
 
+## Start a listener
+
+- This one of the first thing to do it go to the listener tab and click on create  
+![image](https://user-images.githubusercontent.com/96747355/178054727-6633f276-24ea-4b9d-ac93-316f3a812d3c.png)  
+- Fill the field as you wish. Here is mine  
+![image](https://user-images.githubusercontent.com/96747355/178057695-41943d70-cefc-41ac-9396-bad4cd9bce56.png)  
+
+
+## Create a Launcher to get a shell
+
+- We can go to Launcher and choose one we need. For example if we have an initial foothold on a win machine we could use a powershell launcher  
+![image](https://user-images.githubusercontent.com/96747355/178056997-81d23254-184d-4e41-a220-c758ea55d6a4.png)  
+- Say we wanted a powershell, we need to choose a listener so we can select the http one we just created then we just have to click generate (or Download depending on how you will use it) and use the given code.  
+![image](https://user-images.githubusercontent.com/96747355/178057272-f4d74fdf-7ac5-4aa3-9ad0-996578935f82.png)  
+- Once the powershell code used you see a grunt has popped
+
+
 ## Local Enumeration
 
 - Suppose we have a grunt (a shell on the target) so we want to enumerate the target
