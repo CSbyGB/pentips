@@ -167,6 +167,7 @@
 ## Digital skills
 
 * [Marp](/digital-skills/marp.md)
+* [Linux Tips](digital-skills/useful-linux.md)
 
 ## Resources
 
