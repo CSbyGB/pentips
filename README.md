@@ -17,6 +17,11 @@ It is a work in progress and it will be filled up asap with my notes and on the 
 **Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in any illegal activity using these resources**
 ❗🔴
 
+## Special Request
+
+- I need your help to make Women Hacker of the year 2022. Please vote [Here](https://lnkd.in/ggv7jz4h) - question 8 Category Woman Hacker - 𝗚𝗔𝗕𝗥𝗜𝗘𝗟𝗟𝗘 𝗕𝗢𝗧𝗕𝗢𝗟  
+![vote-for-me](https://user-images.githubusercontent.com/96747355/178278883-18009b48-dc7d-425c-bc5c-57efbd5d24b2.png)
+
 ## Credits
 
 I took these notes while working but also when using different resources.  
