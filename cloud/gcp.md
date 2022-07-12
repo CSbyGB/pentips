@@ -22,6 +22,7 @@
 
 - Check out [six2dez gitbook here](https://pentestbook.six2dez.com/enumeration/cloud/gcp) with many useful tools and commands for GCP pentest
 - If you want to practice check out [GCP-GOAT here](https://github.com/JOSHUAJEBARAJ/GCP-GOAT)
+- Take so time also to check out [this amazing tutorial on privilege escalation and post exploitation tactics in Google Cloud Platform environments by Chris Moberly](https://about.gitlab.com/blog/2020/02/12/plundering-gcp-escalating-privileges-in-google-cloud-platform/)
 
 ## Tools
 
