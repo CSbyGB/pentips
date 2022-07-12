@@ -31,6 +31,9 @@
 - [gcploit](https://github.com/dxa4481/gcploit)
 - [IAAS permission mining](https://github.com/netskopeoss/iaas_permission_mining)
 - [Hayat](https://github.com/DenizParlak/hayat)
+- [GCP Firewall Enum - Generate targeted port scans for Compute Instances exposed to the internet](https://gitlab.com/gitlab-com/gl-security/threatmanagement/redteam/redteam-public/gcp_firewall_enum)
+- [GCP Enum - Most of the enumeration commands in this blog, consolidated to a single script](https://gitlab.com/gitlab-com/gl-security/threatmanagement/redteam/redteam-public/gcp_enum)
+- [GCP misc - Various tools for attacking GCP environments](https://gitlab.com/gitlab-com/gl-security/threatmanagement/redteam/redteam-public/gcp_misc)
 
 ## Resources
 
