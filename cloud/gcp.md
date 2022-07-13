@@ -46,4 +46,4 @@ Madhav Bhatt  {% endembed %}
 {% embed url="https://youtu.be/Ml09R38jpok" %} Compromise any GCP Org Via Cloud API Lateral Movement and Privilege Escalation: Blackhat/Defcon 2020 {% endembed %}  
 {% embed url="https://github.com/allisonis/gcp-iam-sentinel-examples" %} Google Cloud Platform IAM Sentinel Policies  {% endembed %}  
 {% embed url="https://services.google.com/fh/files/misc/google-cloud-security-foundations-guide.pdf" %} Google Cloud security foundations guide{% endembed %}  
-![image](https://user-images.githubusercontent.com/96747355/178763017-8938e7db-2b27-44d0-899c-f3c78b8a4afd.png)
+{% embed url="https://user-images.githubusercontent.com/96747355/178763017-8938e7db-2b27-44d0-899c-f3c78b8a4afd.png" %}Google Cloud Developer Cheat Sheet{% endembed %}  
