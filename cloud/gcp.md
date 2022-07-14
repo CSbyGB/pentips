@@ -3,7 +3,7 @@
 ## Understand GCP
 
 - Here is a fun way to grap the core concepts of GCP.  
-{% embed url="https://github.com/CSbyGB/pentips/blob/main/.res/GCP-cloudgirldev.pdf" %}  {% endembed %}  
+{% embed url="https://github.com/CSbyGB/pentips/blob/main/.res/GCP-cloudgirldev.pdf" %} The Cloud Girl - Google Cloud Platform {% endembed %}  
 - You can get CloudGirl full book [here](https://thecloudgirl.dev/index.html):
 
 ## Checklist
