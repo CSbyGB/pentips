@@ -3,8 +3,8 @@
 ## Understand GCP
 
 - Here is a fun way to grap the core concepts of GCP.  
-{% embed url="../.res/GCP-cloudgirldev.pdf" %} How GCP works - Cloud girl Dev {% endembed %}  
-- You can grab a full book here:
+{% embed url="https://github.com/CSbyGB/pentips/blob/main/.res/GCP-cloudgirldev.pdf" %} How GCP works - Cloud girl Dev {% endembed %}  
+- You can CloudGirl full book [here](https://thecloudgirl.dev/index.html):
 
 ## Checklist
 
