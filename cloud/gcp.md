@@ -1,5 +1,11 @@
 # Pentest - Google Cloud Platform
 
+## Understand GCP
+
+- Here is a fun way to grap the core concepts of GCP.  
+{% embed url="../.res/GCP-cloudgirldev.pdf" %} How GCP works - Cloud girl Dev {% endembed %}  
+- You can grab a full book here:
+
 ## Checklist
 
 - [ ] Enumeration  
@@ -47,3 +53,4 @@ Madhav Bhatt  {% endembed %}
 {% embed url="https://github.com/allisonis/gcp-iam-sentinel-examples" %} Google Cloud Platform IAM Sentinel Policies  {% endembed %}  
 {% embed url="https://services.google.com/fh/files/misc/google-cloud-security-foundations-guide.pdf" %} Google Cloud security foundations guide{% endembed %}  
 {% embed url="https://user-images.githubusercontent.com/96747355/178763017-8938e7db-2b27-44d0-899c-f3c78b8a4afd.png" %}Google Cloud Developer Cheat Sheet{% endembed %}  
+{% embed url=https://thecloudgirl.dev/" %}The Cloud Girl - Illustrations about GCP{% endembed %}  
