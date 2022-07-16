@@ -154,6 +154,7 @@
 * [Hackthebox - BackendTwo](/writeups/HTB-BackendTwo.md)
 * [TryHackMe - Anonymous](writeups/THM-Anonymous.md)
 * [TryHackMe - CMesS](writeups/THM-CMesS.md)
+* [TryHackMe - ConvertMyVideo](writeups/THM-convertmyvideo.md)
 * [TryHackMe - LazyAdmin](writeups/THM-LazyAdmin.md)
 * [TryHackMe - Vulnversity](/writeups/THM-vulnversity.md)
 * [TryHackMe - Sudo Security Bypass](writeups/THM-SudoSecurityBypass.md)
