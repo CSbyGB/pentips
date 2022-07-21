@@ -39,15 +39,15 @@
 - You have to files and you want to extract unique values and put them in a new file (file1 should be the one with the more lines)
   - `awk 'FNR==NR {a[$0]++; next} !($0 in a)' file1 file2` Command found on [stackoverflow](https://stackoverflow.com/questions/4717250/extracting-unique-values-between-2-sets-files)
   - Explanation of how the code works:
-If we're working on file1, track each line of text we see.  
-If we're working on file2, and have not seen the line text, then print it.  
-Explanation of details:  
+    If we're working on file1, track each line of text we see.  
+    If we're working on file2, and have not seen the line text, then print it.  
+    Explanation of details:  
 
-FNR is the current file's record number  
-NR is the current overall record number from all input files  
-FNR==NR is true only when we are reading file1  
-$0 is the current line of text  
-a[$0] is a hash with the key set to the current line of text  
-a[$0]++ tracks that we've seen the current line of text  
-!($0 in a) is true only when we have not seen the line text  
-Print the line of text if the above pattern returns true, this is the default awk behavior when no explicit action is given  
+    FNR is the current file's record number  
+    NR is the current overall record number from all input files  
+    FNR==NR is true only when we are reading file1  
+    $0 is the current line of text  
+    a[$0] is a hash with the key set to the current line of text  
+    a[$0]++ tracks that we've seen the current line of text  
+    !($0 in a) is true only when we have not seen the line text  
+    Print the line of text if the above pattern returns true, this is the default awk behavior when no explicit action is given  
