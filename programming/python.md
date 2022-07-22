@@ -266,127 +266,6 @@ print(drinks)
 print(drinks.get("drink1"))
 ```
 
-## Sockets
-
-- We use socket to connect to an open port and an IP addess
-```python
-#!/bin/python3
-import socket
-
-HOST='127.0.0.1'
-PORT='7777'
-
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # AF_INET is IPV4 SOCK_STREAM is the port
-s.connect((HOST,PORT))
-```
-
-- To test our script we can launch netcat
-- `nc -nlvp 7777`
-
-### Building a port scanner
-
-- We can use socket to build a port scanner
-
-```python
-#!/bin/python3
-import sys
-import socket
-from datetime import datetime
-
-# usage: python3 scanner.py <IP-ADR>
-
-# Define our target
-if len(sys.argv) == 2:
-  target = socket.gethostbyname(sys.argv[1]) # Translate host name to IPV4
-else:
-  print("Invalid amount of arguments")
-  print("Syntax python3 scanner.py <IP-ADR>")
-
-# Add a banner
-print("-" * 50)
-print("Scanning target "+target)
-print("Time started: "+str(datetime.now()))
-print("-" * 50)
-
-try:
-  for port in range(1,65535):
-  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-  socket.setdefaultitmeout(1)
-  result = s.connect_ex((target,port)) # returns an error indicator if connection successful will return 0 otherwise will return 1
-  if result == 0:
-    print("Port {} is open".format(port))
-  s.close()
-
-# Make a clean exit if there is a keyboard interruption like ctrl+c
-except KeyboardInterrupt:
-  print("\nExiting program. ")
-  sys.exit()
-
-except socket.gaierror:
-  print("Hostname could not be resolved.")
-  sys.exit()
-  
-except socket.error:
-  print("Could not connect to server.")
-  sys.exit()
-```
-- This script is just and exercise (done in the PEH TCM course) so it definitely could be improved:
-  - Handle other type of errors
-  - ...
-
-## Reading and writing files
-
-```
-# file has to exist here we put a file in the same dir
-f = open("top-10.txt")
-print(f)
-
-f = open("top-10.txt", 'rt')
-print(f)
-print("-----")
-print("read")
-print(f.read())
-print("-----")
-f = open("top-10.txt", 'rt')
-print("readlines")
-print(f.readlines())
-# will not print content another time
-print(f.readlines())
-# will print content again if we ask for it with seek
-f.seek(0)
-print(f.readlines())
-# iterate over eachline and strip off chars
-f.seek(0)
-for line in f:
-	print(line.strip())
-
-f.close()
-
-# write to a file
-f = open("test.txt", "w")
-f.write("test line!")
-f.close()
-# read it to see if it exists:
-f = open("test.txt")
-print(f.read())
-# append an existing file
-f = open("test.txt", "a")
-f.write("test line! again")
-# check results
-f = open("test.txt")
-print(f.read())
-
-# get info on the file
-print(f.name)
-print(f.closed)
-print(f.mode)
-
-# for larger file we can use the file object
-with open('rockyou.txt', encoding='latin-1') as f:
-	for line in f:
-		pass
-```
-
 ## Sys
 
 ```python
@@ -458,6 +337,128 @@ sys.exit(0)
 
 # Note: to check exit code in terminal we can use echo $?
 ```
+
+## Reading and writing files
+
+```python
+# file has to exist here we put a file in the same dir
+f = open("top-10.txt")
+print(f)
+
+f = open("top-10.txt", 'rt')
+print(f)
+print("-----")
+print("read")
+print(f.read())
+print("-----")
+f = open("top-10.txt", 'rt')
+print("readlines")
+print(f.readlines())
+# will not print content another time
+print(f.readlines())
+# will print content again if we ask for it with seek
+f.seek(0)
+print(f.readlines())
+# iterate over eachline and strip off chars
+f.seek(0)
+for line in f:
+	print(line.strip())
+
+f.close()
+
+# write to a file
+f = open("test.txt", "w")
+f.write("test line!")
+f.close()
+# read it to see if it exists:
+f = open("test.txt")
+print(f.read())
+# append an existing file
+f = open("test.txt", "a")
+f.write("test line! again")
+# check results
+f = open("test.txt")
+print(f.read())
+
+# get info on the file
+print(f.name)
+print(f.closed)
+print(f.mode)
+
+# for larger file we can use the file object
+with open('rockyou.txt', encoding='latin-1') as f:
+	for line in f:
+		pass
+```
+
+## Sockets
+
+- We use socket to connect to an open port and an IP addess
+```python
+#!/bin/python3
+import socket
+
+HOST='127.0.0.1'
+PORT='7777'
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # AF_INET is IPV4 SOCK_STREAM is the port
+s.connect((HOST,PORT))
+```
+
+- To test our script we can launch netcat
+- `nc -nlvp 7777`
+
+### Building a port scanner
+
+- We can use socket to build a port scanner
+
+```python
+#!/bin/python3
+import sys
+import socket
+from datetime import datetime
+
+# usage: python3 scanner.py <IP-ADR>
+
+# Define our target
+if len(sys.argv) == 2:
+  target = socket.gethostbyname(sys.argv[1]) # Translate host name to IPV4
+else:
+  print("Invalid amount of arguments")
+  print("Syntax python3 scanner.py <IP-ADR>")
+
+# Add a banner
+print("-" * 50)
+print("Scanning target "+target)
+print("Time started: "+str(datetime.now()))
+print("-" * 50)
+
+try:
+  for port in range(1,65535):
+  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  socket.setdefaultitmeout(1)
+  result = s.connect_ex((target,port)) # returns an error indicator if connection successful will return 0 otherwise will return 1
+  if result == 0:
+    print("Port {} is open".format(port))
+  s.close()
+
+# Make a clean exit if there is a keyboard interruption like ctrl+c
+except KeyboardInterrupt:
+  print("\nExiting program. ")
+  sys.exit()
+
+except socket.gaierror:
+  print("Hostname could not be resolved.")
+  sys.exit()
+  
+except socket.error:
+  print("Could not connect to server.")
+  sys.exit()
+```
+- This script is just and exercise (done in the PEH TCM course) so it definitely could be improved:
+  - Handle other type of errors
+  - ...
+
 
 ## Virtual Environments
 
