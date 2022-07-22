@@ -102,6 +102,7 @@
 ## Programming
 
 * [Python programming](programming/python.md)
+* [My scripts](programming/myscripts.md)
 
 ## Binary Exploitation
 
