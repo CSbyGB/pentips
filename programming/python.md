@@ -334,6 +334,164 @@ except socket.error:
   - Handle other type of errors
   - ...
 
+## Reading and writing files
+
+```
+# file has to exist here we put a file in the same dir
+f = open("top-10.txt")
+print(f)
+
+f = open("top-10.txt", 'rt')
+print(f)
+print("-----")
+print("read")
+print(f.read())
+print("-----")
+f = open("top-10.txt", 'rt')
+print("readlines")
+print(f.readlines())
+# will not print content another time
+print(f.readlines())
+# will print content again if we ask for it with seek
+f.seek(0)
+print(f.readlines())
+# iterate over eachline and strip off chars
+f.seek(0)
+for line in f:
+	print(line.strip())
+
+f.close()
+
+# write to a file
+f = open("test.txt", "w")
+f.write("test line!")
+f.close()
+# read it to see if it exists:
+f = open("test.txt")
+print(f.read())
+# append an existing file
+f = open("test.txt", "a")
+f.write("test line! again")
+# check results
+f = open("test.txt")
+print(f.read())
+
+# get info on the file
+print(f.name)
+print(f.closed)
+print(f.mode)
+
+# for larger file we can use the file object
+with open('rockyou.txt', encoding='latin-1') as f:
+	for line in f:
+		pass
+```
+
+## Sys
+
+```python
+import sys
+import time
+
+# get info on system
+def get_info():
+	print(sys.version)
+	print(sys.executable)
+	print(sys.platform)
+
+# we can use sys for user input
+	# Here it is going to wait for user input until user types exit
+def user_input():
+	for line in sys.stdin:
+		if line.strip() == "exit":
+			break
+		sys.stdout.write(">> {}".format(line))
+
+# writes on the same line
+def oneline():
+	for i in range(1,5):
+		sys.stdout.write(str(i))
+		sys.stdout.flush()
+
+# writes on different lines
+def multiplelines():
+	for i in range(1,5):
+		print(i)
+
+# makes a progress bar
+def progress_bar():
+	for i in range(0, 51):
+		time.sleep(0.1)
+		sys.stdout.write("{} [{}{}]\r".format(i, '#'*i, "."*(50-i)))
+		sys.stdout.flush()
+	sys.stdout.write("\n")
+
+# will print all args when the script is launched
+def print_args():
+	print(sys.argv)
+
+	if len(sys.argv) != 3:
+		print("[X] To run {} enter a username and password".format(sys.argv[0]))
+	username = sys.argv[1]
+	password = sys.argv[2]
+	print("{}:{}".format(username, password))
+
+
+# sys allows to access the path where python will search for modules
+def get_modulespath():
+	print(sys.path)
+
+def get_all_modules():
+	print(sys.modules)
+
+
+get_info()
+user_input()
+oneline()
+progress_bar()
+print_args()
+get_modulespath()
+get_all_modules()
+
+# Exit with an exit code mentionning everything was ok
+sys.exit(0)
+
+# Note: to check exit code in terminal we can use echo $?
+```
+
+## Virtual Environments
+
+We might sometimes need to use a version for a script and another version for another
+Create and isolate python virtual environments not dependant
+With virtualenv we can have multiple version of a package installed and usable in a system at the same time
+`pip install virtualenv`
+We can then create a folder and launch our virtual env in it:
+```bash
+mkdir virtual demo
+cd virtual-demo
+python3 -m venv env
+```
+
+We then have to activate it:
+```bash
+source env/bin/activate
+```
+
+We can see that our env is launched  
+![image](https://user-images.githubusercontent.com/96747355/180493387-7b360d2d-2247-4711-8c71-7a354e47d56a.png)  
+
+By default our virtual env does not contains our previously installed python packages or any modules
+We can check which virtualenv is being called with which python3:  
+![image](https://user-images.githubusercontent.com/96747355/180493488-88f6d22e-0cf9-476c-bce2-4c45576f1ebe.png)  
+
+On our host (outside of our virtualenv) the same command gives this:  
+![image](https://user-images.githubusercontent.com/96747355/180493663-e5662665-fffb-4095-8222-d5fd88649db9.png)  
+
+And in our virtual environment we can install anything we need
+We can have multiple virtual environments running at the same time.
+One we finished with the virtualenv we can type deactivate
+
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} Practical Ethical Hacking - TCM Security {% endembed %}
