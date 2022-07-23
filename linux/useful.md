@@ -147,3 +147,6 @@ Source: [Chmod tutorial by Ryan Morrison](https://medium.com/@razl/chmod-tutoria
 ## Resources
 
 {% embed url="https://askubuntu.com/questions/470966/shortcut-to-clear-command-line-terminal" %} Shortcut to clear command line terminal {% endembed %}
+{% embed url="https://github.com/andrew-d/static-binaries" %}Static Binaries {% endembed %}
+{% embed url="https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/" %}Upgrading Simple Shells to Fully Interactive TTYs{% endembed %}
+
