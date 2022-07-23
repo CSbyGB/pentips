@@ -29,6 +29,9 @@ done
 fi
 ```
 - To automate this further we could add an nmap script to run on the alive ip found.
+
+### Alternative port scan if nmap unvailable
+
 - Here is an internal port Scanner (credits to Tryhackme - Holo network)
 ```bash
 #!/bin/bash
@@ -51,6 +54,7 @@ for port in portList:
  except:
   print("Port ", port, " is closed")
 ```
+- netcat `nc -zv 192.168.100.1 1-65535`
 
 ## read .db file
 
