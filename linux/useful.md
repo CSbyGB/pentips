@@ -29,6 +29,28 @@ done
 fi
 ```
 - To automate this further we could add an nmap script to run on the alive ip found.
+- Here is an internal port Scanner (credits to Tryhackme - Holo network)
+```bash
+#!/bin/bash
+ports=(21 22 53 80 443 3306 8443 8080)
+for port in ${ports[@]}; do
+timeout 1 bash -c "echo \"Port Scan Test\" > /dev/tcp/1.1.1.1/$port && echo $port is open || /dev/null" 
+done
+```
+- Python port scan
+```python
+#!/usr/bin/python3
+import socket
+host = "1.1.1.1"
+portList = [21,22,53,80,443,3306,8443,8080]
+for port in portList:
+ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+ try:
+  s.connect((host,port))
+  print("Port ", port, " is open")
+ except:
+  print("Port ", port, " is closed")
+```
 
 ## read .db file
 
