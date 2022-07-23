@@ -39,6 +39,18 @@ sudo dotnet run
 ![image](https://user-images.githubusercontent.com/96747355/178057272-f4d74fdf-7ac5-4aa3-9ad0-996578935f82.png)  
 - Once the powershell code used you see a grunt has popped
 
+### Launchers type
+
+- `Binary` Generates a custom binary to launch grunt, does not rely on a system binary.
+- `Shellcode` Converts binary to shellcode using [donut](https://github.com/TheWover/donut)
+- `PowerShell` Generates PowerShell code to launch a grunt using powershell.exe.
+- `MSBuild` Generates an MSBuild XML file to launch a grunt using [msbuild.exe](https://lolbas-project.github.io/lolbas/Binaries/Msbuild/)
+- `InstallUtil` Generates an InstallUtil XML file to launch a grunt using [installutil.exe](https://lolbas-project.github.io/lolbas/Binaries/Installutil/)
+- `Mshta` Generates an HTA file to launch a grunt using [mshta.exe](https://lolbas-project.github.io/lolbas/Binaries/Mshta/)
+- `Regsrv32` Generates an SCT file to launch a grunt using [regsrv32.exe](https://lolbas-project.github.io/lolbas/Binaries/Regsvr32/)
+- `Wmic` Generates an XSL file to launch a grunt using [wmic.exe](https://lolbas-project.github.io/lolbas/Binaries/Wmic/)
+- `Cscript` Generate a JScript file to launch a grunt using [cscript.exe](https://lolbas-project.github.io/lolbas/Binaries/Cscript/)
+- `Wscript` Generate a JScript file to launch a grunt using [wscript.exe](https://lolbas-project.github.io/lolbas/Binaries/Wscript/)
 
 ## Local Enumeration
 
