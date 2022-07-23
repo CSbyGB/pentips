@@ -37,7 +37,7 @@ for port in ${ports[@]}; do
 timeout 1 bash -c "echo \"Port Scan Test\" > /dev/tcp/1.1.1.1/$port && echo $port is open || /dev/null" 
 done
 ```
-- Python port scan
+- Python port scan (credits to Tryhackme - Holo network)
 ```python
 #!/usr/bin/python3
 import socket
