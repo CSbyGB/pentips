@@ -96,6 +96,7 @@
   * [Abusing ACL](windows/abusing-acl.md)
   * [Unconstrained Delegation](windows/unconstrained-delegation.md)
 * [Persistence](windows/persistence.md)
+* [AV Evasion](windows/AVevasion.md)
 * [Weaponization](windows/weaponization.md)
 * [Useful commands in Powershell, CMD and Sysinternals](windows/powershell-cmd.md)
 
