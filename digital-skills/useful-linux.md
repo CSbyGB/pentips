@@ -51,7 +51,3 @@
     a[$0]++ tracks that we've seen the current line of text  
     !($0 in a) is true only when we have not seen the line text  
     Print the line of text if the above pattern returns true, this is the default awk behavior when no explicit action is given  
-
-## Change DNS config in kali
-
-- [This article](http://www.infrabytes.com/change-dns-in-kali) explains it very well
