@@ -1,10 +1,18 @@
 # Useful tools and command in linux for general tasks
 
-## Convert HEIC to JPG
+## File conversions
+
+### HEIC to JPG
 
 - `sudo apt install libheif-examples` install heif-convert
 - For one file `heif-convert -q 85 input.HEIC output.JPG`
 - For multiple files `for file in *.HEIC; do heif-convert $file ${file/%.HEIC/.JPG}; done`
+
+### Images to PDF
+
+- You can do this with one image or multiple to put them all in one pdf
+- `convert *.png document.pdf` convert all png files of current folder in one pdf
+- `convert document.jpg document.pdf` convert the file `document.jpg` in to a pdf named `document.pdf`
 
 ## Find things
 
@@ -51,3 +59,7 @@
     a[$0]++ tracks that we've seen the current line of text  
     !($0 in a) is true only when we have not seen the line text  
     Print the line of text if the above pattern returns true, this is the default awk behavior when no explicit action is given  
+
+## Change DNS config in kali
+
+- [This article](http://www.infrabytes.com/change-dns-in-kali) explains it very well.
