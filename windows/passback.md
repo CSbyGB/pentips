@@ -1,6 +1,5 @@
 # Passback Attacks
 
-
 ## LDAP
 
 - Imagine we have a printer in the network. In the example on tryhackme we have access to the setting page. It has a login page so we can alter the Server IP and put ours instead  
