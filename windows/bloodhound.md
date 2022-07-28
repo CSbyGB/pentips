@@ -8,6 +8,9 @@
 - Change the password
 - From the console launch `bloodhound`
 - Connect with the creds you just set up in neo4j
+- **Note: Sometimes Bloodhound will not properly process files.  
+  To solve this it can be useful to download a previous version.  
+  [Here](https://github.com/BloodHoundAD/BloodHound/releases/tag/4.1.0) is version 4.1.0 that usually does the trick for me.**
 
 ## Grabbing Data to feed Bloodhound
 
@@ -30,7 +33,6 @@
 - Once it's done we can copy the file name of the generated zip
 - And use the Covenant download command
 - Once done we can click on the file name it should open a pop up and you will be able to choose where to put the file
-- 
 
 ## Bloodhound Python
 
@@ -94,7 +96,7 @@
 - `MATCH (A)-[B]->(C) RETURN A,B,C` Here A and C are nodes B is the relationship between A and C
 - `MATCH (n:User),(m:Group) MATCH p=(n)-[r:MemberOf*1..3]->(m) RETURN p`
 
-### Most commin Keywords
+### Most common Keywords
 
 - `MATCH` Used before describing the search pattern for finding one or more nodes or relationships.
 - `WHERE` Used to add more constraints to specific patterns or filter out unwanted patterns.
@@ -117,6 +119,22 @@
 - HasSession	One node (user) has a session on a second node (computer)
 - TrustedBy	One node (domain) is trusted by a second node (domain)
 
+## Exploiting ACEs
+
+A significant amount of ACEs can be misconfigured, and the exploits for each vary. The Bloodhound documentation assists in explaining enumerated ACEs and how they can be exploited.
+
+- **ForceChangePassword**: We have the ability to set the user's current password without knowing their current password.
+- **AddMembers**: We have the ability to add users (including our own account), groups or computers to the target group.
+- **GenericAll**: We have complete control over the object, including the ability to change the user's password, register an SPN or add an AD object to the target group.
+- **GenericWrite**: We can update any non-protected parameters of our target object. This could allow us to, for example, update the scriptPath parameter, which would cause a script to execute the next time the user logs on.
+- **WriteOwner**: We have the ability to update the owner of the target object. We could make ourselves the owner, allowing us to gain additional permissions over the object.
+- **WriteDACL**: We have the ability to write new ACEs to the target object's DACL. We could, for example, write an ACE that grants our account full control over the target object.
+- **AllExtendedRights**: We have the ability to perform any action associated with extended AD rights against the target object. This includes, for example, the ability to force change a user's password.
+
+In order to exploit these ACEs, we will need a method to interact with AD to make these requests. The two best options for this are the AD-RSAT PowerShell cmdlets or PowerSploit.  
+Depending on the breach and the detection tools in the environment, one option may be stealthier.  
+Source: [Tryhackme](https://tryhackme.com/room/exploitingad)
+
 ## Other Tips Bloodhound
 
 - If we click on a blade in the graph and select help we will have useful info about the specific blade selected. It is really worth having a look at the help and abuse info to have more info and tips on ways of exploitation.
@@ -126,3 +144,4 @@
 - [Cypher Query Language](https://neo4j.com/developer/cypher/)
 - [Edges in Bloodhound](https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html)
 - [SharpHound: Target Selection and API Usage - CptJesus](https://blog.cptjesus.com/posts/sharphoundtargeting)
+- [Exploiting AD - Tryhackme](https://tryhackme.com/room/exploitingad)
