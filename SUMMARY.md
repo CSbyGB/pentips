@@ -86,7 +86,7 @@
 * [Post Compromise Attacks](windows/post-compromise-attack.md)
   * [Pass the Password / Hash](windows/pass-hash.md)
   * [Token Impersonation - Potato attacks](windows/token-impersonation.md)
-  * [Kerberoasting](windows/kerberoasting.md)
+  * [Kerberos](windows/kerberoasting.md)
   * [GPP/cPassword Attacks](windows/gpp.md)
   * [URL File Attack](windows/url-file-attack.md)
   * [PrintNightmare](windows/printNightmare.md) 

