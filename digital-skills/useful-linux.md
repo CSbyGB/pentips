@@ -40,6 +40,13 @@
 - `-amin -60` accessed in the last 60 minutes
 - `-size 5M` get files that are 5MB
 
+## Grep
+
+- If you are looking for a specific thing in a file you can grep a string on it.
+- `cat file.txt | grep "keyword"` looking for keyword in file.txt
+- `-B 2` this option will show us the 2 lines before our keyword
+- `-A 2` This option will show su the 2 lines after our keyword
+
 ## Compare 2 files
 
 ### Extract unique occurrence from 2 files

