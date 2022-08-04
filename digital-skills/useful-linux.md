@@ -70,3 +70,9 @@
 ## Change DNS config in kali
 
 - [This article](http://www.infrabytes.com/change-dns-in-kali) explains it very well.
+
+## Speed up update process in Kali
+
+- If like me you are annoyed at the time it takes to update your kali, it is possible to use a mirror.
+- [This article](https://trendoceans.com/how-to-fix-kali-linux-slow-apt-update-process/) explains it very well.
+- **Note: it is not the official repositories so use with caution ;)**

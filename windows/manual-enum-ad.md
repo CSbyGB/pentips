@@ -58,6 +58,9 @@
 - `Get-ADUser -Properties * -LDAPFilter '(userAccountControl:1.2.840.113556.1.4.803:=524288)' | select Name,memberof,servicePrincipalName,TrustedForDelegation` Find user accounts marked trusted for delegation
 - `Get-ADUser -Filter * -SearchBase "OU=Pentest,OU=Employees,DC=DOMAIN-NAME,DC=LOCAL"` | List user in Pentest OU
 - `Get-ADGroup -filter * -Properties MemberOf | Where-Object {$_.MemberOf -ne $null} | Select-Object Name,MemberOf` Find all nested groups in the Domain
+- `Get-ADDomain | Select-Object NetBIOSName, DNSRoot, InfrastructureMaster`
+- `Get-ADForest | Select-Object Domains`
+- `Get-ADTrust -Filter * | Select-Object Direction,Source,Target`
 
 ## Other useful native tools or cmd
 

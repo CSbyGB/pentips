@@ -62,6 +62,10 @@
 - `Get-DomainGPO | select displayname` list all gpo names
 - `Get-DomainGPO | select displayname,objectguid` list gpo names with their guid
 - `Get-DomainTrustMapping` enumerate all trusts for our current domain and other reachable domains
+- `Get-NetDomain` similar to the ActiveDirectory module’s Get-ADDomain but contains a lot less information. Basic info such as the Forest, Domain Controllers, and Domain Name are enumerated.
+- `Get-NetDomainController` list all of the Domain Controllers within the network
+- `Get-NetForest` similar to Get-ADForest, and provides similar output. It provides all the associated Domains, the root domain, as well as the Domain Controllers for the root domain.
+- `Get-NetDomainTrust` is similar to Get-ADTrust with our SelectObject filter applied to it.
 
 ## Enumerating Users
 

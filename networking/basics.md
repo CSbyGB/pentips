@@ -63,17 +63,43 @@ Source: TCM Security Academy - Course Practical Ethical Hacking
 
 - (Mnemonic: Please Do Not Throw Sausage Pizza Away)
 
+![OSI - TCP/IP](../.res/2022-08-04-15-58-58.png)
+
+Source:TryHackMe
+
+## TCP header (RFC793)
+
+![TCP Header](../.res/2022-08-04-16-01-28.png)
+Source:TryHackme
+
 ## Subnetting
 
 ![image](https://user-images.githubusercontent.com/96747355/175038701-8d9041e0-3021-4f72-a970-2b103ab0b574.png)  
 Source: TCM Security Academy  - Course Practical Ethical Hacking  
-
 
 ## End Device Addressing
 
 - IP address - This identifies the host on the network.
 - Subnet mask - This is used to identify the network on which the host is connected.
 - Default gateway - This identifies the networking device that the host uses to access the internet or another remote network.
+
+## Common ports and protocols
+
+| Protocol | TCP Port | Application(s) | Data Security |
+|----------|----------|----------------|---------------|
+| FTP | 21 | File Transfer | Cleartext |
+| FTPS | 990 | File Transfer | Encrypted |
+| HTTP | 80 | Worldwide Web | Cleartext |
+| HTTPS | 443| Worldwide Web| Encrypted|
+|IMAP | 143 | Email (MDA) | Cleartext|
+|IMAPS| 993 | Email (MDA) | Encrypted|
+|POP3| 110 | Email (MDA) | Cleartext|
+|POP3S|995| Email (MDA)| Encrypted|
+|SFTP|22 | File Transfer| Encrypted
+|SSH| 22  |Remote Access and File Transfer|Encrypted|
+|SMTP|25|Email (MTA)|Cleartext|
+|SMTPS|465|Email (MTA)|Encrypted|
+|Telnet|23|Remote Access|Cleartext|
 
 ## Differenciate active tun connections
 

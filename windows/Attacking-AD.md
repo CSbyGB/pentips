@@ -23,3 +23,4 @@ It will be complemented with notes from my practice and from other classes like 
 {% embed url="https://medium.com/@adam.toscher/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa" %} Top Five Ways I Got Domain Admin - Adam Toscher {% endembed %}
 {% embed url="https://adsecurity.org/" %} Active Directory Security Blog {% endembed %}
 {% embed url="http://blog.harmj0y.net/" %} Harmj0y Blog {% endembed %}
+{% embed url="https://adam-toscher.medium.com/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa" %} Top Five Ways I Got Domain Admin on Your Internal Network before Lunch (2018 Edition) Adam Toscher {% endembed %}
