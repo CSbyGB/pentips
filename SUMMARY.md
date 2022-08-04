@@ -45,6 +45,7 @@
 * [Passwords, Hashes and wordlist tools](Tools/passwords-tools.md)
 * [WFuzz](Tools/wfuzz.md)
 * [WPScan](Tools/wpscan.md)
+* [Powershell Empire](Tools/empire-powershell.md)
 
 ## VM and Labs
 
