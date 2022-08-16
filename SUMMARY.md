@@ -177,7 +177,7 @@
 
 ## Talks
 
-*[TDI 2022 - Android Application Hacking](/talks/android-app.md)
+* [TDI 2022 - Android Application Hacking](talks/android-app.md)
 
 ## Resources
 
