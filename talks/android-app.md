@@ -4,7 +4,7 @@
 
 ## Slides
 
-![Android Application Hacking - TDI 2022 - Slides](https://github.com/CSbyGB/pentips/blob/main/.res/android-app.pdf)
+- [Android Application Hacking - TDI 2022 - Slides](https://github.com/CSbyGB/pentips/blob/main/.res/android-app.pdf)
 
 ## Videos from slides
 
