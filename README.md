@@ -17,9 +17,11 @@ It is a work in progress and it will be filled up asap with my notes and on the 
 **Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in any illegal activity using these resources**
 ❗🔴
 
-## Special Request
+## I won!!
 
-**Thanks for your votes! I will keep you posted!**
+**Thank you everyone for your support!! I won!!**
+
+![Woman Hacker 2022](../.res/2022-08-16-15-01-20.png)
 
 ![vote-for-me](https://user-images.githubusercontent.com/96747355/178278883-18009b48-dc7d-425c-bc5c-57efbd5d24b2.png)
 
