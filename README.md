@@ -23,8 +23,6 @@ It is a work in progress and it will be filled up asap with my notes and on the 
 
 ![Woman Hacker 2022](./.res/woman-hacker.jpeg)
 
-![vote-for-me](https://user-images.githubusercontent.com/96747355/178278883-18009b48-dc7d-425c-bc5c-57efbd5d24b2.png)
-
 ## More about CSbyGB
 
 - [CSbyGB - LinkTree](https://linktr.ee/csbygb)
