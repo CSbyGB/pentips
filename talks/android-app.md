@@ -1,6 +1,10 @@
-# Slides and Resources for my talk Android Application Pentest
+# Slides and Resources for my talk Android Application Pentest for The Diana Initiative 2022
+
+![](../.res/2022-08-16-14-45-32.png)
 
 ## Slides
+
+![](../.res/1-Diana Initiative 2022 - Android Application Pentest.pdf)
 
 ## Resources
 
