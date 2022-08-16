@@ -175,9 +175,9 @@
 * [Linux Tips](digital-skills/useful-linux.md)
 * [VSCodium](/digital-skills/vscodium.md)
 
-## Slides and references from my talks
+## Talks
 
-*[TDI 2022 - Android Application Hacking](talks/android-app.md)
+*[TDI 2022 - Android Application Hacking](/talks/android-app.md)
 
 ## Resources
 
