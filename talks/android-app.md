@@ -2,6 +2,10 @@
 
 ![Android Application Hacking - TDI 2022](../.res/2022-08-16-14-45-32.png)
 
+## Recording of my talk
+
+{% embed url="https://youtu.be/NIbDv4s34ks?t=2308" %} TDI 2022 - Android Application Hacking {% endembed %}  
+
 ## Slides
 
 - [Android Application Hacking - TDI 2022 - Slides](https://github.com/CSbyGB/pentips/blob/main/.res/android-app.pdf)
