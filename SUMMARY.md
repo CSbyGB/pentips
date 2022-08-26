@@ -174,6 +174,7 @@
 * [Marp](/digital-skills/marp.md)
 * [Linux Tips](digital-skills/useful-linux.md)
 * [VSCodium](/digital-skills/vscodium.md)
+* [Git Tips](/digital-skills/git-tips.md)
 
 ## Talks
 
