@@ -5,10 +5,6 @@
 ## Recording of my talk
 
 **COMING SOON**
-<<<<<<< HEAD
-=======
-[](https://youtu.be/NIbDv4s34ks?t=2308)
->>>>>>> 4b78249f9efdcb43c738838b3833c63684e20f74
 
 ## Slides
 
