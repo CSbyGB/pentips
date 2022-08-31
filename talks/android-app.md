@@ -4,7 +4,7 @@
 
 ## Recording of my talk
 
-{% embed url="https://youtu.be/NIbDv4s34ks?t=2308" %} TDI 2022 - Android Application Hacking {% endembed %}  
+**COMING SOON**
 
 ## Slides
 

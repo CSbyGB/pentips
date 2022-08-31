@@ -262,4 +262,3 @@ class Settings(BaseSettings):
 - And now we just need to try to login as root using `su root` and it works!!  
 ![image](https://user-images.githubusercontent.com/96747355/168448621-b3e76bac-8793-41f7-a4e0-134406f12d1a.png)  
 - We can finally grab the root flag!! :D :D :D `cat /root/root.txt`
-

@@ -191,7 +191,7 @@ spec:
 - Now we need to apply our new pod
 ![image](https://user-images.githubusercontent.com/96747355/175797313-76c0a98c-4e88-4b47-a73e-9f783730a9ad.png)  
 
-
+**Coming soon**
 
 ## Resources
 
