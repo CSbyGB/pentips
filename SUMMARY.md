@@ -33,6 +33,7 @@
 
 ## Cloud Pentest
 
+* [Cloud Pentest](cloud/cloud.md)
 * [Google Cloud Platform](cloud/gcp.md)
 
 ## Tools
