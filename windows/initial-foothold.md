@@ -14,3 +14,21 @@ Launch an nmap scan, my favorite is:
 Check out [Hackthebox Devel's writeup](../writeups/HTB-Devel.md) to have an example of this
 
 - If you do not have write access you could still find interesting and useful files like passwords or else.
+
+## SMB
+
+### Enumeration
+
+- `smbclient -L \\10.10.55.112` list shares
+- `enum4linux -a 10.10.10.100` output all sorts of info
+- `smbmap -H 192.168.1.40`
+
+### What to try
+
+- `smbclient --no-pass \\\\10.10.10.100\\SHARE` connect to a share anonymously
+- You might find interesting files this way
+- Check out the win version to see if it is vulnerable to anything (eternal blue for example)
+
+## Resources
+
+{% embed url="https://www.hackingarticles.in/a-little-guide-to-smb-enumeration/" %} A little guide to SMB Enumeration {% endembed %}
