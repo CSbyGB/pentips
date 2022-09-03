@@ -22,3 +22,4 @@ Source: [Practical Ethical Hacking - TCM Security](https://academy.tcm-sec.com/p
 {% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} Practical Ethical Hacking - TCM Security {% endembed %}  
 - Here is a great methodology with plenty of resources  
 {% embed url="https://bitvijays.github.io/LFC-VulnerableMachines.html#ctf-series-vulnerable-machines" %} CTF Series : Vulnerable Machines {% endembed %}  
+{% embed url="https://uppusaikiran.github.io/hacking/Capture-the-Flag-CheatSheet/" %} Capture the Flag Cheatsheet - Uppusaikiran {% endembed %}  

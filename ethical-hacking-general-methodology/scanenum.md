@@ -13,6 +13,7 @@
 
 ### Scan with Nmap
 
+- `nmap -Pn -sV -sC -p- 10.0.2.80` my fav scan options (if I do not need to be stealthy)
 - We can use the `-sS` flag it is suppose to be stealthy (it is much more picked up today than it used to be). It is called stealthy because it is going to send SYN and when it will receive the SYNACK it will send a RST instead of an ACK (it means that when the remote machine is going to say "I am open you can connect" it is going to send something like "I do not want to connect anymore")
 - `nmap -T4 -p- -A 10.0.2.4`
 - `nmap -sU -T4 -p 10.0.2.4` In case we want to scan udp it is better to make a scan similar to this one because udp takes a long time to scan
@@ -121,6 +122,8 @@ Nmap done: 1 IP address (1 host up) scanned in 22.74 seconds
 ## Enumerate SMB
 
 - Fileshare 
+- `enum4linux -a 10.10.10.100` output all sorts of info
+- `smbmap -H 192.168.1.40`
 
 ### Metasploit
 
@@ -135,8 +138,15 @@ Nmap done: 1 IP address (1 host up) scanned in 22.74 seconds
 ### smbclient
 
 - Tool that will help us to list shares or see useful info
+- `smbclient -L \\10.10.55.112` list shares
 - `smbclient -L IP-ADD` (in my example instead of IP-ADD I will put 10.0.2.4)  
 ![image](https://user-images.githubusercontent.com/96747355/175833616-0eb455e8-ed55-48e6-abfb-64908fac28a8.png)  
+
+### What to try
+
+- `smbclient --no-pass \\\\10.10.10.100\\SHARE` connect to a share anonymously
+- You might find interesting files this way
+- Check out the win version to see if it is vulnerable to anything (eternal blue for example)
 
 ## Enumerate SSH
 
@@ -148,6 +158,13 @@ Nmap done: 1 IP address (1 host up) scanned in 22.74 seconds
 - For this error we can try this `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa `  
 ![image](https://user-images.githubusercontent.com/96747355/175834033-1c9a18f8-bb6f-4961-bbc1-3550da4dba45.png)  
 - Finally for this error we can use this and will try to connect `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc`
+
+## FTP
+
+- Check if anonymous FTP is enabled, if so check if you can downloads files. If so you can RCE.  
+Check out [Hackthebox Devel's writeup](../writeups/HTB-Devel.md) to have an example of this
+
+- If you do not have write access you could still find interesting and useful files like passwords or else.
 
 ## Research 
 
@@ -174,3 +191,22 @@ Nmap done: 1 IP address (1 host up) scanned in 22.74 seconds
 ![image](https://user-images.githubusercontent.com/96747355/175835352-16616ab5-4784-48da-80f8-37641bcca200.png) 
 - We can then check the vulns out and see if we can exploit them.
 
+## Default Credentials
+
+- If you stumble accross a login platform, first thing to try would be default creds.  
+Here are some useful links for this
+- [Default Creds CheatSheet - Ihebski](https://github.com/ihebski/DefaultCreds-cheat-sheet/blob/main/DefaultCreds-Cheat-Sheet.csv)
+- [Passwords - CIRT](https://cirt.net/passwords)
+- [Default Creds - Seclists](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Default-Credentials)
+- [Data Recovery](https://datarecovery.com/rd/default-passwords/)
+
+## Weak Credentials
+
+- [Passwords - Seclists](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
+- [Wikipedia Most Common Password](https://en.wikipedia.org/wiki/List_of_the_most_common_passwords)
+
+## Resources
+
+### SMB
+
+{% embed url="https://www.hackingarticles.in/a-little-guide-to-smb-enumeration/" %} A little guide to SMB Enumeration {% endembed %}  
