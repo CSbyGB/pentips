@@ -69,7 +69,7 @@ Nmap done: 1 IP address (1 host up) scanned in 229.52 seconds
   
 > NOTE: I found out later that the time does not matter we can basically manually launch the tasks
 
-- Ok another try without the greek chars cause it does not seem to work as well so if I type ony `08:30` instead of `8:37 πμ` the task is scheduled. 
+- Ok another try without the greek chars cause it does not seem to work as well so if I type ony `08:30` instead of `8:37 πμ` the task is scheduled.
 
 ![shell2](../.res/2022-09-04-08-36-31.png)
 
