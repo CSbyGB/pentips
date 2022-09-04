@@ -23,8 +23,8 @@ olcSaslSecProps: noanonymous,minssf=0,passcred
 - `sudo ldapmodify -Y EXTERNAL -H ldapi:// -f ./olcSaslSecProps.ldif && sudo service slapd restart`
 
 - `sudo tcpdump -SX -i eth0 tcp port 389` (we need to replace eth0 with the appropriate interface)
-- And we should get the password, just like in our example from tryhackme:  
-![](../.res/2022-07-26-16-52-21.png)
+- And we should get the password, just like in the example from tryhackme :  
+![password](../.res/2022-09-03-20-54-04.png)
 
 {% embed url="https://www.mindpointgroup.com/blog/how-to-hack-through-a-pass-back-attack/" %} A Pen Tester’s Guide to Printer Hacking {% endembed %}
 
