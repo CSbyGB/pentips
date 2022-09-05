@@ -240,6 +240,7 @@ Network Card(s):           1 NIC(s) Installed.
 - We can run winpeas. We will use the bat version because the exe does not work.
 
 <!-- 
+
 TODO:
 - Continue enum for privesc with linpeas.bat
 - use win exploit suggester
