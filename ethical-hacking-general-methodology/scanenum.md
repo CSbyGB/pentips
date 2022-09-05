@@ -177,6 +177,15 @@ Check out [Hackthebox Devel's writeup](../writeups/HTB-Devel.md) to have an exam
 ### searchsploit
 
 - On kali we can use searchsploit `searchsploit technology partial-version` for example `searchsploit Samba 2` or `searchsploit Samba`
+- Example `searchsploit drupal 7.54` You will then get a list of exploits or Metasploit modules  
+
+![Searchsploit](../.res/2022-09-05-12-17-38.png)  
+
+- To download an exploit you then just need to do `searchsploit -m 46459 .` with:
+  - `46459` name of the exploit (here we took the last one from the screen above)
+  - `.` the path to the folder you want to copy it to  
+
+![get exploit](../.res/2022-09-05-12-21-46.png)
 
 ## Vulnerability Sanning with Nessus
 

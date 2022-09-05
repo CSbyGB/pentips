@@ -95,6 +95,7 @@
 #### Other
 
 - [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester) is a python script that will provide the list of vulnerabilities the OS is vulnerable to using systeminfo
+  - [Here](https://www.jaacostan.com/2021/04/windows-exploit-suggester-next.html) is a blog post about wes next generation
 - [Metasploit Local Exploit Suggester](https://blog.rapid7.com/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more/)
 - [Precompiled kernel exploits](https://github.com/SecWiki/windows-kernel-exploits)
 - [SessionGopher](https://github.com/Arvanaghi/SessionGopher) is a PowerShell tool that finds and decrypts saved session information for remote access tools. It extracts PuTTY, WinSCP, SuperPuTTY, FileZilla, and RDP saved session information.
