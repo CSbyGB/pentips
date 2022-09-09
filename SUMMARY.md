@@ -143,6 +143,11 @@
 
 * [How to report your findings](reporting/pentest-report.md)
 
+## Red Team
+
+* [Red Team](red-team/redteam.md)
+* [AV Evasion](red-team/AV-Evasion-shellcode.md)
+
 ## Writeups
 
 * [Hackthebox - Academy](/writeups/HTB-academy.md)
