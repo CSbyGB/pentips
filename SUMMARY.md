@@ -164,6 +164,7 @@
 * [Hackthebox - Jeeves](writeups/HTB-Jeeves.md)
 * [Hackthebox - Lame](writeups/HTB-Lame.md)
 * [Hackthebox - Love](writeups/HTB-love.md)
+* [Hackthebox - Optimum](writeups/HTB-optimum.md)
 * [Hackthebox - Poison](/writeups/HTB-poison.md)
 * [Hackthebox - SecNotes](writeups/HTB-secnotes.md)
 * [Hackthebox - Steamcloud](writeups/HTB-steamcloud.md)
