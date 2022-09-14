@@ -62,3 +62,4 @@ Source: TryHackMe
 - Other convenient resources:  
 
 {% embed url="https://redteam.guide/docs/definitions/" %} Redteam guide by Joe Vest and James Tubberville {% endembed %}  
+{% embed url="https://tryhackme.com/room/redteamengagements" %} Red Team Engagements - TryHackMe {% endembed %}  

