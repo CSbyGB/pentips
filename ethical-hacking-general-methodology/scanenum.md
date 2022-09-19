@@ -141,12 +141,14 @@ Nmap done: 1 IP address (1 host up) scanned in 22.74 seconds
 - `smbclient -L \\10.10.55.112` list shares
 - `smbclient -L IP-ADD` (in my example instead of IP-ADD I will put 10.0.2.4)  
 ![image](https://user-images.githubusercontent.com/96747355/175833616-0eb455e8-ed55-48e6-abfb-64908fac28a8.png)  
+- Connect anonymously `smbclient --no-pass \\\\10.10.10.100\\SHARE` or `smbclient //10.10.10.134/SHARE`
 
 ### What to try
 
 - `smbclient --no-pass \\\\10.10.10.100\\SHARE` connect to a share anonymously
 - You might find interesting files this way
 - Check out the win version to see if it is vulnerable to anything (eternal blue for example)
+- We can also try this command `smbclient //10.10.10.134/SHARE`
 
 ## Enumerate SSH
 

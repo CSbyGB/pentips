@@ -156,6 +156,7 @@
 * [Hackthebox - Arctic](/writeups/HTB-Arctic.md)
 * [Hackthebox - Backend](writeups/HTB-Backend.md)
 * [Hackthebox - BackendTwo](/writeups/HTB-BackendTwo.md)
+* [Hackthebox - Bastion](/writeups/HTB-Bastion.md)
 * [Hackthebox - Bastard](/writeups/HTB-bastard.md)
 * [Hackthebox - Chatterbox](/writeups/HTB-chatterbox.md)
 * [Hackthebox - Devel](/writeups/HTB-Devel.md)
