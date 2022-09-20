@@ -11,6 +11,9 @@ Local authentication is done using the Local Security Authority (LSA). LSA is a 
 
 ### Domain Controllers
 
+"A Domain Controller is a Windows server that provides Active Directory services and controls the entire domain. It is a form of centralized user management that provides encryption of user data as well as controlling access to a network, including users, groups, policies, and computers. It also enables resource access and sharing. These are all reasons why attackers target a domain controller in a domain because it contains a lot of high-value information."  
+source: tryhackme
+
 ![Domain Controllers](../.res/domain-controllers.png)
 
 ### AD DS Data Store
@@ -40,6 +43,9 @@ Domain => Tree => Forest
 
 ### Organizational Units (Ous)
 
+"Organizational Units (OU's) are containers within the AD domain with a hierarchical structure."  
+Source:tryhackme
+
 ![Organizational Units (Ous)](../.res/ous.png)
 
 ### Trusts
@@ -47,6 +53,12 @@ Domain => Tree => Forest
 ![Trusts](../.res/trusts.png)
 
 ### Objects
+
+Active Directory Objects can be a single user or a group, or a hardware component, such as a computer or printer. Each domain holds a database that contains object identity information that creates an AD environment, including:
+
+- Users - A security principal that is allowed to authenticate to machines in the domain
+- Computers - A special type of user accounts
+- GPOs - Collections of policies that are applied to other AD objects
 
 ![Objects](../.res/objects.png)  
 
@@ -57,6 +69,10 @@ Domain => Tree => Forest
   
 - Here is a very comprehensive Schema from HTB Academy  
 ![image](https://user-images.githubusercontent.com/96747355/167955114-990a094c-ca46-4326-b281-ccf92a20f992.png)  
+
+- Here is another one frome tryhackme
+
+![Active directory environment](../.res/2022-09-20-09-30-18.png)
 
 ### Rights and privileges in AD
 

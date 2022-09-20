@@ -146,6 +146,7 @@
 ## Red Team
 
 * [Red Team](red-team/redteam.md)
+* [Defenses Enumeration](red-team/AV-Enumeration.md)
 * [AV Evasion](red-team/AV-Evasion-shellcode.md)
 
 ## Writeups

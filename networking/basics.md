@@ -1,5 +1,23 @@
 # Networking basics
 
+## Internal Networks
+
+"Internal Networks are subnetworks that are segmented and separated based on the importance of the internal device or the importance of the accessibility of its data. The main purpose of the internal network(s) is to share information, faster and easier communications, collaboration tools, operational systems, and network services within an organization. In a corporate network, the network administrators intend to use network segmentation for various reasons, including controlling network traffic, optimizing network performance, and improving security posture."  
+
+![internal network](../.res/2022-09-20-09-01-22.png)
+
+Source: tryhackme
+
+## A Demilitarized Zone (DMZ)
+
+"A DMZ Network is an edge network that protects and adds an extra security layer to a corporation's internal local-area network from untrusted traffic. A common design for DMZ is a subnetwork that sits between the public internet and internal networks.
+
+Designing a network within the company depends on its requirements and need. For example, suppose a company provides public services such as a website, DNS, FTP, Proxy, VPN, etc. In that case, they may design a DMZ network to isolate and enable access control on the public network traffic, untrusted traffic."
+
+![dmz](../.res/2022-09-20-09-05-44.png)  
+
+Source: tryhackme
+
 ## IP Addresses
 
 - Address to communicate on a network (Layer 3 of OSI model) = routing
@@ -22,7 +40,8 @@ Source: [What is a MAC Address - Lakshan Mamalgaha](https://medium.com/@lakshanm
 
 ## TCP, UDP and the Three way handshake
 
-### TCP 
+### TCP
+
 - Transmission Control Protocol. It is a connection oriented protocol. http, ftp, etc all utilize this.
 
 #### Three way handshake
@@ -31,12 +50,14 @@ Source: [What is a MAC Address - Lakshan Mamalgaha](https://medium.com/@lakshanm
 - SYN > SYN ACK > SYN : Asking to connect to a port > Port is open > connection occurs
 
 ### UDP
+
 - User Datagram protocol. It is a connectionless protocol. Streaming service, voip etc. all utilize this.
 
 ## Common ports and protocol
 
 ![image](https://user-images.githubusercontent.com/96747355/175028740-e00258bf-cbcf-4ee5-b2ba-0776caec5c8c.png)  
-Source: TCM Security Academy - Course Practical Ethical Hacking   
+Source: TCM Security Academy - Course Practical Ethical Hacking  
+
 - TCP
   - FTP = File Transfer protocol
   - SSH and Telnet: connect to a device remotely ssh is encrypted telnet is not
@@ -111,3 +132,4 @@ Source: TCM Security Academy  - Course Practical Ethical Hacking
 {% embed url="https://skillsforall.com/course/getting-started-cisco-packet-tracer" %} Getting Started with Cisco Packet Tracer (this tool is very fun and useful to use when trying to understand networking) {% endembed %}
 {% embed url="https://skillsforall.com/course/networking-essentials" %} Networking Essentials by Cisco {% endembed %}
 {% embed url="https://youtu.be/ZxAwQB8TZsM" %} Professor Messer 7 second subnetting {% endembed %}
+{% embed url="https://tryhackme.com/room/thelayoftheland" %} TryHackMe - The Lay of the land {% endembed %}
