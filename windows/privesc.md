@@ -122,6 +122,9 @@ Invoke-AllChecks
 
 [Windows Exploit Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester) is a python script that will provide the list of vulnerabilities the OS is vulnerable to using systeminfo  
 [Here](https://www.jaacostan.com/2021/04/windows-exploit-suggester-next.html) is a blog post about wes next generation  
+
+- Here is a convenient command in wes to grep specifically for privesc exploit and have an output in color `python3 /opt/wesng/wes.py --color sysinfo.txt | grep -B 3 -A 5 "Privilege Vulnerability"`  
+
 [Metasploit Local Exploit Suggester](https://blog.rapid7.com/2015/08/11/metasploit-local-exploit-suggester-do-less-get-more/)
 
 ##### Precompiled kernel exploits
