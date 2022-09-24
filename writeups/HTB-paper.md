@@ -1,5 +1,7 @@
 # Hackthebox - Paper - Linux
 
+- [Machine on HTB](https://app.hackthebox.com/machines/Paper)
+
 ## Nmap
 
 ```
