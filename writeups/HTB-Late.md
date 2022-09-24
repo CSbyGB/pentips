@@ -223,4 +223,3 @@ rm -r /home/svc_acc/app/misc/*
 - Then from our machine we connect through ssh
 - And finally we catch a root shell and can grab the final flag!!  
 ![image](https://user-images.githubusercontent.com/96747355/167514748-b43c4f38-c416-4eb2-9276-4bd9f12a9401.png)  
-
