@@ -161,6 +161,15 @@ Nmap done: 1 IP address (1 host up) scanned in 22.74 seconds
 ![image](https://user-images.githubusercontent.com/96747355/175834033-1c9a18f8-bb6f-4961-bbc1-3550da4dba45.png)  
 - Finally for this error we can use this and will try to connect `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc`
 
+## Enumerate RPC
+
+### rpcclient
+
+- `rpcclient -U "" -c "enumdomusers" -N 10.10.10.161` enumerate users
+- `rpcclient -U "" -c "enumprivs" -N 10.10.10.161 ` enumerate privileges
+- Get domain info `rpcclient -U "" -c "querydominfo" -N 10.10.10.161`
+- `rpcclient -U "" -c "enumdomgroups" -N 10.10.10.161` enumerate group
+
 ## FTP
 
 - Check if anonymous FTP is enabled, if so check if you can downloads files. If so you can RCE.  
@@ -218,6 +227,14 @@ Here are some useful links for this
 
 ## Resources
 
+### General resources about enumeration
+
+{% embed url="https://medium.com/@nclvnp/enumeration-1976c5d55b1b" %} My pentesting methodology (Enumeration) {% endembed %}
+
 ### SMB
 
 {% embed url="https://www.hackingarticles.in/a-little-guide-to-smb-enumeration/" %} A little guide to SMB Enumeration {% endembed %}  
+
+### RPC
+
+{% embed url="https://www.hackingarticles.in/active-directory-enumeration-rpcclient/" %} Active Directory Enumeration: RPCClient {% endembed %}
