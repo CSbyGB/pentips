@@ -1,5 +1,7 @@
 # Hackthebox - Forest - Windows
 
+- [Forest on HTB](https://app.hackthebox.com/machines/212)
+
 ## Nmap
 
 ```bash
