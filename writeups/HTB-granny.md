@@ -225,7 +225,7 @@ Network Card(s):           N/A
 - We can run windows exploit suggester on it `python3 /opt/wesng/wes.py --color sysinfo.txt | grep -B 3 -A 5 "Privilege"`
 - I want to use metasploit for the privesc so I am going to get a shell using `exploit/windows/iis/iis_webdav_scstoragepathfromurl`
 - This way I will also be able to check local exploit suggester
-- From our session we can run `multi/recon/local_exploit_suggester`
+- From our session we can `run multi/recon/local_exploit_suggester`
 - I do not get any result this way but from the previous check with wes we can try a few things like CVE-2014-4076.
 - We should also migrate the shell because the getuid gives odd results. we just have to ps while in our sessions and find a pid that runs `NT AUTHORITY\NETWORK SERVICE`
 - With a search on metasploit we find this `exploit/windows/local/ms14_070_tcpip_ioctl`

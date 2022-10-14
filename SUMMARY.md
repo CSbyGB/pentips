@@ -164,6 +164,7 @@
 * [Hackthebox - Driver](writeups/HTB-driver.md)
 * [Hackthebox - Forest](writeups/HTB-forest.md)
 * [Hackthebox - Good games](writeups/HTB-goodgames.md)
+* [Hackthebox - Grandpa](writeups/HTB-grandpa.md)
 * [Hackthebox - Granny](writeups/HTB-granny.md)
 * [Hackthebox - Jeeves](writeups/HTB-Jeeves.md)
 * [Hackthebox - Lame](writeups/HTB-Lame.md)
