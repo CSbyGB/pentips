@@ -170,6 +170,7 @@
 * [Hackthebox - Lame](writeups/HTB-Lame.md)
 * [Hackthebox - Late](writeups/HTB-Late.md)
 * [Hackthebox - Love](writeups/HTB-love.md)
+* [Hackthebox - Monteverde](writeups/HTB-monteverde.md)
 * [Hackthebox - Optimum](writeups/HTB-optimum.md)
 * [Hackthebox - Paper](writeups/HTB-paper.md)
 * [Hackthebox - Poison](/writeups/HTB-poison.md)
