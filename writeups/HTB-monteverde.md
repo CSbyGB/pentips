@@ -518,7 +518,7 @@ smorgan
 [+] naming_contexts = ['DC=MEGABANK,DC=LOCAL', 'CN=Configuration,DC=MEGABANK,DC=LOCAL', 'CN=Schema,CN=Configuration,DC=MEGABANK,DC=LOCAL', 'DC=DomainDnsZones,DC=MEGABANK,DC=LOCAL', 'DC=ForestDnsZones,DC=MEGABANK,DC=LOCAL']
 ```
 
-### HTTP
+### HTTP on port 5985
 
 - Gobuster does not give anything useful
 
@@ -585,14 +585,10 @@ SMB         10.10.10.172    445    MONTEVERDE       users$          READ
 - The share azure-uploads is empty  
 ![azure uploads](../.res/2022-10-16-14-39-53.png)  
 - No luck with IPC$, NETLOGON
-- We get something with SYSVOL
+- We get something with SYSVOL  
 ![sysvol](../.res/2022-10-16-14-44-24.png)
-- And also with users$
+- And also with users$  
 ![users](../.res/2022-10-16-14-45-26.png)
-
-### sysvol
-
-
 
 ### users$
 
@@ -623,9 +619,10 @@ SMB         10.10.10.172    445    MONTEVERDE       users$          READ
 
 ## Password spray with the password just found
 
-- Using crackmapexec again we find out that this is mhope password
+- Using crackmapexec again we find out that this is mhope password  
 
 ![mhope](../.res/2022-10-16-14-55-45.png)
+
 - So we have another pair of credentials `mhope:4n0therD4y@n0th3r$`
 
 ## Shell as mhope
@@ -638,6 +635,7 @@ SMB         10.10.10.172    445    MONTEVERDE       users$          READ
 - There are a some folders and programs related to Azure. Our user is a member of the Azure Admins group.  
 
 ![Azure admins](../.res/2022-10-17-15-41-05.png)
+
 - [This blog](https://blog.xpnsec.com/azuread-connect-for-redteam/) has an interesting script to use Microsoft Azure Active Directory Connect
 - I can take the script and upload it using `upload script.ps1` this will fetch the creds from the db ( I hope so :D )
 - We had to change the connection String 0xdf explains it on their writeup [here](https://0xdf.gitlab.io/2020/06/13/htb-monteverde.html)
