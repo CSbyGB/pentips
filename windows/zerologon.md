@@ -22,6 +22,7 @@
 
 ## Zerologon - Resources
 
-{% embed url="https://www.trendmicro.com/en_us/what-is/zerologon.html" %} What is ZeroLogon? {% endembed %}
-{% embed url="https://github.com/dirkjanm/CVE-2020-1472" %} dirkjanm CVE-2020-1472 {% endembed %}
-{% embed url="https://github.com/SecuraBV/CVE-2020-1472" %} SecuraBV ZeroLogon Checker {% endembed %}
+  {% embed url="https://lisandre.com/archives/14978" %} Zerologon (CVE-2020-1472) by Lisandre {% endembed %}  
+{% embed url="https://www.trendmicro.com/en_us/what-is/zerologon.html" %} What is ZeroLogon? {% endembed %}  
+{% embed url="https://github.com/dirkjanm/CVE-2020-1472" %} dirkjanm CVE-2020-1472 {% endembed %}  
+{% embed url="https://github.com/SecuraBV/CVE-2020-1472" %} SecuraBV ZeroLogon Checker {% endembed %}  

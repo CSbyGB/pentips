@@ -28,7 +28,7 @@ structure:
   Shows up like this on my gitbook in the side bar  
   ![example](../.res/2022-10-18-09-06-13.png)
 - If you want to put embedded resources instead of just clickable text you can use this code snippet 
-
+![](../.res/2022-10-19-15-02-14.png)
 ```txt
 {% embed url="URL" %} NAME OF THE RESOURCE {% endembed %}
 ```
@@ -36,7 +36,7 @@ structure:
 - So for example this  
 
 ```html
-  {% embed url="https://www.trendmicro.com/en_us/what-is/zerologon.html" %} What is ZeroLogon? {% endembed %}
+  {% embed url="https://lisandre.com/archives/14978" %} Zerologon (CVE-2020-1472) by Lisandre {% endembed %}
 ```  
 
   Will look like this on your Gitbook  
