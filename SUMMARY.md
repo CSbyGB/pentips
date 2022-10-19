@@ -193,7 +193,7 @@
 
 ## Digital skills
 
-* [How to make a gitbook](/pentips/digital-skills/howto-gitbook.md)
+* [How to make a gitbook](/digital-skills/howto-gitbook.md)
 * [Marp](/digital-skills/marp.md)
 * [Linux Tips](digital-skills/useful-linux.md)
 * [VSCodium](/digital-skills/vscodium.md)
