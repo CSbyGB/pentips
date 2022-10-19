@@ -34,7 +34,11 @@ structure:
 ```
 
 - So for example this  
-  `{% embed url="https://www.trendmicro.com/en_us/what-is/zerologon.html" %} What is ZeroLogon? {% endembed %}`  
+
+  ```html
+  {% embed url="https://www.trendmicro.com/en_us/what-is/zerologon.html" %} What is ZeroLogon? {% endembed %}
+  ```  
+
   Will look like this on your Gitbook  
 
 ![example](../.res/2022-10-18-15-34-51.png)
