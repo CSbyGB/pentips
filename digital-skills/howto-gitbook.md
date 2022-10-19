@@ -24,6 +24,7 @@ structure:
   ## Networking
   * [Basics](networking/basics.md)
   ```
+  
   Shows up like this on my gitbook in the side bar  
   ![example](../.res/2022-10-18-09-06-13.png)
 - If you want to put embedded resources instead of just clickable text you can use this code snippet 
