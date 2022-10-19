@@ -35,9 +35,9 @@ structure:
 
 - So for example this  
 
-  ```html
+```html
   {% embed url="https://www.trendmicro.com/en_us/what-is/zerologon.html" %} What is ZeroLogon? {% endembed %}
-  ```  
+```  
 
   Will look like this on your Gitbook  
 
