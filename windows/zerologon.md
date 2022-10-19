@@ -1,5 +1,7 @@
 # Abusing ZeroLogon
 
+## Methodology
+
 - Attacking DC and setting pass to null and taking over DC **CAREFUL COULD DESTROY DC**
 - Check priorly if the target is vulnerable 
   *Note: Useful for a pentest to mention to the customer that they are vulnerable without actually doing the exploitation*

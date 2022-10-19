@@ -27,21 +27,17 @@ structure:
   
   Shows up like this on my gitbook in the side bar  
   ![example](../.res/2022-10-18-09-06-13.png)
-- If you want to put embedded resources instead of just clickable text you can use this code snippet 
-![](../.res/2022-10-19-15-02-14.png)
-```txt
-{% embed url="URL" %} NAME OF THE RESOURCE {% endembed %}
-```
+- If you want to put embedded resources instead of just clickable text you can use this code snippet
+
+![snippet](../.res/2022-10-19-15-02-14.png)  
 
 - So for example this  
 
-```html
-  {% embed url="https://lisandre.com/archives/14978" %} Zerologon (CVE-2020-1472) by Lisandre {% endembed %}
-```  
+![example snippet](../.res/2022-10-19-15-15-02.png)  
 
   Will look like this on your Gitbook  
 
-![example](../.res/2022-10-18-15-34-51.png)
+![example render](../.res/2022-10-19-15-16-05.png)
 
 ## Useful extensions on VSCodium
 
