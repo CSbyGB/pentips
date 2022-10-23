@@ -175,6 +175,7 @@
 * [Hackthebox - Paper](writeups/HTB-paper.md)
 * [Hackthebox - Poison](/writeups/HTB-poison.md)
 * [Hackthebox - Querier](/writeups/HTB-querier.md)
+* [Hackthebox - Sauna](/writeups/HTB-Sauna.md)
 * [Hackthebox - SecNotes](writeups/HTB-secnotes.md)
 * [Hackthebox - Steamcloud](writeups/HTB-steamcloud.md)
 * [TryHackMe - Anonymous](writeups/THM-Anonymous.md)
