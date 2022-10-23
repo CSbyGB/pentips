@@ -122,3 +122,15 @@ kerberos::ptt TGS_t1_trevor.jones@ZA.TRYHACKME.LOC_http~THMSERVER1.za.tryhackme.
 - We just need to create our session in our target  
 
 ![Session](../.res/2022-07-29-15-37-15.png)
+
+## Bruteforce users with kerbrute
+
+- Get kerbrute [here](https://github.com/ropnop/kerbrute)
+- If you do not have creds yet but see kerberos in the list of ports, it is worth trying to enumerate users with a wordlist using kerbrute
+- `./kerbrute_linux_amd64 userenum -d timelapse.htb --dc 10.10.11.152 /usr/share/wordlists/SecLists/Usernames/xato-net-10-million-usernames.txt`
+
+> Note: There's a lot of other things you can do with kerberos
+
+## Resources
+
+{% embed url="https://lisandre.com/archives/14538" %} Kerberos - port 88 by Lisandre {% endembed %}  
