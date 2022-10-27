@@ -1,5 +1,54 @@
 # Useful commands and tools on Linux
 
+## Useful shortcuts and hacks to use the terminal quickly
+
+- `Ctrl+U` - clear all the current line from the end to the beginning only if the cursor is at the end of the line. It will basically delete everything before the cursor (meaning it can work if you do not want to clear the whole line)
+- `Ctrl+Y` - recall the cleared line 
+- `Ctrl+K` - clear all the current line from the beginning to the end only if the cursor is at the beginning of the line. Which will basically delete everything after the cursor ;) (meaning it can work if you do not want to clear the whole line)
+- `Ctrl+W` - clear the previous word in the current line. For example if you have typed a command like `git diff /path/to/some/file` and you want to delete just the last parameter to the command, Ctrl+W is very useful.
+- `Ctrl+E Ctrl+U` - move the cursor to the end of the line and clear all the current line from the end to the beginning.
+- `Ctrl+C` - cancel the current command line, which implies clear all the current line no matter where the cursor is. (you can't recall the cleared line anymore).
+- `Alt+Shift+#` - comment the current line, keep it in the history and bring up your prompt on a new line.
+- `Alt+Backspace` to remove a word from your prompt
+- `Ctrl+Shit+C` - copy something you previously selected
+- `Ctrl+Shit+V` - paste something
+- `Home` or `Ctrl+A` - Go to the begining of your prompt 
+- `End` or `Ctrl+E` - Go to the end of your prompt
+- To clear the terminal you can use `clear` but you can also use `CRTL+L`
+- `Ctrl+shift++` to zoom in your terminal 
+- `Crtl+-` to zoom out
+- If you have a command typed in your prompt and you want to open it with your default editor you can use `CTRL+X+E`
+- `Ctrl+R` to reverse search in you previously typed commands
+- `!cmd` will pull off the last command we used with cmd For example- `!cd` will pull off last command we used with cd or `!ls` will pull off last command used with ls
+
+### cd
+
+- Say you were in the directory `usr/share/wordlists` and then you typed `cd` to go back home, if you want to go back to the wordlists you can use `cd -` (this command checks the $OLDPWD variable)  
+![oldpwd](../.res/2022-10-27-16-23-10.png)  
+
+### ls
+
+- Instead of typing `ls -l` you can use the alias `ll`
+- Instead of typing `ls -la` you can use the alias `la`
+
+### Sudo
+
+- If you typed a command but forgot to sudo it you can use `sudo !!` to sudo it. Then using Enter or the down arrow you can read the following lines, whe you are done you can just type `q`
+
+### less
+
+- If you want to read a file but do not want to scroll if it is big you can use `less FileName`
+
+### tail
+
+- `tail FileName` will print for you the last lines of a file
+
+### Create an alias
+
+- If you have a command you use all the time but that is a little long you can use an alias to make it shorter `alias mycommand="the command you need"` so for example `alias crazyls = "ls -al"` now when you will type `crazyls` you will have the result of `ls -al`
+- You can also edit your `.bashrc` file and add your aliases there. This will make them permanent.  
+![aliases](../.res/2022-10-27-16-40-17.png)  
+
 ## Network commands
 
 - `ifconfig`
@@ -97,21 +146,6 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 - `lscpu` will tell you if you are 32 or 64
 - `uname -m` similar but less verbose
 
-## Useful shortcuts to use the terminal quickly
-
-- `Ctrl+U` - clear all the current line from the end to the beginning only if the cursor is at the end of the line.
-- `Ctrl+Y` - recall the cleared line 
-- `Ctrl+K` - clear all the current line from the beginning to the end only if the cursor is at the beginning of the line.
-- `Ctrl+W` - clear the previous word in the current line. For example if you have typed a command like `git diff /path/to/some/file` and you want to delete just the last parameter to the command, Ctrl+W is very useful.
-- `Ctrl+E Ctrl+U` - move the cursor to the end of the line and clear all the current line from the end to the beginning.
-- `Ctrl+A Ctrl+K` - move the cursor at the beginning of the line and clear all the current line from the beginning to the end.
-- `Ctrl+C` - cancel the current command line, which implies clear all the current line no matter where the cursor is. (you can't recall the cleared line anymore).
-- `Alt+Shift+#` - comment the current line, keep it in the history and bring up your prompt on a new line.
-- `Ctrl+Shit+C` - copy something you previously selected
-- `Ctrl+Shit+V` - paste something
-- `Home` - Go to the begining of your prompt 
-- `End` - Go to the end of your prompt
-
 ## Launch shells from a terminal
 
 - Say we have a way through root and we need to get a reverse shell here are helpfuls command
@@ -148,5 +182,5 @@ Source: [Chmod tutorial by Ryan Morrison](https://medium.com/@razl/chmod-tutoria
 
 {% embed url="https://askubuntu.com/questions/470966/shortcut-to-clear-command-line-terminal" %} Shortcut to clear command line terminal {% endembed %}
 {% embed url="https://github.com/andrew-d/static-binaries" %}Static Binaries {% endembed %}
-{% embed url="https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/" %}Upgrading Simple Shells to Fully Interactive TTYs{% endembed %}
-
+{% embed url="https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/" %}Upgrading Simple Shells to Fully Interactive TTYs{% endembed %}  
+{% embed url="https://youtu.be/ACM36qtHIEg" %} you need to HACK faster!! (Linux Terminal hacks YOU NEED!!) NetworkChuck {% endembed %}  
