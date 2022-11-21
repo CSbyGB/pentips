@@ -132,6 +132,10 @@
 * [OSINT Tools](OSINT/tools.md)
 * [Write an OSINT report](OSINT/report.md)
 
+## Flipper Zero
+
+* [Flipper Zero](flipperZero/flipper.md)
+
 ## Post Exploitation
 
 * [Transfert files between target and attacking machine](post-exploitation/files-transfert.md)
