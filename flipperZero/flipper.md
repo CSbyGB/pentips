@@ -1,5 +1,7 @@
 # Flipper Zero
 
+![image](https://user-images.githubusercontent.com/96747355/202935703-176c3882-dd10-47a7-be15-1c673237716f.png)
+
 ## Out of the box
 
 Once you've received your Flipper Zero, you will need to set it up.
