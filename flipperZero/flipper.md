@@ -32,7 +32,7 @@ Once again something really simple you can clone a remote. Here is how to do it:
 
 1. In the menu go to Infrared
 2. Click on learn new remote
-3. Point the remote at the IR port and push the button
+3. Point the remote at the IR port and push the button you wish to clone (every button will be saved separately)
 
 Now you can use your flipper as a remote. Pretty cool.
 
