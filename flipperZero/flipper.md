@@ -24,6 +24,8 @@ Once the SD card is inserted and formatted, you will be able to update the firmw
 
 ## Infrared
 
+### Clone a remote
+
 Once again something really simple you can clone a remote. Here is how to do it:
 
 1. In the menu go to Infrared
