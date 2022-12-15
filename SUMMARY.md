@@ -36,6 +36,10 @@
 * [Cloud Pentest](cloud/cloud.md)
 * [Google Cloud Platform](cloud/gcp.md)
 
+## Secure Code Review
+
+* [Secure code review](code-review/code-review.md)
+
 ## Tools
 
 * [nmap](Tools/nmap.md)
