@@ -19,7 +19,7 @@ adb install ../../../path-ubuntu/vers/fichier/file.apk
 
 ### Configure Burp with Android Studio
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cT5GZPyOKuc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% embed url="https://www.youtube.com/embed/cT5GZPyOKuc" %} Configure Burp {% endembed %} 
 
 ## Decompile code
 
@@ -88,7 +88,7 @@ Here is an example of code on the pivaa application with exportable activities:
 - Lookup for: Secret keys, passwords, comments, URLs, IP, private keys, any sensitive information that should not be in the code.  
 With Jadx-gui it is possible to use the global search to search for specific strings such as: API, API_KEY, password, key, ClientId, ClientSecret, id, AWS, Secret, username, firebase.io, http, https, SQL (or other SQL file extensions)  
 See here how to use glbal search with jadx-gui:  
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LDkf_kJ25WI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+{% embed url="https://www.youtube.com/embed/LDkf_kJ25WI" %} Jadx - Global search {% endembed %}  
 
 When you find a database you can then try to read it with sqlitebrowser to see what is in it.  
 See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about this.  
