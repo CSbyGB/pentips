@@ -106,6 +106,12 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 sensitive. Some malware masquerades as Android keyboard extensions.
 - Tapjacking PoC equivalent to Clickjacking can be done with Qark
 
+## Disable Certificate Pinning
+
+- See Alissa Knight's workshop about this:
+
+{% embed url="https://vimeo.com/701552838" %} Alissa Knight: Workshop for Women/Non-Binary in API Security: Bypassing Certificate Pinning in Android Using FRIDA {% endembed %}  
+
 ## Tools for IOS and Android
 
 - Rooted android device
