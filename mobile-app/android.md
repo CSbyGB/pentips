@@ -106,11 +106,10 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 sensitive. Some malware masquerades as Android keyboard extensions.
 - Tapjacking PoC equivalent to Clickjacking can be done with Qark
 
-## Disable Certificate Pinning
+### Resources mentioned in the video
 
-- See Alissa Knight's workshop about this:
-
-{% embed url="https://vimeo.com/701552838" %} Alissa Knight: Workshop for Women/Non-Binary in API Security: Bypassing Certificate Pinning in Android Using FRIDA {% endembed %}  
+- [All that we let in - Part 1 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mobile-health-apis-part-1)
+- [All that we let in - Part 2 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mhealth-apps-and-apis-part-2)
 
 ## Tools for IOS and Android
 
@@ -155,3 +154,17 @@ sensitive. Some malware masquerades as Android keyboard extensions.
     - [cfr](https://www.benf.org/other/cfr)
     - [Ghidra](https://www.nsa.gov/resources/everyone/ghidra/)
 - [Qark](https://github.com/linkedin/qark) dynamic analysis can be use for tapjacking PoC
+
+## Resource
+
+### APISecure conf workshop by Alissa Knight
+
+{% embed url="https://vimeo.com/701552838" %} Alissa Knight: Workshop for Women/Non-Binary in API Security: Bypassing Certificate Pinning in Android Using FRIDA - APISecure Conference 2022{% endembed %}  
+
+#### Steps from the video
+
+- Step 1: Download the app in an android device and use [apkextractor](https://play.google.com/store/apps/details?id=com.ext.ui&hl=en&gl=US) to extract it of of the android device
+- Step 2: Install MobSF
+  - Inspect the results from the apk analysis here
+  - Go to the Mobsf folder where everything as been extracted and make some manual checks.
+  - You can use [RegEXAPI](https://github.com/odomojuli/RegExAPI) with `grep -R _token`
