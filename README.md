@@ -4,7 +4,7 @@
 
 ## $ whoami /priv
 
-Ethical Hacker 🏳 |🏆 Pentest Ninja Award W.S Cyberjutsu | 🇨🇦 Top 20 Women in Cybersecurity #DoWeLookLikeHackers 🏳️‍🌈
+🏳 Ethical Hacker |🏆Award-winning Pentester | Artemis Red Team | Board Member | Speaker | Mentor 🏳️‍🌈
 
 ## What is this?
 

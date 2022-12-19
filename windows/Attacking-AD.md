@@ -18,6 +18,7 @@ It will be complemented with notes from my practice and from other classes like 
 
 ## Resources
 
+{% embed url="https://wadcoms.github.io/" %} An Amazing offensive AD interactive Cheat sheet by John Woodman{% endembed %}  
 {% embed url="https://book.hacktricks.xyz/windows/active-directory-methodology" %} Hacktricks - Active Directory Methodology {% endembed %}  
 {% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} TCM-Security Academy{% endembed %}  
 {% embed url="https://medium.com/@adam.toscher/top-five-ways-i-got-domain-admin-on-your-internal-network-before-lunch-2018-edition-82259ab73aaa" %} Top Five Ways I Got Domain Admin - Adam Toscher {% endembed %}  
