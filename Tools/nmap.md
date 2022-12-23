@@ -8,6 +8,7 @@
 
 - `sudo nmap -T4 -sC -O -sV -p- --min-rate=1000 IP-ADR`
 - `sudo nmap -T4 -sC -O -sV -p- IP-ADR`
+- `sudo nmap -Pn -sV -sC -p- IP-ADR`
 
 ## Aggressive scan of all port (will output OS as if you used `-O`, service versions as with `-sV` and script scanning `-sC` )
 
