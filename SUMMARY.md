@@ -7,7 +7,7 @@
 ## Networking, Protocols and Network pentest
 
 * [Basics](networking/basics.md)
-* [FTP](networking/ftp-sftp.md)
+* [FTP](networking/ftp.md)
 * [HTTP & HTTPS](networking/http-https.md)
 * [IMAP](networking/imap.md)
 * [POP3](networking/pop3.md)
