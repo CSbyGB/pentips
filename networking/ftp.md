@@ -1,4 +1,4 @@
-# FTP and SFTP
+# FTP
 
 - Usually on port 21
 
