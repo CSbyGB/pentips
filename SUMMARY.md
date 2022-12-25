@@ -4,9 +4,17 @@
 
 * [Welcome to CSbyGB's Pentips](README.md)
 
-## Networking
+## Networking, Protocols and Network pentest
 
 * [Basics](networking/basics.md)
+* [FTP](networking/ftp-sftp.md)
+* [HTTP & HTTPS](networking/http-https.md)
+* [IMAP](networking/imap.md)
+* [POP3](networking/pop3.md)
+* [RPC](networking/rpc.md)
+* [SMB](networking/smb.md)
+* [SMTP](networking/smtp.md)
+* [SSH](networking/ssh.md)
 
 ## Ethical Hacking - General Methodology
 

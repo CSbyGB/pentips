@@ -8,6 +8,7 @@
 
 - `wfuzz -c -f sub-fighter -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -u 'http://lazyadmin.thm/' -H "HOST: FUZZ.lazyadmin.thm" --hw 968`
   - `hw` will filter the response that contains the number of words specified. Very convenient for notfound pages that give 200 code.
+  - `hc 302` will remove all 302 responses from the output
 
 ## API Fuzz
 

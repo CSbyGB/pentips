@@ -86,100 +86,16 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 22.74 seconds
 ```
 
-## Enumerating HTTP and HTTPS
+## Enumeration
 
-### Default web page
-
-- We can go check the page in the browser and see what we find if we have 30 or 443 open (or both)
-- Default web page = automatic finding. Disclose info about the tecnology used: web server, version, hostname etc. = Information Disclosure
-
-### Nikto
-
-- We can also launch nikto `nikto -h http://host.com`
-  - Example of nikto result  
-![image](https://user-images.githubusercontent.com/96747355/175832200-f1f6511c-b3c7-4543-8f5b-ae7720829cdf.png)  
-  - It finds possible vulnerability
-  - Will even do some directory busting
-
-### Dirbuster
-
-- We can use dirbuster or gobuster to check if we find hidden directories (directory busting). Here is an example with dirbuster  
-![image](https://user-images.githubusercontent.com/96747355/175832562-7dcac6df-58c6-4385-92b9-f2d4e11384e1.png)  
-- Example of results in tree view  
-![image](https://user-images.githubusercontent.com/96747355/175832618-f4e4f9e6-7f72-44c7-bb08-3e243faa5073.png)
-- Example of results in list  
-![image](https://user-images.githubusercontent.com/96747355/175832640-313cbe72-ce8a-49c0-9e4e-1327aa17f280.png)
-
-### Source code
-
-- We can select view source in the browser.
-- In there we can check for comments, usernames, passwords, keys etc.
-
-### Burpsuite
-
-- We can use the repeater to inspect a request modify it and analyze the response
-
-## Enumerate SMB
-
-- Fileshare 
-- `enum4linux -a 10.10.10.100` output all sorts of info
-- `smbmap -H 192.168.1.40`
-
-### Metasploit
-
-- `msfconsole`
-- `use auxiliary/scanner/smb/smb_version`
-- `options`
-- `set RHOSTS IP-ADD` (in my example instead of IP-ADD I will put 10.0.2.4)
-- `run`
-![image](https://user-images.githubusercontent.com/96747355/175833442-8a36eb1a-d065-4b7d-8b55-af90ba1d75fb.png)  
-- We see the version of Samba so it is something that is going to be worth writing down in our notes.
-
-### smbclient
-
-- Tool that will help us to list shares or see useful info
-- `smbclient -L \\10.10.55.112` list shares
-- `smbclient -L IP-ADD` (in my example instead of IP-ADD I will put 10.0.2.4)  
-![image](https://user-images.githubusercontent.com/96747355/175833616-0eb455e8-ed55-48e6-abfb-64908fac28a8.png)  
-- Connect anonymously `smbclient --no-pass \\\\10.10.10.100\\SHARE` or `smbclient //10.10.10.134/SHARE`
-
-### What to try
-
-- `smbclient --no-pass \\\\10.10.10.100\\SHARE` connect to a share anonymously
-- You might find interesting files this way
-- Check out the win version to see if it is vulnerable to anything (eternal blue for example)
-- We can also try this command `smbclient //10.10.10.134/SHARE`
-
-## Enumerate SSH
-
-- We need to keep notes of the ssh version
-- We can try to ssh to our target `ssh IP-ADD`. In our example we get this  
-![image](https://user-images.githubusercontent.com/96747355/175833787-a2b8bcbd-05a9-4ecb-ac37-b584c896253c.png)  
-- For this error we can try this `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 `  
-![image](https://user-images.githubusercontent.com/96747355/175834000-bc2e9cbe-5949-4836-88d7-c9d399f95054.png)  
-- For this error we can try this `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa `  
-![image](https://user-images.githubusercontent.com/96747355/175834033-1c9a18f8-bb6f-4961-bbc1-3550da4dba45.png)  
-- Finally for this error we can use this and will try to connect `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc`
-
-## Enumerate RPC
-
-### rpcclient
-
-- `rpcclient -U "" -c "enumdomusers" -N 10.10.10.161` enumerate users
-- `rpcclient -U "" -c "enumprivs" -N 10.10.10.161 ` enumerate privileges
-- Get domain info `rpcclient -U "" -c "querydominfo" -N 10.10.10.161`
-- `rpcclient -U "" -c "enumdomgroups" -N 10.10.10.161` enumerate group
-
-## FTP
-
-- Check if anonymous FTP is enabled, if so check if you can downloads files. If so you can RCE.  
-Check out [Hackthebox Devel's writeup](../writeups/HTB-Devel.md) to have an example of this
-
-- If you do not have write access you could still find interesting and useful files like passwords or else.
+Next step is to enumerate the services and protocols that showed up in our nmap scan.  
+It is really important to take detailed not during this process.  
+For more info about this checkout [the networking chapter of my pentips](https://csbygb.gitbook.io/pentips/networking/).  
+You will find steps for multiple protocols and services.
 
 ## Research 
 
-- After this enumeration we can look up things we wrote down in our notes.
+- After this enumeration we can look up things we wrote down in our notes (vulnerable versions, vulnerable services, misconfigurations,...).
 
 ### Search Engines
 
@@ -230,11 +146,3 @@ Here are some useful links for this
 ### General resources about enumeration
 
 {% embed url="https://medium.com/@nclvnp/enumeration-1976c5d55b1b" %} My pentesting methodology (Enumeration) {% endembed %}
-
-### SMB
-
-{% embed url="https://www.hackingarticles.in/a-little-guide-to-smb-enumeration/" %} A little guide to SMB Enumeration {% endembed %}  
-
-### RPC
-
-{% embed url="https://www.hackingarticles.in/active-directory-enumeration-rpcclient/" %} Active Directory Enumeration: RPCClient {% endembed %}
