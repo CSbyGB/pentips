@@ -14,6 +14,14 @@
 - `convert *.png document.pdf` convert all png files of current folder in one pdf
 - `convert document.jpg document.pdf` convert the file `document.jpg` in to a pdf named `document.pdf`
 
+### PDF to images
+
+- You can do the other way around `pdfimages file.pdf extracted-images/`
+
+> Note this will get every image from the PDF file. If you want every slide as images this next command is the one you need
+
+- `pdftoppm -png file.pdf file/name-you-want-to-give-to-the-images`
+
 ## Find things
 
 - `find / -name "keyword" 2>/dev/null` look for something named keyword in the whole system and do not show error messages  
