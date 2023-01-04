@@ -17,6 +17,13 @@ Source: [Practical Ethical Hacking - TCM Security](https://academy.tcm-sec.com/p
 
 - Check out more about pentest report [here](/reporting/pentest-report.md)
 
+## Checklists
+
+- You can use multiple checklists during your engagements
+- [OWASP Checklist](https://github.com/0xRadi/OWASP-Web-Checklist)
+- Along with OWASP checklist you can use [the testing guide](https://owasp.org/www-project-web-security-testing-guide/stable/)
+- [NetbiosX Red Teaming & Pentesting checklists for various engagements](https://github.com/netbiosX/Checklists)
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} Practical Ethical Hacking - TCM Security {% endembed %}  

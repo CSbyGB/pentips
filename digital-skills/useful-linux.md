@@ -16,7 +16,7 @@
 
 ### PDF to images
 
-- You can do the other way around `pdfimages file.pdf extracted-images/`
+- You can do the other way around `pdfimages file.pdf extracted-images/` you can add the lag `-png` to specify that you want the pictures to be in png format
 
 > Note this will get every image from the PDF file. If you want every slide as images this next command is the one you need
 
