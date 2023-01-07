@@ -4,7 +4,7 @@
 
 ## Recording of my talk
 
-**COMING SOON**
+{% embed url="https://www.youtube.com/embed/5V4X7Onxn5Y" %} Android Application Hacking - The Diana Initiative 2022 {% endembed %}
 
 ## Slides
 
