@@ -22,7 +22,7 @@
 
 ## WoSec Seattle 2020 - Remote Code Execution
 
-{% embed url="https://www.youtube.com/live/6VmDl9naJNw" %}Remote Code Execution {% endembed %}  
+{% embed url="https://youtu.be/6VmDl9naJNw" %}Remote Code Execution {% endembed %}  
 
 ## WoSec Montreal 2020 - Introduction to BurpSuite
 

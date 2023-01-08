@@ -14,7 +14,7 @@
 
 ## Breaking into Cybersecurity Podcast 2021 - Host: Chris Foulon
 
-{% embed url="https://www.youtube.com/live/P7Bnqeb2llQ" %}  Breaking into Cybersecurity: Gabrielle B (Actress to Pentester) 12/3/21 {% endembed %}  
+{% embed url="https://youtu.be/P7Bnqeb2llQ" %}  Breaking into Cybersecurity: Gabrielle B (Actress to Pentester) 12/3/21 {% endembed %}  
 
 ## Infosec & OSINT Show 2021 - Host: Joash Amishav-Zlatin
 
@@ -22,7 +22,7 @@
 
 ## WeHackPurple Podcast 2020 - Host: Tanya Janca
 
-{% embed url="https://www.youtube.com/live/U9Sok7JbV68" %} WeHackPurple Podcast 16 with Gabrielle Botbol {% endembed %}
+{% embed url="https://youtu.be/U9Sok7JbV68" %} WeHackPurple Podcast 16 with Gabrielle Botbol {% endembed %}
 
 ## CSNP 2020 - What Is Pentesting?
 
@@ -30,13 +30,13 @@
 
 ## WoSec Montreal 2020 - What is Pentesting
 
-{% embed url="https://www.youtube.com/live/FGKTdp3tgBY" %} WoSec Montreal 2020 - What is Pentesting {% endembed %}
+{% embed url="https://youtu.be/FGKTdp3tgBY" %} WoSec Montreal 2020 - What is Pentesting {% endembed %}
 
 ## In french, en Français
 
 ### Sophistication des cybermenaces - PolyHX 2021
 
-{% embed url="https://www.youtube.com/live/Chu-wi0MQRI" %} Sophistication des cybermenaces - PolyHX {% endembed %}
+{% embed url="https://youtu.be/Chu-wi0MQRI" %} Sophistication des cybermenaces - PolyHX {% endembed %}
 
 ### WiCys France Affiliate, Transitions Professionnelles en Cybersécurité 2021
 
