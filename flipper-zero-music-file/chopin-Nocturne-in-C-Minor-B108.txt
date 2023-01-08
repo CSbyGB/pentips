@@ -1,0 +1,1 @@
+chopinNocturnCMinorB108:d=4,O=5,b=130:5g5,.p,5c6,4d6,5d#6,4f6,4g6,p,4g6,p,5f#6,4g6,8g6,8b6,4c6
