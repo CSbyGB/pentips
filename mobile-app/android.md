@@ -2,6 +2,27 @@
 
 - **Check out my talk and its resources about Android application hacking [here](../talks/android-app.md)**
 
+## Lab setup
+
+- You can use a rooted Android device or an AVD (Android Virtual Device)
+- [My talk here](../talks/android-app.md) for TDI covers the lab setup with an AVD
+
+## Get the app
+
+- Ask your customer to give it to you with SSL Pinning disabled. This is the best option...
+- Google play (we can use apk pull and take it from an AVD or device you will an account on Google)
+- [apk Pure](https://apkpure.com)
+- [apk mirror](https://www.apkmirror.com/)
+- [apk monk](https://www.apkmonk.com/)
+
+## Emulator
+
+- [Emulator](https://developer.android.com/studio/run/emulator-commandline) is the command line tool that will allow you to manage Android virtual device. It gets installed when you install Android Studio.
+- If you are like me and prefer to use command line over GUI you can use it
+- If you do not know where the binary is you can run `find / -name emulator 2>/dev/null`  
+- `./emulator -list-avds` will list the available VM
+- `./emulator -avd vm-name` will launch a specific VM
+
 ## ADB
 
 ### Install apk
@@ -9,17 +30,34 @@
 - Once the emulator is launched we can use adb with `adb shell`
 - Install without adb shell:
 
-```
-adb install ../../../path-ubuntu/vers/fichier/file.apk
+```bash
+adb install ../../../path/to/file/file.apk
 ```
 
-- The application can then be found in the app list 
+- The application can then be found in the app list
+- We can also drag and drop the apk in the emulator
+
+### ADB commands
+
+- `adb shell` -  Connect to device
+- `adb install` - sideload apks
+- `adb push` - PC to device
+- `adb pull` - Device to PC
+- `adb logcat` - commande line took that dumps a log of system messages
+
+### ADB troubleshoot
+
+- If like me you pulled your hair because of Android Dolphin emulator and could not find proxy settings, you can get back the former look of the emulator by changing this in the settings
+
+![settings](../.res/2023-01-07-15-15-15.png)
+
+- Thanks to Inliner on stakoverflow for this solution. You can find the thread [here](https://stackoverflow.com/questions/70972106/how-to-configure-proxy-in-emulators-in-new-versions-of-android-studio)
 
 ## Burp
 
 ### Configure Burp with Android Studio
 
-{% embed url="https://www.youtube.com/embed/cT5GZPyOKuc" %} Configure Burp {% endembed %} 
+{% embed url="https://www.youtube.com/embed/cT5GZPyOKuc" %} Configure Burp {% endembed %}
 
 ## Decompile code
 
@@ -78,17 +116,19 @@ Here is an example of code on the pivaa application with exportable activities:
         <provider android:name="com.htbridge.pivaa.handlers.VulnerableContentProvider" android:protectionLevel="dangerous" android:enabled="true" android:exported="true" android:authorities="com.htbridge.pivaa" android:grantUriPermissions="true"/>
 ```
 
-### General tips
+### General tips for static analysis
 
 - Check Strings.xml
 - Try to enumerate database
-    - See [Firebase Enum](https://github.com/Sambal0x/firebaseEnum)
+  - See [Firebase Enum](https://github.com/Sambal0x/firebaseEnum)
 - Enumerate public cloud resources
-    - See [Cloud Enum](https://github.com/initstring/cloud_enum)
+  - See [Cloud Enum](https://github.com/initstring/cloud_enum)
 - Lookup for: Secret keys, passwords, comments, URLs, IP, private keys, any sensitive information that should not be in the code.  
 With Jadx-gui it is possible to use the global search to search for specific strings such as: API, API_KEY, password, key, ClientId, ClientSecret, id, AWS, Secret, username, firebase.io, http, https, SQL (or other SQL file extensions)  
 See here how to use glbal search with jadx-gui:  
 {% embed url="https://www.youtube.com/embed/LDkf_kJ25WI" %} Jadx - Global search {% endembed %}  
+
+- An alternative to jadx-gui which is even better in my opinion is if you used mobsf you will have folder `/uploads` and you can grep in it for interesting strings. Check out Alissa Knight's video below, she mentions it.
 
 When you find a database you can then try to read it with sqlitebrowser to see what is in it.  
 See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about this.  
@@ -97,7 +137,7 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 
 ## Dynamic analysis
 
-### General tips 
+### General tips for dynamic analysis
 
 - Are screens visible in screenshots or instances with sensitive data? Understand: can I take a picture of a screen with sensitive data and if I switch to another application after being on a screen with sensitive data can I go back via cached instances?
 - All the usual OWASP Top 10 web vulns
@@ -106,56 +146,81 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 sensitive. Some malware masquerades as Android keyboard extensions.
 - Tapjacking PoC equivalent to Clickjacking can be done with Qark
 
-### Resources mentioned in the video
+### How to bypass certificate pining
 
-- [All that we let in - Part 1 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mobile-health-apis-part-1)
-- [All that we let in - Part 2 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mhealth-apps-and-apis-part-2)
+- [Here](https://httptoolkit.com/blog/frida-certificate-pinning/) is an article by Tim Perry on httptoolkit on how to bypass cert pinning with frida.
 
-## Tools for IOS and Android
+#### Frida setup
 
-- Rooted android device
-- Émulateur Android
-    - [Genymotion](https://www.genymotion.com) (free 30 days trial)
-- Jailbroken Iphone
-    - [Electra](https://coolstar.org/electra)
-    - [Chimera](https://chimera.sh)
-    - [checkm8](https://github.com/axi0mX/ipwndfu)
-- Get the App
-    - Google play (we can use apk pull)
-    - Apple App Store
-    - [apk Pure](https://apkpure.com) 
-- Software
-    - [Frida](https://www.frida.re)
-    - [Fridump](https://github.com/Nightbringer21/fridump)
-        - Open source memory dumping tool.
-- [Frida-ios-dump](https://github.com/AloneMonkey/frida-ios-dump)
-- [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF)
-    - Use with apk and ipa
-- Burp
-- Wireshark
-    - Iphone: connect the device: `rvictl -s <UDID>`
-    - Iphone: Start the capture: `sudo tcpdump -i rvi0 -w iphone.pcap
-    - Android: Make laptop as hotspot capture traffic
-    - Android: Pull capture from a pfSense machine or something similar
-    - Android: `adb shell tcpdump -s -s 0`
-    - Android: HTTP traffic: `adb shell tcpdump -C -s -s 0 port 80
-- [Android SDK Tool](https://developer.android.com/studio/releases/platforms.hml)
-    - Adb, Fastboot, System Trace
-        - ADB
-            - adb shell -  Connect to device
-            - adb install - sideload apks
-            - adb push - PC to device
-            - adb pull - Device to PC
-            - adb logcat - commande line took that dumps a log of system messages
-- [Android apktool](https://ibotpeaches.github.com/Apktool/)
-- [IOS Passionfruit](https://github.com/chaitin/passionfruit)
-- Decompiling
-    - [jadx](https://github.com/skylot/jadx)
-    - [cfr](https://www.benf.org/other/cfr)
-    - [Ghidra](https://www.nsa.gov/resources/everyone/ghidra/)
-- [Qark](https://github.com/linkedin/qark) dynamic analysis can be use for tapjacking PoC
+- Take frida server from [here](https://github.com/frida/frida/releases)
+- `unxz frida-server-version-android-x86.xz` to decompress the file
+- Follow the instructions form the article previously mentioned above
 
-## Resource
+```bash
+# Copy the server to the device
+adb push ./frida-server-$version-android-$arch /data/local/tmp/frida-server
+#        ^Change this to match the name of the binary you just extracted
+
+# Enable root access to the device
+adb root
+
+# Make the server binary executable
+adb shell "chmod 755 /data/local/tmp/frida-server"
+
+# Start the server on your device
+adb shell "/data/local/tmp/frida-server &"
+```
+
+- I am on Ubuntu
+- `mkdir frida-on-venv` In my opt folder, I created a new folder for frida.
+- `sudo python3 -m venv frida` Create the virtual env for frida
+- `source frida/bin/activate` Activate the env
+- `pip3 install frida-tools` Install Frida
+- `frida-ps -U` from your ubuntu
+- In case you get an error like this `Failed to enumerate processes: unable to connect to remote frida-server: closed` it means the server is not running on the emulator. In this case try to launch it like this
+
+```bash
+user ~/Documents/hackthebox $ adb shell
+root@generic_x86_64:/ # su
+root@generic_x86_64:/ # /data/local/tmp/frida-server &
+[1] 3806
+```
+
+- Then `frida-ps -U` should work and will list the running process on the target
+
+#### Disable SSL pinning with Frida
+
+- When running `frida-ps -U` you should see the app you wish to transform in the list. Running this `frida-ps -D emulator-5554 -ai` will give you more details on the running app `-D <id>` will allow you to specify which plug in device you wish to see the app installed on and `-ai` will show the Identifier column.
+- Mine is Pinned (from the HTB challenge). If you do not have and HTB subscription you can try this on [this app](https://github.com/httptoolkit/android-ssl-pinning-demo) provided by Tim Perry from his article mentioned above.  
+
+![Pinned process](../.res/2023-01-07-14-14-35.png)
+
+- With the other command the output looks like this
+
+![Pinned process detailed](../.res/2023-01-07-14-31-39.png)
+
+- Take [this script](https://raw.githubusercontent.com/httptoolkit/frida-android-unpinning/main/frida-script.js) kindly provided by our new friend Tim `wget https://raw.githubusercontent.com/httptoolkit/frida-android-unpinning/main/frida-script.js`
+- Then you just need to run `frida -D emulator-5554 -l ./frida-script.js -f com.example.pinned` or `frida -U -l ./frida-script.js -f com.example.pinned`
+
+> Note: Apparently the --no-pause is not necessary anymore see [here](https://github.com/frida/frida/issues/2277)
+
+![spawned](../.res/2023-01-07-14-32-47.png)
+
+- Now we should be able to intercept the traffic and actually see it in Burp
+
+#### Useful frida commands
+
+- `frida-ls-devices` list plugged in devices
+- `frida-ps -D <id> -ai` list installed apps on a specific device
+
+## Wireshark
+
+- Make laptop as hotspot capture traffic
+- Pull capture from a pfSense machine or something similar
+- `adb shell tcpdump -s -s 0`
+- HTTP traffic: `adb shell tcpdump -C -s -s 0 port 80`
+
+## Resources
 
 ### APISecure conf workshop by Alissa Knight
 
@@ -168,3 +233,56 @@ sensitive. Some malware masquerades as Android keyboard extensions.
   - Inspect the results from the apk analysis here
   - Go to the Mobsf folder where everything as been extracted and make some manual checks.
   - You can use [RegEXAPI](https://github.com/odomojuli/RegExAPI) with `grep -R _token`
+
+#### Resources mentioned in the video
+
+- [All that we let in - Part 1 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mobile-health-apis-part-1)
+- [All that we let in - Part 2 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mhealth-apps-and-apis-part-2)
+
+### Another video with Alissa Knight that is a great complement to the first one
+
+- How I hacked 30 mobile banking apps & the future of API Security, Alissa Knight, Aite Group - Apidays 2019
+
+{% embed url="https://youtu.be/dRaTXF4LQr8" %} How I hacked 30 mobile banking apps & the future of API Security, Alissa Knight, Aite Group - Apidays 2019 {% endembed %}  
+
+### Resources for SSL pinning bypass
+
+- Android SSL Pinning Bypass for Bug Bounties & Penetration Testing - Hacktify Cyber Security  
+{% embed url="https://youtu.be/ENyEcwLaz-A" %} Android SSL Pinning Bypass for Bug Bounties & Penetration Testing - Hacktify Cyber Security {% endembed %}
+
+- Android Application Pinning Bypass | Pinned @ HackTheBox by 0xbro  
+{% embed url="https://youtu.be/CJR_BSIStmE" %} Android Application Pinning Bypass | Pinned @ HackTheBox by 0xbro {% endembed %}  
+
+- Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro  
+{% embed url="https://youtu.be/KGdCvJs9w7w" %} Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro {% endembed %}
+
+- Tool (**I DID NOT TRY IT**): rootAVD by newb1t to root an AVD  
+{% embed url="https://github.com/newbit1/rootAVD/blob/master/README.md" %} rootAVD - newb1t {% endembed %}  
+  - Magisk Trust User Certs (I did not try either it but it is suppose to be added in addition of use of rootAVD to make a system trusted certificate)  
+    {% embed url="https://github.com/NVISOsecurity/MagiskTrustUserCerts/releases/tag/v0.4.1" %} Magisk trus user certs {% endembed %}  
+
+### Tools
+
+#### Android Emulator
+
+- [Genymotion](https://www.genymotion.com) (free 30 days trial)
+- [Android Studio](https://developer.android.com/) (free)
+
+#### Software
+
+- [Burp](https://portswigger.net/burp)
+- [Android SDK Tool](https://developer.android.com/studio/releases/platforms.hml)
+
+#### Automated tools
+
+- [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) can help to speed up static analysis
+- [Qark](https://github.com/linkedin/qark) dynamic analysis can be use for tapjacking PoC
+
+#### Decompiling & RE
+
+- [jadx](https://github.com/skylot/jadx)
+- [cfr java decompiler](https://www.benf.org/other/cfr)
+- [Ghidra](https://www.nsa.gov/resources/everyone/ghidra/)
+- [Android apktool](https://ibotpeaches.github.io/Apktool/)
+- [Frida](https://www.frida.re)
+- [Fridump](https://github.com/Nightbringer21/fridump)
