@@ -277,6 +277,12 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 - [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) can help to speed up static analysis
 - [Qark](https://github.com/linkedin/qark) dynamic analysis can be use for tapjacking PoC
+- [Inspeckage - Android Package Inspector](https://github.com/ac-pm/Inspeckage)
+
+#### Certificate pinning
+
+- [EdXposed Framework formerly Xposed](https://github.com/ElderDrivers/EdXposed) you can find modules for cert pining and a lot of other things.
+- [SSLUnpinning - Xposed Module](https://github.com/ac-pm/SSLUnpinning_Xposed)
 
 #### Decompiling & RE
 

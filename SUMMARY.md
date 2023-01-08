@@ -223,7 +223,9 @@
 
 ## Talks
 
+* [My Talks about Web Pentest](talks/web-talks.md)
 * [TDI 2022 - Android Application Hacking](talks/android-app.md)
+* [Other of my talks and Podcast](talks/other-talks-podcasts.md)
 
 ## Resources
 
