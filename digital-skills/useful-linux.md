@@ -14,6 +14,8 @@
 - `convert *.png document.pdf` convert all png files of current folder in one pdf
 - `convert document.jpg document.pdf` convert the file `document.jpg` in to a pdf named `document.pdf`
 
+> Note: if you get this error, this [article](https://suay.site/?p=2369) is great. You just need to add this line `<policy domain="coder" rights="read | write" pattern="PDF" />` before `</policymap>` in the file `/etc/ImageMagick-6/policy.xml` (the path can be different depending on your version of ImageMagick)
+
 ### PDF to images
 
 - You can do the other way around `pdfimages file.pdf extracted-images/` you can add the lag `-png` to specify that you want the pictures to be in png format

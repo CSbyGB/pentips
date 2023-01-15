@@ -71,6 +71,7 @@
 ## Useful Powershell cmd
 
 - `Set-ExecutionPolicy Unrestricted` will let you execute any ps1 script, answer A to the prompt 
+- `ls -force` is the equivalent of `ls -la`
 
 ## Resources
 
