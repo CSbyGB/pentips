@@ -1,5 +1,7 @@
 # Hackthebox - Shoppy - Linux
 
+![Shoppy](../.res/HTB-Shoppy.png)
+
 ## Nmap
 
 ```
@@ -312,4 +314,3 @@ Let's have a look at this password-manager thing. There was a hint about it also
 - We can run `docker run -v /:/mnt --rm -it alpine chroot /mnt sh` and it works! We are now root and can grab the last flag.
 
 ![root](../.res/2022-12-29-14-23-54.png)
-
