@@ -198,6 +198,7 @@
 * [Hackthebox - Querier](/writeups/HTB-querier.md)
 * [Hackthebox - Sauna](/writeups/HTB-Sauna.md)
 * [Hackthebox - SecNotes](writeups/HTB-secnotes.md)
+* [Hackthebox - Shoppy](writeups/HTB-Shoppy.md)
 * [Hackthebox - Steamcloud](writeups/HTB-steamcloud.md)
 * [TryHackMe - Anonymous](writeups/THM-Anonymous.md)
 * [TryHackMe - Blaster](/writeups/THM-Blaster.md)
