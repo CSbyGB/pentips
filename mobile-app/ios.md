@@ -13,6 +13,8 @@
 
 ## Resources
 
+- [Frida & Objection without Jailbreak! by 302 not found](https://medium.com/bugbountywriteup/frida-objection-without-jailbreak-27a66501bf38)
+
 ### Tools
 
 - Jailbroken Iphone

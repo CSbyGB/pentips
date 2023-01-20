@@ -44,6 +44,21 @@ adb install ../../../path/to/file/file.apk
 - `adb push` - PC to device
 - `adb pull` - Device to PC
 - `adb logcat` - commande line took that dumps a log of system messages
+- `adb shell pm list packages` will give you a list of all installed package names
+- `adb uninstall <package-name>` uninstall a package
+
+### Find the arch of your android Device or emulator
+
+- `adb shell getprop`
+- To figure out what kind of device you have:
+
+```bash
+ro.product.cpu.abilist64 not empty = ARM64
+ro.product.cpu.abilist32 contains x86 = x86
+If none of these conditions match, you have an ARM device
+```
+
+- Check [this thread](https://android.stackexchange.com/questions/188725/determine-device-architecture-arm-arm64-x86-with-adb-getprop) on stack exchange for more details
 
 ### ADB troubleshoot
 
@@ -135,6 +150,75 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 
 - Interesting resources for static analysis on [Hacktricks](https://book.hacktricks.xyz/mobile-apps-pentesting/android-app-pentesting#static-analysis)
 
+## Modify an Application
+
+- For CTF and other purposes (like cert pinning bypass) we might need to modify the code of the application.
+- However the only way to do so when we only have the apk provided is to decompile the code with apktool (or any other) modify the smali code to fit our purpose, recompile it and sign it.
+
+### Decompile with apktool
+
+- `apktool d app.apk` decompile the package app.apk
+
+### Understand smali
+
+#### Registers
+
+![registers](../.res/2023-01-19-16-13-04.png)  
+
+- Image source: [Wiki smali/baksmali](https://github.com/JesusFreke/smali/wiki/Registers)
+
+#### Types
+
+![types](../.res/2023-01-19-16-35-28.png)
+
+- Image source: [Wiki smali/baksmali](https://github.com/JesusFreke/smali/wiki/TypesMethodsAndFields)
+
+#### Hello world
+
+- Here is an example of an hello world in smali. You can find the original code [here](https://github.com/JesusFreke/smali/blob/master/examples/HelloWorld/HelloWorld.smali)
+
+```smali
+.class public LHelloWorld;
+
+#Ye olde hello world application
+#To assemble and run this on a phone or emulator:
+#
+#java -jar smali.jar a -o classes.dex HelloWorld.smali
+#zip HelloWorld.zip classes.dex
+#adb push HelloWorld.zip /data/local
+#adb shell dalvikvm -cp /data/local/HelloWorld.zip HelloWorld
+#
+#if you get out of memory type errors when running smali.jar, try
+#java -Xmx512m -jar smali.jar HelloWorld.smali
+#instead
+
+.super Ljava/lang/Object;
+
+.method public static main([Ljava/lang/String;)V
+    // This method has 2 registers
+    .registers 2
+
+    sget-object v0, Ljava/lang/System;->out:Ljava/io/PrintStream;
+
+    const-string	v1, "Hello World!"
+
+    invoke-virtual {v0, v1}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+
+    return-void
+.end method
+```
+
+- If you use arguments they have to be placed in the last parameters.
+
+### Recompile with apktool
+
+- `apktool b app/ -o newapp.apk` recompile the folder `app/` and generate a new file `newapp.apk`
+
+### Sign the application
+
+In order to be installed we need to sign the application. FOr this we can use apksigner.
+- `apksigner sign --ks path/to/key.keystore newapp.apk`
+
 ## Dynamic analysis
 
 ### General tips for dynamic analysis
@@ -149,6 +233,7 @@ sensitive. Some malware masquerades as Android keyboard extensions.
 ### How to bypass certificate pining
 
 - [Here](https://httptoolkit.com/blog/frida-certificate-pinning/) is an article by Tim Perry on httptoolkit on how to bypass cert pinning with frida.
+- If none of the universal script work, you might want to consider using apktool to decompile, modify the smali code and recompile it (see how to do so above).
 
 #### Frida setup
 
@@ -190,8 +275,9 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 #### Disable SSL pinning with Frida
 
-- When running `frida-ps -U` you should see the app you wish to transform in the list. Running this `frida-ps -D emulator-5554 -ai` will give you more details on the running app `-D <id>` will allow you to specify which plug in device you wish to see the app installed on and `-ai` will show the Identifier column.
-- Mine is Pinned (from the HTB challenge). If you do not have and HTB subscription you can try this on [this app](https://github.com/httptoolkit/android-ssl-pinning-demo) provided by Tim Perry from his article mentioned above.  
+- I am going to use Pinned (from the HTB challenge). If you do not have and HTB subscription you can try this on [this app](https://github.com/httptoolkit/android-ssl-pinning-demo) provided by Tim Perry from his article mentioned above.  
+- First I launched Pinned and kept it on during the whole process
+- When running `frida-ps -U` you should see the app you wish to transform in the list. Running this `frida-ps -D emulator-5554 -ai` will give you more details on the running app `-D <id>` will allow you to specify which plug in device you wish to see the app installed on and `-ai` will show the Identifier column. This works as well `frida-ps -U -ai`
 
 ![Pinned process](../.res/2023-01-07-14-14-35.png)
 
@@ -206,7 +292,12 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 ![spawned](../.res/2023-01-07-14-32-47.png)
 
-- Now we should be able to intercept the traffic and actually see it in Burp
+- Now we should be able to intercept the traffic and actually see it in Burp (frida server should still be running for this process)
+- For Pinned for example I just had to click login in my screen (that I did not close)  
+![Pinned](../.res/2023-01-19-19-07-46.png)  
+- And I got the flag from Burp  
+![Flag](../.res/2023-01-19-19-08-40.png)
+- If this did not work, check out this [article](https://blog.nviso.eu/2020/11/19/proxying-android-app-traffic-common-issues-checklist/#check10)
 
 #### Useful frida commands
 
@@ -221,6 +312,15 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 - HTTP traffic: `adb shell tcpdump -C -s -s 0 port 80`
 
 ## Resources
+
+### General resources
+
+- [eLearnSecurity Mobile App Pentesting notes by Joas Antonio Dos Santos](https://drive.google.com/file/d/1K_xnDKMhlV1aJqXsq4lXiCcliiGvs877/view)
+- [Android Pentesting 101 — Part 1 by 302 found](https://infosecwriteups.com/android-pentesting-101-part-1-8e31b8cd8b2b)
+- [Android Pentesting 101 — Part 2 by 302 found](https://infosecwriteups.com/android-pentesting-101-part-2-419facdf11c1)
+- [Android Pentesting 101 — Part 3 by 302 found](https://infosecwriteups.com/android-pentesting-101-part-3-2bf846b05594)
+- [Android Application Penetration Testing | Mobile Pentesting - Sabyasachi Paul - h0tPlug1n](https://youtu.be/Tujbk4ToVMI)
+- [Android Application Pentesting - Mystikcon 2020](https://youtu.be/NrxTBcjAL8A)
 
 ### APISecure conf workshop by Alissa Knight
 
@@ -245,16 +345,15 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 {% embed url="https://youtu.be/dRaTXF4LQr8" %} How I hacked 30 mobile banking apps & the future of API Security, Alissa Knight, Aite Group - Apidays 2019 {% endembed %}  
 
-### Resources for SSL pinning bypass
+### Resources for SSL pinning bypass and Frida
 
-- Android SSL Pinning Bypass for Bug Bounties & Penetration Testing - Hacktify Cyber Security  
-{% embed url="https://youtu.be/ENyEcwLaz-A" %} Android SSL Pinning Bypass for Bug Bounties & Penetration Testing - Hacktify Cyber Security {% endembed %}
+- [Frida gadget injection on android no root 2 methods - Alexandr Fadeev](https://fadeevab.com/frida-gadget-injection-on-android-no-root-2-methods/)
 
-- Android Application Pinning Bypass | Pinned @ HackTheBox by 0xbro  
-{% embed url="https://youtu.be/CJR_BSIStmE" %} Android Application Pinning Bypass | Pinned @ HackTheBox by 0xbro {% endembed %}  
+- [Android SSL Pinning Bypass for Bug Bounties & Penetration Testing - Hacktify Cyber Security](https://youtu.be/ENyEcwLaz-A)  
 
-- Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro  
-{% embed url="https://youtu.be/KGdCvJs9w7w" %} Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro {% endembed %}
+- [Android Application Pinning Bypass | Pinned @ HackTheBox by 0xbro](https://youtu.be/CJR_BSIStmE)  
+
+- [Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro ](https://youtu.be/KGdCvJs9w7w) 
 
 - Tool (**I DID NOT TRY IT**): rootAVD by newb1t to root an AVD  
 {% embed url="https://github.com/newbit1/rootAVD/blob/master/README.md" %} rootAVD - newb1t {% endembed %}  
@@ -283,6 +382,9 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 - [EdXposed Framework formerly Xposed](https://github.com/ElderDrivers/EdXposed) you can find modules for cert pining and a lot of other things.
 - [SSLUnpinning - Xposed Module](https://github.com/ac-pm/SSLUnpinning_Xposed)
+- [Circumventing SSL Pinning in obfuscated apps with OkHttp - Jeroen Beckers](https://blog.nviso.eu/2019/04/02/circumventing-ssl-pinning-in-obfuscated-apps-with-okhttp/)
+- [Proxying Android app traffic – Common issues / checklist - Jeroen Beckers](https://blog.nviso.eu/2020/11/19/proxying-android-app-traffic-common-issues-checklist/)
+- [The Ultimate Decision Tree for Mobile App Network Testing aka “The Squirrel in the middle”! - Sven Schleier](https://bsddaemonorg.wordpress.com/2021/02/11/the-ultimate-decision-tree-for-mobile-app-network-testing-aka-the-squirrel-in-the-middle/)
 
 #### Decompiling & RE
 
