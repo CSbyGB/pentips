@@ -10,7 +10,7 @@
 ## Get the app
 
 - Ask your customer to give it to you with SSL Pinning disabled. This is the best option...
-- Google play (we can use apk pull and take it from an AVD or device you will an account on Google)
+- Google play (we can use apk pull and take it from an AVD or device you will need an account on Google)
 - [apk Pure](https://apkpure.com)
 - [apk mirror](https://www.apkmirror.com/)
 - [apk monk](https://www.apkmonk.com/)
@@ -316,11 +316,13 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 ### General resources
 
 - [eLearnSecurity Mobile App Pentesting notes by Joas Antonio Dos Santos](https://drive.google.com/file/d/1K_xnDKMhlV1aJqXsq4lXiCcliiGvs877/view)
+- [My writeup of the HTB Introduction to Android Exploitation track](../writeups/HTB-Intro-to-android-Exploitation-Track.md)
 - [Android Pentesting 101 — Part 1 by 302 found](https://infosecwriteups.com/android-pentesting-101-part-1-8e31b8cd8b2b)
 - [Android Pentesting 101 — Part 2 by 302 found](https://infosecwriteups.com/android-pentesting-101-part-2-419facdf11c1)
 - [Android Pentesting 101 — Part 3 by 302 found](https://infosecwriteups.com/android-pentesting-101-part-3-2bf846b05594)
 - [Android Application Penetration Testing | Mobile Pentesting - Sabyasachi Paul - h0tPlug1n](https://youtu.be/Tujbk4ToVMI)
 - [Android Application Pentesting - Mystikcon 2020](https://youtu.be/NrxTBcjAL8A)
+- [Android Security Crash Course by CorSecure](https://youtube.com/playlist?list=PLH5GW4W70qp_B2eptq1Qo7KM2S66M77hi)
 
 ### APISecure conf workshop by Alissa Knight
 
@@ -353,18 +355,22 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 - [Android Application Pinning Bypass | Pinned @ HackTheBox by 0xbro](https://youtu.be/CJR_BSIStmE)  
 
-- [Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro ](https://youtu.be/KGdCvJs9w7w) 
+- [Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro](https://youtu.be/KGdCvJs9w7w)
 
 - Tool (**I DID NOT TRY IT**): rootAVD by newb1t to root an AVD  
 {% embed url="https://github.com/newbit1/rootAVD/blob/master/README.md" %} rootAVD - newb1t {% endembed %}  
   - Magisk Trust User Certs (I did not try either it but it is suppose to be added in addition of use of rootAVD to make a system trusted certificate)  
     {% embed url="https://github.com/NVISOsecurity/MagiskTrustUserCerts/releases/tag/v0.4.1" %} Magisk trus user certs {% endembed %}  
 
+### Resources for Smali
+
+- [GUIDE Smali coding guide for beginners on XDA developers forum by havocgb](https://forum.xda-developers.com/t/guide-smali-coding-guide-for-beginners.2193735/)
+
 ### Tools
 
 #### Android Emulator
 
-- [Genymotion](https://www.genymotion.com) (free 30 days trial)
+- [Genymotion](https://www.genymotion.com) (free 30 days trial and free for personal use)
 - [Android Studio](https://developer.android.com/) (free)
 
 #### Software
@@ -380,8 +386,7 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 #### Certificate pinning
 
-- [EdXposed Framework formerly Xposed](https://github.com/ElderDrivers/EdXposed) you can find modules for cert pining and a lot of other things.
-- [SSLUnpinning - Xposed Module](https://github.com/ac-pm/SSLUnpinning_Xposed)
+- [Bypass SSL Pinning without root by CorSecure](https://youtu.be/qaJBWcueCIA)
 - [Circumventing SSL Pinning in obfuscated apps with OkHttp - Jeroen Beckers](https://blog.nviso.eu/2019/04/02/circumventing-ssl-pinning-in-obfuscated-apps-with-okhttp/)
 - [Proxying Android app traffic – Common issues / checklist - Jeroen Beckers](https://blog.nviso.eu/2020/11/19/proxying-android-app-traffic-common-issues-checklist/)
 - [The Ultimate Decision Tree for Mobile App Network Testing aka “The Squirrel in the middle”! - Sven Schleier](https://bsddaemonorg.wordpress.com/2021/02/11/the-ultimate-decision-tree-for-mobile-app-network-testing-aka-the-squirrel-in-the-middle/)

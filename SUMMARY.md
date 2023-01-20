@@ -214,6 +214,10 @@
 * [TryHackMe - Vulnversity](/writeups/THM-vulnversity.md)
 * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 
+### HTB Tracks
+
+* [Hackthebox - Introduction to Android Exploitation - Track](writeups/HTB-Intro-to-android-Exploitation-Track.md)
+
 ## Digital skills
 
 * [How to make a gitbook](/digital-skills/howto-gitbook.md)
