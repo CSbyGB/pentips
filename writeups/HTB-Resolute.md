@@ -475,6 +475,9 @@ result was NT_STATUS_WRONG_PASSWORD
 - I decided to install parrot os just to try it. So I now have a evil-winrm working.
 - `evil-winrm -i 10.10.10.169 -u melanie -p 'Welcome123!'`. It works! We get a shell  
 ![evil-winrm melanie](../.res/2023-01-14-20-31-05.png)  
+
+## Privilege Escalation
+
 - I got lucky while looking around and found this folder `C:\PSTranscripts\20191203>`
 - There we have a file with a password for Ryan in it
 ![Password ](../.res/2023-01-14-20-49-50.png)  
