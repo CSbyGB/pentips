@@ -196,6 +196,7 @@
 * [Hackthebox - Paper](writeups/HTB-paper.md)
 * [Hackthebox - Poison](/writeups/HTB-poison.md)
 * [Hackthebox - Querier](/writeups/HTB-querier.md)
+* [Hackthebox - Resolute](/writeups/HTB-Resolute.md)
 * [Hackthebox - Sauna](/writeups/HTB-Sauna.md)
 * [Hackthebox - SecNotes](writeups/HTB-secnotes.md)
 * [Hackthebox - Shoppy](writeups/HTB-Shoppy.md)
@@ -214,7 +215,7 @@
 * [TryHackMe - Vulnversity](/writeups/THM-vulnversity.md)
 * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 
-### HTB Tracks
+## HTB Tracks writeups
 
 * [Hackthebox - Introduction to Android Exploitation - Track](writeups/HTB-Intro-to-android-Exploitation-Track.md)
 

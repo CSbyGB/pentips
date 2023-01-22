@@ -43,6 +43,15 @@
 
 - `tail FileName` will print for you the last lines of a file
 
+### sort
+
+- Will sort the content of a file `sort filename`
+- Example of possible result `file1 file2 differ: char 280, line 18`
+
+### cmp
+
+- Will compare files `cmp file1 file2`
+
 ### Create an alias
 
 - If you have a command you use all the time but that is a little long you can use an alias to make it shorter `alias mycommand="the command you need"` so for example `alias crazyls = "ls -al"` now when you will type `crazyls` you will have the result of `ls -al`

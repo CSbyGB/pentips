@@ -362,9 +362,20 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
   - Magisk Trust User Certs (I did not try either it but it is suppose to be added in addition of use of rootAVD to make a system trusted certificate)  
     {% embed url="https://github.com/NVISOsecurity/MagiskTrustUserCerts/releases/tag/v0.4.1" %} Magisk trus user certs {% endembed %}  
 
-### Resources for Smali
+### Resources for Smali, Dalvik and RE an android App
 
 - [GUIDE Smali coding guide for beginners on XDA developers forum by havocgb](https://forum.xda-developers.com/t/guide-smali-coding-guide-for-beginners.2193735/)
+- [Smali the Parseltongue Language by Benoit Forgette](https://blog.quarkslab.com/smali-the-parseltongue-language.html)
+- [Smali: Assembler for Android’s VM by The Mobile Security Guys](https://mobsecguys.medium.com/smali-assembler-for-dalvik-e37c8eed22f9)
+- [Smali - Decompiling/[Modifying]/Compiling on Hacktricks](https://book.hacktricks.xyz/mobile-pentesting/android-app-pentesting/smali-changes)
+- [android cracking](http://androidcracking.blogspot.com/search/label/smali)
+- [Dalvik opcodes](http://pallergabor.uw.hu/androidblog/dalvik_opcodes.html)
+- [Basic smali](https://themasterofmagik.wordpress.com/2014/03/27/basic-smali/)
+- [Understanding the Dalvik bytecode with the Dedexer tool](https://www.slideshare.net/paller/understanding-the-dalvik-bytecode-with-the-dedexer-tool)
+- [Dalvik notes - Haynes Mathew](https://sites.google.com/site/haynesmathew/home/projects/dalvik-notes)
+- [APKtool Google groupe](https://groups.google.com/g/apktool?pli=1)
+- [Dalvik Bytecode](https://source.android.com/docs/core/runtime/dalvik-bytecode?hl=en)
+- [Reverse engineering and modifying an Android game (.apk) — CTF by CurlS](https://medium.com/swlh/reverse-engineering-and-modifying-an-android-game-apk-ctf-c617151b874c)
 
 ### Tools
 
@@ -399,3 +410,4 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 - [Android apktool](https://ibotpeaches.github.io/Apktool/)
 - [Frida](https://www.frida.re)
 - [Fridump](https://github.com/Nightbringer21/fridump)
+- [APKlab an extension for VSCodium](https://marketplace.visualstudio.com/items?itemName=Surendrajat.apklab)
