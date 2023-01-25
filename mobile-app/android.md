@@ -230,6 +230,22 @@ In order to be installed we need to sign the application. FOr this we can use ap
 sensitive. Some malware masquerades as Android keyboard extensions.
 - Tapjacking PoC equivalent to Clickjacking can be done with Qark
 
+### Intercept HTTPS traffic
+
+- [Intercepting HTTPS Traffic from Apps on Android 7+ using Magisk & Burp](https://blog.nviso.eu/2017/12/22/intercepting-https-traffic-from-apps-on-android-7-using-magisk-burp/) this tutorial is great.
+- [Here](https://topjohnwu.github.io/Magisk/install.html) is how to install Magisk
+
+- If you want to modify just the network config using objection (and not injecting frida gadget). You can comment some code in objection. Comment the code of these 2 functions in objection
+
+```python
+def inject_load_library(self, target_class: str = None):
+def add_gadget_to_apk(self, architecture: str, gadget_source: str, gadget_config: str):
+```
+
+- `objection patchapk -N -s application.apk` and patch the apk
+
+> Thanks to my colleague Ash for mentioning this to me.
+
 ### How to bypass certificate pining
 
 - [Here](https://httptoolkit.com/blog/frida-certificate-pinning/) is an article by Tim Perry on httptoolkit on how to bypass cert pinning with frida.
@@ -257,9 +273,6 @@ adb shell "/data/local/tmp/frida-server &"
 ```
 
 - I am on Ubuntu
-- `mkdir frida-on-venv` In my opt folder, I created a new folder for frida.
-- `sudo python3 -m venv frida` Create the virtual env for frida
-- `source frida/bin/activate` Activate the env
 - `pip3 install frida-tools` Install Frida
 - `frida-ps -U` from your ubuntu
 - In case you get an error like this `Failed to enumerate processes: unable to connect to remote frida-server: closed` it means the server is not running on the emulator. In this case try to launch it like this
@@ -347,7 +360,7 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 {% embed url="https://youtu.be/dRaTXF4LQr8" %} How I hacked 30 mobile banking apps & the future of API Security, Alissa Knight, Aite Group - Apidays 2019 {% endembed %}  
 
-### Resources for SSL pinning bypass and Frida
+### Resources for SSL pinning bypass, Frida, traffic interception and rooting
 
 - [Frida gadget injection on android no root 2 methods - Alexandr Fadeev](https://fadeevab.com/frida-gadget-injection-on-android-no-root-2-methods/)
 
@@ -357,10 +370,10 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 - [Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro](https://youtu.be/KGdCvJs9w7w)
 
-- Tool (**I DID NOT TRY IT**): rootAVD by newb1t to root an AVD  
-{% embed url="https://github.com/newbit1/rootAVD/blob/master/README.md" %} rootAVD - newb1t {% endembed %}  
-  - Magisk Trust User Certs (I did not try either it but it is suppose to be added in addition of use of rootAVD to make a system trusted certificate)  
-    {% embed url="https://github.com/NVISOsecurity/MagiskTrustUserCerts/releases/tag/v0.4.1" %} Magisk trus user certs {% endembed %}  
+- [Configuring Burp Suite With Android Nougat](https://blog.ropnop.com/configuring-burp-suite-with-android-nougat/)
+
+- Tool (**I DID NOT TRY IT**): [rootAVD by newb1t to root an AVD](https://github.com/newbit1/rootAVD/blob/master/README.md)  
+  - [Magisk Trust User Certs](https://github.com/NVISOsecurity/MagiskTrustUserCerts/releases/tag/v0.4.1) (I did not try either it but it is suppose to be added in addition of use of rootAVD to make a system trusted certificate)  
 
 ### Resources for Smali, Dalvik and RE an android App
 
