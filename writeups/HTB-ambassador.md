@@ -177,20 +177,20 @@ Nmap done: 1 IP address (1 host up) scanned in 177.76 seconds
 ![db path](../.res/2022-12-27-12-29-35.png)  
   - We have a secret here it is the secret key that was extracted with the script `SW2YcwTIb9zpOOhoPsMm`
 ![security](../.res/2022-12-27-12-31-02.png)  
-  - This might be worth investigating
+  - This might be worth investigating  
 ![aws](../.res/2022-12-27-12-34-19.png)  
   - This too  
 ![Engine](../.res/2022-12-27-12-37-19.png)  
 - The db file contains the user `admin` (to read it we can use sqlbrowser `sqlitebrowser 10_10_11_183_3000/grafana.db`)
-- The graphana.ini has the admin password `messageInABottle685427`
+- The graphana.ini has the admin password `messageInABottle685427`  
 ![admin pass](../.res/2022-12-27-13-13-27.png)  
 We can login on grafana as the admin.  
-![admin login](../.res/2022-12-27-13-51-48.png)
+![admin login](../.res/2022-12-27-13-51-48.png)  
 I can not find a place to execute command or anything...  
 Let's use sqlite3 to have a look at the db file, this way we will be able to use the cmd line (plus it will be more easy on our eyes :D) `sqlite3 exploit-grafana-CVE-2021-43798/10_10_11_183_3000/grafana.db`  
 We can find useful sqlite3 commands [here](https://www.sitepoint.com/getting-started-sqlite3-basic-commands/)  
-- We find another password in the data_source table `dontStandSoCloseToMe63221!`
-![password](../.res/2022-12-27-14-17-45.png)
+- We find another password in the data_source table `dontStandSoCloseToMe63221!`  
+![password](../.res/2022-12-27-14-17-45.png)  
 We saw that the mysql port was open with our nmap. Let's connect to it `mysql -h 10.10.11.183 -u grafana -p`  
 When having a look at the databases we have an usal database `whackywidget`  
 ![databases](../.res/2022-12-27-14-24-45.png)  
