@@ -34,6 +34,7 @@
 * [Misc Tips](web-pentest/Misc-Tips.md)
 * [API](web-pentest/API.md)
 * [Clickjacking](web-pentest/clickjacking.md)
+* [CORS](web-pentest/cors.md)
 
 ## Mobile App Pentest
 
