@@ -49,6 +49,8 @@ adb install ../../../path/to/file/file.apk
 
 ### Find the arch of your android Device or emulator
 
+> This is useful to know which version of frida server you need for example.
+
 - `adb shell getprop`
 - To figure out what kind of device you have:
 
@@ -60,6 +62,8 @@ If none of these conditions match, you have an ARM device
 
 - Check [this thread](https://android.stackexchange.com/questions/188725/determine-device-architecture-arm-arm64-x86-with-adb-getprop) on stack exchange for more details
 
+- or `adb shell getprop ro.product.cpu.abi`
+
 ### ADB troubleshoot
 
 - If like me you pulled your hair because of Android Dolphin emulator and could not find proxy settings, you can get back the former look of the emulator by changing this in the settings
@@ -69,6 +73,12 @@ If none of these conditions match, you have an ARM device
 - Thanks to Inliner on stakoverflow for this solution. You can find the thread [here](https://stackoverflow.com/questions/70972106/how-to-configure-proxy-in-emulators-in-new-versions-of-android-studio)
 
 ## Burp
+
+### Getting burp cert and push it with adb
+
+- Open Burp Suite go to the proxy tab. Then go to the Options tab click on "Import / export CA certificate"
+- Select Certificate in DER format
+- Push the certificate to your device `adb push path/to/my/cert.der /data/local/tmp/cert-der.crt`
 
 ### Configure Burp with Android Studio
 
@@ -88,6 +98,13 @@ Launch mobsf:
 ```bash
 /opt/Mobile-Security-Framework-MobSF $ sudo ./run.sh 127.0.0.1:4444
 ```
+
+### Mobsf with Docker
+
+- If you want you can use docker to get and use MobSF
+- `docker pull opensecurity/mobile-security-framework-mobsf`
+- `docker run -it -p 8000:8000 opensecurity/mobile-security-framework-mobsf`
+- Got to http://0.0.0.0:8000 to access the gui
 
 ## Static Analysis
 

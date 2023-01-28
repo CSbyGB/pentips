@@ -59,6 +59,10 @@
 
 ## Compare 2 files
 
+## Unzip
+
+- If you accidentally unzipped a file and want to delete all the files you just unzipped `unzip -Z -1 <filename.zip> | xargs -I{} rm -v {}`
+
 ### Extract unique occurrence from 2 files
 
 - You have to files and you want to extract unique values and put them in a new file (file1 should be the one with the more lines)
