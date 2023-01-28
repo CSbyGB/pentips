@@ -176,6 +176,7 @@
 * [Hackthebox - Academy](/writeups/HTB-academy.md)
 * [Hackthebox - Access](writeups/HTB-access.md)
 * [Hackthebox - Active](/writeups/HTB-active.md)
+* [Hackthebox - Ambassador](/writeups/HTB-ambassador.md)
 * [Hackthebox - Arctic](/writeups/HTB-Arctic.md)
 * [Hackthebox - Backend](writeups/HTB-Backend.md)
 * [Hackthebox - BackendTwo](/writeups/HTB-BackendTwo.md)
