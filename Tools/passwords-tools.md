@@ -155,6 +155,11 @@ NL$KM:0cef728a437eb45555beed92c6d90111da01e1c2e38393d6a9b3754264f643864b98768792
 
 - You can also work only with SAM and SYSTEM `secretsdump.py local -sam SAM -system SYSTEM `
 
+## Mentalist
+
+- Mentalist is a graphical tool for custom wordlist generation. It utilizes common human paradigms for constructing passwords and can output the full wordlist as well as rules compatible with Hashcat and John the Ripper.
+- [Github](https://github.com/sc0tfree/mentalist)
+
 ## Resources
 
 {% embed url="https://github.com/digininja/CeWL" %} CeWL {% endembed %}

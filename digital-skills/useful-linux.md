@@ -16,6 +16,10 @@
 
 > Note: if you get this error, this [article](https://suay.site/?p=2369) is great. You just need to add this line `<policy domain="coder" rights="read | write" pattern="PDF" />` before `</policymap>` in the file `/etc/ImageMagick-6/policy.xml` (the path can be different depending on your version of ImageMagick)
 
+### webp to jpg
+
+- `convert *.webp *.jpg`
+
 ### PDF to images
 
 - You can do the other way around `pdfimages file.pdf extracted-images/` you can add the lag `-png` to specify that you want the pictures to be in png format
@@ -58,6 +62,16 @@
 - `-A 2` This option will show su the 2 lines after our keyword
 
 ## Compare 2 files
+
+## Packets install and mamangement
+
+### List installed packets
+
+- `apt list --installed` (add a grep on it for example `| grep image` if you are looking for the package imagemagick)
+
+### Install a deb package with apt
+
+- `sudo apt install ./packet.deb`
 
 ## Unzip
 
