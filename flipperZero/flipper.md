@@ -99,22 +99,24 @@ Now you can use your flipper as a remote. Pretty cool.
 ![image](https://user-images.githubusercontent.com/96747355/211213661-dbc5a217-5686-4200-b01d-a6fb83c53d47.png)  
 ![image](https://user-images.githubusercontent.com/96747355/211213689-f3bbcaab-8fb8-4f37-bbca-0e0fb2103c08.png)  
 
-
 ### My music files
 
 - [Here](https://github.com/CSbyGB/pentips/tree/main/flipper-zero-music-file) is a link to the folder where I will put the music files I will make using this methodology.
 
-### Resources
+### Resources for music with flipper Zero
 
 - [flipper music files - Tonsil](https://github.com/Tonsil/flipper-music-files)
-https://arduinoplusplus.wordpress.com/2019/12/23/an-rtttl-parser-class/
 - [An RTTTL Parser Class by marco c on Arduino++](https://arduinoplusplus.wordpress.com/2019/12/23/an-rtttl-parser-class/)
 - [Apprendre le solfege](https://www.apprendrelesolfege.com/)
 - [Flowkey](https://www.flowkey.com/en/piano-guide/reading-notes)
+
+## Using a Flipper Zero to access PI source code on IoT devices
+
+- See Dana Epp's blog article [here](https://danaepp.com/using-a-flipper-zero-to-access-api-source-code-on-iot-devices) for a detailed explaination on how to do this
 
 ## Resources
 
 {% embed url="https://docs.flipperzero.one/" %} Official Documentation {% endembed %}  
 {% embed url="https://flipperzero.one/" %} Official Website {% endembed %}  
 {% embed url="https://discord.com/invite/y5E5m8jbgb" %} Official Discord Server {% endembed %}  
-{% embed url="https://twitter.com/flipper_zero" %} Official Twitter {% endembed %}   
+{% embed url="https://twitter.com/flipper_zero" %} Official Twitter {% endembed %}  
