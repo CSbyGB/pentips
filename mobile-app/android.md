@@ -106,6 +106,12 @@ Launch mobsf:
 - `docker run -it -p 8000:8000 opensecurity/mobile-security-framework-mobsf`
 - Got to http://0.0.0.0:8000 to access the gui
 
+## Checklists
+
+On every pentest, it is always worth having a checklist. This will allow you to make sure that you do not forget anything.  
+For Android and Mobile Application pentest in general, I can only recommend the MAS checklist made by OWASP.  
+- Check it out [here](https://mas.owasp.org/MAS_checklist/)
+
 ## Static Analysis
 
 ### Android manifest
@@ -147,6 +153,27 @@ Here is an example of code on the pivaa application with exportable activities:
         </receiver>
         <provider android:name="com.htbridge.pivaa.handlers.VulnerableContentProvider" android:protectionLevel="dangerous" android:enabled="true" android:exported="true" android:authorities="com.htbridge.pivaa" android:grantUriPermissions="true"/>
 ```
+
+#### Activities
+
+Activities are always worth checking.  
+Sometimes you might see activities that takes command line arguments.
+
+> For confidentiality reasons the examples here are anonymized
+
+```java
+// Example 1: Takes an argument
+getIntent().putExtra("something", updateSomethingCommandLineArguments(getIntent().getStringExtra("something")));
+
+// Example 2: If no argument is given the app will not launch
+Bundle extras = getIntent().getExtras();
+        if (extras == null) {
+            finish();
+        } else if (!extras.getString("open").equalsIgnoreCase("something")) {
+            finish();
+```
+
+So it might be a good idea in the Activity files to look for the following strings: "extra", "extras" "intent"
 
 ### General tips for static analysis
 
@@ -252,16 +279,23 @@ sensitive. Some malware masquerades as Android keyboard extensions.
 - [Intercepting HTTPS Traffic from Apps on Android 7+ using Magisk & Burp](https://blog.nviso.eu/2017/12/22/intercepting-https-traffic-from-apps-on-android-7-using-magisk-burp/) this tutorial is great.
 - [Here](https://topjohnwu.github.io/Magisk/install.html) is how to install Magisk
 
-- If you want to modify just the network config using objection (and not injecting frida gadget). You can comment some code in objection. Comment the code of these 2 functions in objection
+- If you want to modify just the network config using objection (and not injecting frida gadget). You can comment some code in objection. Comment the whole code of these 2 functions in objection in the file `/usr/local/lib/python3.10/dist-packages/objection/utils/patchers/android.py`
 
 ```python
 def inject_load_library(self, target_class: str = None):
 def add_gadget_to_apk(self, architecture: str, gadget_source: str, gadget_config: str):
 ```
 
-- `objection patchapk -N -s application.apk` and patch the apk
+- To do so you can add this `'''` on line 765 and line 840 (this will comment the whole block of the 2 functions. Be careful with indentation to avoid errors)
+
+- You will also need to comment 203 and 204 in `/usr/local/lib/python3.10/dist-packages/objection/commands/mobile_packages.py` because the previous 2 functions are called in this file.
+
+- Finally run `objection patchapk -N -s application.apk` and patch the apk
 
 > Thanks to my colleague Ash for mentioning this to me.
+
+- If you want to patch the apk, and inject frida gadget this command should work `objection patchapk -s application.apk`.  
+If you want a practical example of this check out the writeup for the challenged Anchored [here](https://csbygb.gitbook.io/pentips/htb-tracks-writeups/htb-intro-to-android-exploitation-track#challenge-anchored).
 
 ### How to bypass certificate pining
 
