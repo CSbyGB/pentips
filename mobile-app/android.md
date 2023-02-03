@@ -292,7 +292,7 @@ def add_gadget_to_apk(self, architecture: str, gadget_source: str, gadget_config
 
 - Finally run `objection patchapk -N -s application.apk` and patch the apk
 
-> Thanks to my colleague Ash for mentioning this to me.
+> Thanks to my colleague [Ash](https://twitter.com/ashiahanim_ay) for mentioning this to me.
 
 - If you want to patch the apk, and inject frida gadget this command should work `objection patchapk -s application.apk`.  
 If you want a practical example of this check out the writeup for the challenged Anchored [here](https://csbygb.gitbook.io/pentips/htb-tracks-writeups/htb-intro-to-android-exploitation-track#challenge-anchored).
