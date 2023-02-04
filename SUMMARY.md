@@ -185,6 +185,7 @@
 * [Hackthebox - Chatterbox](/writeups/HTB-chatterbox.md)
 * [Hackthebox - Devel](/writeups/HTB-Devel.md)
 * [Hackthebox - Driver](writeups/HTB-driver.md)
+* [Hackthebox - Explore](writeups/HTB-Explore.md)
 * [Hackthebox - Forest](writeups/HTB-forest.md)
 * [Hackthebox - Good games](writeups/HTB-goodgames.md)
 * [Hackthebox - Grandpa](writeups/HTB-grandpa.md)
