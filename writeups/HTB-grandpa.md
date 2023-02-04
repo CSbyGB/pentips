@@ -1,4 +1,8 @@
-# Hackthebox - Grandpa - Windows
+# Hackthebox - Grandpa
+
+- Windows
+
+![Grandpa](../.res/HTB-Grandpa.png)
 
 - [Box on HTB](https://app.hackthebox.com/machines/13)
 

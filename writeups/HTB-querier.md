@@ -1,4 +1,8 @@
-# Hackthebox - Querier - Windows
+# Hackthebox - Querier
+
+- Windows
+
+![Querier](../.res/HTB-Querier.png)
 
 - [Box on HTB](https://app.hackthebox.com/machines/175)
 

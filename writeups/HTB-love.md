@@ -1,6 +1,10 @@
-# Hackthebox - Love - Windows
+# Hackthebox - Love
 
-- [Box](https://app.hackthebox.com/machines/Love)
+- Windows
+
+![Love](../.res/HTB-Love.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/344)
 
 ## Nmap
 

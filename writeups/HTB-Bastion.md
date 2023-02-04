@@ -1,4 +1,10 @@
-# Hackthebox - Bastion - Windows
+# Hackthebox - Bastion
+
+- Windows
+
+![Bastion](../.res/HTB-Bastion.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/186)
 
 ## Nmap
 

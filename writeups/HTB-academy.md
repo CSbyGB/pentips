@@ -1,4 +1,10 @@
-# Hackthebox - Academy - Linux
+# Hackthebox - Academy 
+
+- Linux
+
+![Academy](../.res/HTB-Academy.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/297)
 
 ## Nmap
 

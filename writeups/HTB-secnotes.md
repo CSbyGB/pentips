@@ -1,4 +1,10 @@
-# Hackthebox - Secnotes - Windows
+# Hackthebox - Secnotes
+
+- Windows
+
+![Secnotes](../.res/HTB-SecNotes.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/151)
 
 ## Nmap
 

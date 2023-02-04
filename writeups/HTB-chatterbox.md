@@ -1,4 +1,10 @@
-# Hackthebox - Chatterbox - Windows
+# Hackthebox - Chatterbox
+
+- Windows
+
+![Chatterbox](../.res/HTB-Chatterbox.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/123)
 
 ## Nmap
 

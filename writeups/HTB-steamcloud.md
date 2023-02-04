@@ -1,6 +1,10 @@
-# Hackthebox - Steamcloud 
+# Hackthebox - Steamcloud
 
-- [Box on HTB](https://app.hackthebox.com/machines/SteamCloud)
+- Linux
+
+![SteamCloud](../.res/HTB-SteamCloud.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/443)
 
 ## Nmap
 

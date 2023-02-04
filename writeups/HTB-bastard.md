@@ -1,4 +1,8 @@
-# Hackthebox - Bastard - Windows
+# Hackthebox - Bastard
+
+- Windows
+
+![Bastard](../.res/HTB-Bastard.png)
 
 - [Box on HTB](https://app.hackthebox.com/machines/7)
 

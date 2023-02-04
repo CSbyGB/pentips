@@ -1,4 +1,6 @@
-# Hackthebox - Timelapse - Easy
+# Hackthebox - Timelapse
+
+- Windows
 
 ![Timelapse](../.res/2022-10-23-13-29-22.png)
 

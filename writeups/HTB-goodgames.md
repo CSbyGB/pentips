@@ -1,4 +1,10 @@
-# Hackthebox - Good ganes - Linux
+# Hackthebox - Goodgames
+
+- Linux
+
+![Good Games](../.res/HTB-GoodGames.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/446)
 
 ## Nmap
 

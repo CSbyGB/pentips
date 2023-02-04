@@ -1,6 +1,10 @@
-# Hackthebox - Shoppy - Linux
+# Hackthebox - Shoppy
+
+- Linux
 
 ![Shoppy](../.res/HTB-Shoppy.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/151)
 
 ## Nmap
 

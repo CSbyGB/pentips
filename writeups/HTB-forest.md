@@ -1,4 +1,8 @@
-# Hackthebox - Forest - Windows
+# Hackthebox - Forest
+
+- Windows
+
+![Forest](../.res/HTB-Forest.png)
 
 - [Forest on HTB](https://app.hackthebox.com/machines/212)
 

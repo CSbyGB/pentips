@@ -1,4 +1,10 @@
-# Hackthebox - Jeeves - Windows
+# Hackthebox - Jeeves
+
+- Windows
+
+![Jeeves](../.res/HTB-Jeeves.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/114)
 
 ## Nmap
 
@@ -131,4 +137,3 @@ We have the `SeImpersonatePrivilege` enabled
 - if we `dir /R` we can see our flag
 - `more < hm.txt:root.txt:$DATA` we can do this to print it  
 - [Here](https://blog.malwarebytes.com/101/2015/07/introduction-to-alternate-data-streams/) are a few methods on how to print alternate data streams
-

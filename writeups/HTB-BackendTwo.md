@@ -1,6 +1,10 @@
-# Hackthebox BackendTwo - Linux
+# Hackthebox BackendTwo
 
-- [Box on HTB](https://app.hackthebox.com/machines/BackendTwo)
+- Linux
+
+![BackendTwo](../.res/HTB-BackendTwo.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/469)
 
 ## Nmap
 

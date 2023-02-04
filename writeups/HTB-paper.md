@@ -1,6 +1,10 @@
-# Hackthebox - Paper - Linux
+# Hackthebox - Paper
 
-- [Machine on HTB](https://app.hackthebox.com/machines/Paper)
+- Linux
+
+![Paper](../.res/HTB-Paper.png)
+
+- [Machine on HTB](https://app.hackthebox.com/machines/432)
 
 ## Nmap
 

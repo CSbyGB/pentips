@@ -1,6 +1,10 @@
-# Hackthebox - Late - Linux
+# Hackthebox - Late
 
-- [Box on HTB](https://app.hackthebox.com/machines/Late)
+- Linux
+
+![Late](../.res/HTB-Late.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/463)
 
 ## Nmap
 

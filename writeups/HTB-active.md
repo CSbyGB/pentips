@@ -1,6 +1,10 @@
-# Hackthebox - Active - Windows
+# Hackthebox - Active
 
-- https://app.hackthebox.com/machines/Active
+- Windows
+
+![Active](../.res/HTB-Active.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/148)
 
 ## Nmap
 

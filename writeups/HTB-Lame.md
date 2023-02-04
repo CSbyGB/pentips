@@ -1,4 +1,10 @@
-# Hackthebox Lame - Linux
+# Hackthebox - Lame
+
+- Linux
+
+![Lame](../.res/HTB-Lame.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/1)
 
 ## Nmap
 

@@ -1,6 +1,10 @@
-# Hackthebox - Resolute - Windows
+# Hackthebox - Resolute
+
+- Windows
 
 ![Resolute](../.res/HTB-resolute.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/220)
 
 ## Nmap
 

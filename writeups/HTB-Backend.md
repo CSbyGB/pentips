@@ -1,6 +1,10 @@
-# Hackthebox - Backend - Linux
+# Hackthebox - Backend
 
-- [Backend](https://app.hackthebox.com/machines/Backend/)
+- Linux
+
+![Backend](../.res/HTB-Backend.png)
+
+- [Backend](https://app.hackthebox.com/machines/462)
 
 ## Nmap
 

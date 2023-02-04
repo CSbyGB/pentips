@@ -1,4 +1,10 @@
-# Hackthebox - Devel - Windows
+# Hackthebox - Devel
+
+- Windows
+
+![Devel](../.res/HTB-Devel.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/3)
 
 ## Nmap
 

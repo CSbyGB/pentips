@@ -1,4 +1,6 @@
-# Hackthebox - Monteverde - Windows
+# Hackthebox - Monteverde
+
+- Windows
 
 ![Monteverde](../.res/2022-10-16-13-37-29.png)
 

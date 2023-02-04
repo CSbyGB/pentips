@@ -1,6 +1,10 @@
-# Hackthebox - Ambassador - Linux
+# Hackthebox - Ambassador
+
+- Linux
 
 ![Ambassador](../.res/htb-ambassador.png)  
+
+- [Box on HTB](https://app.hackthebox.com/machines/499)
 
 ## Nmap
 

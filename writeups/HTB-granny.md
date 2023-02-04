@@ -1,4 +1,8 @@
-# Hackthebox - Granny - Windows
+# Hackthebox - Granny
+
+- Windows
+
+![Granny](../.res/HTB-Granny.png)
 
 - [Box on Hackthebox](https://app.hackthebox.com/machines/14)
 

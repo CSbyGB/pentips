@@ -1,4 +1,10 @@
-# HackTheBox - Arctic - Windows
+# HackTheBox - Arctic
+
+- Windows
+
+![Arctic](../.res/HTB-Arctic.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/9)
 
 ## Nmap
 

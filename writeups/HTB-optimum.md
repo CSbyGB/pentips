@@ -1,6 +1,10 @@
-# Hackthebox - Optimum - Windows
+# Hackthebox - Optimum
 
-- [Box on HTB](https://app.hackthebox.com/machines/Optimum)
+- Windows
+
+![Optimum](../.res/HTB-Optimum.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/6)
 
 ## Nmap
 
