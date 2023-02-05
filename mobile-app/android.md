@@ -377,6 +377,13 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 ## Resources
 
+### My writeups for Android related boxes and challenges
+
+> *More coming soon*
+
+- [Hackthebox Introduction to Android Exploitation track](https://csbygb.gitbook.io/pentips/htb-tracks-writeups/htb-intro-to-android-exploitation-track)
+- [Hackthebox Box RouterSpace (Foothold with apk)](https://csbygb.gitbook.io/pentips/writeups/htb-routerspace)
+
 ### General resources
 
 - [eLearnSecurity Mobile App Pentesting notes by Joas Antonio Dos Santos](https://drive.google.com/file/d/1K_xnDKMhlV1aJqXsq4lXiCcliiGvs877/view)
