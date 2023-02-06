@@ -173,6 +173,12 @@
 
 ## Writeups
 
+### HTB Tracks writeups
+
+* [Hackthebox - Introduction to Android Exploitation - Track](writeups/HTB-Intro-to-android-Exploitation-Track.md)
+
+### Hackthebox Writeups
+
 * [Hackthebox - Academy](/writeups/HTB-academy.md)
 * [Hackthebox - Access](writeups/HTB-access.md)
 * [Hackthebox - Active](/writeups/HTB-active.md)
@@ -205,6 +211,9 @@
 * [Hackthebox - SecNotes](writeups/HTB-secnotes.md)
 * [Hackthebox - Shoppy](writeups/HTB-Shoppy.md)
 * [Hackthebox - Steamcloud](writeups/HTB-steamcloud.md)
+
+### TryHackMe Writeups
+
 * [TryHackMe - Anonymous](writeups/THM-Anonymous.md)
 * [TryHackMe - Blaster](/writeups/THM-Blaster.md)
 * [TryHackMe - CMesS](writeups/THM-CMesS.md)
@@ -219,9 +228,9 @@
 * [TryHackMe - Vulnversity](/writeups/THM-vulnversity.md)
 * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 
-## HTB Tracks writeups
+### Portswigger Web Sec Academy Writeups
 
-* [Hackthebox - Introduction to Android Exploitation - Track](writeups/HTB-Intro-to-android-Exploitation-Track.md)
+* [PS - DomXSS](writeups/PS-DOMXSS.md)
 
 ## Digital skills
 
