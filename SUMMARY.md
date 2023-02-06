@@ -173,7 +173,6 @@
 
 ## Writeups
 
-* [Writeups](writeups/writeups.md)
 * [Hackthebox Tracks](writeups/HTBtracks.md)
   * [Hackthebox - Introduction to Android Exploitation - Track](writeups/HTB-Intro-to-android-Exploitation-Track.md)
 * [Hackthebox Writeups](writeups/HTBwriteups.md)
