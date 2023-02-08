@@ -133,6 +133,32 @@ xclip is a tool that can allow you to get any output in you clipboard.
 Let's say you have a big input to copy and do not want to mess up with the mouse, you can use xclip.
 - `cat myverybigfile | xclip -sel clipboard` will send the content of myverybigfile to the clipboard
 
+## Vi or Vim
+
+- [Vim](https://linuxcommand.org/lc3_man_pages/vim1.html) is a text editor for writing code or editing linux files.
+- It can be found preinstalled on many linux systems
+- `vim /path/to/file` open a file
+- `i` like insert to enter insert mode
+- `x` cut char
+- `dw` cut word
+- `dd` cut line
+- `yw` copy word
+- `yy` copy full line
+- `p` paste
+- `esc` to exit insert mode
+- `:` enter command mode
+  - `:1` go to line 1
+  - `:w` write and save
+  - `:q` quit
+  - `:q!` quit but not save
+  - `:wq` or `ZZ` write and quit
+
+> Note: it is possible to multiply a command for instance if you want to copy 3 words you can use `3yw`
+
+![exit vim](../.res/2023-02-08-15-40-04.png)
+
+- [Vim cheat sheet](https://vim.rtorr.com/)
+
 ## Strings
 
 Strings will print human readable chars of a file. And for a CTF if we are looking for a specific string we can pipe it to grep
@@ -143,12 +169,16 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 
 "tmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal." Learn more about [tmux](https://github.com/tmux/tmux/wiki).
 
+- `sudo apt install tmux -y` install Tmux
 - `tmux new -s sessionName` create an join a new session
 - `ctrl+b d` detach a session
 - `tmux ls` list existing sessions
 - `ctrl+b x` kill current session
 - `tmux a -t sessionName` or `tmux a -t sessionId` join an existing session
 - `tmux  ctrl+b pageup` to scroll and `q` to leave scroll mode
+
+- [TMUX Cheat Sheet](https://tmuxcheatsheet.com/)
+- [Introduction to tmux - IppSec](https://youtu.be/Lqehvpe_djs)
 
 ## Which architecture
 
@@ -181,14 +211,14 @@ Source: [Chmod tutorial by Ryan Morrison](https://medium.com/@razl/chmod-tutoria
 
 - `export https_proxy=http://server-ip:port/` for example `export https_proxy=http://127.0.0.1:8080/`
 - You will need to add a cert
- - Generate a burp.der cert
- - Convert it to pem `openssl x509 -inform der -in burp.der -out burp.pem`
- - Install Burp certificate:  
-   - `cp burp.pem /etc/ssl/certs/` (will need sudo if not root)
-   - `update-ca-certificates` (will need sudo if not root)
-   - `cp burp.pem burp.crt`
-   - `sudo cp burp.crt /usr/local/share/ca-certificates/`
-   - `sudo cp burp.crt /usr/share/ca-certificates/`
+  - Generate a burp.der cert
+  - Convert it to pem `openssl x509 -inform der -in burp.der -out burp.pem`
+  - Install Burp certificate:  
+    - `cp burp.pem /etc/ssl/certs/` (will need sudo if not root)
+    - `update-ca-certificates` (will need sudo if not root)
+    - `cp burp.pem burp.crt`
+    - `sudo cp burp.crt /usr/local/share/ca-certificates/`
+    - `sudo cp burp.crt /usr/share/ca-certificates/`
 - Everytime you launch a script you should see the traffic in burp
 
 ## Resources

@@ -22,3 +22,5 @@
 - If we get hash:
   - We can try to crack it
   - It can be useful to search it and see if it ties back to something else 
+- Developers often share whole sections of code on StackOverflow  (we could find leaks there)
+- Github migh have private keys or secret as well

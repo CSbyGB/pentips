@@ -22,6 +22,10 @@
 * [Information Gathering](ethical-hacking-general-methodology/information-gathering.md)
 * [Scanning & Enumeration](ethical-hacking-general-methodology/scanenum.md)
 * [Exploitation (basics)](ethical-hacking-general-methodology/exploitation.md)
+* [Post Exploitation](ethical-hacking-general-methodology/post-exploitation.md)
+* [Lateral Movement](ethical-hacking-general-methodology/lateral-movement.md)
+* [Proof-of-Concept](ethical-hacking-general-methodology/proof-of-concept.md)
+* [Post-Engagement](ethical-hacking-general-methodology/post-engagement.md)
 
 ## External Pentest
 
@@ -56,7 +60,8 @@
 
 ## Tools
 
-* [nmap](Tools/nmap.md)
+* [Netcat](Tools/netcat.md)
+* [Nmap](Tools/nmap.md)
 * [Evil Winrm](Tools/evil-winrm.md)
 * [Metasploit](Tools/Metasploit.md)
 * [Covenant](Tools/covenant.md)

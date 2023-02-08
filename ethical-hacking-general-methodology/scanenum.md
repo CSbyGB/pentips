@@ -1,6 +1,12 @@
 # Scanning and Enumeration
 
-- The machine use in the lab here for the example is Kioptrix from vulnhub
+AKA Vulnerability Assessment.  
+In this step we use the information found to identify potential weaknesses. We can use vulnerability scanners that will scan the target systems for known vulnerabilities and manual analysis where we try to look behind the scenes to discover where the potential vulnerabilities might lie.  
+Time, patience, and personal commitment all play a significant role in information gathering. This is when many penetration testers tend to jump straight into exploiting a potential vulnerability. This often fails and can lead, among other things, to a significant loss of time. Before attempting to exploit anything, we should have completed thorough information gathering, keeping detailed notes along the way, focusing on things to hone in on once we get to the exploitation stage. Most assessments are time-based, so we don't want to waste time bouncing around, which could lead to us missing something critical. Organization and patience are vital while being as thorough as possible.  
+In other terms, we analyze the results from our Information Gathering stage, looking for known vulnerabilities in the systems, applications, and various versions of each to discover possible attack vectors. Vulnerability assessment is the evaluation of potential vulnerabilities, both manually and through automated means. This is used to determine the threat level and the susceptibility of a company's network infrastructure to cyber-attacks.  
+*Source Hackthebox Academy*
+
+- The machine used in the lab here for the example is Kioptrix from vulnhub
 - During this stage it is really important to take good notes. We have to write versions we find any information disclosed during this phase.
 
 ## Scanning with nmap
@@ -141,7 +147,20 @@ Here are some useful links for this
 - [Passwords - Seclists](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
 - [Wikipedia Most Common Password](https://en.wikipedia.org/wiki/List_of_the_most_common_passwords)
 
+## Possible paths after this step
+
+|Path | Description |
+|-----|-------------|
+|Exploitation |The first we can jump into is the Exploitation stage. This happens when we do not yet have access to a system or application. Of course, this assumes that we have already identified at least one gap and prepared everything necessary to attempt to exploit it.|
+|Post-Exploitation| The second way leads to the Post-Exploitation stage, where we escalate privileges on the target system. This assumes that we are already on the target system and can interact with it.|
+|Lateral Movement|Our third option is the Lateral Movement stage, where we move from the already exploited system through the network and attack other systems. Again, this assumes that we are already on a target system and can interact with it. However, privilege escalation is not strictly necessary because interacting with the system already allows us to move further in the network under certain circumstances. Other times we will need to escalate privileges before moving laterally. Every assessment is different.|
+|Information Gathering| The last option is returning to the Information Gathering stage when we do not have enough information on hand. Here we can dig deeper to find more information that will give us a more accurate view.|
+
+Source: Hackthebox Academy
+
 ## Resources
+
+{% embed url="https://academy.hackthebox.com/login" %} Hackthebox Academy Penetration Tester Job Path {% endembed %}  
 
 ### General resources about enumeration
 

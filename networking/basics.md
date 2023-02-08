@@ -106,26 +106,51 @@ Source: TCM Security Academy  - Course Practical Ethical Hacking
 
 ## Common ports and protocols
 
-| Protocol | TCP Port | Application(s) | Data Security |
+There are two categories of ports, Transmission Control Protocol (TCP), and User Datagram Protocol (UDP).  
+TCP is connection-oriented, meaning that a connection between a client and a server must be established before data can be sent. The server must be in a listening state awaiting connection requests from clients.  
+UDP utilizes a connectionless communication model. There is no "handshake" and therefore introduces a certain amount of unreliability since there is no guarantee of data delivery. UDP is useful when error correction/checking is either not needed or is handled by the application itself. UDP is suitable for applications that run time-sensitive tasks since dropping packets is faster than waiting for delayed packets due to retransmission, as is the case with TCP and can significantly affect a real-time system. There are 65,535 TCP ports and 65,535 different UDP ports, each denoted by a number.
+
+| Protocol | TCP/UDP Port | Application(s) | Data Security |
 |----------|----------|----------------|---------------|
-| FTP | 21 | File Transfer | Cleartext |
-| FTPS | 990 | File Transfer | Encrypted |
-| HTTP | 80 | Worldwide Web | Cleartext |
-| HTTPS | 443| Worldwide Web| Encrypted|
+| FTP | 20/21 (TCP) | File Transfer | Cleartext |
+|SFTP|22 (TCP) | File Transfer| Encrypted|
+|SSH| 22 (TCP)  |Remote Access and File Transfer|Encrypted|
+|Telnet|23 (TCP) |Remote Access|Cleartext|
+|SMTP|25 (TCP) |Email (MTA)|Cleartext|
+| HTTP | 80 (TCP) | Worldwide Web | Cleartext |
+|POP3| 110 (TCP) | Email (MDA) | Cleartext|
 |IMAP | 143 | Email (MDA) | Cleartext|
-|IMAPS| 993 | Email (MDA) | Encrypted|
-|POP3| 110 | Email (MDA) | Cleartext|
-|POP3S|995| Email (MDA)| Encrypted|
-|SFTP|22 | File Transfer| Encrypted
-|SSH| 22  |Remote Access and File Transfer|Encrypted|
-|SMTP|25|Email (MTA)|Cleartext|
+|SNMP| 161 (TCP/UDP) ||||
+| LDAP| 389 (TCP/UDP)||||
+| HTTPS | 443 (TCP)| Worldwide Web| Encrypted|
+|SMB| 445 (TCP) ||||
 |SMTPS|465|Email (MTA)|Encrypted|
-|Telnet|23|Remote Access|Cleartext|
+| FTPS | 990 | File Transfer | Encrypted |
+|IMAPS| 993 | Email (MDA) | Encrypted|
+|POP3S|995| Email (MDA)| Encrypted|
+|RDP|3398 (TCP) |RDP||||
+
+- [Common ports MIT](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html)
+- [Common ports cheat sheet by packetlife](https://packetlife.net/media/library/23/common-ports.pdf)
+- [Top 1000 TCP and UDP Port by nullsec](https://nullsec.us/top-1-000-tcp-and-udp-ports-nmap-default/)
 
 ## Differenciate active tun connections
 
 - Sometimes when playing with multiple ovpn (I often use htb and thm and do not always reboot my vm) you might end up with 2 tun interface in your `ip add`
 - To know which one is the active one you just need to check the routes using `ip route` the one that has more routes is the one that is the current ovpn connection.
+
+## VPN
+
+At a high-level, VPN works by routing our connecting device's internet connection through the target VPN's private server instead of our internet service provider (ISP). When connected to a VPN, data originates from the VPN server rather than our computer and will appear to originate from a public IP address other than our own.  
+There are two main types of remote access VPNs: client-based VPN and SSL VPN.  
+SSL VPN uses the web browser as the VPN client. The connection is established between the browser and an SSL VPN gateway can be configured to only allow access to web-based applications such as email and intranet sites, or even the internal network but without the need for the end user to install or use any specialized software.  
+Client-based VPN requires the use of client software to establish the VPN connection. Once connected, the user's host will work mostly as if it were connected directly to the company network and will be able to access any resources (applications, hosts, subnets, etc.) allowed by the server configuration.  
+Some corporate VPNs will provide employees with full access to the internal corporate network, while others will place users on a specific segment reserved for remote workers.
+
+- `ifconfig` or `ip add` we will see a tun adapter if we successfully connected to the VPN
+- `netstat -rn` will show us the networks accessible via the VPN.
+
+*Source Hackthebox Academy*
 
 ## Resources
 

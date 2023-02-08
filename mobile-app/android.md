@@ -93,11 +93,21 @@ If none of these conditions match, you have an ARM device
 
 ## MobSF
 
-Launch mobsf:
+### Install Mobsf
 
 ```bash
-/opt/Mobile-Security-Framework-MobSF $ sudo ./run.sh 127.0.0.1:4444
+git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
+cd Mobile-Security-Framework-MobSF
+./setup.sh
 ```
+
+### Launch mobsf
+
+```bash
+sudo ./run.sh 127.0.0.1:4444
+```
+
+> MobSF will listen to 0.0.0.0:8000 if you run the script without arguments.
 
 ### Mobsf with Docker
 
@@ -105,6 +115,12 @@ Launch mobsf:
 - `docker pull opensecurity/mobile-security-framework-mobsf`
 - `docker run -it -p 8000:8000 opensecurity/mobile-security-framework-mobsf`
 - Got to http://0.0.0.0:8000 to access the gui
+
+> Note: You won't be able to use dynamic analysis.
+
+### Official Documentation
+
+- [Here is the official Documentation](https://mobsf.github.io/docs/#/)
 
 ## Checklists
 
