@@ -25,6 +25,7 @@ You can specify a script by using the option `--script`. Note that the `-sC` opt
 
 - `--script vuln` will enumerate for known vulnerabilities on the found services in the target
 - It also accepts wildcard `*` so say you want all the scripts from a specific category you can do `--script "smb-*"`
+- `--script=banner` for banner grabbing
 
 ### Official documentation
 
@@ -36,6 +37,11 @@ You can specify a script by using the option `--script`. Note that the `-sC` opt
 - If you get this error `Warning: 10.10.64.180 giving up on port because retransmission cap hit (2)`
 - Try using `-T4` instead of `-T5`
 - Check this post [here](https://stackoverflow.com/questions/14736530/nmap-warning-giving-up-on-port-because-retransmission-cap-hit-2) for more info on this error
+
+## General tips
+
+- Sometimes a port will be `filtered` it can happen if a firewall makes a filter and allow access only from specific addresses.
+- `locate scripts/name-of-technology` to find scripts related to a specific technology
 
 ## Resources
 

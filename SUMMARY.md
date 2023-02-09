@@ -13,6 +13,7 @@
 * [POP3](networking/pop3.md)
 * [RPC](networking/rpc.md)
 * [SMB](networking/smb.md)
+* [SNMP](networking/snmp.md)
 * [SMTP](networking/smtp.md)
 * [SSH](networking/ssh.md)
 

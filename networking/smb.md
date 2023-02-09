@@ -25,6 +25,7 @@
 - `smbclient -L IP-ADD` (in my example instead of IP-ADD I will put 10.0.2.4)  
 ![image](https://user-images.githubusercontent.com/96747355/175833616-0eb455e8-ed55-48e6-abfb-64908fac28a8.png)  
 - Connect anonymously `smbclient --no-pass \\\\10.10.10.100\\SHARE` or `smbclient //10.10.10.134/SHARE`
+- Use `-N` option in smbclient to supproess the password prompt
 
 ### What to try
 

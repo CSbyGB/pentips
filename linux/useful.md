@@ -65,7 +65,7 @@
 - `iwconfig` wireless connection
 - `arp -a`
 - `ip n`
-- `ip r` 
+- `ip r`
 - `route` get the routing table
 - `ping IP-ADD-OR-HOST` check if a host is up
 - `netstat` 
