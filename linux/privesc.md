@@ -105,6 +105,10 @@
 - [Linux Exploit Suggester](https://github.com/mzet-/linux-exploit-suggester)
 - [Linux Priv Checker](https://github.com/sleventyeleven/linuxprivchecker)
 
+## Checklist
+
+- [Hacktricks](https://book.hacktricks.xyz/linux-hardening/linux-privilege-escalation-checklist)
+- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md)
 
 ## Resources
 

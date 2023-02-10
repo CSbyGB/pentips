@@ -71,6 +71,7 @@
 * [WFuzz](Tools/wfuzz.md)
 * [WPScan](Tools/wpscan.md)
 * [Powershell Empire](Tools/empire-powershell.md)
+* [Curl](Tools/curl.md)
 
 ## VM and Labs
 

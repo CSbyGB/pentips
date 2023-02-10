@@ -109,6 +109,7 @@ You will find steps for multiple protocols and services.
 
 ### searchsploit
 
+- `sudo apt install exploitdb -y` to install
 - On kali we can use searchsploit `searchsploit technology partial-version` for example `searchsploit Samba 2` or `searchsploit Samba`
 - Example `searchsploit drupal 7.54` You will then get a list of exploits or Metasploit modules  
 

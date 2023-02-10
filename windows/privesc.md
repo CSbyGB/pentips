@@ -85,6 +85,7 @@
 - [Watson](https://github.com/rasta-mouse/Watson) is a .NET tool designed to enumerate missing KBs and suggest exploits for Privilege Escalation vulnerabilities.
 - [Seatbelt](https://github.com/GhostPack/Seatbelt) C# project for performing a wide variety of local privilege escalation checks
 - [SharpUp](https://github.com/GhostPack/SharpUp) C# version of PowerUp
+- [JAWS](https://github.com/411Hall/JAWS)
 
 #### PowerShell
 
@@ -625,6 +626,11 @@ PS C:\user> Get-ADDBAccount -DistinguishedName 'CN=administrator,CN=users,DC=dom
   - `Import-Module .\exploit.ps1`
   - `Invoke-MS16-032`
   - We will get an elevated shell
+
+## Checklists
+
+- [Hacktricks](https://book.hacktricks.xyz/windows-hardening/checklist-windows-privilege-escalation)
+- [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md)
 
 ## Resources
 
