@@ -149,6 +149,9 @@ Some corporate VPNs will provide employees with full access to the internal corp
 
 - `ifconfig` or `ip add` we will see a tun adapter if we successfully connected to the VPN
 - `netstat -rn` will show us the networks accessible via the VPN.
+- `ip -4 a show tun0` check tun0 address
+- `ping -c 4 IP.1` (one is the gateway location) 
+- We can not be connected from more than 1 device at the same time
 
 *Source Hackthebox Academy*
 
