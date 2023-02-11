@@ -14,9 +14,18 @@
 
 - `nmap -T4 -A -p- 10.10.10.97` This mode sends a lot more probes, and it is more likely to be detected, but provides a lot of valuable host information
 
+## Put results in a file
+
+- `-oA <filename>` This includes XML output, greppable output, and text output
+
 ## Host discovery on a network
 
 - `sudo nmap -sn 10.10.110.0-254`
+
+## Other useful scans
+
+- `nmap -v -oG -` See which port are scanned
+- `nmap -sV --open <ip address>` This will run a service enumeration (-sV) scan against the default top 1,000 ports and only return open ports (--open).
 
 ## Nmap Scripts
 

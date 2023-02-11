@@ -120,3 +120,4 @@ Now you can use your flipper as a remote. Pretty cool.
 {% embed url="https://flipperzero.one/" %} Official Website {% endembed %}  
 {% embed url="https://discord.com/invite/y5E5m8jbgb" %} Official Discord Server {% endembed %}  
 {% embed url="https://twitter.com/flipper_zero" %} Official Twitter {% endembed %}  
+{% embed url="https://youtu.be/yKTzek8EZ4E" %} David Bombal Flipper Zero next level{% endembed %}  
