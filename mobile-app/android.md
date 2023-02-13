@@ -2,6 +2,47 @@
 
 - **Check out my talk and its resources about Android application hacking [here](../talks/android-app.md)**
 
+## Android OS and specificities
+
+### Android Security Model
+
+Two distinct layes to Android Security model.
+
+#### 1. Implemented in the OS, and isolates installed app from one another.
+
+- Each app has a specific UID, dynamically assigned.
+- An app can only access its UID files and no other (except if shared by another app or OS)
+- Each App runs as a separate process under a sperate UID
+- Prior to Android 4.3 = the only thing that was isolating apps = if root compromised entire system was compromised
+- Starting from Android 4.3 = SELinux
+- SELinux denies all process interaction + create policies to allow only expected applications
+
+#### 2. Security of an App itself (made by the developers)
+
+- The dev can selectevely expose certain app functions to other apps
+- Configures App capabilities
+- All apps are in the /data/data folder (except if modified in manifest by dev)
+- The permissions declared in the manifest will be translated in permissions in the file system.
+
+### Resources
+
+- [Security-Enhanced Linux in Android](https://source.android.com/docs/security/features/selinux)
+- [SELinux](http://selinuxproject.org/page/FAQ)
+- [Android NDK](https://developer.android.com/ndk)
+- [Android runtime (ART) and dalvik](https://source.android.com/docs/core/runtime)
+- [Dalvik Bytecode](https://source.android.com/docs/core/runtime/dalvik-bytecode)
+- [Linux Kernel](https://en.wikipedia.org/wiki/Linux_kernel)
+- [ORACLE - JAVA - Tutorials](https://docs.oracle.com/javase/tutorial/)
+- [Android Open Source Project](https://source.android.com/)
+- [Linux Tutorial](https://tldp.org/LDP/gs/node5.html)
+
+## Build an app
+
+### Resources
+
+- [Meet Android Studio](https://developer.android.com/studio/intro)
+- [Build your first Android app](https://developer.android.com/training/basics/firstapp/index.html)
+
 ## Lab setup
 
 - You can use a rooted Android device or an AVD (Android Virtual Device)

@@ -63,6 +63,7 @@
 
 * [Netcat](Tools/netcat.md)
 * [Nmap](Tools/nmap.md)
+* [](Tools/nuclei.md)
 * [Evil Winrm](Tools/evil-winrm.md)
 * [Metasploit](Tools/Metasploit.md)
 * [Covenant](Tools/covenant.md)

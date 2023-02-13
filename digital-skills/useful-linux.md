@@ -1,5 +1,18 @@
 # Useful tools and command in linux for general tasks
 
+## Change your hostname
+
+- `sudo nano /etc/hostname`
+- `sudo nano /etc/hosts`
+- `sudo reboot`
+- `hostname` should give you your newly chosen hostname
+
+## Debug apt
+
+- If you get this error `The following signatures were invalid`
+- `sudo wget -q -O - https://archive.kali.org/archive-key.asc  | sudo apt-key add`
+- More info on [this thread](https://unix.stackexchange.com/questions/421985/invalid-signature-when-trying-to-apt-get-update-on-kali)
+
 ## File conversions
 
 ### HEIC to JPG
