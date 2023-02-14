@@ -4,6 +4,7 @@ Nuclei is an open source and community powered vulnerability scanner.
 
 - [Github repo](https://github.com/projectdiscovery/nuclei)
 - [Official Documentation](https://nuclei.projectdiscovery.io/nuclei/get-started/)
+- [Official blog](https://blog.projectdiscovery.io/)
 
 ## Installation
 
@@ -23,6 +24,11 @@ Nuclei requires the latest version of GO
 - More info [here](https://go.dev/doc/install)
 - `go env -w GOPATH=$HOME/go`
 - More info [here](https://github.com/golang/go/wiki/SettingGOPATH)
+
+#### Install go with snapd
+
+- `sudo systemctl start snapd`
+- `sudo snap install go --classic`
 
 ### Install Nuclei
 

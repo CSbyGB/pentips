@@ -13,6 +13,13 @@
 - `sudo wget -q -O - https://archive.kali.org/archive-key.asc  | sudo apt-key add`
 - More info on [this thread](https://unix.stackexchange.com/questions/421985/invalid-signature-when-trying-to-apt-get-update-on-kali)
 
+## Debug snap
+
+- If you get this error `snap-confine has elevated permissions and is not confined but should be. Refusing to continue to avoid permission escalation attacks`
+- `sudo apparmor_parser -r /etc/apparmor.d/*snap-confine*`
+- `sudo apparmor_parser -r /var/lib/snapd/apparmor/profiles/snap-confine*`
+- More info [here](https://stackoverflow.com/questions/70053614/snap-confine-has-elevated-permissions-and-is-not-confined-but-should-be-refusin)
+
 ## File conversions
 
 ### HEIC to JPG
