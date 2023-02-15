@@ -15,6 +15,8 @@ If you go to `view > Command Palette` this is the place where you will be able t
 - `ctrl+shift+p` Open the command palette
 - `Ctrl+P` quickly open files from the current folder you are using
 - ``` Ctrl+` ``` Opent the integrated terminal
+- `CTRL+/` comment a code block
+- `Ctrl+K+U` uncomment a code block
 
 ## Integrated terminal
 
