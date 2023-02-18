@@ -77,7 +77,8 @@
   - Abuse Info	Specific tools/commands/techniques that can be used to abuse the privilege.
   - Opsec Considerations	Opsec Considerations are also documented on the BloodHound wiki. This provides info on how "noisy" a particular command can be and what type of event log ID it will generate.
   - References	Additional reading on tactics/tools/techniques that can be used to abuse the privilege.
-([Source: ACTIVE DIRECTORY BLOODHOUND on HTB Academy](https://academy.hackthebox.com/course/preview/active-directory-bloodhound))
+
+> *[Source: ACTIVE DIRECTORY BLOODHOUND on HTB Academy](https://academy.hackthebox.com/course/preview/active-directory-bloodhound)*
 
 ## Icons in Bloodhound
 
@@ -93,7 +94,7 @@
 
 ## Cypher Query Language for custom queries
 
-([Source: ACTIVE DIRECTORY BLOODHOUND on HTB Academy](https://academy.hackthebox.com/course/preview/active-directory-bloodhound))
+> *[Source: ACTIVE DIRECTORY BLOODHOUND on HTB Academy](https://academy.hackthebox.com/course/preview/active-directory-bloodhound)*
 
 ### Structure of query
 
@@ -138,7 +139,7 @@ A significant amount of ACEs can be misconfigured, and the exploits for each var
 In order to exploit these ACEs, we will need a method to interact with AD to make these requests. The two best options for this are the AD-RSAT PowerShell cmdlets or PowerSploit.  
 Depending on the breach and the detection tools in the environment, one option may be stealthier.  
 
-Source: [Tryhackme](https://tryhackme.com/room/exploitingad)
+> *Source: [Tryhackme](https://tryhackme.com/room/exploitingad)*
 
 ### Examples
 

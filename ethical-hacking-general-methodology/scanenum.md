@@ -99,7 +99,29 @@ It is really important to take detailed not during this process.
 For more info about this checkout [the networking chapter of my pentips](https://csbygb.gitbook.io/pentips/networking/).  
 You will find steps for multiple protocols and services.
 
-## Research 
+### Questions to ask ourselves during enumeration
+
+- What can we see?
+- What reasons can we have for seeing it?
+- What image does what we see create for us?
+- What do we gain from it?
+- How can we use it?
+- What can we not see?
+- What reasons can there be that we do not see?
+- What image results for us from what we do not see?  
+*Source Hackthebox Academy*
+
+### Principles
+
+|No.|Principle|
+|---|---------|
+|1.|There is more than meets the eye. Consider all points of view.|
+|2.|Distinguish between what we see and what we do not see.|
+|3.|There are always ways to gain more information. Understand the target.|
+
+*Source Hackthebox Academy*
+
+## Research
 
 - After this enumeration we can look up things we wrote down in our notes (vulnerable versions, vulnerable services, misconfigurations,...).
 
@@ -130,8 +152,8 @@ You will find steps for multiple protocols and services.
 - If you are in the login page you can find out which username is installed with `/opt/nessus/sbin/nessuscli lsuser`
 - You can then change your password with `/opt/nessus/sbin/nessuscli chpasswd username`
 - If you are in the setup it is going to ask which version, you need to choose essentials (this version is free and will allow you to scan only private IP address) and then you will be able to register a user.
-- Here is and example of scan result (we ordered the vuln by severity by choosing disable groups in the settings wheel) 
-![image](https://user-images.githubusercontent.com/96747355/175835352-16616ab5-4784-48da-80f8-37641bcca200.png) 
+- Here is and example of scan result (we ordered the vuln by severity by choosing disable groups in the settings wheel)  
+![image](https://user-images.githubusercontent.com/96747355/175835352-16616ab5-4784-48da-80f8-37641bcca200.png)  
 - We can then check the vulns out and see if we can exploit them.
 
 ## Default Credentials
@@ -157,7 +179,7 @@ Here are some useful links for this
 |Lateral Movement|Our third option is the Lateral Movement stage, where we move from the already exploited system through the network and attack other systems. Again, this assumes that we are already on a target system and can interact with it. However, privilege escalation is not strictly necessary because interacting with the system already allows us to move further in the network under certain circumstances. Other times we will need to escalate privileges before moving laterally. Every assessment is different.|
 |Information Gathering| The last option is returning to the Information Gathering stage when we do not have enough information on hand. Here we can dig deeper to find more information that will give us a more accurate view.|
 
-Source: Hackthebox Academy
+> *Source: Hackthebox Academy*
 
 ## Resources
 

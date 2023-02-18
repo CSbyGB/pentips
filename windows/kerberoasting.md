@@ -6,7 +6,7 @@ The user makes an AS-REQ to the Key Distribution Centre (KDC) on the DC that inc
 
 ![Kerberos auth](../.res/2022-08-01-13-54-27.png)  
 
-Source: [TryHackMe - Persisting AD](https://tryhackme.com/room/persistingad)
+> *Source: [TryHackMe - Persisting AD](https://tryhackme.com/room/persistingad)*
 
 ## Kerberoasting
 
@@ -80,7 +80,7 @@ The practical use of Kerberos Delegation is to enable an application to access r
 
 However, we can allow this service account to be delegated to the SQL server service. Once a user logs into our web application, the service account will request access to the database on behalf of that user. This means that the user would only be able to access data in the database that they have the relevant permissions for without having to provide any database privileges or permissions to the service account itself.
 
-Source: [TryHackMe](https://tryhackme.com/room/exploitingad)
+> *Source: [TryHackMe](https://tryhackme.com/room/exploitingad)*
 
 ### Example
 

@@ -65,6 +65,7 @@ You can specify a script by using the option `--script`. Note that the `-sC` opt
 - `--script vuln` will enumerate for known vulnerabilities on the found services in the target
 - It also accepts wildcard `*` so say you want all the scripts from a specific category you can do `--script "smb-*"`
 - `--script=banner` for banner grabbing
+- `--script-trace` trace the progress of NSE scripts. See what command nmap sends what ports are used and what response we receive
 
 |Category|Description|
 |--------|-----------|

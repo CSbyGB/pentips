@@ -7,6 +7,19 @@
 - `sudo reboot`
 - `hostname` should give you your newly chosen hostname
 
+## Debug command not found
+
+> Works only in bash
+
+This annoying message when you need something that is not installed.
+
+- `sudo apt install command-not-found` will install an utility that will provide information when you will get this error.
+- Alternatively you can use `apt-cache search command-name` it will tell what to install
+
+> *See [this thread](https://unix.stackexchange.com/questions/355023/showmount-command-not-found-how-do-i-know-what-to-install) for more info*
+
+
+
 ## Debug apt
 
 - If you get this error `The following signatures were invalid`
@@ -123,4 +136,5 @@
 
 - If like me you are annoyed at the time it takes to update your kali, it is possible to use a mirror.
 - [This article](https://trendoceans.com/how-to-fix-kali-linux-slow-apt-update-process/) explains it very well.
-- **Note: it is not the official repositories so use with caution ;)**
+
+> **Note: it is not the official repositories so use with caution ;)**

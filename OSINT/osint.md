@@ -12,4 +12,5 @@
 ## Resources
 
 - [Open-Source Intelligence (OSINT) Fundamentals - TCM Security](https://academy.tcm-sec.com/p/osint-fundamentals)
+- [Hackthebox Academy](https://academy.hackthebox.com)
 - [OSINT room on TryHackme](https://tryhackme.com/jr/redteamrecon)

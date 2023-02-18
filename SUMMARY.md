@@ -7,9 +7,11 @@
 ## Networking, Protocols and Network pentest
 
 * [Basics](networking/basics.md)
+* [DNS](networking/dns.md)
 * [FTP](networking/ftp.md)
 * [HTTP & HTTPS](networking/http-https.md)
 * [IMAP](networking/imap.md)
+* [NFS](networking/nfs.md)
 * [POP3](networking/pop3.md)
 * [RPC](networking/rpc.md)
 * [SMB](networking/smb.md)
@@ -54,6 +56,7 @@
 
 * [Cloud Pentest](cloud/cloud.md)
 * [Google Cloud Platform](cloud/gcp.md)
+* [AWS](cloud/aws.md)
 
 ## Secure Code Review
 
@@ -108,7 +111,7 @@
   * [Abusing ZeroLogon](windows/zerologon.md)
 * [Post-Compromise Enumeration](windows/post-compromise-enum.md)
   * [Powerview or SharpView (.NET equivalent)](/windows/powerview-sharpview.md)
-  * [AD Manual Enumeration](windows/manual-enum-ad.md) 
+  * [AD Manual Enumeration](windows/manual-enum-ad.md)
   * [Bloodhound](windows/bloodhound.md)
   * [Post Compromise Enumeration - Resources](windows/post-compromise-enumeration-resources.md)
 * [Post Compromise Attacks](windows/post-compromise-attack.md)

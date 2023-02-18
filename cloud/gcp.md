@@ -10,7 +10,9 @@
 
 - [ ] Enumeration  
     ![image](https://user-images.githubusercontent.com/96747355/177999765-e0de4a51-7505-4fd3-87aa-f63ebadce915.png)  
-    Source: [Nettitude](https://blog.nettitude.com/cloud-penetration-testing-an-essential-guide-nettitude)
+
+> *Source: [Nettitude](https://blog.nettitude.com/cloud-penetration-testing-an-essential-guide-nettitude)*
+
 - [ ] Man In the Middle Attack 
 - [ ] Access Level Control (Leveraging Permissive IAM Roles and Permissions, Lack of Role-Based Access Controls (RBAC), ...)
   - Enumerate access to Cloud Services for the current IAM role

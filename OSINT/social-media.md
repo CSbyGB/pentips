@@ -62,9 +62,11 @@
 ## LinkedIn
 
 - Check the contact info
-- Do reverse image search 
+- Do reverse image search
 - Check recommendations received and given
 - If we find people we can use it to make email address using a pattern we might have previously found
+- Check the about section of a profile
+- Check the career as well
 
 ## TikTok
 

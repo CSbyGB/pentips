@@ -73,6 +73,7 @@
 ### Pingsweep in bash
 
 - On his course Practical Ethical Hacking Heath Adams shares this script that is really convenient to make an ip sweep.
+
 ```bash
 #!/bin/bash
 if [ "$1" == "" ]
@@ -86,11 +87,13 @@ ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":" &
 done
 fi
 ```
+
 - To automate this further we could add an nmap script to run on the alive ip found.
 
 ### Alternative port scan if nmap unvailable
 
 - Here is an internal port Scanner (credits to Tryhackme - Holo network)
+
 ```bash
 #!/bin/bash
 ports=(21 22 53 80 443 3306 8443 8080)
@@ -98,7 +101,9 @@ for port in ${ports[@]}; do
 timeout 1 bash -c "echo \"Port Scan Test\" > /dev/tcp/1.1.1.1/$port && echo $port is open || /dev/null" 
 done
 ```
+
 - Python port scan (credits to Tryhackme - Holo network)
+
 ```python
 #!/usr/bin/python3
 import socket
@@ -112,6 +117,7 @@ for port in portList:
  except:
   print("Port ", port, " is closed")
 ```
+
 - netcat `nc -zv 192.168.100.1 1-65535`
 
 ## read .db file
@@ -131,6 +137,7 @@ for port in portList:
 
 xclip is a tool that can allow you to get any output in you clipboard.  
 Let's say you have a big input to copy and do not want to mess up with the mouse, you can use xclip.
+
 - `cat myverybigfile | xclip -sel clipboard` will send the content of myverybigfile to the clipboard
 
 ## Vi or Vim
@@ -162,6 +169,7 @@ Let's say you have a big input to copy and do not want to mess up with the mouse
 ## Strings
 
 Strings will print human readable chars of a file. And for a CTF if we are looking for a specific string we can pipe it to grep
+
 - `strings -e l file | grep -i FLAG` the `-e l` will select the encoding l is for 16-bit littleendian
 - `strings file` is the basic use of the command
 
@@ -200,7 +208,8 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 ## Permissions cheat sheet
 
 ![image](https://user-images.githubusercontent.com/96747355/175057144-3baa417c-db0b-4709-af0d-eb370d222c39.png)  
-Source: [Chmod tutorial by Ryan Morrison](https://medium.com/@razl/chmod-tutorial-ce4386a3ce0c)
+
+> *Source: [Chmod tutorial by Ryan Morrison](https://medium.com/@razl/chmod-tutorial-ce4386a3ce0c)*
 
 ## Explainshell.com
 

@@ -266,13 +266,13 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 
 ![registers](../.res/2023-01-19-16-13-04.png)  
 
-- Image source: [Wiki smali/baksmali](https://github.com/JesusFreke/smali/wiki/Registers)
+> *Source: [Wiki smali/baksmali](https://github.com/JesusFreke/smali/wiki/Registers)*
 
 #### Types
 
 ![types](../.res/2023-01-19-16-35-28.png)
 
-- Image source: [Wiki smali/baksmali](https://github.com/JesusFreke/smali/wiki/TypesMethodsAndFields)
+> *Source: [Wiki smali/baksmali](https://github.com/JesusFreke/smali/wiki/TypesMethodsAndFields)*
 
 #### Hello world
 

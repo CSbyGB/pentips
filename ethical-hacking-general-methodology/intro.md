@@ -15,16 +15,18 @@ Again, if in doubt, reach out. Perhaps the client forgot to add certain hosts to
 We must work with the guiding principle of do no harm and strive to perform all testing activities in a careful and measured way. Just because we can run a certain tool, should we? Could a particular exploit PoC potentially crash one or more servers? If in doubt about anything during an assessment, run it by your manager and the client and gain explicit consent in writing before proceeding.
 
 ![Five stages of ethical hacking](https://user-images.githubusercontent.com/96747355/175700182-319869ae-3077-435b-a875-1a991103e7a5.png)  
-Source: [Practical Ethical Hacking - TCM Security](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)  
+
+> *Source: [Practical Ethical Hacking - TCM Security](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)*
 
 ![Penetration Testing process](../.res/2023-02-07-08-56-37.png)  
-Source: [Hackethebox Academy](https://academy.hackthebox.com/login)
+
+> *Source: [Hackethebox Academy](https://academy.hackthebox.com/login)*
 
 ## Precautionary Measure during Pentests
 
 - [ ] Obtain written consent from the owner or authorized representative of the computer or network being tested
 - [ ] Conduct the testing within the scope of the consent obtained only and respect any limitations specified
-- [ ] Take measures to prevent causing damage to the systems or networks being tested
+- [ ] Take measures to prevent causing damage to the systems or networks being tested
 - [ ] Do not access, use or disclose personal data or any other information obtained during the testing without permission
 - [ ] Do not intercept electronic communications without the consent of one of the parties to the communication
 - [ ] Do not conduct testing on systems or networks that are covered by the Health Insurance Portability and Accountability Act (HIPAA) without proper authorization
@@ -36,7 +38,8 @@ In addition, we should also be aware that some countries have additional regulat
 ## Common Legal Documents
 
 ![image](https://user-images.githubusercontent.com/96747355/176043879-548a35d5-d933-46ac-9b9f-e6c210324dc7.png)  
-Source: [Practical Ethical Hacking - TCM Security](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)  
+
+> *Source: [Practical Ethical Hacking - TCM Security](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)*
 
 ![docs HTB](../.res/2023-02-08-07-15-00.png)  
 *Source HTB Academy*
@@ -129,88 +132,88 @@ Once we have an initial idea of the client's project requirements, we can move o
 
 #### Contract - Checklist
 
-- [ ] NDA  
+- [ ] NDA  
 Non-Disclosure Agreement (NDA) refers to a secrecy contract between the client and the contractor regarding all written or verbal information concerning an order/project. The contractor agrees to treat all confidential information brought to its attention as strictly confidential, even after the order/project is completed. Furthermore, any exceptions to confidentiality, the transferability of rights and obligations, and contractual penalties shall be stipulated in the agreement. The NDA should be signed before the kick-off meeting or at the latest during the meeting before any information is discussed in detail.
-- [ ] Goals  
+- [ ] Goals  
 Goals are milestones that must be achieved during the order/project. In this process, goal setting is started with the significant goals and continued with fine-grained and small ones.
-- [ ] Scope  
+- [ ] Scope  
 The individual components to be tested are discussed and defined. These may include domains, IP ranges, individual hosts, specific accounts, security systems, etc. Our customers may expect us to find out one or the other point by ourselves. However, the legal basis for testing the individual components has the highest priority here.
-- [ ] Penetration Testing Type  
+- [ ] Penetration Testing Type  
 When choosing the type of penetration test, we present the individual options and explain the advantages and disadvantages. Since we already know the goals and scope of our customers, we can and should also make a recommendation on what we advise and justify our recommendation accordingly. Which type is used in the end is the client's decision.
-- [ ] Methodologies  
+- [ ] Methodologies  
 Examples: OSSTMM, OWASP, automated and manual unauthenticated analysis of the internal and external network components, vulnerability assessments of network components and web applications, vulnerability threat vectorization, verification and exploitation, and exploit development to facilitate evasion techniques.
-- [ ] Penetration Testing Locations  
+- [ ] Penetration Testing Locations  
 External: Remote (via secure VPN) and/or Internal: Internal or Remote (via secure VPN)
-- [ ] Time Estimation  
+- [ ] Time Estimation  
 For the time estimation, we need the start and the end date for the penetration test. This gives us a precise time window to perform the test and helps us plan our procedure. It is also vital to explicitly ask how time windows the individual attacks (Exploitation / Post-Exploitation / Lateral Movement) are to be carried out. These can be carried out during or outside regular working hours. When testing outside regular working hours, the focus is more on the security solutions and systems that should withstand our attacks.
-- [ ] Third Parties  
+- [ ] Third Parties  
 For the third parties, it must be determined via which third-party providers our customer obtains services. These can be cloud providers, ISPs, and other hosting providers. Our client must obtain written consent from these providers describing that they agree and are aware that certain parts of their service will be subject to a simulated hacking attack. It is also highly advisable to require the contractor to forward the third-party permission sent to us so that we have actual confirmation that this permission has indeed been obtained.
-- [ ] Evasive Testing  
+- [ ] Evasive Testing  
 Evasive testing is the test of evading and passing security traffic and security systems in the customer's infrastructure. We look for techniques that allow us to find out information about the internal components and attack them. It depends on whether our contractor wants us to use such techniques or not.
-- [ ] Risks  
+- [ ] Risks  
 We must also inform our client about the risks involved in the tests and the possible consequences. Based on the risks and their potential severity, we can then set the limitations together and take certain precautions.
-- [ ] Scope Limitations & Restrictions  
+- [ ] Scope Limitations & Restrictions  
 It is also essential to determine which servers, workstations, or other network components are essential for the client's proper functioning and its customers. We will have to avoid these and must not influence them any further, as this could lead to critical technical errors that could also affect our client's customers in production.
-- [ ] Information Handling  
+- [ ] Information Handling  
 HIPAA, PCI, HITRUST, FISMA/NIST, etc.
-- [ ] Contact Information  
+- [ ] Contact Information  
 For the contact information, we need to create a list of each person's name, title, job title, e-mail address, phone number, office phone number, and an escalation priority order.
-- [ ] Lines of Communication  
+- [ ] Lines of Communication  
 It should also be documented which communication channels are used to exchange information between the customer and us. This may involve e-mail correspondence, telephone calls, or personal meetings.
-- [ ] Reporting  
+- [ ] Reporting  
 Apart from the report's structure, any customer-specific requirements the report should contain are also discussed. In addition, we clarify how the reporting is to take place and whether a presentation of the results is desired.
-- [ ] Payment Terms  
+- [ ] Payment Terms  
 Finally, prices and the terms of payment are explained.
 
 Based on the Contract checklist and the input information shared in scoping, the Penetration Testing Proposal (Contract) and the associated Rules of Engagement (RoE) are created.
 
 #### Rules of Engagement - Checklist
 
-- [ ] Introduction  
+- [ ] Introduction  
 Description of this document.
-- [ ] Contractor  
+- [ ] Contractor  
 Company name, contractor full name, job title.
-- [ ] Penetration Testers  
+- [ ] Penetration Testers  
 Company name, pentesters full name.
-- [ ] Contact Information  
+- [ ] Contact Information  
 Mailing addresses, e-mail addresses, and phone numbers of all client parties and penetration testers.
-- [ ] Purpose  
+- [ ] Purpose  
 Description of the purpose for the conducted penetration test.
-- [ ] Goals  
+- [ ] Goals  
 Description of the goals that should be achieved with the penetration test.
-- [ ] Scope  
+- [ ] Scope  
 All IPs, domain names, URLs, or CIDR ranges.
-- [ ] Lines of Communication  
+- [ ] Lines of Communication  
 Online conferences or phone calls or face-to-face meetings, or via e-mail.
-- [ ] Time Estimation  
+- [ ] Time Estimation  
 Start and end dates.
-- [ ] Time of the Day to Test  
+- [ ] Time of the Day to Test  
 Times of the day to test.
-- [ ] Penetration Testing Type  
+- [ ] Penetration Testing Type  
 External/Internal Penetration Test/Vulnerability Assessments/Social Engineering.
-- [ ] Penetration Testing Locations  
+- [ ] Penetration Testing Locations  
 Description of how the connection to the client network is established.
-- [ ] Methodologies  
+- [ ] Methodologies  
 OSSTMM, PTES, OWASP, and others.
-- [ ] Objectives / Flags  
+- [ ] Objectives / Flags  
 Users, specific files, specific information, and others.
-- [ ] Evidence Handling  
+- [ ] Evidence Handling  
 Encryption, secure protocols
-- [ ] System Backups  
+- [ ] System Backups  
 Configuration files, databases, and others.
-- [ ] Information Handling  
+- [ ] Information Handling  
 Strong data encryption
-- [ ] Incident Handling and Reporting  
+- [ ] Incident Handling and Reporting  
 Cases for contact, pentest interruptions, type of reports
-- [ ] Status Meetings  
+- [ ] Status Meetings  
 Frequency of meetings, dates, times, included parties
-- [ ] Reporting  
+- [ ] Reporting  
 Type, target readers, focus
-- [ ] Retesting  
+- [ ] Retesting  
 Start and end dates
-- [ ] Disclaimers and Limitation of Liability  
+- [ ] Disclaimers and Limitation of Liability  
 System damage, data loss
-- [ ] Permission to Test  
+- [ ] Permission to Test  
 Signed contract, contractors agreement
 
 ### Contractors Agreement

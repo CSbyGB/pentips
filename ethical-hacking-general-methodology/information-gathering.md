@@ -12,7 +12,8 @@ Next, we move towards the Information Gathering stage. Before any target systems
 ### Web / Host
 
 ![image](https://user-images.githubusercontent.com/96747355/175716537-7139593e-5620-44e5-b194-98495a32c207.png)  
-Source: [Practical Ethical Hacking - TCM Security](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)
+
+> *Source: [Practical Ethical Hacking - TCM Security](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)*
 
 ## Identifying our target
 

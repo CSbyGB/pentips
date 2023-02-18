@@ -19,7 +19,8 @@ Red team engagements were designed to shift the focus from regular penetration t
 - **Table-top Exercise**:  An over the table simulation where scenarios are discussed between the red and blue teams to evaluate how they would theoretically respond to certain threats. Ideal for situations where doing live simulations might be complicated.
 
 ![Red Team engagement](../.res/2022-09-09-17-08-06.png)  
-Source: TryHackMe
+
+> *Source: TryHackMe*
 
 ## Teams and functions
 
@@ -30,7 +31,7 @@ Source: TryHackMe
 |White Cell | Serves as referee between red cell activities and blue cell responses during an engagement. Controls the engagement environment/network. Monitors adherence to the ROE. Coordinates activities required to achieve engagement goals. Correlates red cell activities with defensive actions. Ensures the engagement is conducted without bias to either side.|
 
 ![Engagement Hierarchy](../.res/2022-09-09-17-14-01.png)  
-Source: TryHackMe
+> *Source: TryHackMe*
 
 |Role|Purpose|
 |----|-------|
@@ -40,10 +41,11 @@ Source: TryHackMe
 
 ## Engagement Structure
 
-*Based on Lockheed Martin Cyber Kill Chain standard*  
+> *Based on Lockheed Martin Cyber Kill Chain standard*  
 
 ![Structure](../.res/2022-09-09-17-30-45.png)  
-Source: TryHackMe
+
+> *Source: TryHackMe*
 
 ## Resources
 
@@ -62,4 +64,4 @@ Source: TryHackMe
 - Other convenient resources:  
 
 {% embed url="https://redteam.guide/docs/definitions/" %} Redteam guide by Joe Vest and James Tubberville {% endembed %}  
-{% embed url="https://tryhackme.com/room/redteamengagements" %} Red Team Engagements - TryHackMe {% endembed %}  
+{% embed url="https://tryhackme.com/room/redteamengagements" %} Red Team Engagements - TryHackMe {% endembed %}

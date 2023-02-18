@@ -12,7 +12,8 @@ Local authentication is done using the Local Security Authority (LSA). LSA is a 
 ### Domain Controllers
 
 "A Domain Controller is a Windows server that provides Active Directory services and controls the entire domain. It is a form of centralized user management that provides encryption of user data as well as controlling access to a network, including users, groups, policies, and computers. It also enables resource access and sharing. These are all reasons why attackers target a domain controller in a domain because it contains a lot of high-value information."  
-source: tryhackme
+
+> *Source: tryhackme*
 
 ![Domain Controllers](../.res/domain-controllers.png)
 
@@ -44,7 +45,8 @@ Domain => Tree => Forest
 ### Organizational Units (Ous)
 
 "Organizational Units (OU's) are containers within the AD domain with a hierarchical structure."  
-Source:tryhackme
+
+> *Source:tryhackme*
 
 ![Organizational Units (Ous)](../.res/ous.png)
 
@@ -153,7 +155,7 @@ While uncommon, you may come across organizations while performing an assessment
 
 ![Ldap auth](../.res/2022-07-27-16-32-14.png)  
 
-Source: [Tryhackme](https://tryhackme.com/room/breachingad)
+> *Source: [Tryhackme](https://tryhackme.com/room/breachingad)*
 
 ### LDAP Pass-back Attacks
 
@@ -161,7 +163,7 @@ This is a common attack against network devices, such as printers, when you have
 
 LDAP Pass-back attacks can be performed when we gain access to a device's configuration where the LDAP parameters are specified. This can be, for example, the web interface of a network printer. Usually, the credentials for these interfaces are kept to the default ones, such as admin:admin or admin:password. Here, we won't be able to directly extract the LDAP credentials since the password is usually hidden. However, we can alter the LDAP configuration, such as the IP or hostname of the LDAP server. In an LDAP Pass-back attack, we can modify this IP to our IP and then test the LDAP configuration, which will force the device to attempt LDAP authentication to our rogue device. We can intercept this authentication attempt to recover the LDAP credentials.
 
-Source: [Tryhackme](https://tryhackme.com/room/breachingad)
+> *Source: [Tryhackme](https://tryhackme.com/room/breachingad)*
 
 ## NTLM and NetNTLM
 
@@ -171,7 +173,7 @@ This means that the application is authenticating on behalf of the user and not 
 
 ![NTLM and NetNTLM](../.res/2022-07-27-16-33-00.png)
 
-Source: [Tryhackme](https://tryhackme.com/room/breachingad)
+> *Source: [Tryhackme](https://tryhackme.com/room/breachingad)*
 
 ## Kerberos
 
@@ -200,7 +202,7 @@ In order to understand how the service tickets get created and validated, we nee
 
 ![TGT](../.res/2022-08-04-16-31-39.png)
 
-Source: [TryHackMe](https://tryhackme.com/)
+> *Source: [TryHackMe](https://tryhackme.com/)*
 
 #### Service Ticket Contents
 
@@ -211,13 +213,13 @@ To understand how Kerberos authentication works you first need to understand wha
 
 ![TGS](../.res/2022-08-04-16-33-01.png)
 
-Source: [TryHackMe](https://tryhackme.com/)
+> *Source: [TryHackMe](https://tryhackme.com/)*
 
 ### Kerberos Authentication Overview
 
 ![Kerberos Authentication](../.res/2022-08-04-16-34-03.png)
 
-Source: [TryHackMe](https://tryhackme.com/)
+> *Source: [TryHackMe](https://tryhackme.com/)*
 
 AS-REQ - 1.) The client requests an Authentication Ticket or Ticket Granting Ticket (TGT).
 

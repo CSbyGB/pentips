@@ -5,7 +5,8 @@ Therefore, it is essential to remove all content that we have transferred to the
 We also should note down any system changes, successful exploitation attempts, captured credentials, and uploaded files in the appendices of our report so our clients can cross-check this against any alerts they receive to prove that they were a result of our testing actions and not an actual attacker in the network.  
 
 In addition, we have to reconcile all our notes with the documentation we have written in the meantime to make sure we have not skipped any steps and can provide a comprehensive, well-formatted and neat report to our clients.  
-*Source: Hackthebox Academy*
+
+> *Source: Hackthebox Academy*
 
 ## Pentest report
 

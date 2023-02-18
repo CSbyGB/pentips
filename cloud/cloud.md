@@ -1,5 +1,6 @@
 # Cloud pentest
 
+- [OSINT and Enum](../OSINT/cloud.md)
 - [GCP](gcp.md)
 
 ## Resources
