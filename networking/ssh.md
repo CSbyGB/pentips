@@ -1,21 +1,39 @@
 # SSH
 
+> *Source CTF and HTB Academy*
+
 - Usually port 22
 
 Secure Shell (SSH) is a network protocol that runs on port 22 by default and provides users such as system administrators a secure way to access a computer remotely. SSH can be configured with password authentication or passwordless using public-key authentication using an SSH public/private key pair. SSH can be used to remotely access systems on the same network, over the internet, facilitate connections to resources in other networks using port forwarding/proxying, and upload/download files to and from remote systems.  
 
 SSH uses a client-server model, connecting a user running an SSH client application such as OpenSSH to an SSH server. While attacking a box or during a real-world assessment, we often obtain cleartext credentials or an SSH private key that can be leveraged to connect directly to a system via SSH. An SSH connection is typically much more stable than a reverse shell connection and can often be used as a "jump host" to enumerate and attack other hosts in the network, transfer tools, set up persistence, etc. If we obtain a set of credentials, we can use SSH to login remotely to the server by using the username @ the remote server IP, as follows:
 `ssh user@10.10.10.10`
-*Source HTB Academy*
+
+## Default config
+
+- `cat /etc/ssh/sshd_config  | grep -v "#" | sed -r '/^\s*$/d'`
+
+## Dangerous Settings
+
+|Setting|Description|
+|-------|-----------|
+|PasswordAuthentication yes|Allows password-based authentication.|
+|PermitEmptyPasswords yes|Allows the use of empty passwords.|
+|PermitRootLogin yes|Allows to log in as the root user.|
+|Protocol 1|Uses an outdated version of encryption.|
+|X11Forwarding yes|Allows X11 forwarding for GUI applications.|
+|AllowTcpForwarding yes|Allows forwarding of TCP ports.|
+|PermitTunnel|Allows tunneling.|
+|DebianBanner yes|Displays a specific banner when logging in.|
 
 ## Enumeration
 
 - We need to keep notes of the ssh version
 - We can try to ssh to our target `ssh IP-ADD`. In our example we get this  
 ![image](https://user-images.githubusercontent.com/96747355/175833787-a2b8bcbd-05a9-4ecb-ac37-b584c896253c.png)  
-- For this error we can try this `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 `  
+- For this error we can try this `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1`  
 ![image](https://user-images.githubusercontent.com/96747355/175834000-bc2e9cbe-5949-4836-88d7-c9d399f95054.png)  
-- For this error we can try this `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa `  
+- For this error we can try this `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa`  
 ![image](https://user-images.githubusercontent.com/96747355/175834033-1c9a18f8-bb6f-4961-bbc1-3550da4dba45.png)  
 - Finally for this error we can use this and will try to connect `ssh 10.0.2.4 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc`
 - `nmap -p22 TARGET-IP --script ssh-auth-methods --script-args="ssh.user=username"` will show authentication methods (requires a username).  
@@ -41,7 +59,7 @@ PORT   STATE SERVICE
 |_  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII61CNVnXxys5WNU/Q2WShh2JKJb3Pd1sPItUTK144ZJ
 ```
 
-- `nmap -p22 TARGET-IP --script ssh2-enum-algos `
+- `nmap -p22 TARGET-IP --script ssh2-enum-algos`
 
 ## Password spray or bruteforce
 
@@ -49,7 +67,7 @@ PORT   STATE SERVICE
 
 ## Connect to ssh server
 
-- `ssh username@IP-TARGET` 
+- `ssh username@IP-TARGET`
 
 ## Resources
 
