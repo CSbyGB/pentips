@@ -14,7 +14,7 @@ It is really worth taking this course if you have some cubes in your HTB Academy
 - Identify open ports
 - Vulnerability assessment as well.  
 
-*Source Hackthebox Academy*
+> *Source Hackthebox Academy*
 
 ## Remove noise when using nmap through proxychains
 
@@ -84,7 +84,7 @@ You can specify a script by using the option `--script`. Note that the `-sC` opt
 |version|Extension for service detection.|
 |vuln|Identification of specific vulnerabilities.|
 
-*Source HTB Academy*  
+> *Source HTB Academy*  
 
 If you want to use your own script you can do so by passing it to nmap this way `--script name-of-your-script.nse`
 
@@ -122,7 +122,7 @@ If you want to use your own script you can do so by passing it to nmap this way 
 |open&#124;filtered| If we do not get a response for a specific port, Nmap will set it to that state. This indicates that a firewall or packet filter may protect the port.|
 |closed&#124;filtered|This state only occurs in the IP ID idle scans and indicates that it was impossible to determine if the scanned port is closed or filtered by a firewall.|
 
-*Source HTB Academy*
+> *Source HTB Academy*
 
 ## Firewall and IDS/IPS Evasion
 
@@ -160,7 +160,7 @@ However, Nmap still gives us a way to specify DNS servers ourselves (`--dns-serv
 
 - `ncat -nv --source-port 53 10.129.2.28 50000`
 
-*Source HTB Academy*
+> *Source HTB Academy*
 
 ## Resources
 

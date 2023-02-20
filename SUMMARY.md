@@ -16,11 +16,16 @@
 * [MYSQL](networking/mysql.md)
 * [NFS](networking/nfs.md)
 * [POP3](networking/pop3.md)
+* [RDP](networking/rdp.md)
 * [RPC](networking/rpc.md)
+* [Rservices](networking/rservices.md)
+* [Rsync](networking/rsync.md)
 * [SMB](networking/smb.md)
-* [SNMP](networking/snmp.md)
 * [SMTP](networking/smtp.md)
+* [SNMP](networking/snmp.md)
 * [SSH](networking/ssh.md)
+* [Winrm](networking/winrm.md)
+* [WMI](networking/wmi.md)
 
 ## Ethical Hacking - General Methodology
 

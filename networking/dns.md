@@ -58,11 +58,18 @@ For the IP address to be resolved from the Fully Qualified Domain Name (FQDN), t
 
 ## Enumeration
 
+### Nmap
+
+- `sudo nmap -T4 -sC -O -sV -p 53 --script dns-nsid 10.129.42.195`
+
 ### Dig
 
 - `dig ns inlanefreight.htb @10.129.14.128` which other name servers are known
 - `dig CH TXT version.bind 10.129.120.85` query a DNS server's version
 - `dig any inlanefreight.htb @10.129.14.128` option ANY to view all available records
+- `dig a inlanefreight.htb @10.129.38.215`
+- `dig txt inlanefreight.htb @10.129.38.215`
+- `dig mx inlanefreight.htb @10.129.38.215`
 
 Zone transfer refers to the transfer of zones to another server in DNS, which generally happens over TCP port 53. This procedure is abbreviated Asynchronous Full Transfer Zone (AXFR). Since a DNS failure usually has severe consequences for a company, the zone file is almost invariably kept identical on several name servers.
 

@@ -42,7 +42,7 @@ One of the most used FTP servers on Linux-based distributions is [vsFTPd](https:
 
 ### Anonymous login
 
-- `ftp <TARGET-IP>`
+- `ftp <TARGET-IP> <port>` you will need to specify the port in case it is not port 21 if it is 21 you do not need to specify
 
 ## Interesting commands
 
@@ -56,6 +56,8 @@ One of the most used FTP servers on Linux-based distributions is [vsFTPd](https:
 - Upload a file
   - `touch file` create a file
   - `put file` put it in the ftp server
+- `PASV` enter [passive mode](https://support.solarwinds.com/SuccessCenter/s/article/PASV-FTP-command?language=en_US#:~:text=U%20Gateway%2015.1-,The%20PASV%20command%20tells%20the%20server%20to%20enter%20a%20passive,data%20port%20on%20the%20server.)
+- Do not forget `ls -al` (to see hidden files)
 
 |Setting|Description|
 |-------|-----------|
