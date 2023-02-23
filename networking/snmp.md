@@ -46,6 +46,12 @@ Community strings can be seen as passwords that are used to determine whether th
 
 ## Enumeration
 
+### Nmap
+
+- `sudo nmap -sU -sV -p 161 -Pn -n --disable-arp-ping --script=snmp-* 10.129.201.223`
+
+> In general, Nmap is not always 100% accurate, it can happen that it mentions snmp to be v3 when it might be v2c.
+
 ### snmpwalk
 
 - `sudo perl /usr/share/doc/libnet-snmp-perl/examples/snmpwalk.pl -c public 10.129.220.234`
@@ -66,3 +72,17 @@ Community strings can be seen as passwords that are used to determine whether th
 - [Github Repo](https://github.com/mteg/braa)
 - `sudo apt install braa`
 - `braa <community string>@<IP>:.1.3.6.*` example `braa public@10.129.14.128:.1.3.6.*`
+
+## Example
+
+- We enumerate our target with onesixtyone and get a community string this way
+
+```bash
+┌─[✗]─[gabrielle@parrot]─[~]
+└──╼ $onesixtyone -c /usr/share/seclists/Discovery/SNMP/snmp.txt 10.129.206.8
+Scanning 1 hosts, 3220 communities
+10.129.206.8 [backup] Linux NIXHARD 5.4.0-90-generic #101-Ubuntu SMP Fri Oct 15 20:00:55 UTC 2021 x86_64
+```
+
+- `backup` is the community string
+- Using this information we can run snmpwalk as follows: `snmpwalk -v 2c -c private 10.10.1.224`

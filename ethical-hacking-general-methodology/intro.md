@@ -1,7 +1,7 @@
 # Introduction
 
 *This chapter (Ethical Hacking General Methodology) aims to present the stages in Ethical hacking. Each step will be presented individually.
-This documentation has been made using **The Cyber Mentor PEH course** and **HTB Academy Penetration Testing job skill path**.  
+This documentation has been made using **The Cyber Mentor PEH course**, **HTB Academy Penetration Testing job skill path** and **XSSrat Pentesting 101 ultimate guide from start to finish**.  
 I recommend both courses as they really cover very important topics of pentest and also offer the possibility to practice these skills.
 Also both offer the possibility to get certified with an exam.  
 [PNPT for TCM](https://certifications.tcm-sec.com/pnpt/) and [HTB CPTS](https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist/)*
@@ -33,7 +33,7 @@ We must work with the guiding principle of do no harm and strive to perform all 
 
 In addition, we should also be aware that some countries have additional regulations that apply to specific cases, and we should either inform ourselves or ask our lawyer.
 
-*Source HackTheBox Academy*
+> *Source HackTheBox Academy*
 
 ## Common Legal Documents
 
@@ -42,7 +42,7 @@ In addition, we should also be aware that some countries have additional regulat
 > *Source: [Practical Ethical Hacking - TCM Security](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course)*
 
 ![docs HTB](../.res/2023-02-08-07-15-00.png)  
-*Source HTB Academy*
+> *Source HTB Academy*
 
 - [Example of Master Service Agreement](https://www.rapid7.com/legal/msa/)
 
@@ -238,7 +238,7 @@ It is also possible that many of the employees have not been informed about the 
 - [ ] Notarization
 - [ ] Permission to Test
 
-*Source Hackthebox Academy*
+> *Source Hackthebox Academy*
 
 ## Types of Pentests
 
@@ -250,7 +250,7 @@ It is also possible that many of the employees have not been informed about the 
 |Red-Teaming|May include physical testing and social engineering, among other things. Can be combined with any of the above types.|
 |Purple-Teaming|It can be combined with any of the above types. However, it focuses on working closely with the defenders.|
 
-*Source HTB Academy*
+> *Source HTB Academy*
 
 ## Types of Testing Environmments
 
@@ -270,9 +270,8 @@ It is also possible that many of the employees have not been informed about the 
 - Firewalls
 - IDS/IPS
 
-> It is important to note that these categories can often be mixed. All listed test components may be included depending on the type of test to be performed
-
-*Source HTB Academy*
+> It is important to note that these categories can often be mixed. All listed test components may be included depending on the type of test to be performed  
+> *Source HTB Academy*
 
 ## Checklists
 
@@ -295,3 +294,8 @@ It is also possible that many of the employees have not been informed about the 
 
 {% embed url="https://htbmachines.github.io/" %} S4vitar Machine's Resolutions {% endembed %}  
 {% embed url="https://ippsec.rocks/?#" %} Ippsec Rocks {% endembed %}  
+{% embed url="https://www.hackthebox.com/machines" %} A search engine to find machines by OS and Difficulty {% endembed %}  
+
+- This search engine will help you find HTB Academy modules according to specific goals you have for HTB platform. For instance if you want to work on dante prolab you will have suggestions of HTB Academy modules according to the topics of Dante:
+
+{% embed url="https://academy.hackthebox.com/academy-lab-relations" %} Academy x HTB Labs {% endembed %}  

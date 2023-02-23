@@ -16,6 +16,15 @@ It is really worth taking this course if you have some cubes in your HTB Academy
 
 > *Source Hackthebox Academy*
 
+## General tips
+
+- Do not neglect UDP scan, you could find interesting services like SNMP
+
+### Recommended methodology
+
+- `sudo nmap -Pn -sV -sC -p- IP-ADR` scan tcp all ports (this command is an example use the one you like best)
+- `sudo nmap 10.129.2.28 -sU -Pn -n --disable-arp-ping --packet-trace -F --reason` scan top 100 udp ports
+
 ## Remove noise when using nmap through proxychains
 
 - Add `quiet_mode` to your proxychains conf file (you should just need to uncomment it usually around line 50 of the file)
@@ -56,6 +65,11 @@ It is really worth taking this course if you have some cubes in your HTB Academy
 - `nmap -v -oG -` See which port are scanned
 - `nmap -sV --open <ip address>` This will run a service enumeration (-sV) scan against the default top 1,000 ports and only return open ports (--open).
 - The ttl will give us info about the OS, for example `ttl=128` is windows
+
+## UDP Port Scan
+
+- `sudo nmap 10.129.2.28 -F -sU` `-F` will scan the top 100 ports
+- `sudo nmap 10.129.2.28 -sU -Pn -n --disable-arp-ping --packet-trace -F --reason` `-Pn` Disables ICMP Echo requests, `-n` Disables DNS resolution.
 
 ## Nmap Scripts
 

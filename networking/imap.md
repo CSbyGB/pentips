@@ -20,6 +20,7 @@ IMAP allows online management of emails directly on the server and supports fold
 |`1 SELECT INBOX`|Selects a mailbox so that messages in the mailbox can be accessed.|
 |`1 UNSELECT INBOX`|Exits the selected mailbox.|
 |`1 FETCH <ID> all`|Retrieves data associated with a message in the mailbox.|
+|`1 FETCH <ID> body[text]`|Prints the body and text of the message which id is specified|
 |`1 CLOSE`|Removes all messages with the Deleted flag set.|
 |`1 LOGOUT`|Closes the connection with the IMAP server.|
 

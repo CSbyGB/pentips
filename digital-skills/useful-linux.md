@@ -18,8 +18,6 @@ This annoying message when you need something that is not installed.
 
 > *See [this thread](https://unix.stackexchange.com/questions/355023/showmount-command-not-found-how-do-i-know-what-to-install) for more info*
 
-
-
 ## Debug apt
 
 - If you get this error `The following signatures were invalid`
