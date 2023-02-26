@@ -1,8 +1,6 @@
 # Welcome to CSbyGB PenTips
 
-![CSbyGB](https://csbygb.github.io/img/csbygb.png)
-
-🌟 "When you wonder, You're Learning" - Mister Rogers 🌟
+![CSbyGB 🌟 "When you wonder, You're Learning" - Mister Rogers 🌟 ](https://csbygb.github.io/img/csbygb.png)  
 
 ## $ whoami /priv
 
