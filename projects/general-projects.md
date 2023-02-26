@@ -6,6 +6,11 @@ My first blog, aimed to document my journey in of learning Cybersecurity (by the
 
 {% embed url="https://web.archive.org/web/20210616100731/https://gabrielleb.fr/blog/" %} My first blog on wayback Machine {% endembed %}  
 
+At the same time I launched The World Tour Podcast in which I interviewed Cybersecurity experts like Alyssa Miller, Tanya Janca, Chloe Messdaghi and many more.  
+I moved it to my new blog you can listen to it here:
+
+{% embed url="https://csbygb.github.io/podcasts.html" %} The World Tour Podcast {% endembed %}  
+
 ## DoWeLookLikeHackers
 
 DoWeLookLikeHacker was a social media campaign I created for Northsec Conference.  
