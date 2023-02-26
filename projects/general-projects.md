@@ -1,6 +1,6 @@
 # General Projects
 
-## My very first Cyber project
+## 🌟 My very first Cyber project
 
 My first blog, aimed to document my journey in of learning Cybersecurity (by the way it is this blog that allowed me to get my first position as a pentester).  
 
@@ -11,7 +11,7 @@ I moved it to my new blog you can listen to it here:
 
 {% embed url="https://csbygb.github.io/podcasts.html" %} The World Tour Podcast {% endembed %}  
 
-## DoWeLookLikeHackers
+## 🌟 DoWeLookLikeHackers
 
 DoWeLookLikeHacker was a social media campaign I created for Northsec Conference.  
 The goal of the campaign was to show the many different faces of cybersecurity professionals and break stereotypes through images.
@@ -19,7 +19,7 @@ The goal of the campaign was to show the many different faces of cybersecurity p
 {% embed url="https://github.com/CSbyGB/pentips/blob/main/.res/DWLLH-campaign.pdf" %} DoWeLookLikeHackers in image {% endembed %}  
 {% embed url="https://youtu.be/TZhu2Hm_YVE" %} DoWeLookLikeHackers Final video {% endembed %}  
 
-## Les Trophées Cybertalent
+## 🌟 Les Trophées Cybertalent
 
 "Les Trophées Cybertalent" is an award I co-created in order to encourage the next generation to join the Cybersecurity field.  
 
