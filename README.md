@@ -2,6 +2,8 @@
 
 ![CSbyGB](https://csbygb.github.io/img/csbygb.png)
 
+🌟 "When you wonder, You're Learning" - Mister Rogers 🌟
+
 ## $ whoami /priv
 
 🏳 Ethical Hacker |🏆Award-winning Pentester | Artemis Red Team | Board Member | Speaker | Mentor 🏳️‍🌈
