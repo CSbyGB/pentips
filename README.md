@@ -33,6 +33,7 @@ It is a work in progress and it will be filled up asap with my notes and on the 
 I took these notes while working but also when using different resources.  
 Here is a list :
 
+- [XSSrat - Wesley Thijs - class prep for CNWPP](https://thexssrat.podia.com/view/courses/pentesting-101-the-ultimate-guide-from-start-to-finish-from-planning-to-reporting)
 - [TCM-Security](https://academy.tcm-sec.com/)
 - [Tryhackme](https://tryhackme.com/)
 - [Hackthebox - Academy](https://academy.hackthebox.com/)
