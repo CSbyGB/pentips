@@ -245,6 +245,8 @@
   * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 * [Portswigger Web Security Academy Writeups](writeups/PSwriteups.md)
   * [PS - DomXSS](writeups/PS-DOMXSS.md)
+* [OWASP projects and challenges writeups](writeups/OWASP-writeups.md)
+  * [OWASP MAS Crackmes](writeups/OWASP-MAS-Crackmes.md)
 
 ## Digital skills
 
@@ -253,6 +255,12 @@
 * [Linux Tips](digital-skills/useful-linux.md)
 * [VSCodium](/digital-skills/vscodium.md)
 * [Git Tips](/digital-skills/git-tips.md)
+
+## Projects
+
+* [Projects](projects/intro.md)
+  * [Technical Projects](projects/technical-projects.md)
+  * [General Projects](projects/general-projects.md)
 
 ## Talks
 

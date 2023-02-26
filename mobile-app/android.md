@@ -8,7 +8,7 @@
 
 Two distinct layes to Android Security model.
 
-#### 1. Implemented in the OS, and isolates installed app from one another.
+#### 1. Implemented in the OS, and isolates installed app from one another
 
 - Each app has a specific UID, dynamically assigned.
 - An app can only access its UID files and no other (except if shared by another app or OS)
@@ -38,7 +38,7 @@ Two distinct layes to Android Security model.
 
 ## Build an app
 
-### Resources
+### Resources Android App
 
 - [Meet Android Studio](https://developer.android.com/studio/intro)
 - [Build your first Android app](https://developer.android.com/training/basics/firstapp/index.html)
@@ -127,9 +127,9 @@ If none of these conditions match, you have an ARM device
 
 ## Decompile code
 
-- Bytecodeviewer 
+- Bytecodeviewer
   - launch with `java -jar` and open apk
-- `jadx-gui `
+- `jadx-gui`
 - APKLab (add on visual studio Code)
 
 ## MobSF
@@ -155,7 +155,7 @@ sudo ./run.sh 127.0.0.1:4444
 - If you want you can use docker to get and use MobSF
 - `docker pull opensecurity/mobile-security-framework-mobsf`
 - `docker run -it -p 8000:8000 opensecurity/mobile-security-framework-mobsf`
-- Got to http://0.0.0.0:8000 to access the gui
+- Got to `http://0.0.0.0:8000` to access the gui
 
 > Note: You won't be able to use dynamic analysis.
 
@@ -167,6 +167,7 @@ sudo ./run.sh 127.0.0.1:4444
 
 On every pentest, it is always worth having a checklist. This will allow you to make sure that you do not forget anything.  
 For Android and Mobile Application pentest in general, I can only recommend the MAS checklist made by OWASP.  
+
 - Check it out [here](https://mas.owasp.org/MAS_checklist/)
 
 ## Static Analysis
@@ -182,6 +183,10 @@ It will be used to mention the application package name, the application compone
 Note that it is also useful to check which API we need to test the application by looking at the `minSDKVersion`.  
 Since the purpose of permissions is to protect the privacy of the user, you can see here some permissions that should not be allowed, depending of course on the purpose of the application.  
 See [here](https://developer.android.com/reference/android/Manifest.permission ) full list of permissions.  
+
+When analyzing the manifest you can also determine how the application retrieves files.
+
+> It is worth noting that during the development process developer might have multiple manifest files. They will need to merge them. See [here](https://developer.android.com/studio/build/manage-manifests#merge-manifests) how it is done
 
 #### Allow backup
 
@@ -201,7 +206,8 @@ See [documentation](https://github.com/OWASP/owasp-mstg/blob/53ebd2ccc428623df7e
 
 Activities are the screens of the applications. Depending on the application and the activity, some of them should not be exportable because it means that they could be accessible from outside the application.  
 Here is an example of code on the pivaa application with exportable activities:  
-```
+
+```xml
   <service android:name="com.htbridge.pivaa.handlers.VulnerableService" android:protectionLevel="dangerous" android:enabled="true" android:exported="true"/>
         <receiver android:name="com.htbridge.pivaa.handlers.VulnerableReceiver" android:protectionLevel="dangerous" android:enabled="true" android:exported="true">
             <intent-filter>
@@ -258,7 +264,7 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 
 ### Decompile with apktool
 
-- `apktool d app.apk` decompile the package app.apk
+- `apktool d app.apk` decompile the package app.apk (the d is for decode)
 
 ### Understand smali
 
@@ -301,7 +307,7 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 
     sget-object v0, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
-    const-string	v1, "Hello World!"
+    const-string v1, "Hello World!"
 
     invoke-virtual {v0, v1}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
@@ -311,14 +317,54 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 
 - If you use arguments they have to be placed in the last parameters.
 
+#### Smali/Baksmali
+
+- Dowload smali and baksmali [here](https://github.com/JesusFreke/smali/wiki)
+- `java -jar baksmali.jar file.dex` disassemble a .dex file
+- `java -jar smali.jar folder-with-smali-code/` generate dex file from smali code
+
+#### Dex2jar
+
+[Dex2jar](https://github.com/pxb1988/dex2jar) is an open source project to work with dex and class files.  
+We can use dex2jar to convert dex or apk in jar. This way we can use java decompiler tools and we will get a more java looking view of the code.
+
+- `dex2jar file.dex -o file.jar` convert dex to jar
+- `dex2jar file.apk -o file.jar` convert apk to jar
+
 ### Recompile with apktool
 
 - `apktool b app/ -o newapp.apk` recompile the folder `app/` and generate a new file `newapp.apk`
 
 ### Sign the application
 
-In order to be installed we need to sign the application. FOr this we can use apksigner.
-- `apksigner sign --ks path/to/key.keystore newapp.apk`
+In order to be installed we need to sign the application.  
+We first need a key  
+
+- `keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000`
+
+Now we can sign it. We can use apksigner.
+
+- `apksigner sign --ks path/to/my-release-key.keystore newapp.apk`
+
+We could also use jarsigner
+
+- `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore my_application.apk alias_name`
+
+> **Security notes about keys:**  
+> If a key from an Android App is compromised, the developers will have to sign new versions with a different key (this is how Google Play Store identify the org who signs the app).  
+> This could also allow an attacked to publish malicious apps which would be trusted because they were signed with a previously trusted key.  
+
+### Signing modes
+
+- Debug mode is for testing purposes (you can run apps directly connected via USB or emulators)
+- Release mode is for production aka public release.
+
+### APK Alignment
+
+- `zipalign -v 4 unaligned.apk aligned.apk`
+- [Zipalign on Android dev](https://developer.android.com/studio/command-line/zipalign)
+
+> Improves RAM use when running the app.
 
 ## Dynamic analysis
 
@@ -432,7 +478,7 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 - `adb shell tcpdump -s -s 0`
 - HTTP traffic: `adb shell tcpdump -C -s -s 0 port 80`
 
-## Resources
+## Resources General
 
 ### My writeups for Android related boxes and challenges
 
@@ -502,7 +548,7 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 - [Understanding the Dalvik bytecode with the Dedexer tool](https://www.slideshare.net/paller/understanding-the-dalvik-bytecode-with-the-dedexer-tool)
 - [Dalvik notes - Haynes Mathew](https://sites.google.com/site/haynesmathew/home/projects/dalvik-notes)
 - [APKtool Google groupe](https://groups.google.com/g/apktool?pli=1)
-- [Dalvik Bytecode](https://source.android.com/docs/core/runtime/dalvik-bytecode?hl=en)
+- [Dalvik Bytecode](https://source.android.com/docs/core/runtime/dalvik-bytecode)
 - [Reverse engineering and modifying an Android game (.apk) — CTF by CurlS](https://medium.com/swlh/reverse-engineering-and-modifying-an-android-game-apk-ctf-c617151b874c)
 
 ### Tools
@@ -529,10 +575,14 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 - [Circumventing SSL Pinning in obfuscated apps with OkHttp - Jeroen Beckers](https://blog.nviso.eu/2019/04/02/circumventing-ssl-pinning-in-obfuscated-apps-with-okhttp/)
 - [Proxying Android app traffic – Common issues / checklist - Jeroen Beckers](https://blog.nviso.eu/2020/11/19/proxying-android-app-traffic-common-issues-checklist/)
 - [The Ultimate Decision Tree for Mobile App Network Testing aka “The Squirrel in the middle”! - Sven Schleier](https://bsddaemonorg.wordpress.com/2021/02/11/the-ultimate-decision-tree-for-mobile-app-network-testing-aka-the-squirrel-in-the-middle/)
+- [Sign an Android App](https://developer.android.com/studio/publish/app-signing)
 
 #### Decompiling & RE
 
 - [jadx](https://github.com/skylot/jadx)
+- [Java Decompile](http://java-decompiler.github.io/)
+- [Procyon](https://github.com/mstrobel/procyon)
+- [Intellij java decompiler](https://github.com/JetBrains/intellij-community/tree/master/plugins/java-decompiler/engine)
 - [cfr java decompiler](https://www.benf.org/other/cfr)
 - [Ghidra](https://www.nsa.gov/resources/everyone/ghidra/)
 - [Android apktool](https://ibotpeaches.github.io/Apktool/)
