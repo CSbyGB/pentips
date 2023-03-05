@@ -24,18 +24,6 @@ Two distinct layes to Android Security model.
 - All apps are in the /data/data folder (except if modified in manifest by dev)
 - The permissions declared in the manifest will be translated in permissions in the file system.
 
-### Resources
-
-- [Security-Enhanced Linux in Android](https://source.android.com/docs/security/features/selinux)
-- [SELinux](http://selinuxproject.org/page/FAQ)
-- [Android NDK](https://developer.android.com/ndk)
-- [Android runtime (ART) and dalvik](https://source.android.com/docs/core/runtime)
-- [Dalvik Bytecode](https://source.android.com/docs/core/runtime/dalvik-bytecode)
-- [Linux Kernel](https://en.wikipedia.org/wiki/Linux_kernel)
-- [ORACLE - JAVA - Tutorials](https://docs.oracle.com/javase/tutorial/)
-- [Android Open Source Project](https://source.android.com/)
-- [Linux Tutorial](https://tldp.org/LDP/gs/node5.html)
-
 ## Build an app
 
 ### Resources Android App
@@ -120,6 +108,7 @@ If none of these conditions match, you have an ARM device
 - Open Burp Suite go to the proxy tab. Then go to the Options tab click on "Import / export CA certificate"
 - Select Certificate in DER format
 - Push the certificate to your device `adb push path/to/my/cert.der /data/local/tmp/cert-der.crt`
+- You can also drag and drop it if you use and emulator
 
 ### Configure Burp with Android Studio
 
@@ -127,10 +116,10 @@ If none of these conditions match, you have an ARM device
 
 ## Decompile code
 
-- Bytecodeviewer
+- [Bytecodeviewer](https://github.com/Konloch/bytecode-viewer)
   - launch with `java -jar` and open apk
 - `jadx-gui`
-- APKLab (add on visual studio Code)
+- [APKLab](https://marketplace.visualstudio.com/items?itemName=Surendrajat.apklab) (add on visual studio Code)
 
 ## MobSF
 
@@ -169,6 +158,7 @@ On every pentest, it is always worth having a checklist. This will allow you to 
 For Android and Mobile Application pentest in general, I can only recommend the MAS checklist made by OWASP.  
 
 - Check it out [here](https://mas.owasp.org/MAS_checklist/)
+- You can also use [MindAPI by David Sopas](https://dsopas.github.io/MindAPI/play/)
 
 ## Static Analysis
 
@@ -259,7 +249,7 @@ See [OWASP](https://github.com/HTBridge/pivaa#cleartext-sqlite-database) about t
 
 ## Modify an Application
 
-- For CTF and other purposes (like cert pinning bypass) we might need to modify the code of the application.
+- For pentest, CTF and other purposes (like cert pinning bypass) we might need to modify the code of the application.
 - However the only way to do so when we only have the apk provided is to decompile the code with apktool (or any other) modify the smali code to fit our purpose, recompile it and sign it.
 
 ### Decompile with apktool
@@ -377,29 +367,6 @@ We could also use jarsigner
 sensitive. Some malware masquerades as Android keyboard extensions.
 - Tapjacking PoC equivalent to Clickjacking can be done with Qark
 
-### Intercept HTTPS traffic
-
-- [Intercepting HTTPS Traffic from Apps on Android 7+ using Magisk & Burp](https://blog.nviso.eu/2017/12/22/intercepting-https-traffic-from-apps-on-android-7-using-magisk-burp/) this tutorial is great.
-- [Here](https://topjohnwu.github.io/Magisk/install.html) is how to install Magisk
-
-- If you want to modify just the network config using objection (and not injecting frida gadget). You can comment some code in objection. Comment the whole code of these 2 functions in objection in the file `/usr/local/lib/python3.10/dist-packages/objection/utils/patchers/android.py`
-
-```python
-def inject_load_library(self, target_class: str = None):
-def add_gadget_to_apk(self, architecture: str, gadget_source: str, gadget_config: str):
-```
-
-- To do so you can add this `'''` on line 765 and line 840 (this will comment the whole block of the 2 functions. Be careful with indentation to avoid errors)
-
-- You will also need to comment 203 and 204 in `/usr/local/lib/python3.10/dist-packages/objection/commands/mobile_packages.py` because the previous 2 functions are called in this file.
-
-- Finally run `objection patchapk -N -s application.apk` and patch the apk
-
-> Thanks to my colleague [Ash](https://twitter.com/ashiahanim_ay) for mentioning this to me.
-
-- If you want to patch the apk, and inject frida gadget this command should work `objection patchapk -s application.apk`.  
-If you want a practical example of this check out the writeup for the challenged Anchored [here](https://csbygb.gitbook.io/pentips/htb-tracks-writeups/htb-intro-to-android-exploitation-track#challenge-anchored).
-
 ### How to bypass certificate pinning
 
 - [Here](https://httptoolkit.com/blog/frida-certificate-pinning/) is an article by Tim Perry on httptoolkit on how to bypass cert pinning with frida.
@@ -471,14 +438,37 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 - `frida-ls-devices` list plugged in devices
 - `frida-ps -D <id> -ai` list installed apps on a specific device
 
+### Intercept HTTPS traffic
+
+- [Intercepting HTTPS Traffic from Apps on Android 7+ using Magisk & Burp](https://blog.nviso.eu/2017/12/22/intercepting-https-traffic-from-apps-on-android-7-using-magisk-burp/) this tutorial is great.
+- [Here](https://topjohnwu.github.io/Magisk/install.html) is how to install Magisk
+
+- If you want to modify just the network config using objection (and not injecting frida gadget). You can comment some code in objection. Comment the whole code of these 2 functions in objection in the file `/usr/local/lib/python3.10/dist-packages/objection/utils/patchers/android.py`
+
+```python
+def inject_load_library(self, target_class: str = None):
+def add_gadget_to_apk(self, architecture: str, gadget_source: str, gadget_config: str):
+```
+
+- To do so you can add this `'''` on line 765 and line 840 (this will comment the whole block of the 2 functions. Be careful with indentation to avoid errors)
+
+- You will also need to comment 203 and 204 in `/usr/local/lib/python3.10/dist-packages/objection/commands/mobile_packages.py` because the previous 2 functions are called in this file.
+
+- Finally run `objection patchapk -N -s application.apk` and patch the apk
+
+> Thanks to my colleague [Ash](https://twitter.com/ashiahanim_ay) for mentioning this to me.
+
+- If you want to patch the apk, and inject frida gadget this command should work `objection patchapk -s application.apk`.  
+If you want a practical example of this check out the writeup for the challenged Anchored [here](https://csbygb.gitbook.io/pentips/htb-tracks-writeups/htb-intro-to-android-exploitation-track#challenge-anchored).
+
 ## Wireshark
 
-- Make laptop as hotspot capture traffic
+- Turn your laptop as hotspot capture traffic
 - Pull capture from a pfSense machine or something similar
 - `adb shell tcpdump -s -s 0`
 - HTTP traffic: `adb shell tcpdump -C -s -s 0 port 80`
 
-## Resources General
+## Resources
 
 ### My writeups for Android related boxes and challenges
 
@@ -487,7 +477,7 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 - [Hackthebox Introduction to Android Exploitation track](https://csbygb.gitbook.io/pentips/htb-tracks-writeups/htb-intro-to-android-exploitation-track)
 - [Hackthebox Box RouterSpace (Foothold with apk)](https://csbygb.gitbook.io/pentips/writeups/htb-routerspace)
 
-### General resources
+### Courses on Android pentest
 
 - [eLearnSecurity Mobile App Pentesting notes by Joas Antonio Dos Santos](https://drive.google.com/file/d/1K_xnDKMhlV1aJqXsq4lXiCcliiGvs877/view)
 - [My writeup of the HTB Introduction to Android Exploitation track](../writeups/HTB-Intro-to-android-Exploitation-Track.md)
@@ -497,44 +487,42 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 - [Android Application Penetration Testing | Mobile Pentesting - Sabyasachi Paul - h0tPlug1n](https://youtu.be/Tujbk4ToVMI)
 - [Android Application Pentesting - Mystikcon 2020](https://youtu.be/NrxTBcjAL8A)
 - [Android Security Crash Course by CorSecure](https://youtube.com/playlist?list=PLH5GW4W70qp_B2eptq1Qo7KM2S66M77hi)
+- [Mobile Hacking crash Course on Hackerone](https://www.hacker101.com/sessions/mobile_crash_course)
+- [TCM Security Academy, Course Mobile App Pentesting (29,99 US$)](https://academy.tcm-sec.com/p/mobile-application-penetration-testing)
+- [Nahamsec Beginner Bounty hunters Mobile Hacking](https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/blob/master/assets/mobile.md)
+- [A notion site about mobile](https://start.me/p/OmxRqE/mobile)
 
-### APISecure conf workshop by Alissa Knight
+### References and reads
 
-{% embed url="https://vimeo.com/701552838" %} Alissa Knight: Workshop for Women/Non-Binary in API Security: Bypassing Certificate Pinning in Android Using FRIDA - APISecure Conference 2022{% endembed %}  
+- [OWASP MSTG](https://github.com/OWASP/owasp-mstg/)
+- [Android Hackerone disclosed reports and other resources](https://github.com/B3nac/Android-Reports-and-Resources)
+- [HTB Intro to Mobile Peneration testing](https://www.hackthebox.com/blog/intro-to-mobile-pentesting)
+- [HackTricks Android](https://book.hacktricks.xyz/mobile-apps-pentesting/android-checklist)
 
-#### Steps from the video
+### Practice
 
-- Step 1: Download the app in an android device and use [apkextractor](https://play.google.com/store/apps/details?id=com.ext.ui&hl=en&gl=US) to extract it of of the android device
-- Step 2: Install MobSF
-  - Inspect the results from the apk analysis here
-  - Go to the Mobsf folder where everything as been extracted and make some manual checks.
-  - You can use [RegEXAPI](https://github.com/odomojuli/RegExAPI) with `grep -R _token`
+#### Vulnerable Apps to practice on
 
-#### Resources mentioned in the video
+- [Vulnerable Android App - thedarksource](https://thedarksource.com/vulnerable-android-apps/)
+- [List of Intentionally vulnerable app - pentester.land](https://pentester.land/cheatsheets/2018/10/12/list-of-Intentionally-vulnerable-android-apps.html)
+- [ExploitMe Mobile Android Labs](https://securitycompass.github.io/AndroidLabs/setup.html)
+- [Android Insecure Bank](https://github.com/dineshshetty/Android-InsecureBankv2)
 
-- [All that we let in - Part 1 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mobile-health-apis-part-1)
-- [All that we let in - Part 2 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mhealth-apps-and-apis-part-2)
+#### Hackthebox
 
-### Another video with Alissa Knight that is a great complement to the first one
+- [Track: Introduction to Android Exploitation](https://app.hackthebox.com/tracks/Introduction-to-Android-Exploitation)
 
-- How I hacked 30 mobile banking apps & the future of API Security, Alissa Knight, Aite Group - Apidays 2019
 
-{% embed url="https://youtu.be/dRaTXF4LQr8" %} How I hacked 30 mobile banking apps & the future of API Security, Alissa Knight, Aite Group - Apidays 2019 {% endembed %}  
 
 ### Resources for SSL pinning bypass, Frida, traffic interception and rooting
 
+- [Understand certificate pinning](https://littlemaninmyhead.wordpress.com/2020/06/08/understanding-certificate-pinning/)
+- [How to Bypass SSL Pinning](https://youtu.be/SEySgg3vQjg)
 - [Frida gadget injection on android no root 2 methods - Alexandr Fadeev](https://fadeevab.com/frida-gadget-injection-on-android-no-root-2-methods/)
-
 - [Android SSL Pinning Bypass for Bug Bounties & Penetration Testing - Hacktify Cyber Security](https://youtu.be/ENyEcwLaz-A)  
-
 - [Android Application Pinning Bypass | Pinned @ HackTheBox by 0xbro](https://youtu.be/CJR_BSIStmE)  
-
 - [Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro](https://youtu.be/KGdCvJs9w7w)
-
 - [Configuring Burp Suite With Android Nougat](https://blog.ropnop.com/configuring-burp-suite-with-android-nougat/)
-
-- Tool (**I DID NOT TRY IT**): [rootAVD by newb1t to root an AVD](https://github.com/newbit1/rootAVD/blob/master/README.md)  
-  - [Magisk Trust User Certs](https://github.com/NVISOsecurity/MagiskTrustUserCerts/releases/tag/v0.4.1) (I did not try either it but it is suppose to be added in addition of use of rootAVD to make a system trusted certificate)  
 
 ### Resources for Smali, Dalvik and RE an android App
 
@@ -553,6 +541,10 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 ### Tools
 
+#### List of tools
+
+- [Nahamsec tools for mobile hacking](https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/blob/master/assets/tools.md#Mobile-Hacking)
+
 #### Android Emulator
 
 - [Genymotion](https://www.genymotion.com) (free 30 days trial and free for personal use)
@@ -567,15 +559,18 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 - [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) can help to speed up static analysis
 - [Qark](https://github.com/linkedin/qark) dynamic analysis can be use for tapjacking PoC
+  - [Good tutorial for Qark](https://resources.infosecinstitute.com/topic/android-penetration-tools-walkthrough-series-qark/)
 - [Inspeckage - Android Package Inspector](https://github.com/ac-pm/Inspeckage)
 
-#### Certificate pinning
+#### Certificate pinning and bypass - Tools
 
 - [Bypass SSL Pinning without root by CorSecure](https://youtu.be/qaJBWcueCIA)
 - [Circumventing SSL Pinning in obfuscated apps with OkHttp - Jeroen Beckers](https://blog.nviso.eu/2019/04/02/circumventing-ssl-pinning-in-obfuscated-apps-with-okhttp/)
 - [Proxying Android app traffic – Common issues / checklist - Jeroen Beckers](https://blog.nviso.eu/2020/11/19/proxying-android-app-traffic-common-issues-checklist/)
 - [The Ultimate Decision Tree for Mobile App Network Testing aka “The Squirrel in the middle”! - Sven Schleier](https://bsddaemonorg.wordpress.com/2021/02/11/the-ultimate-decision-tree-for-mobile-app-network-testing-aka-the-squirrel-in-the-middle/)
 - [Sign an Android App](https://developer.android.com/studio/publish/app-signing)
+- [rootAVD by newb1t to root an AVD](https://github.com/newbit1/rootAVD/blob/master/README.md) (**I DID NOT TRY IT**)  
+  - [Magisk Trust User Certs](https://github.com/NVISOsecurity/MagiskTrustUserCerts/releases/tag/v0.4.1) (I did not try either it but it is suppose to be added in addition of use of rootAVD to make a system trusted certificate)  
 
 #### Decompiling & RE
 
@@ -589,3 +584,40 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 - [Frida](https://www.frida.re)
 - [Fridump](https://github.com/Nightbringer21/fridump)
 - [APKlab an extension for VSCodium](https://marketplace.visualstudio.com/items?itemName=Surendrajat.apklab)
+
+### Android OS and Security
+
+- [Security-Enhanced Linux in Android](https://source.android.com/docs/security/features/selinux)
+- [SELinux](http://selinuxproject.org/page/FAQ)
+- [Android NDK](https://developer.android.com/ndk)
+- [Android runtime (ART) and dalvik](https://source.android.com/docs/core/runtime)
+- [Dalvik Bytecode](https://source.android.com/docs/core/runtime/dalvik-bytecode)
+- [Linux Kernel](https://en.wikipedia.org/wiki/Linux_kernel)
+- [ORACLE - JAVA - Tutorials](https://docs.oracle.com/javase/tutorial/)
+- [Android Open Source Project](https://source.android.com/)
+- [Linux Tutorial](https://tldp.org/LDP/gs/node5.html)
+
+### Inspiring talks
+
+#### APISecure conf workshop by Alissa Knight
+
+{% embed url="https://vimeo.com/701552838" %} Alissa Knight: Workshop for Women/Non-Binary in API Security: Bypassing Certificate Pinning in Android Using FRIDA - APISecure Conference 2022{% endembed %}  
+
+##### Steps from the video
+
+- Step 1: Download the app in an android device and use [apkextractor](https://play.google.com/store/apps/details?id=com.ext.ui&hl=en&gl=US) to extract it of of the android device
+- Step 2: Install MobSF
+  - Inspect the results from the apk analysis here
+  - Go to the Mobsf folder where everything as been extracted and make some manual checks.
+  - You can use [RegEXAPI](https://github.com/odomojuli/RegExAPI) with `grep -R _token`
+
+##### Resources mentioned in the video
+
+- [All that we let in - Part 1 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mobile-health-apis-part-1)
+- [All that we let in - Part 2 - Alissa Knight](https://www.alissaknight.com/post/all-that-we-let-in-hacking-mhealth-apps-and-apis-part-2)
+
+#### Another video with Alissa Knight that is a great complement to the first one
+
+- How I hacked 30 mobile banking apps & the future of API Security, Alissa Knight, Aite Group - Apidays 2019
+
+{% embed url="https://youtu.be/dRaTXF4LQr8" %} How I hacked 30 mobile banking apps & the future of API Security, Alissa Knight, Aite Group - Apidays 2019 {% endembed %}  
