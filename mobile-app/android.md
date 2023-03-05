@@ -481,6 +481,9 @@ If you want a practical example of this check out the writeup for the challenged
 
 - [eLearnSecurity Mobile App Pentesting notes by Joas Antonio Dos Santos](https://drive.google.com/file/d/1K_xnDKMhlV1aJqXsq4lXiCcliiGvs877/view)
 - [My writeup of the HTB Introduction to Android Exploitation track](../writeups/HTB-Intro-to-android-Exploitation-Track.md)
+- [Android Pentesting 101 - Pentestmag - Part 1](https://pentestmag.com/android-pentesting-101-part-1/)
+- [Android Pentesting 101 - Pentestmag - Part 2](https://pentestmag.com/android-pentesting-101-part-2/)
+- [Android Pentesting 101 - Pentestmag - Part 3](https://pentestmag.com/android-pentesting-101-part-3/)
 - [Android Pentesting 101 — Part 1 by 302 found](https://infosecwriteups.com/android-pentesting-101-part-1-8e31b8cd8b2b)
 - [Android Pentesting 101 — Part 2 by 302 found](https://infosecwriteups.com/android-pentesting-101-part-2-419facdf11c1)
 - [Android Pentesting 101 — Part 3 by 302 found](https://infosecwriteups.com/android-pentesting-101-part-3-2bf846b05594)
@@ -488,9 +491,14 @@ If you want a practical example of this check out the writeup for the challenged
 - [Android Application Pentesting - Mystikcon 2020](https://youtu.be/NrxTBcjAL8A)
 - [Android Security Crash Course by CorSecure](https://youtube.com/playlist?list=PLH5GW4W70qp_B2eptq1Qo7KM2S66M77hi)
 - [Mobile Hacking crash Course on Hackerone](https://www.hacker101.com/sessions/mobile_crash_course)
-- [TCM Security Academy, Course Mobile App Pentesting (29,99 US$)](https://academy.tcm-sec.com/p/mobile-application-penetration-testing)
 - [Nahamsec Beginner Bounty hunters Mobile Hacking](https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/blob/master/assets/mobile.md)
 - [A notion site about mobile](https://start.me/p/OmxRqE/mobile)
+- [Android Penetration Testing Courses - Galilei](https://medium.com/mobile-penetration-testing/android-penetration-testing-courses-4effa36ac5ed)
+
+### Lab Setup
+
+- [Android Pentesting Lab Step by step guide by Neha Taris](https://infosecwriteups.com/android-pentesting-lab-4a6fe1a1d2e0)
+- [Set up an Android hacking lab for 0$ by Kurt Muhl](https://www.trustedsec.com/blog/set-up-an-android-hacking-lab-for-0/)
 
 ### References and reads
 
@@ -498,6 +506,10 @@ If you want a practical example of this check out the writeup for the challenged
 - [Android Hackerone disclosed reports and other resources](https://github.com/B3nac/Android-Reports-and-Resources)
 - [HTB Intro to Mobile Peneration testing](https://www.hackthebox.com/blog/intro-to-mobile-pentesting)
 - [HackTricks Android](https://book.hacktricks.xyz/mobile-apps-pentesting/android-checklist)
+- [Zero to Hero - Mobile Application Testing - Android - Nilesh Sapariya](https://nileshsapariya.blogspot.com/2016/11/zero-to-hero-mobile-application-testing.html)
+- [Mobile App Penetration Testing Cheat Sheet - sh4hin](https://github.com/sh4hin/MobileApp-Pentest-Cheatsheet)
+- [Android Application Reversing 101 - evilsocket](https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/#.WQND0G3TTOM.reddit)
+
 
 ### Practice
 
@@ -507,10 +519,18 @@ If you want a practical example of this check out the writeup for the challenged
 - [List of Intentionally vulnerable app - pentester.land](https://pentester.land/cheatsheets/2018/10/12/list-of-Intentionally-vulnerable-android-apps.html)
 - [ExploitMe Mobile Android Labs](https://securitycompass.github.io/AndroidLabs/setup.html)
 - [Android Insecure Bank](https://github.com/dineshshetty/Android-InsecureBankv2)
+- [OWASP MAS Crackmes](https://mas.owasp.org/crackmes/)
+- [Oversecured Vulnerable Android App](https://github.com/oversecured/ovaa)
+- [Damn Insecure Vulnerable App](https://github.com/0xArab/diva-apk-file)
+- [OWASP Security Shepher - Mobile App pentest training](https://owasp.org/www-project-security-shepherd/)
+- [MASTG Hacking Playground](https://github.com/OWASP/MASTG-Hacking-Playground)
+- [Damn Vulnerable Hybrid Mobile App](https://github.com/logicalhacking/DVHMA)
+- [Vulnerable Android App Oracle](https://github.com/dan7800/VulnerableAndroidAppOracle)
 
 #### Hackthebox
 
 - [Track: Introduction to Android Exploitation](https://app.hackthebox.com/tracks/Introduction-to-Android-Exploitation)
+  - [My writeup](https://csbygb.gitbook.io/pentips/writeups/htbtracks/htb-intro-to-android-exploitation-track )
 
 ### Resources for SSL pinning bypass, Frida, traffic interception and rooting
 
@@ -594,6 +614,8 @@ If you want a practical example of this check out the writeup for the challenged
 - [ORACLE - JAVA - Tutorials](https://docs.oracle.com/javase/tutorial/)
 - [Android Open Source Project](https://source.android.com/)
 - [Linux Tutorial](https://tldp.org/LDP/gs/node5.html)
+- [Hands on Mobile API Security: Get rid of client Secrets by skiph - Hackernoon](https://hackernoon.com/hands-on-mobile-api-security-get-rid-of-client-secrets-a79f111b6844)
+- [Android Security Awesome by Ashishb](https://github.com/ashishb/android-security-awesome)
 
 ### Inspiring talks
 
