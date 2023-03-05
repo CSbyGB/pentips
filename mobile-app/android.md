@@ -512,8 +512,6 @@ If you want a practical example of this check out the writeup for the challenged
 
 - [Track: Introduction to Android Exploitation](https://app.hackthebox.com/tracks/Introduction-to-Android-Exploitation)
 
-
-
 ### Resources for SSL pinning bypass, Frida, traffic interception and rooting
 
 - [Understand certificate pinning](https://littlemaninmyhead.wordpress.com/2020/06/08/understanding-certificate-pinning/)
