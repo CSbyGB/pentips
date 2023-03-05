@@ -400,7 +400,7 @@ def add_gadget_to_apk(self, architecture: str, gadget_source: str, gadget_config
 - If you want to patch the apk, and inject frida gadget this command should work `objection patchapk -s application.apk`.  
 If you want a practical example of this check out the writeup for the challenged Anchored [here](https://csbygb.gitbook.io/pentips/htb-tracks-writeups/htb-intro-to-android-exploitation-track#challenge-anchored).
 
-### How to bypass certificate pining
+### How to bypass certificate pinning
 
 - [Here](https://httptoolkit.com/blog/frida-certificate-pinning/) is an article by Tim Perry on httptoolkit on how to bypass cert pinning with frida.
 - If none of the universal script work, you might want to consider using apktool to decompile, modify the smali code and recompile it (see how to do so above).

