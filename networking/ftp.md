@@ -51,6 +51,7 @@ One of the most used FTP servers on Linux-based distributions is [vsFTPd](https:
 - `trace`
 - `ls -R` list file recursively
 - `get filename` download a file
+- `put filename` upload a file
 - `wget -m --no-passive ftp://anonymous:anonymous@10.129.14.136` Downaload all available files
   - `tree .` inspect all files downloaded
 - Upload a file

@@ -228,6 +228,54 @@ Bundle extras = getIntent().getExtras();
 
 So it might be a good idea in the Activity files to look for the following strings: "extra", "extras" "intent"
 
+##### Methodology to analyze an activity
+
+- In the android manifest, find the activities.
+- This is what it looks like in the [Android UnCrackable L1 Crackme](https://github.com/OWASP/owasp-mastg/raw/master/Crackmes/Android/Level_01/UnCrackable-Level1.apk) from OWASP MAS.
+
+```xml
+<activity android:label="@string/app_name" android:name="sg.vantagepoint.uncrackable1.MainActivity">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+    </intent-filter>
+</activity>
+```
+
+- Using these information you can check them with jadx-gui or apktool the activities  
+
+![MainActivity crackme](../.res/2023-03-08-10-29-03.png)  
+
+- Sometimes in some application you will have a reference to the r.class this class contains the public constants used by application. This [thread on stackoverflow](https://stackoverflow.com/questions/6804053/understand-the-r-class-in-android) is really interesting to know more about this class.  
+
+> Note that you do not need specifically to go through the activity to analyze the r.class. It can happen that there will be no reference to the r.class, but you can still check it anyway
+
+- In this other example we have a reference to r.class in the activity:
+`setContentView(2130968602);`
+- What we can do is copy the number, and look for it in the r.class (we can CTRL+F once in the r.class)  
+
+![control F](../.res/2023-03-08-10-39-12.png)
+
+- It will highlight in the code as follows
+
+![activity_access](../.res/2023-03-08-10-40-12.png)
+
+- Now in the res/layout folder you decompiled with apktool, you can look for an xml file named `activity_access.xml`.
+- It is worth checking if it has any interesing info. It is also going to help you understand how the app works. They are used for the view (layout) of an app.
+- It is interesting to check if it has "onClick" actions for the button or any other references to functions.
+
+- If we go back to our crackme example we do not have a reference in our file to the r.class, but if we check it anyway we can find this
+
+![layout](../.res/2023-03-08-10-58-18.png)
+
+- So we can check in `layout>activity_main.xml` in our decompiled files what it looks like.
+- We can also find this  
+![menu](../.res/2023-03-08-10-59-31.png)
+- So we could analyze `menu>menu_main.xml`
+- Here is an example of something that would be worth analysing of `layout>activity_main.xml`. We can see the xml code corresponding to the button and that this code is calling a function verify.
+
+![button](../.res/2023-03-08-11-29-08.png)
+
 ### General tips for static analysis
 
 - Check Strings.xml
