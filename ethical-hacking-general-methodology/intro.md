@@ -2,9 +2,9 @@
 
 *This chapter (Ethical Hacking General Methodology) aims to present the stages in Ethical hacking. Each step will be presented individually.
 This documentation has been made using **The Cyber Mentor PEH course**, **HTB Academy Penetration Testing job skill path** and **XSSrat Pentesting 101 ultimate guide from start to finish**.  
-I recommend both courses as they really cover very important topics of pentest and also offer the possibility to practice these skills.
-Also both offer the possibility to get certified with an exam.  
-[PNPT for TCM](https://certifications.tcm-sec.com/pnpt/) and [HTB CPTS](https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist/)*
+I recommend all these courses as they really cover very important topics of pentest and also offer the possibility to practice these skills.
+Also they offer the possibility to get certified with an exam.  
+[PNPT for TCM](https://certifications.tcm-sec.com/pnpt/), [HTB CPTS](https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist/)* and [XSSrat for CNWPP](https://thexssrat.podia.com/cnwpp)
 
 ## Ethical hacking methodology
 
@@ -280,6 +280,109 @@ It is also possible that many of the employees have not been informed about the 
 - Along with OWASP checklist you can use [the testing guide](https://owasp.org/www-project-web-security-testing-guide/stable/)
 - [NetbiosX Red Teaming & Pentesting checklists for various engagements](https://github.com/netbiosX/Checklists)
 
+## Asset Management
+
+When an organization of any kind, in any industry, and of any size needs to plan their cybersecurity strategy, they should start by creating an inventory of their data assets. If you want to protect something, you must first know what you are protecting! Once assets have been inventoried, then you can start the process of asset management. This is a key concept in defensive security.
+
+### Asset Inventory
+
+Asset inventory is a critical component of vulnerability management. An organization needs to understand what assets are in its network to provide the proper protection and set up appropriate defenses. The asset inventory should include information technology, operational technology, physical, software, mobile, and development assets. Organizations can utilize asset management tools to keep track of assets. The assets should have data classifications to ensure adequate security and access controls.
+
+#### Application and System Inventory
+
+An organization should create a thorough and complete inventory of data assets for proper asset management for defensive security. Data assets include:
+
+- All data stored on-premises. HDDs and SSDs in endpoints (PCs and mobile devices), HDDs & SSDs in servers, external drives in the local network, optical media (DVDs, Blu-ray discs, CDs), flash media (USB sticks, SD cards). Legacy technology may include floppy disks, ZIP drives (a relic from the 1990s), and tape drives.
+
+- All of the data storage that their cloud provider possesses. Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure are some of the most popular cloud providers, but there are many more. Sometimes corporate networks are "multi-cloud," meaning they have more than one cloud provider. A company's cloud provider will provide tools that can be used to inventory all of the data stored by that particular cloud provider.
+
+- All data stored within various Software-as-a-Service (SaaS) applications. This data is also "in the cloud" but might not all be within the scope of a corporate cloud provider account. These are often consumer services or the "business" version of those services. Think of online services such as Google Drive, Dropbox, Microsoft Teams, Apple iCloud, Adobe Creative Suite, Microsoft Office 365, Google Docs, and the list goes on.
+
+- All of the applications a company needs to use to conduct their usual operation and business. Including applications that are deployed locally and applications that are deployed through the cloud or are otherwise Software-as-a-Service.
+
+- All of a company's on-premises computer networking devices. These include but aren't limited to routers, firewalls, hubs, switches, dedicated intrusion detection and prevention systems (IDS/IPS), data loss prevention (DLP) systems, and so on.
+
+All of these assets are very important. A threat actor or any other sort of risk to any of these assets can do significant damage to a company's information security and ability to operate day by day. An organization needs to take its time to assess everything and be careful not to miss a single data asset, or they won't be able to protect it.
+
+Organizations frequently add or remove computers, data storage, cloud server capacity, or other data assets. Whenever data assets are added or removed, this must be thoroughly noted in the data asset inventory.
+
+## Compliance Standards
+
+### PCI DSS
+
+The [Payment Card Industry Data Security Standard (PCI DSS)](https://www.pcisecuritystandards.org/about_us/) is a commonly known standard in information security that implements requirements for organizations that handle credit cards. As per government regulations, organizations that store, process, or transmit cardholder data must implement PCI DSS guidelines. This would include banks or online stores that handle their own payment solutions (e.g., Amazon).
+
+PCI DSS requirements include internal and external scanning of assets. For example, any credit card data that is being processed or transmitted must be done in a Cardholder Data Environment (CDE). The CDE environment must be adequately segmented from normal assets. CDE environments are segmented off from an organization's regular environment to protect any cardholder data from being compromised during an attack and limit internal access to data.
+
+![PCI DSS Goals](../.res/2023-03-17-16-24-11.png)
+
+> Image Source: [Adktechs](https://adktechs.com/wp-content/uploads/2019/06/PCI-DSS-Goals.png)
+
+### Health Insurance Portability and Accountability Act (HIPAA)
+
+HIPAA is the [Health Insurance Portability and Accountability Act](https://www.hipaa.com/), which is used to protect patients' data. HIPAA does not necessarily require vulnerability scans or assessments; however, a risk assessment and vulnerability identification are required to maintain HIPAA accreditation.
+
+### Federal Information Security Management Act (FISMA)
+
+[The Federal Information Security Management Act (FISMA)](https://www.cisa.gov/federal-information-security-modernization-act) is a set of standards and guidelines used to safeguard government operations and information. The act requires an organization to provide documentation and proof of a vulnerability management program to maintain information technology systems' proper availability, confidentiality, and integrity.
+
+### ISO 27001
+
+[ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) is a standard used worldwide to manage information security. ISO 27001 requires organizations to perform quarterly external and internal scans.
+
+Although compliance is essential, it should not drive a vulnerability management program. Vulnerability management should consider the uniqueness of an environment and the associated risk appetite to an organization.
+
+The International Organization for Standardization (ISO) maintains technical standards for pretty much anything you can imagine. The ISO 27001 standard deals with information security. ISO 27001 compliance depends upon maintaining an effective Information Security Management System. To ensure compliance, organizations must perform penetration tests in a carefully designed way.
+
+## Penetration Testing Standards
+
+Penetration tests should not be performed without any rules or guidelines. There must always be a specifically defined scope for a pentest, and the owner of a network must have a signed legal contract with pentesters outlining what they're allowed to do and what they're not allowed to do. Pentesting should also be conducted in such a way that minimal harm is done to a company's computers and networks. Penetration testers should avoid making changes wherever possible (such as changing an account password) and limit the amount of data removed from a client's network. For example, instead of removing sensitive documents from a file share, a screenshot of the folder names should suffice to prove the risk.
+
+In addition to scope and legalities, there are also various pentesting standards, depending on what kind of computer system is being assessed. Here are some of the more common standards you may use as a pentester.
+
+### PTES
+
+The [Penetration Testing Execution Standard (PTES)](http://www.pentest-standard.org/index.php/Main_Page) can be applied to all types of penetration tests. It outlines the phases of a penetration test and how they should be conducted. These are the sections in the PTES:
+
+- Pre-engagement Interactions
+- Intelligence Gathering
+- Threat Modeling
+- Vulnerability Analysis
+- Exploitation
+- Post Exploitation
+- Reporting
+
+### OSSTMM
+
+OSSTMM is the Open Source Security Testing Methodology Manual, another set of guidelines pentesters can use to ensure they're doing their jobs properly. It can be used alongside other pentest standards.
+
+[OSSTMM](https://www.isecom.org/OSSTMM.3.pdf) is divided into five different channels for five different areas of pentesting:
+
+1. Human Security (human beings are subject to social engineering exploits)
+2. Physical Security
+3. Wireless Communications (including but not limited to technologies like WiFi and Bluetooth)
+4. Telecommunications
+5. Data Networks
+
+### NIST
+
+The NIST (National Institute of Standards and Technology) is well known for their [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework), a system for designing incident response policies and procedures. NIST also has a Penetration Testing Framework. The phases of the NIST framework include:
+
+- Planning
+- Discovery
+- Attack
+- Reporting
+
+### OWASP
+
+OWASP stands for the [Open Web Application Security Project](https://owasp.org/). They're typically the go-to organization for defining testing standards and classifying risks to web applications.
+
+OWASP maintains a few different standards and helpful guides for assessment various technologies:
+
+- [Web Security Testing Guide (WSTG)](https://owasp.org/www-project-web-security-testing-guide/)
+- [Mobile Security Testing Guide (MASTG)](https://owasp.org/www-project-mobile-app-security/)
+- [Firmware Security Testing Methodology](https://github.com/scriptingxss/owasp-fstm)
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} Practical Ethical Hacking - TCM Security {% endembed %}  
@@ -293,7 +396,7 @@ It is also possible that many of the employees have not been informed about the 
 - HTB Machines search on engine for practice on specific topics
 
 {% embed url="https://htbmachines.github.io/" %} S4vitar Machine's Resolutions {% endembed %}  
-{% embed url="https://ippsec.rocks/?#" %} Ippsec Rocks {% endembed %}  
+{% embed url="https://ippsec.rocks/" %} Ippsec Rocks {% endembed %}  
 {% embed url="https://www.hackthebox.com/machines" %} A search engine to find machines by OS and Difficulty {% endembed %}  
 
 - This search engine will help you find HTB Academy modules according to specific goals you have for HTB platform. For instance if you want to work on dante prolab you will have suggestions of HTB Academy modules according to the topics of Dante:

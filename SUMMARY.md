@@ -84,6 +84,7 @@
 * [WPScan](Tools/wpscan.md)
 * [Powershell Empire](Tools/empire-powershell.md)
 * [Curl](Tools/curl.md)
+* [Vulnerability Scanning tools](Tools/vulnerability-scanning-tools.md)
 
 ## VM and Labs
 
