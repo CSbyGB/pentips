@@ -176,7 +176,7 @@
 
 ## Post Exploitation
 
-* [Transfert files between target and attacking machine](post-exploitation/files-transfert.md)
+* [File transfers between target and attacking machine](post-exploitation/file-transfers.md)
 * [Maintaining Access](post-exploitation/maintaining-access.md)
 * [Pivoting](post-exploitation/pivoting.md)
 * [Cleaning up](post-exploitation/cleanup.md)
