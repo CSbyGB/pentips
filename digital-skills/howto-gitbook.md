@@ -58,3 +58,7 @@ structure:
 ```
 My block of code
 ```
+
+### Emojis
+
+[Here](https://gist.github.com/roachhd/1f029bd4b50b8a524f3c) is a list of emojis cheatsheet you can use on markdown

@@ -75,7 +75,7 @@ This sets the action of the Intent to `ACTION_VIEW`, which tells the Android sys
 
 Other common actions that you can specify in an Intent include `ACTION_SEND` for sharing data, `ACTION_EDIT` for editing data, and `ACTION_DIAL` for dialing a phone number.
 
-> ⚠️ Using implicit intents can potentially introduce some security risks in an Android app. When you use an implicit intent, you are not specifying the exact component that should receive the intent. Instead, the Android system searches for all components that can handle the intent's action and data type and presents the user with a list of possible options to choose from.  
+> :warning: Using implicit intents can potentially introduce some security risks in an Android app. When you use an implicit intent, you are not specifying the exact component that should receive the intent. Instead, the Android system searches for all components that can handle the intent's action and data type and presents the user with a list of possible options to choose from.  
 > This means that it is possible for a malicious app to register itself as a handler for a specific action and data type, and intercept the intent before it is delivered to the intended recipient. This could potentially allow the malicious app to access sensitive data or perform other unwanted actions.
 
 #### Extra
@@ -190,7 +190,7 @@ Sticky broadcasts are useful in situations where an app wants to notify other co
 However, it is important to note that the use of sticky broadcasts should be avoided whenever possible, as they can be a security risk and can cause performance issues on the device. In fact, starting from Android 8.0 (API level 26), the use of sticky broadcasts is no longer allowed for most apps, except for a few system-level broadcasts. Instead, apps should use other mechanisms, such as foreground services or the JobScheduler API, to receive notifications about changes in system state.  
 More info on this [here](https://developer.android.com/reference/android/content/Context)
 
-> ⚠️ When auditing an app it is worth checking for the keyword "sticky" during the static analysis.
+> :warning: When auditing an app it is worth checking for the keyword "sticky" during the static analysis.
 
 ## Lab setup
 
@@ -220,8 +220,8 @@ More info on this [here](https://developer.android.com/reference/android/content
 - One exploit is done, the su binary has to be specified in the user's PATH environment variable like `system/xbin`. It then needs to be configured with the proper permissions
 - Finally we can use an app to interface with the su binary and process requests for root access.
 
-> ⚠️ Attention: We have to be careful when rooting a device, because some apps used to root a device might be malicious, not properly coded or insecure.  
-> ⚠️ This also means that any app on the device could request root access. This obviously exposes the device and the data on it.
+> :warning: Attention: We have to be careful when rooting a device, because some apps used to root a device might be malicious, not properly coded or insecure.  
+> :warning: This also means that any app on the device could request root access. This obviously exposes the device and the data on it.
 
 ## Custom ROMs
 
