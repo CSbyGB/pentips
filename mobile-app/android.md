@@ -24,12 +24,173 @@ Two distinct layes to Android Security model.
 - All apps are in the /data/data folder (except if modified in manifest by dev)
 - The permissions declared in the manifest will be translated in permissions in the file system.
 
-## Build an app
+## Build an app and fundamentals on Android Applications
 
-### Resources Android App
+### Structure
 
-- [Meet Android Studio](https://developer.android.com/studio/intro)
-- [Build your first Android app](https://developer.android.com/training/basics/firstapp/index.html)
+An Android App comprises two main elements:
+
+- The program's core functionality, written in Java code or Kotlin (official language today)
+- The XML files that specify various configurations, including string values and the app's identity.
+
+#### The manifest from a developer perspective
+
+- [Official Android Documentation](https://developer.android.com/guide/topics/manifest/manifest-intro)
+- When an attribute starts with a "." = relative to package name so if package name is `com.example.myapp` an element attribute with `.something` will be `com.example.myapp.something`
+- `minSdkVersion` default value of 1 (app can run on any Android version, not ideal in a security point of view)
+- `targetSdkVersion` the version of Android the app has been tested on and is compatible with. (default will be the value of minSdkVersion)
+- `maxSdkVersion` usually not set because it will prevent the app from being installed on latest Android device.
+
+### Intents
+
+- [Official Android documentation on Intent](https://developer.android.com/reference/android/content/Intent)
+
+An Intent is a messaging object that is used to communicate between components in an Android app, such as activities, services, and broadcast receivers.
+
+Intents can be used to start new activities, pass data between activities or services, and broadcast events to other components in the system. They can also be used to start external activities or services provided by other apps, and to receive broadcasts from the system or other apps.
+
+An Intent is essentially a way for an app to request an action from the Android system or other apps, or to respond to actions that are requested by other apps or the system. When an Intent is received, the component that handles it can extract any data that is passed with the Intent and use it to perform a specific action or provide a specific service to the user.
+
+#### Implicit Intents
+
+An Implicit Intent is a type of Intent in Android that does not explicitly specify the target component (i.e., the activity, service or broadcast receiver) to which the intent is intended to be delivered.
+
+Instead, it declares an action to be performed, and optionally, data to be passed. The Android system then searches for all components that have registered to handle that specific action and data, and displays a list of appropriate apps that can handle the intent, allowing the user to choose which app to use.
+
+For example, if you want to open a PDF file in your app, you can create an implicit intent that declares the "ACTION_VIEW" action and specifies the "application/pdf" data type. When the user selects a PDF file in a file manager app, the Android system will search for all components that can handle the "ACTION_VIEW" action and "application/pdf" data type. If your app has registered to handle this type of intent, it will be listed as an option for the user to select.
+
+Implicit intents can be used to start activities, services, or broadcast receivers in other apps or the system, as well as to share data between apps. They are a powerful way to provide seamless integration between different apps and services in the Android ecosystem.
+
+It is a string that will look like this `ACTION_ACTION-TO-PERFORM` (for example `VIEW` or `SEND`). To specify an intent's action we use the setAction() method or the Intent Constructor.
+
+To specify an Intent's action in Android, you need to call the `setAction()` method on the Intent object and pass in a string that represents the action you want to perform. The action string specifies what type of action you want to perform, such as viewing a webpage or sending an email.
+
+For example, to create an Intent that will open a webpage in the default web browser, you would create a new Intent object and call the `setAction()` method with the `ACTION_VIEW` constant from the `Intent` class, like this:
+
+```java
+Intent intent = new Intent(Intent.ACTION_VIEW);
+```
+
+This sets the action of the Intent to `ACTION_VIEW`, which tells the Android system that you want to view something. You can then add additional information to the intent, such as the URL of the webpage you want to open, using methods like `setData()` or `putExtra()`.
+
+Other common actions that you can specify in an Intent include `ACTION_SEND` for sharing data, `ACTION_EDIT` for editing data, and `ACTION_DIAL` for dialing a phone number.
+
+> ⚠️ Using implicit intents can potentially introduce some security risks in an Android app. When you use an implicit intent, you are not specifying the exact component that should receive the intent. Instead, the Android system searches for all components that can handle the intent's action and data type and presents the user with a list of possible options to choose from.  
+> This means that it is possible for a malicious app to register itself as a handler for a specific action and data type, and intercept the intent before it is delivered to the intended recipient. This could potentially allow the malicious app to access sensitive data or perform other unwanted actions.
+
+#### Extra
+
+An "extra" is a key-value pair that can be included in an Intent object to pass additional data between different components in an app. Extras are used to provide more detailed information about the action that the Intent is requesting, or to provide additional data that the receiving component needs in order to complete its task.
+
+For example, if you are creating an Intent to launch a new activity and you want to pass some data to the new activity, you can use the putExtra() method to add an extra to the Intent. The extra can be any type of data that can be serialized, such as a string, integer, or boolean value.
+
+Here's an example of how to add an extra to an Intent:
+
+```java
+Intent intent = new Intent(this, MyActivity.class);
+intent.putExtra("EXTRA_KEY", "extra value");
+```
+
+In this example, the `putExtra()` method is used to add a string extra to the Intent with the key "EXTRA_KEY" and the value "extra value". The receiving component can then extract the extra data from the Intent by calling the appropriate method, such as `getStringExtra()`.
+
+#### Intent Filter
+
+An [Intent Filter](https://developer.android.com/guide/components/intents-filters) is an element that you can define to declare the types of intents that your app can handle.  
+It specifies the combination of action, data, and category values that an intent must have in order for the Android system to launch an activity, service, or broadcast receiver in your app.  
+When an implicit intent is fired, the Android system searches for all the activities, services or broadcast receivers that have registered their intent filters for the specific action, data, and category in the intent.   It then displays a list of the appropriate apps that can handle the intent, and allows the user to choose which app to use.
+
+- Here is an example
+
+```xml
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="http" />
+    <data android:scheme="https" />
+</intent-filter>
+```
+
+Suppose that the user clicks on a link to `https://www.example.com/some-page` in a web browser on their Android device. The web browser will send an ACTION_VIEW intent to the Android system with the URL of the clicked link as data. The Android system will look for any installed apps that can handle the ACTION_VIEW intent and have an intent-filter that matches the data in the intent.
+
+In this case, the MyActivity class has an intent-filter that matches the ACTION_VIEW intent with data that has an https scheme. Therefore, the Android system will launch the MyActivity class and pass the ACTION_VIEW intent to it. The MyActivity class can then extract the URL data from the intent and display the appropriate content to the user.
+
+#### Priority
+
+The priority attribute is an optional attribute that can be used in the `<intent-filter>` element of an Android manifest file to specify the priority of an activity or service component relative to other components that can handle the same type of Intent. The priority is used by the Android system to determine which component should receive the Intent if there are multiple components that are capable of handling it.
+
+The priority attribute is specified as an integer value between -1000 and 1000, with higher values indicating a higher priority. The default priority is set to 0 if the attribute is not specified.
+
+For example, if you have two activities that can handle the same type of Intent, but you want one of the activities to be given priority over the other, you can specify a higher priority value for that activity using the `android:priority` attribute. Here's an example of how to set the priority of an activity:
+
+```xml
+<activity
+    android:name=".MainActivity"
+    android:priority="100">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
+```
+
+In this example, the `android:priority` attribute is set to 100 for the MainActivity component, which indicates that it has a higher priority than other components that can handle the same type of Intent. This means that if there are multiple components that can handle the Intent, the Android system will give preference to the MainActivity component.
+
+##### SYSTEM_HIGH_PRIORITY
+
+`SYSTEM_HIGH_PRIORITY` is a special priority constant that can be used with the `android:priority` attribute in the `<intent-filter>` element of an Android manifest file. This priority is reserved for system-level components that require the highest level of priority for handling certain types of Intents.
+
+Components that have a priority set to `SYSTEM_HIGH_PRIORITY` are given priority over all other components, including those with a priority of `HIGH_PRIORITY` or `DEFAULT_PRIORITY`. This means that if there are multiple components that can handle the same type of Intent, the component with the `SYSTEM_HIGH_PRIORITY` priority will always be chosen.
+
+This priority is typically reserved for system-level components that are critical for the functioning of the Android system, such as device administrators, accessibility services, and other system-level services. Using this priority for non-system-level components is discouraged, as it can negatively impact the performance and stability of the device.  
+
+If there is a conflict the user will have to choose the application through a popup window.
+
+> [Here](https://seclists.org/fulldisclosure/2013/Oct/277) is an interesting vulnerability related to this. Using the SYSTEM_HIGH_PRIORITY it was possible "to impersonate the Google Play billing service and circumvent the signature verification".
+
+#### Explicit Intents
+
+An explicit intent is an Android Intent that specifies the exact component to be invoked by the Android system, such as an Activity, Service or BroadcastReceiver, to perform a specific action. With an explicit intent, you provide the full package name and class name of the component you want to launch.
+
+For example, you can launch an activity with an explicit intent like this:
+
+```java
+Intent intent = new Intent(this, MyActivity.class);
+startActivity(intent);
+```
+
+In this example, the Intent constructor takes two arguments: the current context (in this case, the activity that is launching the new activity), and the class of the activity to be launched.  
+The main difference between explicit and implicit intents is that an explicit intent targets a specific component while an implicit intent is broadcast to all components that have registered to handle the specified action.  
+
+#### Broadcast Intent
+
+A broadcast intent is a type of Android Intent that is used to broadcast messages or events to multiple components within the Android system, such as activities, services, and broadcast receivers. Broadcast intents are a mechanism for inter-component communication that allows one component to send a message or event to multiple other components at once, without knowing the specific components that will receive the message.
+
+Broadcast intents can be sent by both system-level components and user-level applications, and can be used for a wide variety of purposes, such as notifying other components of events, triggering system-level actions, and passing data between components.
+
+There are two types of broadcast intents in Android:
+
+- Normal broadcasts: These are asynchronous broadcasts that are delivered to all registered receivers in an unspecified order, regardless of their priority or timing. Normal broadcasts are usually used for events that do not require immediate action, such as notifications or updates.
+
+- Ordered broadcasts: These are synchronous broadcasts that are delivered to all registered receivers in a specific order, based on their priority and the order in which they were registered. Ordered broadcasts are usually used for events that require a specific sequence of actions, such as controlling the volume or brightness of the device.
+
+Overall, broadcast intents are a powerful and flexible mechanism for inter-component communication in Android, and are widely used in both system-level and user-level applications.
+
+- See [here](https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager) the sendBroadcast method from the LocalBroadCastManager class. We can use it for components of the same app. This method is different from the sendBroadcast method from the Context class.
+
+> To secure broadcast intents we can use `Intent.setPackage`, `uses-permission`
+
+#### Sticky broadcast
+
+A sticky broadcast is a special type of broadcast in Android that stays "sticky" or persistent, even after the broadcast has been completed. When a sticky broadcast is sent, it is held in memory by the Android system, and any new receivers that register for that broadcast will immediately receive the last broadcast that was sent, even if it was sent before the receiver was registered.
+
+Sticky broadcasts are useful in situations where an app wants to notify other components about a change in system state, such as when the battery level changes or the device is connected to a new network. By sending a sticky broadcast, an app can ensure that any newly registered receivers will immediately receive the last known state of the system, without having to wait for the next broadcast to be sent.
+
+However, it is important to note that the use of sticky broadcasts should be avoided whenever possible, as they can be a security risk and can cause performance issues on the device. In fact, starting from Android 8.0 (API level 26), the use of sticky broadcasts is no longer allowed for most apps, except for a few system-level broadcasts. Instead, apps should use other mechanisms, such as foreground services or the JobScheduler API, to receive notifications about changes in system state.  
+More info on this [here](https://developer.android.com/reference/android/content/Context)
+
+> ⚠️ When auditing an app it is worth checking for the keyword "sticky" during the static analysis.
 
 ## Lab setup
 
@@ -606,6 +767,11 @@ If you want a practical example of this check out the writeup for the challenged
 
 - [Hackthebox Introduction to Android Exploitation track](https://csbygb.gitbook.io/pentips/htb-tracks-writeups/htb-intro-to-android-exploitation-track)
 - [Hackthebox Box RouterSpace (Foothold with apk)](https://csbygb.gitbook.io/pentips/writeups/htb-routerspace)
+
+### Resources Android App
+
+- [Meet Android Studio](https://developer.android.com/studio/intro)
+- [Build your first Android app](https://developer.android.com/training/basics/firstapp/index.html)
 
 ### Courses on Android pentest
 
