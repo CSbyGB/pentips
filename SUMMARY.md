@@ -145,6 +145,7 @@
 
 * [Python programming](programming/python.md)
 * [My scripts](programming/myscripts.md)
+* [Kotlin](programming/kotlin.md)
 
 ## Binary Exploitation
 

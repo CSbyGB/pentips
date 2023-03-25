@@ -455,6 +455,7 @@ except socket.error:
   print("Could not connect to server.")
   sys.exit()
 ```
+
 - This script is just and exercise (done in the PEH TCM course) so it definitely could be improved:
   - Handle other type of errors
   - ...
@@ -491,7 +492,6 @@ On our host (outside of our virtualenv) the same command gives this:
 And in our virtual environment we can install anything we need
 We can have multiple virtual environments running at the same time.
 One we finished with the virtualenv we can type deactivate
-
 
 ## Resources
 
