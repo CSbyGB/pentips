@@ -123,6 +123,8 @@ fun birthdayGreeting(name: String): String {
 }
 ```
 
+> :warning: Warning: Unlike in some languages, such as Java, where a function can change the value passed into a parameter, parameters in Kotlin are immutable. You cannot reassign the value of a parameter from within the function body.
+
 ## Resources
 
 {% embed url="https://developer.android.com/courses" %} Official Android Training courses {% endembed %}  
