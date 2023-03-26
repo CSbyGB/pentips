@@ -1,6 +1,10 @@
-# Hackthebox - UpDown - Linux
+# Hackthebox - UpDown
+
+- Linux
 
 ![HTB UpDown](../.res/htb-updown.png)
+
+- [Box on HTB](https://app.hackthebox.com/machines/493)
 
 ## Nmap
 
@@ -43,13 +47,13 @@ Nmap done: 1 IP address (1 host up) scanned in 42.93 seconds
 
 ## Port 80
 
-- When we go to http://10.10.11.177/ we land here  
+- When we go to `http://10.10.11.177/` we land here  
 
-![](../.res/2023-01-05-15-19-38.png)  
+![Landing](../.res/2023-01-05-15-19-38.png)  
 
 - Seems like we'll have some fun ^^
 
-- Let's add this in /etc/hosts first `10.10.11.177	siteisup.htb`
+- Let's add this in /etc/hosts first `10.10.11.177 siteisup.htb`
 
 ### subdomain enum wfuzz
 
@@ -77,7 +81,7 @@ Filtered Requests: 99998
 Requests/sec.: 287.9641
 ```
 
-- let's add the subdomain in our hosts we get a 403 here
+- Let's add the subdomain in our hosts we get a 403 here
 
 ### Gobuster
 
@@ -107,7 +111,7 @@ Progress: 20425 / 20476 (99.75%)================================================
 ===============================================================
 ```
 
-- dev is a blank page. Let's try to run gobuster in it
+- /dev is a blank page. Let's try to run gobuster in it
 
 ```bash
 ┌──(kali㉿kali)-[~/Documents/hackthebox/updown]
@@ -134,22 +138,26 @@ Progress: 20369 / 20476 (99.48%)================================================
 ===============================================================
 ```
 
+- Let's also try to dir bust the subdomain dev. So not possible because of the status code
+
 ### Look around
 
 - Ok now let's do what I was tempted to do since I saw the landig page
-- `pyhton3 -m http.server 80`
-- In the browser let's try to see if we can interact this way and enter http://10.10.14.10/test in the form
+- `python3 -m http.server 80`
+- In the browser let's try to see if we can interact this way and enter `http://10.10.14.10/test` in the form
 - And it works our server get an interaction from the target  
 ![request sent](../.res/2023-01-05-15-28-27.png)  
-- Ok what happens if we request for something that exist like if I just ask for  http://10.10.14.10/ or http://127.0.0.1:80/
+- Ok what happens if we request for something that exist like if I just ask for `http://10.10.14.10/` or `http://127.0.0.1:80/`
 ![up](../.res/2023-01-05-15-34-36.png)  
 - So we should try to get files or inject command or see what open port we have using this technique
 - We can fuzz for open ports with burp intruder
 - We send our request to the intruder we postiton our payload in the port number like this  
 ![port](../.res/2023-01-05-15-40-07.png)  
 - In the payloads tab we choose number. And start from 1 to 65535 with a step of 1.
-![numbers](../.res/2023-01-05-15-43-36.png)
+
+![numbers](../.res/2023-01-05-15-43-36.png)  
 > If you do not have the pro version of burp the best way would be to use another tool because community version might be slow for this.
+
 - Let's grep `is up.` so in options grep match we delete the table and add our string
 ![grep](../.res/2023-01-05-15-42-01.png)  
 - Let's see our results. So it was worth trying but besides port 80 we do not have anything
@@ -215,83 +223,148 @@ index 0000000..3190432
 +Require valid-user
 ```
 
-- Let's try to add the new header everywhere and see what we get 
+- Let's try to add the new header everywhere and see what we get
 - To do so in [burpsuite](https://talkerinfo.com/add-custom-header-in-all-burp-requests/) this article is really helpful
 - So here is what it looks like in my Burp  
 
 ![burp](../.res/2023-01-06-14-13-21.png)  
 
-- So let's try to navigate to http://dev.siteisup.htb/ 
+- So let's try to navigate to `http://dev.siteisup.htb/`
 - We have access to a new page, with a file upload functionality  
 
 ![file upload](../.res/2023-01-06-14-17-50.png)  
+
 - The admin panel link and the changelog do not give anything
 - I tried a php file and it is doing some checks.
 - Maybe there is a way to have a look at the code using the git we found. This way we can see how to bypass this restriction.
 - Ok let's try the tool git dumper mentioned in hacktricks
-  - `python3 -m venv git-dumper ` I prefer to install it in a venv so that I do not mess up my local python
+  - `python3 -m venv git-dumper` I prefer to install it in a venv so that I do not mess up my local python
   - `source git-dumper/bin/activate` we activate the env
   - `pip install git-dumper` we install in in the env
   - `git-dumper http://siteisup.htb/dev/.git/ dumpedsite`
-  - So now we can see some php file. the index is not where the extension is verified but the checker seems interesting. 
+  - So now we can see some php file. the index is not where the extension is verified but the checker seems interesting.  
   This function is the one that is of interest for us
 
 ```php
 if($_POST['check']){
   
-	# File size must be less than 10kb.
-	if ($_FILES['file']['size'] > 10000) {
+ # File size must be less than 10kb.
+ if ($_FILES['file']['size'] > 10000) {
         die("File too large!");
-    }
-	$file = $_FILES['file']['name'];
-	
-	# Check if extension is allowed.
-	$ext = getExtension($file);
-	if(preg_match("/php|php[0-9]|html|py|pl|phtml|zip|rar|gz|gzip|tar/i",$ext)){
-		die("Extension not allowed!");
-	}
-  
-	# Create directory to upload our file.
-	$dir = "uploads/".md5(time())."/";
-	if(!is_dir($dir)){
-        mkdir($dir, 0770, true);
-    }
+  }
+ $file = $_FILES['file']['name'];
+
+ # Check if extension is allowed.
+ $ext = getExtension($file);
+ if(preg_match("/php|php[0-9]|html|py|pl|phtml|zip|rar|gz|gzip|tar/i",$ext)){
+  die("Extension not allowed!");
+ }
+
+ # Create directory to upload our file.
+ $dir = "uploads/".md5(time())."/";
+ if(!is_dir($dir)){
+    mkdir($dir, 0770, true);
+ }
   
   # Upload the file.
-	$final_path = $dir.$file;
-	move_uploaded_file($_FILES['file']['tmp_name'], "{$final_path}");
-	
+ $final_path = $dir.$file;
+ move_uploaded_file($_FILES['file']['tmp_name'], "{$final_path}");
+ 
   # Read the uploaded file.
-	$websites = explode("\n",file_get_contents($final_path));
-	
-	foreach($websites as $site){
-		$site=trim($site);
-		if(!preg_match("#file://#i",$site) && !preg_match("#data://#i",$site) && !preg_match("#ftp://#i",$site)){
-			$check=isitup($site);
-			if($check){
-				echo "<center>{$site}<br><font color='green'>is up ^_^</font></center>";
-			}else{
-				echo "<center>{$site}<br><font color='red'>seems to be down :(</font></center>";
-			}	
-		}else{
-			echo "<center><font color='red'>Hacking attempt was detected !</font></center>";
-		}
-	}
-	
+ $websites = explode("\n",file_get_contents($final_path));
+ 
+ foreach($websites as $site){
+  $site=trim($site);
+  if(!preg_match("#file://#i",$site) && !preg_match("#data://#i",$site) && !preg_match("#ftp://#i",$site)){
+   $check=isitup($site);
+   if($check){
+   echo "<center>{$site}<br><font color='green'>is up ^_^</font></center>";
+   }else{
+    echo "<center>{$site}<br><font color='red'>seems to be down :(</font></center>";
+   }
+  }else{
+  echo "<center><font color='red'>Hacking attempt was detected !</font></center>";
+  }
+ }
+
   # Delete the uploaded file.
-	@unlink($final_path);
+ @unlink($final_path);
 }
 ```
 
-- Very convenient once our file uploaded we will even know where to fetch it (http://dev.siteisup.htb/uploads/). However it will also delete the file so we have to be quick.
+- Very convenient once our file is uploaded we will even know where to fetch it (`http://dev.siteisup.htb/uploads/`). However it will also delete the file so we have to be quick.
 - `php|php[0-9]|html|py|pl|phtml|zip|rar|gz|gzip|tar/i` here are the file not allowed. [This article on hacktricks](https://book.hacktricks.xyz/pentesting-web/file-upload) has nice information on how to bypass these protections
 - It mentions phtm which is not in the list. Let's try it. We can upload it.
 - The best way I can think of to gain time is to put a big url list in the file and add our payload at the end of this list
 - Also be careful to put too many url at the begining because the file limit is 10kb
 - phtm does not get interpreted let's try another one in hacktricks there is also .phar. Let's try it
+- It seems like what is failing me is not the extention but the php file I am using.
+- Let's try another php shell. We get a shell as www-data  
 
-## Todo
+![shell](../.res/2023-03-26-14-11-59.png)  
 
-- Enumerate more port 80 for hidden dir
-- Continue git folder exploration
+## Becoming developer
 
+- We need to move to the user developer (we know the user is called developer with `ls /home`) because we can not read the user flag now.  
+- Let's upgrade the shell first `python3 -c 'import pty;pty.spawn("/bin/bash")'`
+- Here is the full process
+
+```bash
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+// Background our nc / rlwrap nc connection
+Ctrl - z 
+// Enable standard terminal commands
+stty raw -echo;fg
+//Reset the shell so we can configure it with our current settings
+reset
+//Enter the terminal info we noted earlier
+Terminal type?
+xterm-256color
+stty rows 39 columns 190
+```
+
+- In the developer home we can not cat the user we do have access to the python file that processes the websites to see if they are up  
+
+![dev](../.res/2023-03-26-14-34-59.png)  
+
+- If we make a file on siteisup here is what we have
+
+```bash
+file siteisup
+siteisup: setuid ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=b5bbc1de286529f5291b48db8202eefbafc92c1f, for GNU/Linux 3.2.0, not strippe
+```
+
+- It has the suid bit set. If we launch it we have a prompt to put an url  
+
+![](../.res/2023-03-26-14-39-26.png)  
+
+- This is launch as the user developer so this how we could move to this user. We could try to inject code and get files. When enumering the home of developer there was an ssh folder that we had a permission denied on. We could try to get an ssh key from here. [This article](https://janakiev.com/blog/python-shell-commands/) explains how to execute os commands in python.
+- Let's try this `__import__('os').system('cat /home/developer/.ssh/id_rsa')` id_rsa is the default name for a private ssh key let's hope it will work in our case.
+- We get the private key!!  
+
+![private key](../.res/2023-03-26-14-44-17.png)  
+
+- So now we just need to copy it and paste it in our machine, then we will just have to change the rights and ssh -i as developer. Let's try this!  
+- It works  
+
+![developer](../.res/2023-03-26-14-48-22.png)  
+
+- We can grab the user flag
+
+## Privesc
+
+- First thing I usually do in linux when I have a user is `sudo -l` and here we get this interesting output:  
+
+![easy install](../.res/2023-03-26-14-52-20.png)  
+
+- With some research we find out that easy_install is deprecated. And we can find it on the one and only [GTFOBINS](https://gtfobins.github.io/gtfobins/easy_install/)
+
+- Let's try this
+- `TF=$(mktemp -d)`
+- `echo "import os; os.execl('/bin/sh', 'sh', '-c', 'sh <$(tty) >$(tty) 2>$(tty)')" > $TF/setup.py`
+- `sudo easy_install $TF`
+- It works
+
+![root](../.res/2023-03-26-14-56-55.png)  
+
+- We can get the root flag!

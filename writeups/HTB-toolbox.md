@@ -131,7 +131,7 @@ tmux-256color
 // Get our current terminal  dimensions
 stty -a
 // Write them down
-rows 52; columns 166;
+rows 39; columns 190;
 // Enable standard terminal commands
 stty raw -echo;fg
 //Reset the shell so we can configure it with our current settings
@@ -139,7 +139,7 @@ reset
 //Enter the terminal info we noted earlier
 Terminal type?
 xterm-256color
-stty rows 38 columns 190
+stty rows 39 columns 190
 ```
 
 - When we loose our shell and need to get it back we can repeat these steps just this way
@@ -155,7 +155,7 @@ reset
 //Enter the terminal info we noted earlier
 Terminal type?
 xterm-256color
-stty rows 38 columns 190
+stty rows 39 columns 190
 ```
 
 - And ssh again `ssh docker@172.17.0.1`
