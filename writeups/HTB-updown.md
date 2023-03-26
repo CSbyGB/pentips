@@ -147,13 +147,13 @@ Progress: 20369 / 20476 (99.48%)================================================
 - In the browser let's try to see if we can interact this way and enter `http://10.10.14.10/test` in the form
 - And it works our server get an interaction from the target  
 ![request sent](../.res/2023-01-05-15-28-27.png)  
-- Ok what happens if we request for something that exist like if I just ask for `http://10.10.14.10/` or `http://127.0.0.1:80/`
+- Ok what happens if we request for something that exist like if I just ask for `http://10.10.14.10/` or `http://127.0.0.1:80/`  
 ![up](../.res/2023-01-05-15-34-36.png)  
 - So we should try to get files or inject command or see what open port we have using this technique
 - We can fuzz for open ports with burp intruder
 - We send our request to the intruder we postiton our payload in the port number like this  
 ![port](../.res/2023-01-05-15-40-07.png)  
-- In the payloads tab we choose number. And start from 1 to 65535 with a step of 1.
+- In the payloads tab we choose number. And start from 1 to 65535 with a step of 1.  
 
 ![numbers](../.res/2023-01-05-15-43-36.png)  
 > If you do not have the pro version of burp the best way would be to use another tool because community version might be slow for this.
@@ -162,7 +162,7 @@ Progress: 20369 / 20476 (99.48%)================================================
 ![grep](../.res/2023-01-05-15-42-01.png)  
 - Let's see our results. So it was worth trying but besides port 80 we do not have anything
 
-- Let's check the git folder we found
+- Let's check the git folder we found  
 ![git](../.res/2023-01-05-16-12-01.png)
 - [This article on Hacktricks](https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/git) is interesting to see how we could process with this
 - `wget -r http://siteisup.htb/dev/.git/`
