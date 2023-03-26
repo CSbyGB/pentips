@@ -65,6 +65,8 @@ var x = 5 // `Int` type is inferred
 
 ## Functions
 
+![function syntax](../.res/2023-03-25-16-08-23.png)
+
 ### Function declaration
 
 ![Declare function](../.res/2023-03-25-15-18-30.png)
@@ -92,6 +94,8 @@ fun birthdayGreeting(): String {
     val ageGreeting = "You are now 5 years old!"
     return "$nameGreeting\n$ageGreeting"
 }
+// call it
+birthdayGreeting()
 ```
 
 ### The Unit type
@@ -106,14 +110,14 @@ fun main() {
 }
 ```
 
-### Function with a parameter
+### Function with parameter(s)
 
 - Declaration
 
 ![declare a function with a parameter](../.res/2023-03-25-15-42-52.png)
 > Source Developer Android
 
-- Example
+- Example with one parameter
 
 ```kotlin
 fun birthdayGreeting(name: String): String {
@@ -121,9 +125,42 @@ fun birthdayGreeting(name: String): String {
     val ageGreeting = "You are now 5 years old!"
     return "$nameGreeting\n$ageGreeting"
 }
+// call it and print it
+println(birthdayGreeting("Rex"))
+```
+
+- Example with multiple parameters
+
+```kotlin
+fun birthdayGreeting(name: String, age: Int): String {
+    val nameGreeting = "Happy Birthday, $name!"
+    val ageGreeting = "You are now $age years old!"
+    return "$nameGreeting\n$ageGreeting"
+}
+// call it and print it
+println(birthdayGreeting("Rex", 2))
+// or
+println(birthdayGreeting(name = "Rex", age = 2))
+// or
+println(birthdayGreeting(age = 2, name = "Rex"))
 ```
 
 > :warning: Warning: Unlike in some languages, such as Java, where a function can change the value passed into a parameter, parameters in Kotlin are immutable. You cannot reassign the value of a parameter from within the function body.
+
+### Function with default arguments
+
+- Example
+
+```kotlin
+fun birthdayGreeting(name: String = "Rover", age: Int): String {
+    return "Happy Birthday, $name! You are now $age years old!"
+}
+// multiple ways to print it and call it
+println(birthdayGreeting(age = 5))
+println(birthdayGreeting("Rex", 2))
+println(birthdayGreeting(age = 5))
+println(birthdayGreeting(age = 2))
+```
 
 ## Resources
 
