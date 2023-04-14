@@ -10,6 +10,7 @@
 ### What is a kernel
 
 ![Kernel](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Kernel_Layout.svg/1024px-Kernel_Layout.svg.png)  
+
 - [See the definition on Wikipedia](https://en.wikipedia.org/wiki/Kernel_(operating_system))
 
 #### Windows kernel

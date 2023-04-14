@@ -1,4 +1,4 @@
-# Netcat
+# Netcat and alternatives
 
 ## What is it
 
@@ -7,7 +7,7 @@ In addition to that, netcat can be used to connect to any listening port and int
 For example, SSH is programmed to handle connections over port 22 to send all data and keys.  
 We can connect to TCP port 22 with netcat `netcat 10.10.10.10 22`
 
-*Source HTB Academy*
+> *Source HTB Academy*
 
 ## Reverse shell
 

@@ -70,6 +70,10 @@
 
 ## Offensive Powershell
 
+### Disable AV
+
+- `Set-MpPreference -DisableRealtimeMonitoring $true`
+
 ### Using modules
 
 - `Import-Module Module`

@@ -48,8 +48,10 @@
 * [OWASP Top 10](web-pentest/owaspTop10.md)
 * [Misc Tips](web-pentest/Misc-Tips.md)
 * [API](web-pentest/API.md)
-* [Clickjacking](web-pentest/clickjacking.md)
-* [CORS](web-pentest/cors.md)
+* [Vunerabilities](web-pentest/webvulns.md)
+  * [Clickjacking](web-pentest/clickjacking.md)
+  * [CORS](web-pentest/cors.md)
+  * [SSRF](web-pentest/ssrf.md)
 
 ## Mobile App Pentest
 
@@ -72,7 +74,7 @@
 
 ## Tools
 
-* [Netcat](Tools/netcat.md)
+* [Netcat and alternatives](Tools/netcat.md)
 * [Nmap](Tools/nmap.md)
 * [Nuclei](Tools/nuclei.md)
 * [Evil Winrm](Tools/evil-winrm.md)
@@ -85,6 +87,7 @@
 * [Powershell Empire](Tools/empire-powershell.md)
 * [Curl](Tools/curl.md)
 * [Vulnerability Scanning tools](Tools/vulnerability-scanning-tools.md)
+* [Payload Tools](Tools/payload-generation-tools.md)
 
 ## VM and Labs
 
@@ -92,7 +95,8 @@
 
 ## Linux
 
-* [Useful commands and tools on Linux](linux/useful.md)
+* [Initial Foothold](linux/initial-foothold.md)
+* [Useful commands and tools for pentest on Linux](linux/useful.md)
 * [Privilege Escalation](linux/privesc.md)
   * [Kernel Exploits](linux/kernel.md)
   * [Password and file permission](linux/pass-file-perm.md)
@@ -108,7 +112,7 @@
 
 ## Windows
 
-* [Initial Foothold](windows/initial-foothold.md)
+* [Enumeration and general Win tips](windows/initial-foothold.md)
 * [Privilege Escalation](windows/privesc.md)
 * [Active Directory](windows/Active-Directory.md)
 * [Attacking Active Directory](windows/Attacking-AD.md)

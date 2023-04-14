@@ -65,6 +65,8 @@ It is really worth taking this course if you have some cubes in your HTB Academy
 - `nmap -v -oG -` See which port are scanned
 - `nmap -sV --open <ip address>` This will run a service enumeration (-sV) scan against the default top 1,000 ports and only return open ports (--open).
 - The ttl will give us info about the OS, for example `ttl=128` is windows
+- `sudo nmap -v -O TARGET-IP` nmap OS Detection Scan
+- `sudo nmap -v 192.168.86.39 --script banner.nse` Banner Grab to Enumerate Ports
 
 ## UDP Port Scan
 

