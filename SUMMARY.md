@@ -30,7 +30,6 @@
 ## Ethical Hacking - General Methodology
 
 * [Introduction](ethical-hacking-general-methodology/intro.md)
-* [Setup your lab](ethical-hacking-general-methodology/lab-setup.md)
 * [Information Gathering](ethical-hacking-general-methodology/information-gathering.md)
 * [Scanning & Enumeration](ethical-hacking-general-methodology/scanenum.md)
 * [Exploitation (basics)](ethical-hacking-general-methodology/exploitation.md)
@@ -94,6 +93,7 @@
 ## VM and Labs
 
 * [General tips](lab/labstips.md)
+* [Setup your pentest lab](ethical-hacking-general-methodology/lab-setup.md)
 
 ## Linux
 
