@@ -150,6 +150,7 @@ function set-title() {
   PS1=${ORIG}${TITLE}
 }
 ```
+
 - `source .bashrc`
 - Then to set a title you will just need to do `set-title mytitle`
 

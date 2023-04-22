@@ -97,7 +97,7 @@ login is `msfadmin` and password is `msfadmin`)
 - `sudo docker pull parrotsec/security:latest` pull a parrot img
 - `sudo docker run -it --name parrotos parrotsec/security`
 - `sudo docker exec -it parrotos bash` start parrot OS when we need it
-- If you are using virtualbox and want to use your host network you can also create a container that will do this with the hoption --net `sudo docker run -it --name parrotos-route-host parrotsec/security --net=host` 
+- If you are using a vpn or need to use your host network you can also create a container that will do this with the option --net `sudo docker run -it --name parrotos-route-host parrotsec/security --net=host` 
 - If you want to use files from your host (say you want to use openvpn from docker and you need to use your ovpn file) you can use the `-v` option `docker run -it --name parrotos-shared-files -v /path/on/host:/path/inside/container parrotsec/security`
 
 ### Useful commands
@@ -116,10 +116,85 @@ login is `msfadmin` and password is `msfadmin`)
 
 ## Resources
 
-- [How to get started with pentesting - csbygb blog](https://raw.githubusercontent.com/CSbyGB/csbygb.github.io/main/_posts/2022-10-02-how-to-get-started.md)
-- [Official guide - Metasploitatble 2 installation and details](https://docs.rapid7.com/metasploit/metasploitable-2/)
-- [Official guide - Metasploitable 2 Exploitability Guide](https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/)
-- [Building a Pentest lab with Docker - Ian Muchina](https://medium.com/@muchina/what-is-docker-2a21077b98df)
-- [Running Parrot OS on Docker inside Windows! - Sepehr](https://realsepi.medium.com/running-parrot-os-on-docker-inside-windows-a8796fc11d69)
-- [Docker documentation](https://docs-stage.docker.com/engine/reference/commandline/run/)
-- [How to Run GUI Applications in a Docker Container - James Walker](https://www.howtogeek.com/devops/how-to-run-gui-applications-in-a-docker-container/)
+### Alternative labs for general pentests
+
+{% embed url="https://raw.githubusercontent.com/CSbyGB/csbygb.github.io/main/_posts/2022-10-02-how-to-get-started.md" %} How to get started with pentesting - csbygb blog {% endembed %}  
+{% embed url="https://docs.rapid7.com/metasploit/metasploitable-2/" %} Official guide - Metasploitatble 2 installation and details {% endembed %}  
+{% embed url="https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/" %} Official guide - Metasploitable 2 Exploitability Guide {% endembed %}  
+{% embed url="https://medium.com/@muchina/what-is-docker-2a21077b98df" %} Building a Pentest lab with Docker - Ian Muchina {% endembed %}  
+{% embed url="https://realsepi.medium.com/running-parrot-os-on-docker-inside-windows-a8796fc11d69" %} Running Parrot OS on Docker inside Windows! - Sepehr {% endembed %}  
+{% embed url="https://docs-stage.docker.com/engine/reference/commandline/run/" %} Docker documentation {% endembed %}  
+{% embed url="https://www.howtogeek.com/devops/how-to-run-gui-applications-in-a-docker-container/" %} How to Run GUI Applications in a Docker Container - James Walker {% endembed %}  
+{% embed url="https://www.hackingarticles.in/docker-for-pentester-pentesting-framework/" %} Docker for Pentester: Pentesting Framework - Raj Chandel {% endembed %}  
+
+### Labs for specific pentests
+
+#### Thick Client
+
+{% embed url="https://www.hackingarticles.in/thick-client-pentest-lab-setup-dvta-2/" %} Thick Client Pentest Lab Setup: DVTA - Raj Chandel {% endembed %}  
+{% embed url="https://www.hackingarticles.in/thick-client-pentest-lab-setup-dvta-part-2/" %} Thick Client Pentest Lab Setup: DVTA (Part 2) - Raj Chandel {% endembed %}  
+
+#### API
+
+{% embed url="" %}  {% endembed %}  
+
+#### Android
+
+{% embed url="https://csbygb.gitbook.io/pentips/mobile-app-pentest/android#lab-setup" %} Android Pentest - CSbyGB Pentips {% endembed %}  
+{% embed url="https://www.hackingarticles.in/android-pentest-lab-setup-adb-command-cheatsheet/" %} Android Pentest Lab Setup & ADB Command Cheatsheet - Raj Chandel{% endembed %}  
+
+#### Firewalls
+
+{% embed url="https://www.hackingarticles.in/firewall-lab-setup-fortigate/" %} Firewall Lab Setup : FortiGate - Raj Chandel{% endembed %}  
+{% embed url="https://www.hackingarticles.in/firewall-lab-setup-untangle/" %} Firewall Lab Setup: Untangle - Raj Chandel{% endembed %}  
+{% embed url="https://www.hackingarticles.in/firewall-pentest-lab-setup-pfsense-vmware/" %} Firewall Pentest Lab Setup with pfsense in VMware - Raj Chandel {% endembed %}  
+{% embed url="https://www.hackingarticles.in/setup-firewall-pentest-lab-using-clear-os/" %} Setup Firewall Pentest Lab using Clear OS - Raj Chandel {% endembed %}  
+{% embed url="https://www.whitewinterwolf.com/tags/lab/" %} Lab setup - White Winter Wolf {% endembed %}  
+
+#### Jenkins
+
+{% embed url="https://www.hackingarticles.in/penetration-testing-lab-setup-jenkins/" %} Penetration Testing Lab Setup: Jenkins - Raj Chandel{% endembed %}  
+
+#### SNMP
+
+{% embed url="https://www.hackingarticles.in/snmp-lab-setup-and-penetration-testing/" %} SNMP Lab Setup and Penetration Testing - Raj Chandel{% endembed %}  
+
+#### IDS IPS
+
+{% embed url="https://www.hackingarticles.in/ids-ips-penetration-testing-lab-setup-snort/" %} IDS, IPS Penetration Testing Lab Setup with Snort (Manually) - Raj Chandel {% endembed %}  
+
+#### Cloud
+
+{% embed url="https://www.hackingarticles.in/penetration-testing-lab-setupcloud-computing/" %} Penetration Testing Lab Setup:Cloud Computing - Raj Chandel {% endembed %}  
+
+#### Tomcat
+
+{% embed url="https://www.hackingarticles.in/penetration-testing-lab-setuptomcat/" %} Penetration Testing Lab Setup:Tomcat - Raj Chandel {% endembed %}  
+
+#### Memcached
+
+{% embed url="https://www.hackingarticles.in/penetration-testing-lab-setup-memcached/" %} Penetration Testing Lab Setup: Memcached - Raj Chandel{% endembed %}  
+
+#### Microsocks
+
+{% embed url="https://www.hackingarticles.in/penetration-testing-lab-setup-microsocks/" %} Penetration Testing Lab Setup: Microsocks - Raj Chandel {% endembed %}  
+
+#### Proxies
+
+{% embed url="https://www.hackingarticles.in/penetration-testing-lab-setup-squid-proxy/" %} Penetration Testing Lab Setup: Squid Proxy - Raj Chandel {% endembed %}  
+
+#### VOIP
+
+{% embed url="https://www.hackingarticles.in/penetration-testing-lab-setup-voip/" %} Penetration Testing Lab Setup: VOIP - Raj Chandel {% endembed %}  
+
+#### SMTP 
+
+{% embed url="https://www.hackingarticles.in/smtp-pentest-lab-setup-ubuntu/" %} SMTP Pentest Lab Setup in Ubuntu (Port 25) - Raj Chandel {% endembed %}  
+
+#### Routers
+
+{% embed url="https://www.hackingarticles.in/setup-vyos-virtual-router-pentest-lab/" %} How to Setup VyOS (Virtual Router Pentest Lab) - Raj Chandel{% endembed %}  
+
+#### Active Directory
+
+{% embed url="https://blog.focal-point.com/how-to-build-a-cheap-active-directory-pen-test-lab-in-aws-without-any-effort" %} How to Build a Cheap Active Directory Pen Test Lab in AWS Without Any Effort - Chris Thompson {% endembed %}  
