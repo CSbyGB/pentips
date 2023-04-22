@@ -33,6 +33,7 @@
 * [Information Gathering](ethical-hacking-general-methodology/information-gathering.md)
 * [Scanning & Enumeration](ethical-hacking-general-methodology/scanenum.md)
 * [Exploitation (basics)](ethical-hacking-general-methodology/exploitation.md)
+* [Password Attacks](ethical-hacking-general-methodology/password-attacks.md)
 * [Post Exploitation](ethical-hacking-general-methodology/post-exploitation.md)
 * [Lateral Movement](ethical-hacking-general-methodology/lateral-movement.md)
 * [Proof-of-Concept](ethical-hacking-general-methodology/proof-of-concept.md)
@@ -94,6 +95,7 @@
 ## VM and Labs
 
 * [General tips](lab/labstips.md)
+* [Setup your pentest lab](ethical-hacking-general-methodology/lab-setup.md)
 
 ## Linux
 

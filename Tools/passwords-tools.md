@@ -1,6 +1,7 @@
 # Passwords, Hashes and wordlist tools
 
-Here is a how to for tools useful for passwords attack or generating wordlists
+> Here is a how to for tools useful for passwords attack or generating wordlists
+> Notes from my practice and HTB Academy
 
 ## Cewl
 
@@ -31,7 +32,8 @@ Crunch will generate a word based on criterias you will need.
 
 It can happen for instance that you know the begining of a password or a part of a password, you can use this script to generate 2 to 3 more digits at the end (you can modify it to put it anywhere else in the string)  
 And of course we could use crunch as well.
-```
+
+```bash
 # bin/bash
 for i in {0..999}
 do
@@ -62,17 +64,18 @@ CUPP is a very cool tool that will ask you question about your target in order t
 - `hashcat -m 1000 hashes.txt /usr/share/wordlists/rockyou.txt`
 - the flag `-m` will define the hash mode see all modes [here](https://hashcat.net/wiki/doku.php?id=example_hashes)
 - You can find also the proper module using this `hashcat --help | grep <service-you-need>` See the example below
-  ```
-  ┌──(root💀kali)-[~/active-directory]
-  └─# hashcat --help | grep Kerberos
-   7500 | Kerberos 5, etype 23, AS-REQ Pre-Auth            | Network Protocols
-  13100 | Kerberos 5, etype 23, TGS-REP                    | Network Protocols
-  18200 | Kerberos 5, etype 23, AS-REP                     | Network Protocols
-  19600 | Kerberos 5, etype 17, TGS-REP                    | Network Protocols
-  19700 | Kerberos 5, etype 18, TGS-REP                    | Network Protocols
-  19800 | Kerberos 5, etype 17, Pre-Auth                   | Network Protocols
-  19900 | Kerberos 5, etype 18, Pre-Auth                   | Network Protocols
-  ```
+
+```bash
+┌──(root💀kali)-[~/active-directory]
+└─# hashcat --help | grep Kerberos
+  7500 | Kerberos 5, etype 23, AS-REQ Pre-Auth            | Network Protocols
+13100 | Kerberos 5, etype 23, TGS-REP                    | Network Protocols
+18200 | Kerberos 5, etype 23, AS-REP                     | Network Protocols
+19600 | Kerberos 5, etype 17, TGS-REP                    | Network Protocols
+19700 | Kerberos 5, etype 18, TGS-REP                    | Network Protocols
+19800 | Kerberos 5, etype 17, Pre-Auth                   | Network Protocols
+19900 | Kerberos 5, etype 18, Pre-Auth                   | Network Protocols
+```
 - the flag `-a` will set the attack mode
 - We can either give it a single hash or a file
 - Adding `--show` will show the crack value if the hash is cracked
@@ -86,15 +89,132 @@ CUPP is a very cool tool that will ask you question about your target in order t
 
 ## John the Ripper
 
+### Single Crack mode
+
+Brute force attack.  
+
+- `john --format=<hash_type> <hash or hash_file>`
+
+When we run the command, John will read the hashes from the specified file, and then it will try to crack them by comparing them to the words in its built-in wordlist and any additional wordlists specified with the `--wordlist` option. Additionally, It will use any rules set with the `--rules` option (if any rules are given) to generate further candidate passwords.
+
+John will output the cracked passwords to the console and the file "john.pot" (~/.john/john.pot) in the current directory. Furthermore, it will continue cracking the remaining hashes in the background, and we can check the progress by running the john --show command. To maximize the chances of success, it is important to ensure that the wordlists and rules used are comprehensive and up to date.
+
+|Hash Format|Example Command|Description|
+|-----------|---------------|-----------|
+|afs|`john --format=afs hashes_to_crack.txt`|AFS (Andrew File System) password hashes|
+|bfegg|`john --format=bfegg hashes_to_crack.txt`|bfegg hashes used in Eggdrop IRC bots|
+|bf|`john --format=bf hashes_to_crack.txt`|Blowfish-based crypt(3) hashes|
+|bsdi|`john --format=bsdi hashes_to_crack.txt`|BSDi crypt(3) hashes|
+|crypt(3)|`john --format=crypt hashes_to_crack.txt`|Traditional Unix crypt(3) hashes|
+|des|`john --format=des hashes_to_crack.txt`|Traditional DES-based crypt(3) hashes|
+|dmd5|`john --format=dmd5 hashes_to_crack.txt`|DMD5 (Dragonfly BSD MD5) password hashes|
+|dominosec|`john --format=dominosec hashes_to_crack.txt`|IBM Lotus Domino 6/7 password hashes|
+|EPiServer SID hashes|`john --format=episerver hashes_to_crack.txt`|EPiServer SID (Security Identifier) password hashes|
+|hdaa|`john --format=hdaa hashes_to_crack.txt`|hdaa password hashes used in Openwall GNU/Linux|
+|hmac-md5|`john --format=hmac-md5 hashes_to_crack.txt`|hmac-md5 password hashes|
+|hmailserver|`john --format=hmailserver hashes_to_crack.txt`|hmailserver password hashes|
+|ipb2|`john --format=ipb2 hashes_to_crack.txt`|Invision Power Board 2 password hashes|
+|krb4|`john --format=krb4 hashes_to_crack.txt`|Kerberos 4 password hashes|
+|krb5|`john --format=krb5 hashes_to_crack.txt`|Kerberos 5 password hashes|
+|LM|`john --format=LM hashes_to_crack.txt`|LM (Lan Manager) password hashes|
+|lotus5|`john --format=lotus5 hashes_to_crack.txt`|Lotus Notes/Domino 5 password hashes|
+|md4-gen|`john --format=md4-gen hashes_to_crack.txt`|Generic MD4 password hashes|
+|md5|`john --format=md5 hashes_to_crack.txt`|MD5 password hashes|
+|md5-gen|`john --format=md5-gen hashes_to_crack.txt`|Generic MD5 password hashes|
+|mscash|`john --format=mscash hashes_to_crack.txt`|MS Cache password hashes|
+|mscash2|`john --format=mscash2 hashes_to_crack.txt`|MS Cache v2 password hashes|
+|mschapv2|`john --format=mschapv2 hashes_to_crack.txt`|MS CHAP v2 password hashes|
+|mskrb5|`john --format=mskrb5 hashes_to_crack.txt`|MS Kerberos 5 password hashes|
+|mssql05|`john --format=mssql05 hashes_to_crack.txt`|MS SQL 2005 password hashes|
+|mssql|`john --format=mssql hashes_to_crack.txt`|MS SQL password hashes|
+|mysql-fast|`john --format=mysql-fast hashes_to_crack.txt`|MySQL fast password hashes|
+|mysql|`john --format=mysql hashes_to_crack.txt`|MySQL password hashes|
+|mysql-sha1|`john --format=mysql-sha1 hashes_to_crack.txt`|MySQL SHA1 password hashes|
+|NETLM|`john --format=netlm hashes_to_crack.txt`|NETLM (NT LAN Manager) password hashes|
+|NETLMv2|`john --format=netlmv2 hashes_to_crack.txt`|NETLMv2 (NT LAN Manager version 2) password hashes|
+|NETNTLM|`john --format=netntlm hashes_to_crack.txt`|NETNTLM (NT LAN Manager) password hashes|
+|NETNTLMv2|`john --format=netntlmv2 hashes_to_crack.txt`|NETNTLMv2 (NT LAN Manager version 2) password hashes|
+|NEThalfLM|`john --format=nethalflm hashes_to_crack.txt`|NEThalfLM (NT LAN Manager) password hashes|
+|md5ns|`john --format=md5ns hashes_to_crack.txt`|md5ns (MD5 namespace) password hashes|
+|nsldap|`john --format=nsldap hashes_to_crack.txt`|nsldap (OpenLDAP SHA) password hashes|
+|ssha|`john --format=ssha hashes_to_crack.txt`|ssha (Salted SHA) password hashes|
+|NT|`john --format=nt hashes_to_crack.txt`|NT (Windows NT) password hashes|
+|openssha|`john --format=openssha hashes_to_crack.txt`|OPENSSH private key password hashes|
+|oracle11|`john --format=oracle11 hashes_to_crack.txt`|Oracle 11 password hashes|
+|oracle|`john --format=oracle hashes_to_crack.txt`|Oracle password hashes|
+|pdf|`john --format=pdf hashes_to_crack.txt`|PDF (Portable Document Format) password hashes|
+|phpass-md5|`john --format=phpass-md5 hashes_to_crack.txt`|PHPass-MD5 (Portable PHP password hashing framework) password hashes|
+|phps|`john --format=phps hashes_to_crack.txt`|PHPS password hashes|
+|pix-md5|`john --format=pix-md5 hashes_to_crack.txt`|Cisco PIX MD5 password hashes|
+|po|`john --format=po hashes_to_crack.txt`|Po (Sybase SQL Anywhere) password hashes|
+|rar|`john --format=rar hashes_to_crack.txt`|RAR (WinRAR) password hashes|
+|raw-md4|`john --format=raw-md4 hashes_to_crack.txt`|Raw MD4 password hashes|
+|raw-md5|`john --format=raw-md5 hashes_to_crack.txt`|Raw MD5 password hashes|
+|raw-md5-unicode|`john --format=raw-md5-unicode hashes_to_crack.txt`|Raw MD5 Unicode password hashes|
+|raw-sha1|`john --format=raw-sha1 hashes_to_crack.txt`|Raw SHA1 password hashes|
+|raw-sha224|`john --format=raw-sha224 hashes_to_crack.txt`|Raw SHA224 password hashes|
+|raw-sha256|`john --format=raw-sha256 hashes_to_crack.txt`|Raw SHA256 password hashes|
+|raw-sha384|`john --format=raw-sha384 hashes_to_crack.txt`|Raw SHA384 password hashes|
+|raw-sha512|`john --format=raw-sha512 hashes_to_crack.txt`|Raw SHA512 password hashes|
+|salted-sha|`john --format=salted-sha hashes_to_crack.txt`|Salted SHA password hashes|
+|sapb|`john --format=sapb hashes_to_crack.txt`|SAP CODVN B (BCODE) password hashes|
+|sapg|`john --format=sapg hashes_to_crack.txt`|SAP CODVN G (PASSCODE) password hashes|
+|sha1-gen|`john --format=sha1-gen hashes_to_crack.txt`|Generic SHA1 password hashes|
+|skey|`john --format=skey hashes_to_crack.txt`|S/Key (One-time password) hashes|
+|ssh|`john --format=ssh hashes_to_crack.txt`|SSH (Secure Shell) password hashes|
+|sybasease|`john --format=sybasease hashes_to_crack.txt`|Sybase ASE password hashes|
+|xsha|`john --format=xsha hashes_to_crack.txt`|xsha (Extended SHA) password hashes|
+|zip|`john --format=zip hashes_to_crack.txt`|ZIP (WinZip) password hashes|
+
+### Wordlist mode
+
+- `john --wordlist=<wordlist_file> --rules <hash_file>` we can specify multiple lists
+
+### Incremental Mode
+
+Incremental Mode is an advanced John mode used to crack passwords using a character set. It is a hybrid attack, which means it will attempt to match the password by trying all possible combinations of characters from the character set. This mode is the most effective yet most time-consuming of all the John modes. This mode works best when we know what the password might be, as it will try all the possible combinations in sequence, starting from the shortest one. This makes it much faster than the brute force attack, where all combinations are tried randomly. Moreover, the incremental mode can also be used to crack weak passwords, which may be challenging to crack using the standard John modes. The main difference between incremental mode and wordlist mode is the source of the password guesses. Incremental mode generates the guesses on the fly, while wordlist mode uses a predefined list of words. At the same time, the single crack mode is used to check a single password against a hash.  
+
+- `john --incremental <hash_file>` read the hashes in the specified hash file and then generate all possible combinations of characters, starting with a single character and incrementing with each iteration. The default character set is limited to a-zA-Z0-9.  If we attempt to crack complex passwords with special characters, we need to use a custom character set. 
+
 ### Rule-Based Attack
 
 - John the ripper has a config file that contains rule sets, which is located at /etc/john/john.conf or /opt/john/john.conf depending on your distro or how john was installed. You can read /etc/john/john.conf and look for List.Rules to see all the available rules:  
 `cat /etc/john/john.conf|grep "List.Rules:" | cut -d"." -f3 | cut -d":" -f2 | cut -d"]" -f1 | awk NF`  
 - We can create a rule and add it to the conf file, for example this rule will add a symbol at the beginning of the word and a number at the end: 
-  ```
-  [List.Rules:My-own-rule]
-  Az"[0-9]" ^[!@#$]
-  ```
+
+```bash
+[List.Rules:My-own-rule]
+Az"[0-9]" ^[!@#$]
+```
+
+### Cracking files
+
+```bash
+<tool> <file_to_crack> > file.hash
+pdf2john server_doc.pdf > server_doc.hash
+john server_doc.hash
+                # OR
+john --wordlist=<wordlist.txt> server_doc.hash 
+```
+
+|Tool|Description|
+|----|-----------|
+|pdf2john|Converts PDF documents for John|
+|ssh2john|Converts SSH private keys for John|
+|mscash2john|Converts MS Cash hashes for John|
+|keychain2john|Converts OS X keychain files for John|
+|rar2john|Converts RAR archives for John|
+|pfx2john|Converts PKCS#12 files for John|
+|truecrypt_volume2john|Converts TrueCrypt volumes for John|
+|keepass2john|Converts KeePass databases for John|
+|vncpcap2john|Converts VNC PCAP files for John|
+|putty2john|Converts PuTTY private keys for John|
+|zip2john|Converts ZIP archives for John|
+|hccap2john|Converts WPA/WPA2 handshake captures for John|
+|office2john|Converts MS Office documents for John|
+|wpa2john|Converts WPA/WPA2 handshakes for John|
+
+- Find more tools with `locate *2john*`
 
 ## Hydra
 
@@ -127,7 +247,8 @@ CUPP is a very cool tool that will ask you question about your target in order t
 ## Secretdump (Impacket)
 
 - Get SAM hashes with SAM file, SECURITY file and SYSTEM file
-```
+
+```bash
 ┌──(kali㉿kali)-[~/Documents/offshore/joe-lpt]
 └─$ secretsdump.py local -sam SAM -security SECURITY -system SYSTEM                                                                                                                  
 Impacket v0.9.24.dev1+20210609.121058.90ce4b7d - Copyright 2021 SecureAuth Corporation
