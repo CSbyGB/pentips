@@ -136,7 +136,7 @@ login is `msfadmin` and password is `msfadmin`)
 
 #### API
 
-{% embed url="" %}  {% endembed %}  
+{% embed url="https://csbygb.gitbook.io/pentips/web-pentesting/api#make-a-lab-for-api-pentest" %} API pentest - CSbyGB Pentips {% endembed %}  
 
 #### Android
 
