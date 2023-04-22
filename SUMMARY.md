@@ -46,12 +46,13 @@
 
 * [Enumeration](web-pentest/enumeration.md)
 * [OWASP Top 10](web-pentest/owaspTop10.md)
-* [Misc Tips](web-pentest/Misc-Tips.md)
+* [General Methodo & Misc Tips](web-pentest/Misc-Tips.md)
 * [API](web-pentest/API.md)
-* [Vunerabilities](web-pentest/webvulns.md)
+* [Vunerabilities and attacks](web-pentest/webvulns.md)
   * [Clickjacking](web-pentest/clickjacking.md)
   * [CORS](web-pentest/cors.md)
   * [SSRF](web-pentest/ssrf.md)
+  * [Bypass captcha](web-pentest/captcha-bypass.md)
 
 ## Mobile App Pentest
 
@@ -88,6 +89,7 @@
 * [Curl](Tools/curl.md)
 * [Vulnerability Scanning tools](Tools/vulnerability-scanning-tools.md)
 * [Payload Tools](Tools/payload-generation-tools.md)
+* [Out of band Servers](Tools/out-of-band-servers.md)
 
 ## VM and Labs
 
