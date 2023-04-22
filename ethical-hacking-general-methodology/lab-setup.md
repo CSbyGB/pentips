@@ -90,7 +90,24 @@ login is `msfadmin` and password is `msfadmin`)
 
 ## Docker
 
-- [Building a Pentest lab with Docker by Ian Muchina](https://medium.com/@muchina/what-is-docker-2a21077b98df)
+- `sudo apt install docker.io` install docker
+- `sudo systemctl status docker` check docker status
+- `sudo systemctl start docker` start docker (if not started)
+- `sudo docker run hello-world` check the install
+- `sudo docker pull parrotsec/security:latest` pull a parrot img
+- `sudo docker run -it --name parrotos parrotsec/security`
+- `sudo docker exec -it parrotos bash` start parrot OS when we need it
+- If you are using virtualbox and want to use your host network you can also create a container that will do this with the hoption --net `sudo docker run -it --name parrotos-route-host parrotsec/security --net=host` 
+- If you want to use files from your host (say you want to use openvpn from docker and you need to use your ovpn file) you can use the `-v` option `docker run -it --name parrotos-shared-files -v /path/on/host:/path/inside/container parrotsec/security`
+
+### Useful commands
+
+- `sudo docker start parrotos` start the container parrotos
+- `sudo docker stop parrotos` stop a container parrotos
+- `sudo docker ps` see containers
+- `sudo docker stats` see the status of our containers
+- `ctrl + d` exit from an existing container
+- To remove an a container `sudo docker rm container-name`
 
 ## AWS
 
@@ -102,3 +119,7 @@ login is `msfadmin` and password is `msfadmin`)
 - [How to get started with pentesting - csbygb blog](https://raw.githubusercontent.com/CSbyGB/csbygb.github.io/main/_posts/2022-10-02-how-to-get-started.md)
 - [Official guide - Metasploitatble 2 installation and details](https://docs.rapid7.com/metasploit/metasploitable-2/)
 - [Official guide - Metasploitable 2 Exploitability Guide](https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/)
+- [Building a Pentest lab with Docker - Ian Muchina](https://medium.com/@muchina/what-is-docker-2a21077b98df)
+- [Running Parrot OS on Docker inside Windows! - Sepehr](https://realsepi.medium.com/running-parrot-os-on-docker-inside-windows-a8796fc11d69)
+- [Docker documentation](https://docs-stage.docker.com/engine/reference/commandline/run/)
+- [How to Run GUI Applications in a Docker Container - James Walker](https://www.howtogeek.com/devops/how-to-run-gui-applications-in-a-docker-container/)

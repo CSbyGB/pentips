@@ -136,3 +136,21 @@ This annoying message when you need something that is not installed.
 - [This article](https://trendoceans.com/how-to-fix-kali-linux-slow-apt-update-process/) explains it very well.
 
 > **Note: it is not the official repositories so use with caution ;)**
+
+## Add a set title function in gnome-terminal
+
+- Add this code in your bashrc
+
+```bash
+function set-title() {
+  if [[ -z "$ORIG" ]]; then
+    ORIG=$PS1
+  fi
+  TITLE="\[\e]2;$*\a\]"
+  PS1=${ORIG}${TITLE}
+}
+```
+- `source .bashrc`
+- Then to set a title you will just need to do `set-title mytitle`
+
+> [Source](https://code.mendhak.com/set-terminal-title/)
