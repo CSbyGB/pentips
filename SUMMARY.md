@@ -37,6 +37,7 @@
 * [Lateral Movement](ethical-hacking-general-methodology/lateral-movement.md)
 * [Proof-of-Concept](ethical-hacking-general-methodology/proof-of-concept.md)
 * [Post-Engagement](ethical-hacking-general-methodology/post-engagement.md)
+* [Setup your lab](ethical-hacking-general-methodology/lab-setup.md)
 
 ## External Pentest
 
