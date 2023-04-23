@@ -113,6 +113,11 @@ login is `msfadmin` and password is `msfadmin`)
 
 {% embed url="https://youtu.be/QWQ-LQL1owE" %} FREE Kali Linux in the Cloud (AWS)  - NetworkChuck {% endembed %}
 
+## Digital Ocean
+
+### COMING SOON
+
+- [Digital Ocean](https://www.digitalocean.com/pricing)
 
 ## Resources
 
