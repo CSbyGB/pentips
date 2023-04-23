@@ -216,6 +216,11 @@ john --wordlist=<wordlist.txt> server_doc.hash
 
 - Find more tools with `locate *2john*`
 
+## Crackmapexec
+
+- `sudo apt-get -y install crackmapexec` install
+- `crackmapexec <proto> <target-IP> -u <user or userlist> -p <password or passwordlist>` usage
+
 ## Hydra
 
 - Hydra is a very handy tool for when you need to bruteforce auth. It supports a lot of protocols.

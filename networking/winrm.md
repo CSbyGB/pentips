@@ -14,4 +14,13 @@ The Windows Remote Management (WinRM) is a simple Windows integrated remote mana
 
 ### Evil-winrm
 
+- `sudo gem install evil-winrm` install
 - `evil-winrm -i 10.129.201.248 -u Cry0l1t3 -p P455w0rD!`
+
+### Crackmapexec
+
+- `crackmapexec winrm 10.129.42.197 -u user.list -p password.list`
+
+## Resources
+
+- [CrackMapExec](https://mpgn.gitbook.io/crackmapexec/)
