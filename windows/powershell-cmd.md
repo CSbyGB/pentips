@@ -177,6 +177,12 @@
   - From this output we can take the pid and checkout which service it is using tasklist `tasklist | findstr 2164`  
   ![image](https://user-images.githubusercontent.com/96747355/163686766-1aa8da58-8584-4902-9dda-188fba31021f.png)  
 
+#### Scan ports
+
+- `1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("10.10.10.10",$_)) "Port $_ is open!"} 2>$null` scan some ports on a specific IP
+- More commands [here - Pen Test Poster: "White Board" - PowerShell - Built-in Port Scanner! by Matthew Toussain](https://www.sans.org/blog/pen-test-poster-white-board-powershell-built-in-port-scanner/)
+
+
 ### Hunting passwords
 
 - `findstr /si password *.txt` will search for the string "password" in txt files `/si` means it searches in the current directory and all subdirectories (s) and ignore the case (i).
@@ -230,7 +236,7 @@ C:\Program Files\Windows PowerShell\*
 
 ### Execute dll files
 
-- We can use [Rundll32](https://lolbas-project.github.io/lolbas/Binaries/Rundll32/)``
+- We can use [Rundll32](https://lolbas-project.github.io/lolbas/Binaries/Rundll32/)
 
 ### Execute powershell file
 
