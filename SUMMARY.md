@@ -77,6 +77,7 @@
 ## Tools
 
 * [Burpsuite](Tools/burpsuite.md)
+* [CrackMapExec](Tools/crackmapexec.md)
 * [Netcat and alternatives](Tools/netcat.md)
 * [Nmap](Tools/nmap.md)
 * [Nuclei](Tools/nuclei.md)
