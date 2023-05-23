@@ -92,6 +92,7 @@ PORT   STATE SERVICE
 ## Password spray or bruteforce
 
 - `hydra -L users.txt -P passwords.txt TARGET-IP -t 4 ssh`
+- `hydra -L user.list -P password.list ssh://10.129.42.197`
 
 ## Connect to ssh server
 

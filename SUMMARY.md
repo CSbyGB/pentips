@@ -76,6 +76,7 @@
 
 ## Tools
 
+* [Burpsuite](Tools/burpsuite.md)
 * [Netcat and alternatives](Tools/netcat.md)
 * [Nmap](Tools/nmap.md)
 * [Nuclei](Tools/nuclei.md)
