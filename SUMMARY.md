@@ -54,6 +54,7 @@
   * [CORS](web-pentest/cors.md)
   * [SSRF](web-pentest/ssrf.md)
   * [Bypass captcha](web-pentest/captcha-bypass.md)
+  * [Template Injection (client and server side)](web-pentest/template-injection.md)
 
 ## Mobile App Pentest
 
@@ -262,6 +263,7 @@
   * [TryHackMe - Wonderland](/writeups/THM-wonderland.md)
 * [Vulnmachines Writeups](/writeups/vulnmachines-writeups.md)
   * [Web Labs Basic](/writeups/vulnmachine-web-basic.md)
+  * [Web Labs Intermediate](writeups/vulnmachine-web-intermediate.md)
   * [Cloud Labs](/writeups/vulnmachines-cloud.md)
 * [Portswigger Web Security Academy Writeups](writeups/PSwriteups.md)
   * [PS - DomXSS](writeups/PS-DOMXSS.md)
