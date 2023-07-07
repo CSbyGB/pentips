@@ -38,3 +38,9 @@
 - If you need more info on how to create and setup gpg key [check out this article on jigarius](https://jigarius.com/blog/signing-git-commits)
 - To add a gpg key in github go to Settings>SSH and GPG key and click on "New GPG Key" and add the public key
 - After this setup when you will commit and push things you should be good to go.
+
+## Temporary solution in case of user conflicst when pushing
+
+If you get an error like this when trying to push `remote: Permission to repo.git denied to old_username`  
+A temporary solution is to push over https by specifying the username in the link like this:  
+`git push https://user@github.com/repo.git/`
