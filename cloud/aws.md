@@ -57,6 +57,8 @@ Example with the CTF made available by [flAWS](http://flaws.cloud/)
 
 #### Writeups
 
+- [My writeups on flAWS](../writeups/various-flaws.md)
+- [My writeups on vulnmachines AWS cloud lab](../writeups/vulnmachines-cloud.md)
 - [AWS S3 CTF Challenges by Michael McCambridge](https://n0j.github.io/2017/10/02/aws-s3-ctf.html)
 
 #### Create your lab
