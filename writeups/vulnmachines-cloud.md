@@ -14,11 +14,17 @@ However we get an access denied
 
 ![Access denied](../.res/2023-04-29-16-38-22.png)  
 
-Let's try this `aws s3api get-bucket-acl --bucket <Bucket_Name>`  
-`aws s3api get-bucket-acl --bucket vnm-sec-aws`
+> We need to create an aws account and get access ID and secret access this way we will be able to use this account for our test.
+> Check out [here](../cloud/aws.md) how to do so  
 
-> We need to create an aws account and get access ID and secret access this way we will be able to use this account for our test.  
-> [Here](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) is an article on how to get the creds once our account created.
+Let's try this `aws s3api get-bucket-acl --bucket <Bucket_Name>`  
+`aws s3api get-bucket-acl --bucket vnm-sec-aws`  
+
+![get acl](../.res/2023-07-07-16-24-33.png)
+
+This means that all authenticated users (globally) can read the bucket.
+
+Sounds good let's try to list the content
 
 ### COMING SOON
 

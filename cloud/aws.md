@@ -1,26 +1,47 @@
 # AWS
 
-> We need to create an aws account and get access ID and secret access this way we will be able to use this account for our test.  
-> [Here](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) is an article on how to get the creds once our account created.
+## How to create an AWS account
+
+In order to be able to query an s3 bucket that has misconfigured permissions like for example that gives access to its bucket to any authenticated user, we need to create a user in AWS (this is free)  
+
+1. Create a free account on Amazon (check out the resources below for help on this step)
+
+2. Head to the IAM console [https://console.aws.amazon.com/iam/](https://console.aws.amazon.com/iam/)
+
+3. Go to "users" > "Add users" and follow the whole process it should be pretty straight forward refer to [this documentation](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) in case you hesitate about something.
+
+4. Make sure you kept all the infos about your user on your password manager you will need for awscli.
+
+5. In order for your user to be able to query other buckets you will need to give it permissions.  
+You can do this by adding it to a group. Go to your user
+
+- Click on the tab "Groups"
+- Click on "add a user to groups"
+- Click on "create a group", create one an give it a name, it is really helpful to use the premaid permissions policies (I chose the one called `AdministratorAccess`)
+- Name your group add your user to it and you should be good to go!
 
 ## Connect to a bucket
 
 - If we found a key or buckets during enumeration, we need to check them and see if we can connect to them.
 
 - `sudo apt install awscli` install aws cli
-- `aws configure --profile targetname` create a profile for our target
+- `aws configure --profile profilename` create a profile with our configs from our created user
 - `aws configure list` check your current configuration
-- `aws s3 ls s3://target --profile targetname` ls the content of a bucket
+- `aws configure list --profile profilename` check the config of a specific profile
+- `aws s3 ls s3://target --profile profilename` ls the content of a bucket
 - `aws s3 ls  s3://target --no-sign-request --region us-west-2`
 
-Example with the CTF made available by [flAWS](http://flaws.cloud/)  
+> Example with the CTF made available by [flAWS](http://flaws.cloud/)  
 
 ![flAWS](../.res/2023-07-07-10-31-49.png)  
 
 ## Resources
 
-### Documentation
+### AWS documentation
 
+- [Create a free AWS account](https://aws.amazon.com/free/?nc1=h_ls&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)
+- [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
+- [AWS Account and Access Keys](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html)
 - [AWScli Documentation](https://aws.amazon.com/fr/cli/)
 
 ### Learning resources

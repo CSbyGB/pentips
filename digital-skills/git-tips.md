@@ -49,5 +49,5 @@ A temporary solution is to push over https by specifying the username in the lin
 
 ### More permanent solution
 
-Make a grep about the user mentioned by the error message `grep -iar gold_username`  
+Make a grep about the user mentioned by the error message `grep -iar old_username`  
 It takes a while but should give you the config file where the user is mentionned. mine was `.config/gh/hosts.yml`  
