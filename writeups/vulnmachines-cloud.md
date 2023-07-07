@@ -49,6 +49,16 @@ We now need to decode the flag which is in ROT47. We can use Cyberchef to decode
 We have this landing page  
 ![public bucket](../.res/2023-07-07-17-29-21.png)
 
+- Let's ls the bucket with this command `aws s3 ls s3://vnm-sec-bucket --no-sign-request`  
+
+![ls public bucket](../.res/2023-07-07-17-40-59.png)
+
+We can now try to cp the flag file `aws s3 cp s3://vnm-sec-bucket/flag.txt --no-sign-request .`  
+
+It works and we get the flag!
+
+![flag](../.res/2023-07-07-17-42-50.png)
+
 ## Special Policy Bucket
 
 ![Specila Policy challenge](../.res/2023-07-07-17-16-15.png)
