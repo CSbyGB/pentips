@@ -26,9 +26,32 @@ This means that all authenticated users (globally) can read the bucket.
 
 Sounds good let's try to list the content
 
-### COMING SOON
+![ls bucket](../.res/2023-07-07-16-43-17.png)  
+
+The a folder seems interesting  
+
+It goes like this until letter p and in the p folder we have a flag file!!  
+
+![flag](../.res/2023-07-07-16-45-41.png)  
+
+We can cp it to our local folder `aws s3 --profile gabrielle cp s3://vnm-sec-aws/a/b/c/d/e/f/g/h/i/j/k/l/m/n/o/p/flag.txt .`  
+
+![encoded flag](../.res/2023-07-07-16-48-32.png)
+
+We now need to decode the flag which is in ROT47. We can use Cyberchef to decode it.  
+
+![ROT47](../.res/2023-07-07-17-15-13.png)  
+
+## Public Bucket
+
+![public bucket challenge](../.res/2023-07-07-17-29-33.png)
+
+We have this landing page  
+![public bucket](../.res/2023-07-07-17-29-21.png)
 
 ## Special Policy Bucket
+
+![Specila Policy challenge](../.res/2023-07-07-17-16-15.png)
 
 We end up here:  
 

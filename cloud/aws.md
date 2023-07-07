@@ -35,6 +35,8 @@ You can do this by adding it to a group. Go to your user
 
 ![flAWS](../.res/2023-07-07-10-31-49.png)  
 
+- `aws s3 --profile profilename cp s3://bucket/file .` copy a file from a bucket to our local directory
+
 ## Resources
 
 ### AWS documentation
