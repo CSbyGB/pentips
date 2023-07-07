@@ -17,7 +17,19 @@ However we get an access denied
 Let's try this `aws s3api get-bucket-acl --bucket <Bucket_Name>`  
 `aws s3api get-bucket-acl --bucket vnm-sec-aws`
 
-We need to create an aws account and get access ID and secret access this way we will be able to use this account for our test.  
-[Here](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) is and article on how to get the creds once our account created.
+> We need to create an aws account and get access ID and secret access this way we will be able to use this account for our test.  
+> [Here](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) is an article on how to get the creds once our account created.
+
+### COMING SOON
+
+## Special Policy Bucket
+
+We end up here:  
+
+![website](../.res/2023-07-07-10-15-02.png)  
+
+Let's use nslookup on the IP  
+
+![nslookup](../.res/2023-07-07-10-16-00.png)  
 
 ### COMING SOON

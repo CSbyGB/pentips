@@ -51,7 +51,8 @@
 * [API](web-pentest/API.md)
 * [Vunerabilities and attacks](web-pentest/webvulns.md)
   * [Clickjacking](web-pentest/clickjacking.md)
-  * [CORS](web-pentest/cors.md)
+  * [CORS (Misconfigurations)](web-pentest/cors.md)
+  * [CSRF](web-pentest/csrf.md)
   * [SSRF](web-pentest/ssrf.md)
   * [Bypass captcha](web-pentest/captcha-bypass.md)
   * [Template Injection (client and server side)](web-pentest/template-injection.md)
@@ -254,6 +255,7 @@
   * [TryHackMe - ConvertMyVideo](writeups/THM-convertmyvideo.md)
   * [TryHackMe - LazyAdmin](writeups/THM-LazyAdmin.md)
   * [TryHackMe - Looking Glass](writeups/THM-looking-glass.md)
+  * [TryHackMe - Nahamstore](writeups/THM-Nahamstore.md)
   * [TryHackMe - Overpass3](/writeups/THM-overpass3.md)
   * [TryHackMe - SimpleCTF](writeups/THM-SimpleCTF.md)
   * [TryHackMe - Sudo Security Bypass](writeups/THM-SudoSecurityBypass.md)
@@ -269,6 +271,8 @@
   * [PS - DomXSS](writeups/PS-DOMXSS.md)
 * [OWASP projects and challenges writeups](writeups/OWASP-writeups.md)
   * [OWASP MAS Crackmes](writeups/OWASP-MAS-Crackmes.md)
+* [Various Platforms](writeups/various.md)
+  * [flAWS 1&2](writeups/various-flaws.md)
 
 ## Digital skills
 
