@@ -90,7 +90,7 @@ The following articles are really interesting to see how a vulnerability like th
 
 - [This article](https://portswigger.net/research/web-storage-the-lesser-evil-for-session-tokens) by James Kettle is really interesting and worth reading to have a better understanding of security of Web Storage
 
-### IDOR
+## IDOR
 
 We end up here so let's try and create a pdf file.  
 We get an id let's take it and paste it to get our generated pdf  
@@ -124,7 +124,7 @@ Let's try it. If we show the response in the browser we find the flag in our PDF
 
 ![Flag](../.res/2023-05-01-17-50-53.png)
 
-### Local File Inclusion
+## Local File Inclusion
 
 We end up here:  
 
