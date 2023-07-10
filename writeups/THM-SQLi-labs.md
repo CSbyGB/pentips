@@ -159,6 +159,4 @@ Finally, using this payload we can get dump the users table and get the flag
 
 ## Vulnerable Startup: Book Title 2
 
-`' Union select '-1''union select 1, 2, 3, 4-- -`  
-
-### Coming soon
+The payload that worked here is this one `title=' union select '1'' union select 1,2,3,password from users-- -`
