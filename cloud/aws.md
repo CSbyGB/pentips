@@ -20,6 +20,34 @@ You can do this by adding it to a group. Go to your user
 - Click on "create a group", create one an give it a name, it is really helpful to use the premaid permissions policies (I chose the one called `AdministratorAccess`)
 - Name your group add your user to it and you should be good to go!
 
+## Create and ec2 instance
+
+If you stumble on a snapshot during a pentest, you will need to create an ec2 instance in order to access it.  
+
+> This part is taken from executeatwill's walkthrough of flAWS.cloud. You can read it [here](https://executeatwill.com/2022/01/17/Flaws.Cloud-Walkthrough/)
+
+Ensure under AWS IAM that AdministratorAccess permissions is added to user
+
+![Administrator access](../.res/2023-07-16-10-39-35.png)
+
+Launch EC2 new instance on the region of the snapshot you found  
+
+![new instance](../.res/2023-07-16-10-40-06.png)
+
+Select “Free Tier”  
+
+![Free tier](../.res/2023-07-16-10-40-49.png)  
+
+> Here under network I recommend that you authorize SSH traffic only from your IP range (if you choose 0.0.0.0/0 it will authorize anyone on the internet).
+
+Add Storage of snapshot created: snapshot storage name: same name as the snapshot you found.  
+
+![Add storage](../.res/2023-07-16-10-41-12.png)  
+
+- Now you just need to ssh to your new instance and mount the drive where you put the snapshot you found.
+
+> Once you're done, I recommend that you delete the snapshot
+
 ## Connect to a bucket
 
 - If we found a key or buckets during enumeration, we need to check them and see if we can connect to them.
@@ -37,6 +65,11 @@ You can do this by adding it to a group. Go to your user
 
 - `aws s3 --profile profilename cp s3://bucket/file .` copy a file from a bucket to our local directory
 
+- `aws s3 sync ss3://bucket/folder --profile profile .` copy a full folder to our local directory
+
+- If you find private key (Access_key and secret_access_key) you can configure it in a new profile with the command `aws configure --profile profilename`  
+- Then, you just need to `aws --profile profilename s3 ls` to list the content of its s3 bucket.
+
 ## Resources
 
 ### AWS documentation
@@ -47,6 +80,10 @@ You can do this by adding it to a group. Go to your user
 - [AWScli Documentation](https://aws.amazon.com/fr/cli/)
 
 ### Learning resources
+
+#### General AWS resources
+
+- [AWS CLI EC2 Tutorial](https://medium.com/@corymaklin/tutorial-amazon-web-services-part-1-create-virtual-machines-with-aws-cli-b900702bf286)
 
 #### AWS Pentest
 
