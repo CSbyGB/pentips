@@ -68,4 +68,5 @@ You can also use [emojipedia](https://emojipedia.org/) but they will not all ren
 
 You can color your text using html.  
 This `<span style="color:blue">blue text</span>`  
-Will give this: <span style="color:blue">blue text</span>
+Will give this: <span style="color:blue">blue text</span>  
+Roses are \textcolor{red}{red}  
