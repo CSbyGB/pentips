@@ -23,6 +23,27 @@ If you go to `view > Command Palette` this is the place where you will be able t
 - If you open the integrated terminal your prompt will be at the location of your folder. It can be conveninent for git.
 - [Documentation for the Integrated Terminal](https://code.visualstudio.com/docs/terminal/basics)
 
+## Configuration file
+
+You can use a configuration file for vscodium or your extensions.  
+You need to put it in a `.vscode` folder and name it `settings.json`.  
+For example this line has been made for the extension Dendron Paste Image.  
+
+```json
+{
+  "pasteImage.path": "${projectRoot}/res/"
+}
+```
+
+It basically says to paste image to a res folder in the root project.
+
+Another example is this one that will allow me to avoid autocompletion when using quotes.
+
+```json
+"editor.autoClosingQuotes": "never"
+```
+
+
 ## Vocabulary
 
 - **Intellisense** is the feature that allows you to have code completion. Sometimes it will not come with vscode or codium so you will need an extension
@@ -44,6 +65,11 @@ If you go to `view > Command Palette` this is the place where you will be able t
 - [Dendron Paste Image](https://github.com/mushanshitiancai/vscode-paste-image/blob/master/README.md) if you wabt to easily copy and paste images when you are doing a documentation and report. (it will paste the image and automatically place it in a directory of your choice)
 - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) really helpful if you often use markdown
 - [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode) If you use marp for your presentation
+- Markdown PDF
+- Material Theme Icons To have an icon depending on the type of file
+- Prettier Code formatter
+- Project Manager To switch between projects
+- vscode-pdf to display pdf file in vscode
 
 ## Resources
 

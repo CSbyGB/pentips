@@ -67,13 +67,13 @@ This argument is where you will place what commands you want to run within the c
 |-it|This argument has two parts. The "i" means run interactively, and "t" tells Docker to run a shell within the container. We would use this option if we wish to interact with the container directly once it runs.|N/A|`docker run -it helloworld`|
 |-v|This argument is short for "Volume" and tells Docker to mount a directory or file from the host operating system to a location within the container. The location these files get stored is defined in the Dockerfile|VOLUME|`docker run -v /host/os/directory:/container/directory helloworld`|
 |-p|This argument tells Docker to bind a port on the host operating system to a port that is being exposed in the container. You would use this instruction if you are running an application or service (such as a web server) in the container and wish to access the application/service by navigating to the IP address.|EXPOSE|`docker run -p 80:80 webserver`|
-|--rm|This argument tells Docker to remove the container once the container finishes running whatever it has been instructed to do.|N/A|docker run --rm helloworld|
+|--rm|This argument tells Docker to remove the container once the container finishes running whatever it has been instructed to do.|N/A|`docker run --rm helloworld`|
 |`--name`|This argument lets us give a friendly, memorable name to the container. When a container is run without this option, the name is two random words. We can use this open to name a container after the application the container is running.|N/A|`docker run --name helloworld`|
 
 Other arguments include (but are not limited to!):
 
 - Telling Docker what network adapter the container should use
-- What capabilities the container should have access to. 
+- What capabilities the container should have access to.
 - Storing a value into an environment variable
 
 ### Listing Running Containers
@@ -81,10 +81,185 @@ Other arguments include (but are not limited to!):
 - `docker ps` list running containers
 - `docker ps -a` list all containers (even stopped)
 
-#### COMING SOON
+## Dockerfiles
+
+Dockerfiles is a formatted text file which essentially serves as an instruction manual for what containers should do and ultimately assembles a Docker image.  
+
+- `INSTRUCTION argument` Dockerfile formatting
+
+|Instruction|Description|Example|
+|-----------|-----------|-------|
+|FROM|This instruction sets a build stage for the container as well as setting the base image (operating system). All Dockerfiles must start with this.|FROM ubuntu|
+|RUN|This instruction will execute commands in the container within a new layer.|RUN whoami|
+|COPY|This instruction copies files from the local system to the working directory in the container (the syntax is similar to the `cp` command).|COPY /home/cmnatic/myfolder/app/|
+|WORKDIR|This instruction sets the working directory of the container. (similar to using `cd` on Linux).|WORKDIR / (sets to the root of the filesystem in the container)|
+|CMD|This instruction determines what command is run when the container starts (you would use this to start a service or application).|CMD /bin/sh -c script.sh|
+|EXPOSE|This instruction is used to tell the person who runs the container what port they should publish when running the container.|EXPOSE 80 (tells the person running the container to publish to port 80 i.e. `docker run -p 80:80)`|
+
+### Building a container
+
+- `docker build` will be used to build an image with a Dockerfile.  
+
+#### Example 1
+
+```yaml
+# THIS IS A COMMENT
+# Use Ubuntu 22.04 as the base operating system of the container
+FROM ubuntu:22.04
+
+# Set the working directory to the root of the container
+WORKDIR / 
+
+# Create helloworld.txt
+RUN touch helloworld.txt
+```
+
+- To build it we would run `docker build -t helloworld .` (the `.` is to mention that the dockerfile is in our current working directory)
+
+#### Example 2
+
+```yaml
+# THIS IS A COMMENT
+FROM ubuntu:22.04
+
+# Update the APT repository to ensure we get the latest version of apache2
+RUN apt-get update -y 
+
+# Install apache2
+RUN apt-get install apache2 -y
+
+# Tell the container to expose port 80 to allow us to connect to the web server
+EXPOSE 80 
+
+# Tell the container to run the apache2 service
+CMD ["apache2ctl", "-D","FOREGROUND"]
+```
+
+- `docker build -t webserver .` to build it
+- `docker run -d --name webserver -p 80:80  webserver` to run it
+
+## Docker compose
+
+Docker Compose allows multiple containers (or applications) to interact with each other when needed while running in isolation from one another.
+
+![Docker vs Docker compose](../.res/2023-07-22-11-52-44.png)
+
+> Source: TryHackMe
+
+- Install [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Docker compose essential commands
+
+|Command|Explanation|Example|
+|-------|-----------|-------|
+|up|This command will (re)create/build and start the containers specified in the compose file.|`docker-compose up`|
+|start|This command will start (but requires the containers already being built) the containers specified in the compose file.|`docker-compose start`|
+|down|This command will stop and delete the containers specified in the compose file.|`docker-compose down`|
+|stop|This command will stop (not delete) the containers specified in the compose file.|`docker-compose stop`|
+|build|This command will build (but will not start) the containers specified in the compose file.|`docker-compose build`|
+
+### A Showcase of Docker Compose
+
+#### Requirements
+
+- An E-commerce website running on Apache
+- This E-commerce website stores customer information in a MySQL database
+
+#### Without compose
+
+We could manually run the two containers via the following:
+
+1. Creating the network between the two containers: `docker network create ecommerce`
+2. Running the Apache2 webserver container: `docker run -p 80:80 --name webserver --net ecommerce webserver`
+3. Running the MySQL Database server: `docker run --name database --net ecommerce webserver`
+
+#### Same thing with docker compose
+
+We can use Docker Compose via `docker-compose` up to run these containers together.  
+
+Advantages:
+
+- One simple command to run them both
+- These two containers are networked together, so we don’t need to go about configuring the network.
+- Extremely portable. We can share our docker-compose.yml file with someone else, and they can get the setup working precisely the same without understanding how the containers work individually.
+- Easy to maintain and change. We don’t have to worry about specific containers using (perhaps outdated) images.
+
+##### Necessary instruction of this use case
+
+|Instruction|Explanation|Example|
+|-----------|-----------|-------|
+|version|This is placed at the top of the file and is used to identify what version of Compose the docker-compose.yml is written for.|'3.3'|
+|services|This instruction marks the beginning of the containers to be managed.|services:|
+|name (replace value)|This instruction is where you define the container and its configuration. "name" needs to be replaced with the actual name of the container you want to define, i.e. "webserver" or "database".|webserver|
+|build|This instruction defines the directory containing the Dockerfile for this container/service. (you will need to use this or an image).|./webserver|
+|ports|This instruction publishes ports to the exposed ports (this depends on the image/Dockerfile).|'80:80'|
+|volumes|This instruction lists the directories that should be mounted into the container from the host operating system.|'./home/cmnatic/webserver/:/var/www/html'|
+|environment|This instruction is used to pass environment variables (not secure), i.e. passwords, usernames, timezone configurations, etc.|MYSQL_ROOT_PASSWORD=helloworld|
+|image|This instruction defines what image the container should be built with (you will need to use this or build).|mysql:latest|
+|networks|This instruction defines what networks the containers will be a part of. Containers can be part of multiple networks (i.e. a web server can only contact one database, but the database can contact multiple web servers).|ecommerce|
+
+##### Final docker-compose.yml file
+
+```yaml
+version: '3.3'
+services:
+  web:
+    build: ./web
+    networks:
+      - ecommerce
+    ports:
+      - '80:80'
+
+
+  database:
+    image: mysql:latest
+    networks:
+      - ecommerce
+    environment:
+      - MYSQL_DATABASE=ecommerce
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=helloword
+    
+networks:
+  ecommerce:
+```
+
+## Docker Socket
+
+When you install Docker, there are two programs that get installed:
+
+- The Docker Client
+- The Docker Server
+
+Docker works in a client/server model. Specifically, these two programs communicate with each other to form the Docker.  
+Docker achieves this communication using something called a socket. Sockets are an essential feature of the operating system that allows data to be communicated.  
+In the context of Docker, the Docker Server is effectively just an API. The Docker Server uses this API to listen for requests, whereas the Docker Client uses the API to send requests.  
+because of this, we can interact with the Docker Server using commands like curl or an API developer tool such as Postman.  
+
+## Docker Registry
+
+Docker Registries, are used to store and provide published Docker images for use. Using repositories, creators of Docker images can switch between multiple versions of their applications and share them with other people with ease.  
+Public registries such as DockerHub exist, however, many organisations using Docker will host their own "private" registry.
+
+## Useful Docker commands
+
+|Command | Description|
+|--------|------------|
+|`network ls`| Used to list the networks of containers, we could use this to discover other applications running and pivot to them from our machine!|
+|`images`|List images used by containers, data can also be exfiltrated by reverse-engineering the image.|
+|`exec`|Execute a command on a container|
+|`run`|Run a container|
+
+### Examples
+
+- [RustScan DockerHub Registry](https://hub.docker.com/repository/docker/rustscan/rustscan)
 
 ## Resources
 
 - [Intro to Docker - TryHackMe](https://tryhackme.com/room/introtodockerk8pdqk)
 - [Intro to Containerisation - TryHackMe](https://tryhackme.com/room/introtocontainerisation)
 - [Docker official Documentation](https://docs.docker.com/)
+- [Docker Rodeo - TryHackMe](https://tryhackme.com/room/dockerrodeo)
+- [Compose Documentation](https://docs.docker.com/compose/reference/)
+- [Official documentatio on Docker Registry](https://docs.docker.com/registry/)
+- [Docker Hub](https://registry.hub.docker.com/search?q=)

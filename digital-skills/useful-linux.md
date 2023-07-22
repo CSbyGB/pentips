@@ -31,6 +31,10 @@ This annoying message when you need something that is not installed.
 - `sudo apparmor_parser -r /var/lib/snapd/apparmor/profiles/snap-confine*`
 - More info [here](https://stackoverflow.com/questions/70053614/snap-confine-has-elevated-permissions-and-is-not-confined-but-should-be-refusin)
 
+## Update only 1 package
+
+- `apt-get install --only-upgrade <packagename>` This will upgrade only that single package, and only if it is installed.
+
 ## File conversions
 
 ### HEIC to JPG

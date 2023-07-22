@@ -57,6 +57,7 @@
   * [Bypass captcha](web-pentest/captcha-bypass.md)
   * [Template Injection (client and server side)](web-pentest/template-injection.md)
 * [Exposed git folder](web-pentest/exposed-git.md)
+* [Docker exploitation and Docker vulnerabilities](web-pentest/docker-exploitation.md)
 
 ## Mobile App Pentest
 
