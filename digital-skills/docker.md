@@ -254,6 +254,12 @@ Public registries such as DockerHub exist, however, many organisations using Doc
 
 - [RustScan DockerHub Registry](https://hub.docker.com/repository/docker/rustscan/rustscan)
 
+## Docker CLI Cheatsheet
+
+![](../.res/2023-07-23-15-05-09.png)
+
+> [Source Sangam Biradar Github](https://github.com/sangam14)
+
 ## Resources
 
 - [Intro to Docker - TryHackMe](https://tryhackme.com/room/introtodockerk8pdqk)
