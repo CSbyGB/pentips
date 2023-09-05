@@ -76,7 +76,7 @@
 
 ## Thick Client Pentest
 
-*[Thick Client](thick-client/thick-client.md)
+* [Thick Client](thick-client/thick-client.md)
 
 ## Secure Code Review
 
