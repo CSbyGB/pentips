@@ -78,6 +78,10 @@
 
 * [Thick Client](thick-client/thick-client.md)
 
+## Hardware Pentest
+
+* [ATM](hardware-pentest/atm.md)
+
 ## Secure Code Review
 
 * [Secure code review](code-review/code-review.md)
