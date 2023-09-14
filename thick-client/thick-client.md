@@ -1,6 +1,8 @@
 # Thick client
 
-> This documentation is mostly made from notes of my practice. I then completed it with the Chapter "Attacking Thick Client Applications" from the [HTB Academy](https://academy.hackthebox.com) Module called "Attacking Common Applications"
+> This documentation is mostly made from notes of my practice.  
+> I then completed it with the Chapter "Attacking Thick Client Applications" from the [HTB Academy](https://academy.hackthebox.com) Module called "Attacking Common Applications".  
+> I also completed it with the Udemy course [Mastering thick client application penetration testing by Srinivas](https://www.udemy.com/course/mastering-thick-client-application-penetration-testing/)
 
 ## Definition
 
@@ -47,11 +49,69 @@ Web-specific vulnerabilities like XSS, CSRF, and Clickjacking, do not apply to t
 
 ## Methodology to pentest thick client
 
-> Section made with HTB Academy
+> Section made with HTB Academy and Mastering thick client application penetration testing by Srinivas course on Udemy
 
 ### Information Gathering
 
 In this step, penetration testers have to identify the application architecture, the programming languages and frameworks that have been used, and understand how the application and the infrastructure work. They should also need to identify technologies that are used on the client and server sides and find entry points and user inputs. Testers should also look for identifying common vulnerabilities
+
+Tips from Srinivas:
+
+- Explore the functionalities of the Application
+- Understand the architecture of the Application
+- Check out the client's communications in the network
+- See what files can be accesses by the client
+- Look for juicy files
+
+#### Explore with CFF Explorer
+
+We open CFF explorer, We open the application we want to analyze from the file menu.  
+Then we get a window with info about our executable
+
+#### Explore with Procmon
+
+We open procmon, it will show all the processes.  
+We can set up a filer by going to filter and set it to "Process Name is `<Name of the App you are analyzing (ex: myapp.exe)>`"  
+We click Add, Apply and OK  
+It will show an empty window (except if you have already launch your app) so now we just need to launch our app.  
+We will then see the processes related to our app.  
+Interesting things to check:
+
+- Do any configuration now to see if any file is change
+- Connect now to see if your app is going to use configuration files or anything
+- Explore what happens in the Registry Editor and see if any odd things are hapenning there
+
+> At anypoint if procmon has to many entries, we can clear them
+
+#### Traffic Analysis
+
+If our app is using http we can intercept this traffic with burp.  
+If it is not using HTTP we can use:
+
+- Wireshark
+- Echo Mirage
+- MITM-Relay and burpsuite (we will be able to modify the requests)
+
+##### Explore with tcpview
+
+We can open tcpview and check what happens when we launch the application we want to analyze.  
+This way we can have info on the ip addresses that the app we are analyzing is interacting with.  
+
+##### Explore with wireshark
+
+We can launch wireshark and capture the traffic from our loopback address.  
+We can use filters using info from previous installation.  
+We can also capture for a short period of time: launch wireshark, start capture, launch our app connect to it and stop the capture, then analyzing the traffic by following udp or tcp stream and exploring a little.  
+Wireshark is a great tool, I really recommend this blog from Hacking Article to learn more about wireshark: [Wireshark for Pentester: A Beginner's Guide by Raj Chandel](https://www.hackingarticles.in/wireshark-for-pentesters-a-beginners-guide/).
+
+##### Explore with EchoMirage
+
+We open EchoMirage, we launch our app, we can then inject EchoMirage into our app we can then see each request that is sent. Everytime we click ok it will go to the next request.  
+We can also change the request if we want to test some things out.
+
+##### Explore with MITM-relay and burpsuite
+
+Here I recommand using this article: [Thick Client Penetration Testing: Traffic Analysis by Raj Chandel on Hacking Articles](https://www.hackingarticles.in/thick-client-penetration-testing-traffic-analysis/) specifically the part called "Traffic Analysis via Burp Suite + MITM Relay"  
 
 #### Information Gathering - Tools
 
@@ -60,13 +120,17 @@ In this step, penetration testers have to identify the application architecture,
 - [Process Monitor (Procmon)](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon)
 - [Strings](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)
 
-### Client Side Attacks
+### Attack phase
+
+#### Theory
+
+##### Client Side Attacks
 
 Although thick clients perform significant processing and data storage on the client side, they still communicate with servers for various tasks, such as data synchronization or accessing shared resources. This interaction with servers and other external systems can expose thick clients to vulnerabilities similar to those found in web applications, including command injection, weak access control, and SQL injection.
 
 Sensitive information like usernames and passwords, tokens, or strings for communication with other services, might be stored in the application's local files. Hardcoded credentials and other sensitive information can also be found in the application's source code, thus Static Analysis is a necessary step while testing the application. Using the proper tools, we can reverse-engineer and examine .NET and Java applications including EXE, DLL, JAR, CLASS, WAR, and other file formats. Dynamic analysis should also be performed in this step, as thick client applications store sensitive information in the memory as well.
 
-#### Client Side Attacks - Tools
+##### Client Side Attacks - Tools
 
 - [Ghidra](https://www.ghidra-sre.org/)
 - [IDA](https://hex-rays.com/ida-pro/)
@@ -77,20 +141,83 @@ Sensitive information like usernames and passwords, tokens, or strings for commu
 - [JADX](https://github.com/skylot/jadx)
 - [Frida](https://frida.re/)
 
-### Network Side Attacks
+##### Network Side Attacks
 
 If the application is communicating with a local or remote server, network traffic analysis will help us capture sensitive information that might be transferred through HTTP/HTTPS or TCP/UDP connection, and give us a better understanding of how that application is working.
 
-#### Network Side Attacks - Tools
+##### Network Side Attacks - Tools
 
 - [Wireshark](https://www.wireshark.org/)
 - [tcpdump](https://www.tcpdump.org/)
 - [TCPView](https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview)
 - [Burp Suite](https://portswigger.net/burp)
 
-### Server Side Attacks
+##### Server Side Attacks
 
 Server-side attacks in thick client applications are similar to web application attacks, and penetration testers should pay attention to the most common ones including most of the OWASP Top Ten.
+
+#### Methodology for specific attacks
+
+##### Check for hardcoded credentials
+
+To check for hardcoded credentials, we can just use the strings command and dump the outpu in a file as follow:
+
+- `strings.exe C:\mythickclient-to-test.exe > C:\myfile-with-strings-output`
+
+Than we can open the file with notepad and search specific strings such as: password, key etc.
+
+##### Check for secrets in registery
+
+> Tip from Udemy course Mastering thick client application penetration testing by Srinivas
+
+- We can use regshot for this
+- First we launch a shot without the application open
+- Then we open the application play around a little
+- We take a 2nd shot
+- Finally we can compare in the output html file, we can search for the app name to see if anything shows up.
+- If creds are stored in the registry we could try to change the username there and see if we can log in as another user.
+
+##### Find connection string in memory
+
+> Tip from Udemy course Mastering thick client application penetration testing by Srinivas
+
+- We can use Process Hacker
+- We open the app we need to analyze and let it connect to its db server
+- We can then open ProcessHacker and look for our app in the process 
+- Then we right clik on our app we click properties > Memory > Strings we select if we want image and mapped or not and we change the length if necessary
+- It will show us the strings from the memory
+- This way we can find passwords to databases
+
+> If we want to restrict our search we can lookup for a specific string that is often found in a database connection "Data Source"  
+> Other interesting strings to look up are "Decrypt" or "Decrypted"
+
+- Once we found creds we can try to connect to the database server
+
+###### Without Process hacker
+
+If we can not use process hacker, we can use the methodology from the article on [NetSpi by Austin Altmann](https://www.netspi.com/blog/technical/thick-application-penetration-testing/introduction-to-hacking-thick-clients-part-6-the-memory/)  
+We go in task manager, we select our app we right click on it and select "Create a dump file" we can then run strings on the dump file using this command:  
+`.strings.exe .BetaBank.DMP | Out-File -FilePath .BetaBank.DMP.txt` (replace Betabank by the name of the app you are analyzing)  
+
+> Note: the strings command might take a while depending on the application you use so you might to interrupt once you feel like your ouput file is big enough.
+
+##### SQL Injection
+
+Just like in a web application we can try to find SQL injection.  
+The payload will mostly be the same.
+
+##### Side Channel Data leaks
+
+> Tip from Udemy course Mastering thick client application penetration testing by Srinivas
+
+We can go in the folder of the app we are analyzing and open the command prompt from there.  
+We can then run our app and put the output of the execution of our app in a log file using the following command:  
+`ourapp.exe > ourapp-logs.txt`  
+
+We can then use the app and navigate use the functionalities.  
+If we want to seperate functionalities we can stop the app and relaunch it with the following command to avoid overwriting in our logs: `ourapp.exe >> ourapp-logs.txt`
+
+Once we are done we can analyzing the code and see if we find: creds, connection Strings or anything else interesting.
 
 ## Tips
 
@@ -103,6 +230,22 @@ Server-side attacks in thick client applications are similar to web application 
 - Check what controls are implemented on the client side
 - Check the traffic.
 - Can you bypass authentication
+
+### How to avoid suppression of Temp files in Win
+
+> Tip found on HTB Academy
+
+To do this, we right-click the folder where the temp files are created (it is usually named Temp) and under `Properties -> Security -> Advanced -> username -> Disable inheritance -> Convert inherited permissions into explicit permissions on this object -> Edit -> Show advanced permissions`, we deselect the Delete subfolders and files, and Delete checkboxes.  
+
+![unchek boxes](../.res/2023-09-10-11-46-30.png)  
+
+Finally, we click `OK -> Apply -> OK -> OK` on the open windows.  
+This way when we relaunch the app that creates temporary files we can keep them and explore them.  
+
+### Edit the code
+
+If the software is in C#, we can use [dnSpy](https://github.com/dnSpy/dnSpy) to read the code of the app.  
+We can also modify it amd save our modified version.
 
 ### If you can not be admin on the serv where the app is
 
@@ -176,11 +319,14 @@ DLL hijacking, in essence, involves a method of elevating privileges where a har
 - [Thick Client Security Assessment — II by SAKSHAM CHAWLA](https://medium.com/@chawla.saksham08/thick-client-security-assessment-ii-863526bfa88b)
 - [Security Testing of Thick Client Application - David Valles](https://medium.com/@david.valles/security-testing-of-thick-client-application-15612f326cac)
 - [Thick Client Pentesting by hexachordanu](https://github.com/hexachordanu/Thick-Client-Pentesting/tree/master)
+- [Articles about thick client pentest on Hacking Articles by Raj Chandel](https://www.hackingarticles.in/?s=thick+client)
 
 #### Resources - DLL Hijacking
 
+- [Windows privesc, DLL Hijacking - CSbyGB Pentips](https://csbygb.gitbook.io/pentips/windows/privesc#dll-hijacking)
 - [Have you ever hijacked a DLL?! - Michelle Eggers](https://www.linkedin.com/posts/m-eggers_cybersecurity-pentesting-penetrationtesting-activity-7102691799814610945-D0rl?utm_source=share&utm_medium=member_desktop)
 - [All About DLL Hijacking - My Favorite Persistence Method - IppSec](https://youtu.be/3eROsG_WNpE?si=q2VoaY_1Sr-tNdA6)
+- [Testing Applications for DLL Preloading Vulnerabilities by Karl Fosaaen](https://www.netspi.com/blog/technical/network-penetration-testing/testing-applications-for-dll-preloading-vulnerabilities/)
 - [Dll Hijacking - Hacktricks](https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/dll-hijacking)
 
 #### Resources - Linux Shared Library Hijacking
@@ -198,6 +344,7 @@ DLL hijacking, in essence, involves a method of elevating privileges where a har
 
 ### Labs to practice
 
+- [Fatty box on HTB](https://app.hackthebox.com/machines/227)
 - [BetaFast by NetSPI- vulnerable thick client to practice on](https://github.com/NetSPI/BetaFast)
 - [DVTA 2.0](https://github.com/srini0x00/dvta)
   - [Setting up DVTA - Part 1 by Source Meets Sink](https://youtu.be/rx8mtI1HU5c?si=GW_lo3J2RsUvSjVw)
@@ -213,3 +360,23 @@ DLL hijacking, in essence, involves a method of elevating privileges where a har
 - [Thick Client Application Pen-Testing Lab | DVTA (Damn Vulnerable Thick Client Application) | Part-3 by Chaitanya Eshwar Prasad](https://youtu.be/SbqJU1PcsE8?si=KDODm86bO0RZ8vre)
 - [🎯 Thick Client Penetration Testing: Hands-on Practice with AVT (Another Vulnerable Thick Client) 🚀💻 by aalphaas](https://youtu.be/LCrPmtY83IA?si=eudMtRQiCxOnVRF5)
 - [🎯 Thick Client Penetration Testing: Hands-on Practice Part 2 with IBA (It is a Broken App) by aalphaas](https://youtu.be/cCChPFkq4cY?si=XGUH5EccjOoUJtYg)
+
+### Tools
+
+- [Dependency walker](https://www.dependencywalker.com/)
+- [Procmon (sysinternals)](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon)
+- [DLLSpy](https://github.com/cyberark/DLLSpy)
+- [Wireshark](https://www.wireshark.org/)
+- [tcpdump](https://www.tcpdump.org/)
+- [TCPView](https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview)
+- [Burp Suite](https://portswigger.net/burp)
+- [Ghidra](https://www.ghidra-sre.org/)
+- [IDA](https://hex-rays.com/ida-pro/)
+- [OllyDbg](http://www.ollydbg.de/)
+- [Radare2](https://www.radare.org/r/index.html)
+- [dnSpy](https://github.com/dnSpy/dnSpy)
+- [x64dbg](https://x64dbg.com/)
+- [JADX](https://github.com/skylot/jadx)
+- [Frida](https://frida.re/)
+- [The sysinternals suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite)
+- [NetCore ExplorerSuite](https://ntcore.com/?page_id=388)
