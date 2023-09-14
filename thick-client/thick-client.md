@@ -219,6 +219,10 @@ If we want to seperate functionalities we can stop the app and relaunch it with 
 
 Once we are done we can analyzing the code and see if we find: creds, connection Strings or anything else interesting.
 
+##### DLL Hijacking
+
+DLL hijacking, in essence, involves a method of elevating privileges where a harmful DLL is placed within the trusted application's directory. Subsequently, this deceptive DLL loads alongside genuine DLLs when the application is executed, potentially serving as a means to establish a reverse shell, attain persistence, or accomplish command execution.
+
 ## Tips
 
 ### General tips
@@ -282,12 +286,6 @@ If you can not use wireshark or echo mirage you can compare your network state w
 
 - `netstat -ano | findstr LISTENING`
 - For more command refer to network enumeration [here](https://csbygb.gitbook.io/pentips/windows/powershell-cmd#network-enumeration) and play around
-
-## Tips on specific exploits
-
-### DLL Hijacking
-
-DLL hijacking, in essence, involves a method of elevating privileges where a harmful DLL is placed within the trusted application's directory. Subsequently, this deceptive DLL loads alongside genuine DLLs when the application is executed, potentially serving as a means to establish a reverse shell, attain persistence, or accomplish command execution.
 
 #### Tools for DLL Hijacking
 
