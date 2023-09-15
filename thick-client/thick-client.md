@@ -223,6 +223,33 @@ Once we are done we can analyzing the code and see if we find: creds, connection
 
 DLL hijacking, in essence, involves a method of elevating privileges where a harmful DLL is placed within the trusted application's directory. Subsequently, this deceptive DLL loads alongside genuine DLLs when the application is executed, potentially serving as a means to establish a reverse shell, attain persistence, or accomplish command execution.
 
+DLL Load order:
+
+- Directory from the app
+- Current directory
+- System Directory `C:\Windows\System32`
+- The 16-bit System directory
+- The windows Directory
+- The directories that are listed in the PATH environment variable
+
+To see how our app loads the dll and if it is vulnerable to dll hijacking, we can launch procmon and apply the following filters:
+
+- Process Name is ourapp.exe
+- Path ends with dll
+- Result is NAME NOT FOUND
+
+Once the filters are applied we can launch our application and see what shows up.
+
+If we find potential dlls we can create a malicious dll that will give us a reverse shell, create an admin user or launch powershell as admin. We can use msfvenom for this.  
+[Here](https://csbygb.gitbook.io/pentips/tools/metasploit#generate-a-payload-with-msfvenom) are some infos on how to do this.  
+Our dll must have the same name of the potentially vulnerable dll.
+When our malicious dll are created and placed in the directory we can relaunch our app and see if our exploit worked.
+
+###### Tools for DLL Hijacking
+
+- [Procmon (sysinternals)](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon)
+- [DLLSpy](https://github.com/cyberark/DLLSpy)
+
 ## Tips
 
 ### General tips
@@ -245,11 +272,6 @@ To do this, we right-click the folder where the temp files are created (it is us
 
 Finally, we click `OK -> Apply -> OK -> OK` on the open windows.  
 This way when we relaunch the app that creates temporary files we can keep them and explore them.  
-
-### Edit the code
-
-If the software is in C#, we can use [dnSpy](https://github.com/dnSpy/dnSpy) to read the code of the app.  
-We can also modify it amd save our modified version.
 
 ### If you can not be admin on the serv where the app is
 
@@ -287,10 +309,103 @@ If you can not use wireshark or echo mirage you can compare your network state w
 - `netstat -ano | findstr LISTENING`
 - For more command refer to network enumeration [here](https://csbygb.gitbook.io/pentips/windows/powershell-cmd#network-enumeration) and play around
 
-#### Tools for DLL Hijacking
+### Check if an app is signed
 
-- [Procmon (sysinternals)](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon)
-- [DLLSpy](https://github.com/cyberark/DLLSpy)
+> Tip from Udemy course Mastering thick client application penetration testing by Srinivas
+
+We download [sigcheck from sysinternal](https://learn.microsoft.com/en-us/sysinternals/downloads/sigcheck).  
+We can then use this command `sigcheck.exe our-app.exe` it will show wether it is signed or unsigned.  
+
+### Compiler protections
+
+To check if the app is properly compiled, we can use the tool called [binscope](https://www.microsoft.com/en-ca/download/details.aspx?id=44995).  
+We can then launch it with the following command: `binscope.exe /verbose /html /logfile output.html our-app.exe`
+
+The output will show a detailed report.
+
+### Automatic analysis of the code
+
+> Tip from Udemy course Mastering thick client application penetration testing by Srinivas
+
+#### Visual Code Grepper
+
+Get Visual Code Grepper [here](https://github.com/nccgroup/VCG).  
+Install it.  
+We open dotPeek.  
+We open our app, we export the decompiled code from dotpeek in a convenient folder.  
+We can then open visual code grepper we specify the folder with our decompiled app as our target directory. (we need to select the code in which the app is compiled)  
+We can then scan it and analyze the findings.
+We can also scan the original source code with it if it was provided by our customer.  
+
+> Note: the instructor in the Udemy course, reminds that we should not rely on automatic tool. It is really important to remember.
+
+## Reverse .NET Applications
+
+> Tip from Udemy course Mastering thick client application penetration testing by Srinivas
+
+### Using DotPeek and Visual Studio
+
+In the example of the course, the instructor uses dotPeek to decompile the app and take the decrypt function.  
+The objective is to decrypt a password found in a config file.  
+He then writes another app with visual studio that uses the decrypt function found in the decompiled app.  
+This gives us an idea of what we can use the decompiled app for.  
+
+### runtime tracing with dnSpy
+
+We can dnSpy and from file open we load our app in ndSpy.  
+We can then browse in our app and click on fuctions or classes that looks interesting for our tests.  
+If we find a function that we want to analyze further, we need to find in the code where the function is called and put a break point there by right clicking on the line and select add breakpoint in the context menu.  
+
+![Add breakpoint](../.res/2023-09-15-15-11-56.png)  
+
+We can then click on Start, choose our app and debug our function.  
+
+> In the Udemy course, the instructor debugs a login function, to get the password and connection string to the database.
+
+### Patch .NET applications
+
+#### with ILSpy and Reflexil
+
+- We need to download ILSpy
+- We then download Reflexil and copy the dll in the ILSpy directory
+
+![Reflexil plugin](../.res/2023-09-15-15-51-55.png)  
+
+- Then we open up ILSpy and we open our app with file > Open
+- To make things more easy we can change the name of our app, because if we patch it we need to be able to differientiate them and not overwrite our executable.
+- ILSpy has an option IL with C# that will allow us to see the c# code in comment. This way it will be more readable for us.
+- Once we are in the place we want to make changes, we go to view > Reflexil and we can change the code the Reflexil window.
+
+> In the Udemy course, the instructor changes the code to elevate privilege in the app.
+
+#### With ilasm & Idasm
+
+- IL Disassembler is located here: `C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ildasm.exe`
+
+![idasm location](../.res/2023-09-15-15-57-07.png)  
+
+- IL Assembler is located here: `C:\Windows\Microsoft.NET\Framework\v4.0.30319\ilasm.exe`
+
+```cmd
+ildasm.exe our-app.exe
+```
+
+This will open a window with our app we can save our decompiled code somewhere convenient.  
+We open the file our-app.il in notepad for example and then we can modify the code here and save our modified file.  
+
+Once the code is modified we can recompile it with the following command
+
+```cmd
+ilasm.exe our-app.il
+```
+
+### Tools to Reverse .NET Applications
+
+- dnSpy
+- dotPeek
+- ILSpy & Reflexil
+- IL Assembler (comes with .NET framework)
+- IL Disassembler (Comes with visual studio)
 
 ## Resources
 
