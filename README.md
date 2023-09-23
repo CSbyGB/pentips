@@ -29,8 +29,6 @@ Companies like : Wehackpurple, InCyber…
 
 ![Woman Hacker 2022](./.res/woman-hacker.jpeg)
 
-> Woman Hacker - 2022
-
 ## What is this?
 
 This is a gitbook with my pentest tips and notes from my learning journey as pentester (more than 400 pages to transfer here 😅).  
