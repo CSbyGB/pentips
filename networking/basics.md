@@ -49,7 +49,7 @@ Designing a network within the company depends on its requirements and need. For
 #### Three way handshake
 
 - TCP uses 3 way handshake
-- SYN > SYN ACK > SYN : Asking to connect to a port > Port is open > connection occurs
+- SYN > SYN ACK > ACK : Asking to connect to a port > Port is open > connection occurs
 
 ### UDP
 

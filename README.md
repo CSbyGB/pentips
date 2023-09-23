@@ -4,7 +4,32 @@
 
 ## $ whoami /priv
 
-🏳 Ethical Hacker |🏆Award-winning Pentester | Artemis Red Team | Board Member | Speaker | Mentor 🏳️‍🌈
+🏳 Ethical Hacker |🏆Award-winning Pentester | Advocate for Cybersecurity Education for All | Board Member | Speaker | Instructor/Trainer 🏳️‍🌈
+
+👩‍💻, 🎙️, 🔄  
+Pentester, Cybersecurity Blogger and Advocate for CYBEREDUCATION FOR ALL.  
+
+🤓📅  
+Over 9 years of experience in Information Technology, including 4 years as Pentester  
+
+💻 , 🌐, 📖, 🤔  
+Passionate about cybersecurity, approaching it in a holistic way encourages me for lifelong learning and sharpens my critical thinking skills.  
+
+☺️ ,🌈 ,👩‍🚀 🚀 , ♻️, 🌳  
+Mindful of everyone's place in society, the promotion of digital security for all and accessibility to digital culture are driving my future.  
+
+🙏🙏 𝐌𝐲 𝐌𝐚𝐧𝐭𝐫𝐚 : 𝗔𝗖𝗧𝗜𝗢𝗡 𝗙𝗢𝗥 𝗖𝗬𝗕𝗘𝗥𝗣𝗘𝗔𝗖𝗘 🙏🙏  
+
+👩‍💻Training / Education / Freelance 👩‍💻  
+
+🔸 Offensive Security consultant, Speaker, Instructor, Trainer, Technical writer …
+Companies like : Wehackpurple, InCyber…  
+
+🔸 See my LinkedIn [here](https://www.linkedin.com/in/gabriellebotbol/) for more info  
+
+![Woman Hacker 2022](./.res/woman-hacker.jpeg)
+
+> Woman Hacker - 2022
 
 ## What is this?
 
@@ -16,12 +41,6 @@ It is a work in progress and it will be filled up asap with my notes and on the 
 ❗🔴
 **Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in any illegal activity using these resources**
 ❗🔴
-
-## I won!!
-
-**Thank you everyone for your support!! I won!!**
-
-![Woman Hacker 2022](./.res/woman-hacker.jpeg)
 
 ## More about CSbyGB
 

@@ -183,7 +183,7 @@ Than we can open the file with notepad and search specific strings such as: pass
 
 - We can use Process Hacker
 - We open the app we need to analyze and let it connect to its db server
-- We can then open ProcessHacker and look for our app in the process 
+- We can then open ProcessHacker and look for our app in the process
 - Then we right clik on our app we click properties > Memory > Strings we select if we want image and mapped or not and we change the length if necessary
 - It will show us the strings from the memory
 - This way we can find passwords to databases
@@ -280,6 +280,14 @@ This way when we relaunch the app that creates temporary files we can keep them 
 - Copy the app in a VM you can control
 - Make a tunnel between your machine and the server where the app is installed
 - Test only in static and try to reproduce what you find on the server
+
+#### Other things worth trying
+
+- Install your tools in win vm and transfer them with the install folder to your target.
+
+#### How to transfer files
+
+Most of the time trasnfert via SMB should work see [here for how to do it](https://csbygb.gitbook.io/pentips/post-exploitation/file-transfers#smb), but you can also try other ways if it does not work. See [here for more ways](https://csbygb.gitbook.io/pentips/post-exploitation/file-transfers).
 
 ### Find the binaries and access them or bypass access if protected
 
