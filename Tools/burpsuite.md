@@ -248,11 +248,12 @@ Very convenient for big scopes. You will get a lits of parameters
 
 ### Other useful burp Extensions
 
-- SAML Raider
+- [SAML Raider](https://portswigger.net/bappstore/c61cfa893bb14db4b01775554f7b802e)
 - [Retire.js](https://github.com/retirejs/retire.js/)
-- Backslash Powered Scanner
-- JSON Web Token Attacker
-- Autorize
+- [Backslash Powered Scanner](https://portswigger.net/bappstore/9cff8c55432a45808432e26dbb2b41d8)
+- [JSON Web Token Attacker](https://portswigger.net/bappstore/82d6c60490b540369d6d5d01822bdf61)
+- [Autorize](https://portswigger.net/bappstore/f9bbac8c4acf4aefa4d7dc92a991af2f)
+- [Scan manual Insertion point](https://portswigger.net/bappstore/ca7ee4e746b54514a0ca5059329e926f)
 
 ## Resources
 

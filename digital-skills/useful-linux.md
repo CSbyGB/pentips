@@ -95,6 +95,7 @@ This annoying message when you need something that is not installed.
 - `cat file.txt | grep "keyword"` looking for keyword in file.txt
 - `-B 2` this option will show us the 2 lines before our keyword
 - `-A 2` This option will show su the 2 lines after our keyword
+- `grep -iar "keyword" .` `i` will ignore-case, `a` will Process a binary file as if it were text and `r` is for recursive and `.` is for the current directory.
 
 ## Compare 2 files
 

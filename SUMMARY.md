@@ -86,6 +86,10 @@
 
 * [Secure code review](code-review/code-review.md)
 
+## Checklist
+
+* [Web Application and API Pentest Checklist](checklists/web-and-api-pentest-checklist.md)
+
 ## Tools
 
 * [Burpsuite](Tools/burpsuite.md)
