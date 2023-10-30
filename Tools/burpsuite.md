@@ -176,6 +176,45 @@ Check out this article that explains how to set up [ntlm authentication on burp]
 
 - [Burp suite pro scan profiles](https://github.com/TheGetch/Burp-Suite-Pro-Scan-Profiles) is a tool to optimize your burp scan and make them focus on specific vulnerabilities
 
+## Tips on specific attacks
+
+### Brute force Basic Authorization token
+
+Basic Authorization tokens are based on token containing a `user:password` encoded in base64.  
+To make a bruteforce attack on this token:
+
+1. Take a request with an auth token and send it to the intruder
+
+    ![Send to intruder](../.res/2023-10-27-18-13-03.png)
+
+2. Decode the token from base64
+
+    ![Decode base64](../.res/2023-10-27-18-14-29.png)
+
+3. Add it as a variable
+
+    ![Add variable](../.res/2023-10-27-18-15-56.png)
+
+4. Go to the payload tab. You can choose brute forcer or simple list or whichever you prefer to generate the password
+
+    ![Payload type](../.res/2023-10-27-18-18-41.png)
+
+5. The most important thing is to first add a prefix through payload processing rules
+
+    ![Prefix](../.res/2023-10-27-18-20-05.png)
+
+6. And then add another rule to encode the payload in base64
+
+    ![Encode](../.res/2023-10-27-18-20-48.png)
+
+7. Remove the `=` signe in the payload encoding 
+
+    ![Remove =](../.res/2023-10-27-18-21-57.png)
+
+8. Start the attack
+
+> Source: [whitelist1.com](https://www.whitelist1.com/2018/04/http-basic-authentication-bruteforce.html)
+
 ## Extensions
 
 ### wsdler
@@ -269,4 +308,3 @@ Very convenient for big scopes. You will get a lits of parameters
 ### Wordlists
 
 {% embed url="https://wordlists.assetnote.io/" %} Assetnote Wordlists {% endembed %}  
-
