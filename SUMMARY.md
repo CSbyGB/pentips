@@ -45,6 +45,7 @@
 
 ## Web Pentesting
 
+* [Introduction to HTTP and web](web-pentest/web.md)
 * [Enumeration](web-pentest/enumeration.md)
 * [OWASP Top 10](web-pentest/owaspTop10.md)
 * [General Methodo & Misc Tips](web-pentest/Misc-Tips.md)

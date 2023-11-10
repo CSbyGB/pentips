@@ -60,3 +60,4 @@ PE-Bear is a software which helps to check the PE structure: Headers, Sections, 
 - Other convenient resources on the subject includes  
 {% embed url="https://captmeelo.com/exploitdev/2018/07/16/backdoor101-part1.html" %} [Backdoor 101] Backdooring PE File by Adding New Section Header - Capt. Meelo {% endembed %}  
 {% embed url="https://www.ired.team/offensive-security/code-injection-process-injection/backdooring-portable-executables-pe-with-shellcode" %} Backdooring PE Files with Shellcode - ired.team {% endembed %}  
+{% embed url="https://github.com/tkmru/awesome-edr-bypass" %} Awesome EDR Bypass by tkmru {% endembed %}  

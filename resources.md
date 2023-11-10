@@ -3,6 +3,7 @@
 ## Blogs and Pentesting notes from peeps in the community
 
 - [Pentest tips and resources by Lisandre](https://lisandre.com/)
+- [Nate's blog](https://natedotred.wordpress.com/)
 - [The Mayor Pentesting notes on Notion](https://themayor.notion.site/themayor/Pentesting-Notes-9c46a29fdead4d1880c70bfafa8d453a)
 - [Hacktricks by Carlos Polop](https://book.hacktricks.xyz/)
 - [Pentest Monkey](https://pentestmonkey.net/category/blog)
