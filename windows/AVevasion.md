@@ -10,7 +10,7 @@
 - [Hunting for AMSI bypasses- Wee-Jing Chung](https://blog.f-secure.com/hunting-for-amsi-bypasses/)
 - [Using Reflection for AMSI Bypass - redteam cafe](https://www.redteam.cafe/red-team/powershell/using-reflection-for-amsi-bypass)
 - [AMSI Fail](https://amsi.fail/)
-- [Memory Patching AMSI Bypass ](https://rastamouse.me/blog/asb-bypass-pt2/)
+- [Memory Patching AMSI Bypass](https://rastamouse.me/blog/asb-bypass-pt2/)
 - [How to bypass AMSI and execute ANY malicious Powershell code](https://0x00-0x00.github.io/research/2018/10/28/How-to-bypass-AMSI-and-Execute-ANY-malicious-powershell-code.html)
 - [Introduction to Sandbox Evasion and AMSI Bypasses - Jake Krasnov, Anthony Rose, Vincent Rose](https://www.youtube.com/watch?v=F_BvtXzH4a4)
 - [Evading Detection: A Beginner's Guide to Obfuscation](https://www.youtube.com/watch?v=lP2KF7_Kwxk)

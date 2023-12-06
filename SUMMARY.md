@@ -59,6 +59,7 @@
   * [Template Injection (client and server side)](web-pentest/template-injection.md)
 * [Exposed git folder](web-pentest/exposed-git.md)
 * [Docker exploitation and Docker vulnerabilities](web-pentest/docker-exploitation.md)
+* [Websockets](web-pentest/websockets.md)
 
 ## Mobile App Pentest
 
@@ -110,6 +111,7 @@
 * [Vulnerability Scanning tools](Tools/vulnerability-scanning-tools.md)
 * [Payload Tools](Tools/payload-generation-tools.md)
 * [Out of band Servers](Tools/out-of-band-servers.md)
+* [STEWS](Tools/stews.md)
 
 ## VM and Labs
 
@@ -167,6 +169,7 @@
 * [AV Evasion](windows/AVevasion.md)
 * [Weaponization](windows/weaponization.md)
 * [Useful commands in Powershell, CMD and Sysinternals](windows/powershell-cmd.md)
+* [Windows Internals](windows/internals.md)
 
 ## Programming
 
