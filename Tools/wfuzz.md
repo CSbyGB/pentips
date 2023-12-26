@@ -10,6 +10,10 @@
   - `hw` will filter the response that contains the number of words specified. Very convenient for notfound pages that give 200 code.
   - `hc 302` will remove all 302 responses from the output
 
+## Directory busting
+
+- `wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt http://target.com/FUZZ`
+
 ## API Fuzz
 
 - Check out this article [here](/web-pentest/API.md#wfuzz) to see how to use it on API
