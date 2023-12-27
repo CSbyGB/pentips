@@ -3,8 +3,16 @@
 > Adapt it to your methodology and the context of your test.  
 > Download this file locally from [here](https://raw.githubusercontent.com/CSbyGB/pentips/main/checklists/web-and-api-pentest-checklist.md) this way you can check everything you have done.  
 
+- [ ] Enumerate system
+  - See [here](https://csbygb.gitbook.io/pentips/linux/privesc)
+- [ ] Enumerate user
+  - See [here](https://csbygb.gitbook.io/pentips/linux/privesc)
+- [ ] Enumerate network
+  - See [here](https://csbygb.gitbook.io/pentips/linux/privesc)
+- [ ] Enumerate password
+  - See [here](https://csbygb.gitbook.io/pentips/linux/privesc)
 - [ ] Check for password and file permissions
-  - See [here](https://csbygb.gitbook.io/pentips/linux/privesc/pass-file-perm) for enumeration of this
+  - See [here](https://csbygb.gitbook.io/pentips/linux/privesc/pass-file-perm) and [here](https://csbygb.gitbook.io/pentips/linux/privesc#password-hunting)
 - [ ] Check for Sudo
   - See [here](https://csbygb.gitbook.io/pentips/linux/privesc/sudo)
 - [ ] Check for SUID
@@ -25,3 +33,8 @@
   - See [here](https://csbygb.gitbook.io/pentips/linux/privesc/groups)
 - [ ] Check for Kernel Exploits
   - See [here](https://csbygb.gitbook.io/pentips/linux/privesc/kernel)
+- [ ] Check for homemade scripts
+
+## Other checklists
+
+- [Linux Privesc Checklist - PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md)

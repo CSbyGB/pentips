@@ -136,6 +136,7 @@
   * [PATH Abuse](linux/path.md)
   * [Wildcard Abuse](linux/wildcard.md)
   * [Privileged groups](linux/groups.md)
+  * [Exploit codes Cheat Sheet](linux/cheat-sheet-exploits.md)
 
 ## Windows
 
