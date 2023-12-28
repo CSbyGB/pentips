@@ -57,6 +57,13 @@ Nuclei requires the latest version of GO
 
 - `nuclei -u https://example.com/` (it can be an url or an host)
 
+### Cheat Sheet
+
+- Update templates `nuclei -ut`
+- Launch scan on 10.10.2.4 `nuclei -v -t ssh-pass-auth.yaml 10.10.2.4`
+- Validate your template will work `nuclei -t template.yaml -validate`
+- Launch a specific template against a target `nuclei -v -t ssh-auth-methods.yaml -u <target-ip_or_file-with-target-list>`
+
 ### Nuclei Templates
 
 - [Github repo](https://github.com/projectdiscovery/nuclei-templates)
