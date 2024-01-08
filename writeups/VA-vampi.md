@@ -172,3 +172,10 @@ Using this request we were able to trigger the vulnerability and dos the applica
 ![Denial of service](../.res/2024-01-08-14-32-08.png)  
 
 > Avoid to do this in real context except if it is a request or if you have the authorization of you customer. With these types of attack you are actually impacting the availability of the application.
+
+## Resources
+
+### ReDos
+
+- [Regular expression Denial of Service - ReDoS - Hacktricks](https://book.hacktricks.xyz/pentesting-web/regular-expression-denial-of-service-redos)
+- [The Regular Expression Denial of Service (ReDoS) cheat-sheet - James Davis](https://levelup.gitconnected.com/the-regular-expression-denial-of-service-redos-cheat-sheet-a78d0ed7d865)
