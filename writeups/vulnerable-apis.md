@@ -2,7 +2,7 @@
 
 <!-- 
 TODO
-- https://github.com/erev0s/VAmPI
-- https://github.com/optiv/rest-api-goat
-- https://github.com/snoopysecurity/dvws-node
+- [x] https://github.com/erev0s/VAmPI
+- [ ] https://github.com/optiv/rest-api-goat
+- [ ] https://github.com/snoopysecurity/dvws-node
 -->

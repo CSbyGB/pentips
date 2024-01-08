@@ -175,7 +175,10 @@ Using this request we were able to trigger the vulnerability and dos the applica
 
 ## Resources
 
-### ReDos
+- [OWASP API Securiy TOP 10 - 2023](https://owasp.org/API-Security/editions/2023/en/0x00-header/)
 
-- [Regular expression Denial of Service - ReDoS - Hacktricks](https://book.hacktricks.xyz/pentesting-web/regular-expression-denial-of-service-redos)
+### ReDos - Resources
+
 - [The Regular Expression Denial of Service (ReDoS) cheat-sheet - James Davis](https://levelup.gitconnected.com/the-regular-expression-denial-of-service-redos-cheat-sheet-a78d0ed7d865)
+- [ReDos on OWASP](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)
+- [Regular expression Denial of Service - ReDoS - Hacktricks](https://book.hacktricks.xyz/pentesting-web/regular-expression-denial-of-service-redos)
