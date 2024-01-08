@@ -17,7 +17,7 @@
 - [x] Mass Assignment
 - [x] Excessive Data Exposure through debug endpoint
 - [x] User and Password Enumeration
-- [ ] RegexDOS (Denial of Service)
+- [x] RegexDOS (Denial of Service)
 - [x] Lack of Resources & Rate Limiting
 
 ### Deploy it
