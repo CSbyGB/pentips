@@ -46,7 +46,7 @@ Add a comment this way
 -->
 ```
 
--  You can use [draw.io](https://draw.io) to make your graph and visuals
+- You can use [draw.io](https://draw.io) to make your graph and visuals
 
 ## Tools
 
@@ -58,3 +58,4 @@ Add a comment this way
 - [Marp](https://marp.app/)
 - [VS Codium - VSCodium is a community-driven, freely-licensed binary distribution of Microsoft’s editor VS Code.](https://vscodium.com/)
 - [Visual Studio Code](https://code.visualstudio.com/)
+- [Directives](https://github.com/marp-team/marp/blob/main/website/docs/guide/directives.md) (very useful to see how to set up yourself if you start from scratch)

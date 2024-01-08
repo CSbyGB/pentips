@@ -299,6 +299,8 @@
   * [PS - DomXSS](writeups/PS-DOMXSS.md)
 * [OWASP projects and challenges writeups](writeups/OWASP-writeups.md)
   * [OWASP MAS Crackmes](writeups/OWASP-MAS-Crackmes.md)
+* [Vulnerable APIs](writeups/vulnerable-apis.md)
+  * [Vampi](writeups/VA-vampi.md)
 * [Various Platforms](writeups/various.md)
   * [flAWS 1&2](writeups/various-flaws.md)
 

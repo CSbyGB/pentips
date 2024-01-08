@@ -5,6 +5,26 @@ It comes in a [community free version](https://portswigger.net/burp/communitydow
 It has features and extensions that allow you to customize it.  
 This course is made from my notes of [Agarri's](https://www.agarri.fr/en/) training (that I highly recommend if you have the opportunity) and notes from my practice.
 
+## Use your own projects settings (burp Pro only)
+
+- Launch burp
+- Create a new project and choose "New Project on disk"
+
+![New Project on disk](../.res/2024-01-05-09-12-36.png)
+
+- Click Next and then select "Load from configuration file"
+- Choose your json file and click open
+
+![project settings](../.res/2024-01-05-09-02-39.png)  
+
+- Check the box "Default to the above in future" (if you need this configuration for your other projects)
+
+![Default for projects](../.res/2024-01-05-09-04-38.png)  
+
+- And then click start
+
+## Use your own users settings
+
 ## Regex
 
 Regular expression are really convenient for burp customizations  
@@ -16,7 +36,7 @@ You can use [regex101](https://regex101.com/) to familiarize yourself with regex
 
 ### Change body encoding
 
-- Possible to change the body encorder if you want to change a form to multipart. You just need to right clicj on the request and select "Change Body Encoding"  
+- Possible to change the body encoder if you want to change a form to multipart. You just need to right clicj on the request and select "Change Body Encoding"  
 
 ![Change body encoding](../.res/2023-05-23-17-37-58.png)
 
