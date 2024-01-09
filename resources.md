@@ -69,5 +69,5 @@ There are plenty of lists with weak or leaked passwords that are worth trying fo
 
 - [Damn Vulnerable Graphql Application](https://github.com/dolevf/Damn-Vulnerable-GraphQL-Application)
 
-### Playground
+### Web Apps
 - [Pentest-Ground](https://pentest-ground.com)
