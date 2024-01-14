@@ -184,7 +184,7 @@ Check out this article that explains how to set up [ntlm authentication on burp]
 ![image](https://user-images.githubusercontent.com/96747355/186006632-bc0f20f9-a0af-4775-8b0a-b1a7b346183c.png)  
 - You might need to set up owasp zap as upstream proxy. Check out [this article on nettitude labs](https://labs.nettitude.com/tutorials/how-to-fix-burp-suite-ssltls-connection-problems/) to set it up.
 
-### Burp confidence Level explained
+## Burp confidence Level explained
 
 - Certain: The issue is definitely present.
 - Firm: The issue is probably present, but this could be a false positive.
@@ -192,9 +192,24 @@ Check out this article that explains how to set up [ntlm authentication on burp]
 
 - [Source](https://forum.portswigger.net/thread/issue-type-certain-confirm-and-tentative-what-does-this-mean-b01d4f6d)
 
-### Tool to optimize burp scan
+## Tool to optimize burp scan
 
 - [Burp suite pro scan profiles](https://github.com/TheGetch/Burp-Suite-Pro-Scan-Profiles) is a tool to optimize your burp scan and make them focus on specific vulnerabilities
+
+## Discover Content
+
+Go to Target -> Site map -> Right Click on target -> Engagement tools -> Discover content
+
+It can be useful and less time consuming to select a specific endpoint and the root of the server.  
+
+![Discover content](../.res/2024-01-12-16-00-08.png)  
+
+Add the settings you wish (Make sure that this option is checked "Add discovered content to suite site map" ) and then click on "Session is not running".  
+
+### More infos on discover content
+
+- [Burpsuite - Lisandre: scroll straight to "Spider / Discover Content (hidden pages or directories)"](https://lisandre.com/cheat-sheets/burp-suite#target)
+- [How good is Burp’s API Scanning? - Chandrapal Badshah](https://medium.com/burpsuite-guide/how-good-is-burps-api-scanning-558eaea8bddf)
 
 ## Tips on specific attacks
 

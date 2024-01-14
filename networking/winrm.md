@@ -15,7 +15,9 @@ The Windows Remote Management (WinRM) is a simple Windows integrated remote mana
 ### Evil-winrm
 
 - `sudo gem install evil-winrm` install
-- `evil-winrm -i 10.129.201.248 -u user -p password`
+- `evil-winrm -i <target-IP> -u <username> -p <password>` Usage
+- `evil-winrm -i 10.129.201.248 -u user -p password` Example
+- 
 
 ### Crackmapexec
 

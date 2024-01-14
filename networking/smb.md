@@ -97,6 +97,7 @@ With version 3, the Samba server gained the ability to be a full member of an Ac
 ![image](https://user-images.githubusercontent.com/96747355/175833616-0eb455e8-ed55-48e6-abfb-64908fac28a8.png)  
 - Connect anonymously `smbclient --no-pass \\\\10.10.10.100\\SHARE` or `smbclient //10.10.10.134/SHARE`
 - Use `-N` option in smbclient to suppress the password prompt
+- `smbclient -U user \\\\10.129.42.197\\SHARENAME`
 
 ### SMBmap
 

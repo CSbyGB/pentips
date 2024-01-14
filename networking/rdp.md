@@ -32,6 +32,6 @@ The Remote Desktop Protocol (RDP) is a protocol developed by Microsoft for remot
 
 ### Connect to RDP
 
-- `xfreerdp /u:cry0l1t3 /p:"P455w0rd!" /v:10.129.201.248`
+- `xfreerdp /v:<target-IP> /u:<username> /p:<password>` usage. Example `xfreerdp /u:cry0l1t3 /p:"P455w0rd!" /v:10.129.201.248`
 - You can also use [Remmina](https://remmina.org/)
 - Or rdesktop `rdesktop 10.0.0.251`

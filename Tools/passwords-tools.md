@@ -13,14 +13,16 @@ Cewl can be used to generate a wordlist from a website, this can make you gain a
 ## Username generator
 
 During the enumeration phase we might find users last and first name. Username generator can use thoses to generate usernames.  
-- `python3 username_generator.py -w wordlist > users.txt` will send in users.txt a list o usernames generated with a wordlist 
+
+- `python3 username_generator.py -w wordlist > users.txt` will send in users.txt a list o usernames generated with a wordlist
 
 ## Crunch
 
 Crunch will generate a word based on criterias you will need.  
+
 - `crunch -h` will show help and options
 - Usage: `crunch min max pattern -o outfile`
-- `crunch 8 8 01234abcd -o pass.txt` you will get a list of 8 chars word containing the chars in the pattern 01234abcd 
+- `crunch 8 8 01234abcd -o pass.txt` you will get a list of 8 chars word containing the chars in the pattern 01234abcd
 - More advanced options
   - `@` lower case alpha characters
   - `,` upper case alpha characters
@@ -44,6 +46,7 @@ done
 ## CUPP
 
 CUPP is a very cool tool that will ask you question about your target in order to generate a personnalized wordlist for your target. It can use different languages  
+
 - `python3 cupp.py -i` launch this to start answering question about the target
 
 ## hash-identifier
@@ -76,6 +79,7 @@ CUPP is a very cool tool that will ask you question about your target in order t
 19800 | Kerberos 5, etype 17, Pre-Auth                   | Network Protocols
 19900 | Kerberos 5, etype 18, Pre-Auth                   | Network Protocols
 ```
+
 - the flag `-a` will set the attack mode
 - We can either give it a single hash or a file
 - Adding `--show` will show the crack value if the hash is cracked
@@ -174,13 +178,13 @@ John will output the cracked passwords to the console and the file "john.pot" (~
 
 Incremental Mode is an advanced John mode used to crack passwords using a character set. It is a hybrid attack, which means it will attempt to match the password by trying all possible combinations of characters from the character set. This mode is the most effective yet most time-consuming of all the John modes. This mode works best when we know what the password might be, as it will try all the possible combinations in sequence, starting from the shortest one. This makes it much faster than the brute force attack, where all combinations are tried randomly. Moreover, the incremental mode can also be used to crack weak passwords, which may be challenging to crack using the standard John modes. The main difference between incremental mode and wordlist mode is the source of the password guesses. Incremental mode generates the guesses on the fly, while wordlist mode uses a predefined list of words. At the same time, the single crack mode is used to check a single password against a hash.  
 
-- `john --incremental <hash_file>` read the hashes in the specified hash file and then generate all possible combinations of characters, starting with a single character and incrementing with each iteration. The default character set is limited to a-zA-Z0-9.  If we attempt to crack complex passwords with special characters, we need to use a custom character set. 
+- `john --incremental <hash_file>` read the hashes in the specified hash file and then generate all possible combinations of characters, starting with a single character and incrementing with each iteration. The default character set is limited to a-zA-Z0-9.  If we attempt to crack complex passwords with special characters, we need to use a custom character set.  
 
 ### Rule-Based Attack
 
 - John the ripper has a config file that contains rule sets, which is located at /etc/john/john.conf or /opt/john/john.conf depending on your distro or how john was installed. You can read /etc/john/john.conf and look for List.Rules to see all the available rules:  
 `cat /etc/john/john.conf|grep "List.Rules:" | cut -d"." -f3 | cut -d":" -f2 | cut -d"]" -f1 | awk NF`  
-- We can create a rule and add it to the conf file, for example this rule will add a symbol at the beginning of the word and a number at the end: 
+- We can create a rule and add it to the conf file, for example this rule will add a symbol at the beginning of the word and a number at the end:  
 
 ```bash
 [List.Rules:My-own-rule]
@@ -227,7 +231,7 @@ john --wordlist=<wordlist.txt> server_doc.hash
 
 ### SSH
 
-- `hydra -L users -P pass 10.10.4.129 -t 4 ssh ` will use the user list and password list mentioned if you put minus l or minus p you can just specify one user or one password.
+- `hydra -L users -P pass 10.10.4.129 -t 4 ssh` will use the user list and password list mentioned if you put minus l or minus p you can just specify one user or one password.
 **OR**
 - `hydra -L users.lst -P /path/to/wordlist.txt ssh://10.10.x.x -v`
 - `hydra -L usernames-list.txt -p Spring2021 ssh://10.1.1.10` Password spraying attack
@@ -243,6 +247,14 @@ john --wordlist=<wordlist.txt> server_doc.hash
 ### HTTP logins
 
 - `hydra -l admin -P 500-worst-passwords.txt 10.10.x.x http-get-form "/login-get/index.php:username=^USER^&password=^PASS^:S=logout.php" -f`
+
+### RDP
+
+- `hydra -L user.list -P password.list rdp://10.129.42.197`
+
+### SMB
+
+- `hydra -L user.list -P password.list smb://10.129.42.197`
 
 ## RDPassSpray
 
@@ -279,7 +291,7 @@ NL$KM:0cef728a437eb45555beed92c6d90111da01e1c2e38393d6a9b3754264f643864b98768792
 [*] Cleaning up... 
 ```
 
-- You can also work only with SAM and SYSTEM `secretsdump.py local -sam SAM -system SYSTEM `
+- You can also work only with SAM and SYSTEM `secretsdump.py local -sam SAM -system SYSTEM`
 
 ## Mentalist
 
@@ -288,8 +300,9 @@ NL$KM:0cef728a437eb45555beed92c6d90111da01e1c2e38393d6a9b3754264f643864b98768792
 
 ## Resources
 
-{% embed url="https://github.com/digininja/CeWL" %} CeWL {% endembed %}
-{% embed url="https://github.com/shroudri/username_generator" %} Username Generator {% endembed %}
-{% embed url="https://www.kali.org/tools/crunch/" %} Crunch {% endembed %}
-{% embed url="https://github.com/Mebus/cupp" %} CUPP - Common User Passwords Profiler {% endembed %}
-{% embed url="https://www.kali.org/tools/hash-identifier/" %} hash-identifier on kali {% endembed %}
+{% embed url="https://github.com/digininja/CeWL" %} CeWL {% endembed %}  
+{% embed url="https://github.com/shroudri/username_generator" %} Username Generator {% endembed %}  
+{% embed url="https://www.kali.org/tools/crunch/" %} Crunch {% endembed %}  
+{% embed url="https://github.com/Mebus/cupp" %} CUPP - Common User Passwords Profiler {% endembed %}  
+{% embed url="https://www.kali.org/tools/hash-identifier/" %} hash-identifier on kali {% endembed %}  
+{% embed url="https://hydra.cc/docs/intro/" %} Hydra {% endembed %}

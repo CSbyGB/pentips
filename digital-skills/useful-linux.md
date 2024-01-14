@@ -109,6 +109,10 @@ This annoying message when you need something that is not installed.
 
 - `sudo apt install ./packet.deb`
 
+### Search for a package
+
+- `apt-cache search package-name` example `apt-cache search mingw`
+
 ## Unzip
 
 - If you accidentally unzipped a file and want to delete all the files you just unzipped `unzip -Z -1 <filename.zip> | xargs -I{} rm -v {}`
