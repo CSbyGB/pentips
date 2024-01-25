@@ -15,15 +15,6 @@ The Remote Desktop Protocol (RDP) is a protocol developed by Microsoft for remot
 - `nmap -sV -sC 10.129.201.248 -p3389 --script rdp*`
 - `nmap -sV -sC 10.129.201.248 -p3389 --packet-trace --disable-arp-ping -n`
 
-### RDP Security check
-
-#### Installation
-
-- `sudo cpan` type yes when prompted
-  - `install Encoding::BER`
-- `git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git && cd rdp-sec-check`
-- `./rdp-sec-check.pl 10.129.201.248`
-
 ### Password Attack
 
 #### hydra

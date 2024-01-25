@@ -8,7 +8,7 @@
 Cewl can be used to generate a wordlist from a website, this can make you gain a lot of time and it was definitely helpful for me on a lot of CTF ;)  
 
 - `cewl http://website/ > pass.txt`
-- `cewl -w pass.txt -m 8 http://website` -m 8 will specify to find words of 8 chars or more
+- `cewl -w pass.txt -m 8 http://website` -m 8 will specify to find words of 8 chars or more we can also use `--lowecase`
 
 ## Username generator
 
@@ -87,6 +87,21 @@ CUPP is a very cool tool that will ask you question about your target in order t
 - Example: `hashcat -a 3 -m 0 HASH-HERE ?d?d?d`
 
 ### Using hashcat with rules
+
+> Source: HTB Academy
+
+Hashcat uses a specific syntax for defining characters and words and how they can be modified. The complete list of this syntax can be found in the official documentation of Hashcat. However, the ones listed below are enough for us to understand how Hashcat mutates words.  
+
+|Function|Description|
+|--------|-----------|
+|:|Do nothing.|
+|l|Lowercase all letters.|
+|u|Uppercase all letters.|
+|c|Capitalize the first letter and lowercase others.|
+|sXY|Replace all instances of X with Y.|
+|$!|Add the exclamation character at the end.|
+
+Each rule is written on a new line which determines how the word should be mutated.
 
 - In kali rules are located in `/usr/share/hashcat/rules`
 - `hashcat -a 0 -m 1000 <HASH-HERE> -r /usr/share/hashcat/rules/OneRuleToRuleThemAll.rule /usr/share/wordlists/rockyou.txt`

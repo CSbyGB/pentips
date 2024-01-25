@@ -251,15 +251,14 @@ The main ticket that you will see is a ticket-granting ticket these can come in 
 
 ### Learn about AD
 
-*Note: If you want a nice crash course about Active Directory (with the lab setup) I really recommend this one by TCM-Security Academy:*
-{% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} TCM-Security Academy {% endembed %}
+{% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} TCM-Security Academy {% endembed %}  
 {% embed url="https://academy.hackthebox.com/course/preview/active-directory-ldap" %} HTB Academy - Active Directory LDAP {% endembed %}
 
 ### Make your own Practice lab
 
-{% embed url="https://www.microsoft.com/en-us/evalcenter/" %} Microsoft Evaluation Center {% endembed %}
-{% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise" %} Windows 10 {% endembed %}
-{% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019" %} Windows Server 2019 {% endembed %}
+{% embed url="https://www.microsoft.com/en-us/evalcenter/" %} Microsoft Evaluation Center {% endembed %}  
+{% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise" %} Windows 10 {% endembed %}  
+{% embed url="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019" %} Windows Server 2019 {% endembed %}  
 *Note: To unlock Win Server 2019 and access the login screen from virtual box, the combinaison is ctrl+suppr*
-{% embed url="https://www.kali.org/" %} Kali Linux {% endembed %}
-{% embed url="https://tryhackme.com/room/breachingad" %}TryHackMe - Breaching AD {% endembed %}
+{% embed url="https://www.kali.org/" %} Kali Linux {% endembed %}  
+{% embed url="https://tryhackme.com/room/breachingad" %}TryHackMe - Breaching AD {% endembed %}  

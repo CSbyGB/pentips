@@ -109,9 +109,13 @@ With version 3, the Samba server gained the ability to be a full member of an Ac
 #### Installation
 
 ```bash
+sudo apt install samba-client
+sudo apt-get install samba-common-bin
 git clone https://github.com/cddmp/enum4linux-ng.git
 cd enum4linux-ng
+python3 -m venv .
 pip3 install -r requirements.txt
+source bin/activate
 ```
 
 #### Commands
