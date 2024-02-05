@@ -1,5 +1,15 @@
 # Useful tools and command in linux for general tasks
 
+## Combine multiple commands
+
+> goes further than just a pipe
+
+You can execute a command on the result of another command using `command $(results of other commands)` You need to put inside the parenthesis the command you wish use the result of.
+
+### Examples
+
+- `kill $(ps -aux | grep 'chromium'| awk '{print $2}')` kill all process with chromium in the name (because killall chromium does not work)
+
 ## Change your hostname
 
 - `sudo nano /etc/hostname`

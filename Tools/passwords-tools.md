@@ -105,6 +105,7 @@ Each rule is written on a new line which determines how the word should be mutat
 
 - In kali rules are located in `/usr/share/hashcat/rules`
 - `hashcat -a 0 -m 1000 <HASH-HERE> -r /usr/share/hashcat/rules/OneRuleToRuleThemAll.rule /usr/share/wordlists/rockyou.txt`
+- `hashcat --force password.list -r custom.rule --stdout | sort -u > mut_password.list` generate a new list `mut_password.list` from another list `password.list` and a rule file `custom.rule`
 
 ## John the Ripper
 

