@@ -50,7 +50,7 @@
 * [Enumeration](web-pentest/enumeration.md)
 * [OWASP Top 10](web-pentest/owaspTop10.md)
 * [General Methodo & Misc Tips](web-pentest/Misc-Tips.md)
-* [API](web-pentest/API.md)
+* [Web Services and API](web-pentest/API.md)
 * [Vunerabilities and attacks](web-pentest/webvulns.md)
   * [Clickjacking](web-pentest/clickjacking.md)
   * [CORS (Misconfigurations)](web-pentest/cors.md)
