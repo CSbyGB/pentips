@@ -60,6 +60,7 @@
   * [Template Injection (client and server side)](web-pentest/template-injection.md)
 * [Exposed git folder](web-pentest/exposed-git.md)
 * [Docker exploitation and Docker vulnerabilities](web-pentest/docker-exploitation.md)
+* [MFA bypass](web-pentest/mfa-bypass.md)
 * [Websockets](web-pentest/websockets.md)
 
 ## Mobile App Pentest
@@ -205,9 +206,11 @@
 * [OSINT Tools](OSINT/tools.md)
 * [Write an OSINT report](OSINT/report.md)
 
-## Flipper Zero
+## Pentester hardware toolbox
 
-* [Flipper Zero](flipperZero/flipper.md)
+* [Flipper Zero](pentester-toolbox/flipper.md)
+* [OMG cables](pentester-toolbox/omgcables.md)
+* [Rubber ducky](pentest-toolbox/rubberducky.md)
 
 ## Post Exploitation
 
@@ -296,6 +299,8 @@
   * [Web Labs Basic](/writeups/vulnmachine-web-basic.md)
   * [Web Labs Intermediate](writeups/vulnmachine-web-intermediate.md)
   * [Cloud Labs](/writeups/vulnmachines-cloud.md)
+* [Mobile Hacking Lab](/writeups/MHLwriteups.md)
+  * [Mobile Hacking Lab - Lab - Config Editor](/writeups/MHL-Lab-config.md)
 * [Portswigger Web Security Academy Writeups](writeups/PSwriteups.md)
   * [PS - DomXSS](writeups/PS-DOMXSS.md)
 * [OWASP projects and challenges writeups](writeups/OWASP-writeups.md)
