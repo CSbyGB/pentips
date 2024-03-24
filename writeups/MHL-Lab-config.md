@@ -2,7 +2,7 @@
 
 ![Config Editor](../.res/2024-03-14-15-35-40.png)  
 
-- [Link to lab on Mobile Hackong Lab](https://www.mobilehackinglab.com/course/lab-config-editor-rce)
+- [Link to lab on Mobile Hacking Lab](https://www.mobilehackinglab.com/course/lab-config-editor-rce)
 
 ## Instructions
 
