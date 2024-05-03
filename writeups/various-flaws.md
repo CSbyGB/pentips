@@ -98,7 +98,7 @@ access_key AKIAJ366LIPB4IJKT7SA
 secret_access_key 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
 ```
 
-When accessing the provided link we are prompter for credentials  
+When accessing the provided link we are prompted for credentials  
 
 ![Request to new url](../.res/2023-07-15-14-40-39.png)  
 

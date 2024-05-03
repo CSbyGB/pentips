@@ -269,6 +269,114 @@ C:\Program Files\Windows PowerShell\*
 
 - [Check out LOLBAS project](https://lolbas-project.github.io/)
 
+## Security configuration review
+
+### Access control
+
+```powershell
+# List all local user accounts
+Get-WmiObject -Class Win32_UserAccount | Select-Object Name,Disabled
+
+# List all local groups
+Get-WmiObject -Class Win32_Group | Select-Object Name,LocalAccount
+
+# Check permissions on sensitive files or folders
+Get-Acl -Path C:\Path\To\FileOrFolder
+```
+
+### Password policy
+
+```powershell
+# Retrieve password policy settings
+Get-ADDefaultDomainPasswordPolicy
+
+# Check for password expiration settings
+Get-ADDefaultDomainPasswordPolicy | Select-Object MaxPasswordAge
+
+# Check for password complexity requirements
+Get-ADDefaultDomainPasswordPolicy | Select-Object ComplexityEnabled
+```
+
+### Patch management
+
+```powershell
+# Check for installed updates
+Get-HotFix
+
+# List missing updates
+(Get-WindowsUpdate).Count
+```
+
+### Firewall Configuration
+
+```powershell
+# List all firewall rules in a file
+Get-NetFirewallRule | Out-File C:\Path\To\firewall-rules.txt
+
+# Check specific rule properties
+Get-NetFirewallRule -DisplayName "RuleName"
+```
+
+### Antivirus and anti-malware
+
+```powershell
+# Check antivirus status
+Get-WmiObject -Namespace "root\SecurityCenter2" -Class AntiVirusProduct
+
+# Check last scan time
+Get-CimInstance -Namespace "root\SecurityCenter2" -ClassName AntiVirusProduct
+```
+
+### Event logging review
+
+```powershell
+# List security event logs
+Get-EventLog -LogName Security -Newest 100
+
+# Check for specific event IDs related to security incidents
+Get-EventLog -LogName Security | Where-Object {$_.EventID -eq 4625}
+```
+
+### Encryption review
+
+```powershell
+# Check BitLocker status
+Get-BitLockerVolume
+
+# Check BitLocker encryption method
+Get-BitLockerVolume | Select-Object MountPoint,EncryptionMethod
+```
+
+### Remote Access Review
+
+```powershell
+# List RDP settings
+Get-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections'
+
+# Check RDP port configuration
+Get-NetFirewallRule -DisplayName "Remote Desktop*"
+```
+
+### Service configuration
+
+```powershell
+# List all services
+Get-Service
+
+# Check service startup type
+Get-Service | Select-Object Name,StartType
+```
+
+### Backup and recovery
+
+```powershell
+# Check backup status
+Get-WBJob
+
+# Verify backup destination
+Get-WBBackupTarget
+```
+
 ## Resources
 
 {% embed url="https://docs.microsoft.com/en-us/powershell/scripting/learn/ps101/07-working-with-wmi?view=powershell-7.1" %} Working with wmic {% endembed %}  

@@ -36,9 +36,12 @@ It is a work in progress and it will be filled up asap with my notes and on the 
 
 ## Disclamer
 
-❗🔴
-**Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in any illegal activity using these resources**
-❗🔴
+⚠️❗🔴⚠️  
+**This is provided for educational and informational purpose only  
+"Pentesting" or other similar terms refer to legal intrusion tests that aim to identify vulnerabilities and improve cybersecurity, rather than for malicious purposes.**
+
+**Everything used and mentioned here has to be used for an ETHICAL purpose, do not engage in any illegal activity using these resources**  
+⚠️❗🔴⚠️
 
 ## More about CSbyGB
 

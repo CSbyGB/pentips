@@ -174,3 +174,60 @@ function set-title() {
 - Then to set a title you will just need to do `set-title mytitle`
 
 > [Source](https://code.mendhak.com/set-terminal-title/)
+
+## Record a video from command line with ffmpeg
+
+### Choose an external webcam if you have multiple
+
+- Install `v4l2-ctl`
+
+```bash
+sudo apt-get update
+sudo apt-get install v4l-utils
+```
+
+- List your available cameras
+
+```bash
+v4l2-ctl --list-devices
+# You should get something similar to this
+Webcam intégrée: intégrée (usb-0000:00:14.0-8):
+    /dev/video0
+    /dev/video1
+
+HD Webcam USB: (usb-0000:00:14.0-4):
+    /dev/video2
+    /dev/video3
+```
+
+### Start recording
+
+- `ffmpeg -f v4l2 -i /dev/video2 output.mkv` start the recording
+- `ffmpeg -f v4l2 -framerate 30 -video_size 1280x720 -i /dev/video2 -c:v libx264 -preset fast -pix_fmt yuv420p output.mp4` with more options
+  - `-framerate 30` image per second
+  - `-video_size 1280x720` resolution of capture
+  - `-c:v libx264` specify codec (H.264 in this example).
+  - `-preset fast` will compromise between encoding speed and quality
+  - `-pix_fmt yuv420p` define pixel format
+
+You can also add `-t 00:00:20` if you want a 20 second video. Also `-an` will make sure that no audio is recorded if you only want video this way the output file will only have video.
+
+And when you are done if you did not set a timer you can just ctrl c.
+
+If you only want to visualize without recording (to do your setup) you can use `ffplay -f v4l2 -i /dev/video2`
+
+Unfortunately I could not find any solution to both visualize and record except by using OBS or another software :)
+
+### Capture your screen
+
+- Capture the whole screen `ffmpeg -f x11grab -r 30 -s $(xdpyinfo | grep 'dimensions:'| awk '{print $2}') -i :0.0 -vcodec libx264 -preset ultrafast -crf 18 output.mp4`
+  - `-f x11grab` : Tells ffmpeg to use X11 for screen capture (for Linux systems).
+  - `-r 30` : Sets the refresh rate of the recording to 30 frames per second.
+  - `-s $(xdpyinfo | grep 'dimensions:'| awk '{print $2}')` : Uses the current screen resolution as the recording dimension. xdpyinfo provides information about the X display, and this command extracts the screen resolution.
+  - `-i :0.0` : Specifies the screen source to capture. :0.0 refers to the main display.
+  - `-vcodec libx264` : Uses the H.264 video codec for the recording.
+  - `-preset ultrafast` : Uses an encoding preset for maximum speed, at the expense of file size (useful for minimizing delay during recording).
+  - `-crf 18` : Sets the encoding quality factor, where a lower value means better quality (and therefore a larger file). 18 is a good balance between quality and size.
+  - `output.mp4` : The output file
+
+- Recording a Specific Portion of the Screen `ffmpeg -f x11grab -r 30 -s 1280x720 -i :0.0+0,0 -vcodec libx264 -preset ultrafast -crf 18 output.mp4`

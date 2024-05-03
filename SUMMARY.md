@@ -85,6 +85,7 @@
 ## Hardware Pentest
 
 * [ATM](hardware-pentest/atm.md)
+* [IoT](hardware-pentest/IoT.md)
 
 ## Secure Code Review
 
@@ -142,6 +143,7 @@
 
 ## Windows
 
+* [Offensive windows](windows/offensive-win.md)
 * [Enumeration and general Win tips](windows/initial-foothold.md)
 * [Privilege Escalation](windows/privesc.md)
 * [Active Directory](windows/Active-Directory.md)
