@@ -323,6 +323,10 @@
 * [Git Tips](/digital-skills/git-tips.md)
 * [Obsidian](/digital-skills/obsidian.md)
 
+## Durable skills
+
+* [Roue des compétences durables / Durable skills wheel](durable-skills/wheel.md)
+
 ## Projects
 
 * [Projects](projects/intro.md)
