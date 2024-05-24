@@ -159,7 +159,7 @@ Set-ADAccountPassword -Identity "t2_melanie.davies" -Reset -NewPassword $Passwor
 
 ## Bloodhound - Resources
 
-- [Bloodhound - Lisandre](https://lisandre.com/archives/2186)
+- [Bloodhound - Lisandre](https://lisandre.com/cheat-sheets/bloodhound)
 - [Bloodhound: A Pentester’s best friend by Warren Butterworth](https://medium.com/@warrenbutterworth/bloodhound-a-pentesters-best-friend-d8467aa6c50)
 - [Cypher Query Language](https://neo4j.com/developer/cypher/)
 - [Edges in Bloodhound](https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html)
