@@ -6,8 +6,8 @@
 
 ## Credits
 
-- [Gabrielle Botbol](https://www.linkedin.com/in/gabriellebotbol/) - Co Founder & Director / Cybersecurity Consultant
-- [Ayate Leshaf](https://www.linkedin.com/in/leshafayate/) - Co Founder & Learning Designer
+- [Gabrielle Botbol](https://www.linkedin.com/in/gabriellebotbol/) - Co Founder & CEO @ CS by GB / Cybersecurity Consultant
+- [Ayate Leshaf](https://www.linkedin.com/in/leshafayate/) - Co Founder & Learning Designer @ CS by GB
 
 ## Vue globale
 
