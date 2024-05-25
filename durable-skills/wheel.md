@@ -4,6 +4,11 @@
 
 > Ce document est en licence Creative Commons, n'hésitez pas à contribuer.
 
+## Credits
+
+- [Gabrielle Botbol](https://www.linkedin.com/in/gabriellebotbol/) - Co Founder & Director / Cybersecurity Consultant
+- [Ayate Leshaf](https://www.linkedin.com/in/leshafayate/) - Co Founder & Learning Designer
+
 ## Vue globale
 
 ![vue-globale](../.res/2024-05-17-16-13-37.png)
