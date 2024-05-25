@@ -1,10 +1,14 @@
 # Roue des compétences durables / Durable skills Wheel
 
+Cette roue a été créée suite à une reflexion sur la valorisation des compétences durables dans les métiers de la cybersécurité.  
+Cet outil a pour but d'identifier et d'évaluer les compétences durables dans notre pratique professionnelle.  
+Il est créé par et pour la communauté et évoluera avec la contribution de tous.  
+
 ![Creative Commons](../.res/2024-05-17-16-08-14.png)
 
 > Ce document est en licence Creative Commons, n'hésitez pas à contribuer.
 
-## Credits
+## Créé par
 
 - [Gabrielle Botbol](https://www.linkedin.com/in/gabriellebotbol/) - Co Founder & CEO @ CS by GB
 - [Ayate Leshaf](https://www.linkedin.com/in/leshafayate/) - Co Founder & Executive Director @ CS by GB
@@ -21,7 +25,17 @@
 
 ![Méta Compétences](../.res/2024-05-17-16-41-51.png)  
 
+- L’acuité économique et sociale pour être capable de comprendre les enjeux business et sociaux.
+- La communication, pour clarifier, vulgariser, échanger au sein et à l’extérieur d’une équipe pour plus de transparence et de confiance.
+- La résolution de problèmes pour mieux appréhender les diverses situations liées à cybersécurité.
+- L’adaptabilité pour rester efficaces face à un paysage de menaces dynamique et un environnement technologique en constante évolution. 
+- Le travail en équipe pour collaborer et construire ensemble des solutions.
+- La pensée critique pour questionner évaluer et analyser les situations de façon éthique.
+
+
 ## Évaluation par méta compétences
+
+Exemples de compétences développées par professionnel pour chacune des méta-compétences.  
 
 ![Communication](../.res/2024-05-17-16-25-40.png)  
 
@@ -36,6 +50,15 @@
 ![Acuité économique et sociale](../.res/2024-05-17-16-29-03.png)  
 
 ## Impacts
+
+Ici il s'agit des impacts des compétences dans la pratique des métiers de la cybersécurité.  
+Toutes les compétences durables maîtrisées que l’on vient de voir ont un impact sur le long terme dans le fonctionnement mais surtout dans la sécurisation.  
+Par exemple, elles peuvent offrir, une meilleure gestion des incidents de sécurité grâce à une bonne communication, un déploiement rapide des équipes et des solutions et une collaboration interdisciplinaire.  
+Aussi, nous pouvons avoir une réduction des coûts liés aux failles de sécurité en ayant une approche proactive, une bonne connaissance du contexte de l’entreprise, une stratégie de formation interne en fonction des futurs besoins.  
+Ensuite, la productivité pourrait être améliorée en reconnaissant toutes les compétences tant techniques que durables et permettre l’implication authentique des professionnels.  
+Pour l’impact sur le renforcement de la confiance des clients et des partenaires, rendre la communication moins opaque en clarifiant le plus possible la technique et à quoi elle sert.  
+Pour l’impact sur la préparation aux défis futurs, l’anticipation via l’analyse des risques et le développement d’un état d’esprit tourné vers le futur souhaité.  
+Et enfin pour l’impact sur la réduction de l’impact social des cyberattaques, le renforcement de politique de securité by design, faire de la cybersécurité une culture populaire et avoir une vision à long terme des politiques de sécurité pour devancer les cybercriminels.  
 
 ![Impacts](../.res/2024-05-17-16-43-01.png)  
 
