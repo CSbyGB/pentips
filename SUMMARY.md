@@ -325,7 +325,7 @@
 
 ## Durable skills
 
-* [Roue des compétences durables / Durable skills wheel](durable-skills/wheel.md)
+* [Durable skills wheel/Roue des compétences durables](durable-skills/wheel.md)
 
 ## Projects
 
