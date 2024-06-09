@@ -10,7 +10,7 @@
 Pentester, Cybersecurity Blogger and Advocate for CYBEREDUCATION FOR ALL.  
 
 🤓📅  
-Over 9 years of experience in Information Technology, including 4 years as Pentester  
+Over 10 years of experience in Information Technology, including 5 years as Pentester  
 
 💻 , 🌐, 📖, 🤔  
 Passionate about cybersecurity, approaching it in a holistic way encourages me for lifelong learning and sharpens my critical thinking skills.  
