@@ -1,4 +1,77 @@
-# Roue des compétences durables / Durable skills Wheel
+# Durable skills Wheel
+> Français en dessous
+
+This wheel was created as a result of a reflection on the value of sustainable skills in the cybersecurity professions.  
+The aim of this tool is to identify and evaluate sustainable skills in our professional practice.  
+It has been created by and for the community, and will evolve with everyone's contribution. 
+
+![Creative Commons](../.res/2024-05-17-16-08-14.png)
+
+> This document is licensed under a Creative Commons license, so don't hesitate to contribute.
+
+## Created by
+
+- [Gabrielle Botbol](https://www.linkedin.com/in/gabriellebotbol/) - Co Founder & CEO @ CS by GB
+- [Ayate Leshaf](https://www.linkedin.com/in/leshafayate/) - Co Founder & Executive Director @ CS by GB
+
+## Global view
+
+![Global view](https://github.com/CSbyGB/pentips/assets/96747355/0fb02d46-70b9-4e4a-b663-7f74cfc63164)
+
+- Central Ellipse: sustainable meta skills necessary in cybersecurity
+- Second Ellipse: skills developed in practice that stem from the meta skills
+- Outer Ellipse: impacts resulting from these skills to influence optimal team functioning and practices
+
+## Meta skills
+
+![Meta skills](https://github.com/CSbyGB/pentips/assets/96747355/ad975196-8741-4827-842a-d9c57870cf98)
+
+- Economic and social acuity to understand business and social issues.
+- Communication to clarify, simplify, and exchange information within and outside a team for greater transparency and trust.
+- Problem-solving to better handle various cybersecurity situations.
+- Adaptability to remain effective in the face of a dynamic threat landscape and an ever-evolving technological environment.
+- Team work to collaborate and build solutions together.
+- Critical thinking to question, evaluate, and analyze situations ethically.
+
+## Evaluation by Meta Skills
+
+Examples of skills developed by professionals for each of the meta skills.
+
+![Communication](https://github.com/CSbyGB/pentips/assets/96747355/759290a9-9fe7-4dfd-97e3-55e48968f204)  
+
+![Problem Solving](https://github.com/CSbyGB/pentips/assets/96747355/8d9b41dc-db1a-43a8-a63c-7fc24cc90ea3)  
+
+![Adaptability](https://github.com/CSbyGB/pentips/assets/96747355/8d7444a8-d372-4e50-8291-5ac4a641259b)  
+
+![Team Work](https://github.com/CSbyGB/pentips/assets/96747355/df985de6-1571-4016-8e39-9d7b24772707)  
+
+![Critical thinking](https://github.com/CSbyGB/pentips/assets/96747355/254556ff-1714-4af6-b490-73ce52b7d667)  
+
+![Economic & Social Acuity](https://github.com/CSbyGB/pentips/assets/96747355/f122fda0-e0e3-4e4d-ae84-529d6bb7759c)  
+
+## Impacts
+
+Here, we discuss the impacts of skills on cybersecurity professions in practice.
+All the sustainable skills we have mastered have a long-term impact on operations, but especially on security.
+For example, these skills can provide better security incident management through effective communication, rapid deployment of teams and solutions, and interdisciplinary collaboration.
+Additionally, we can reduce costs related to security breaches by adopting a proactive approach, having a good understanding of the company's context, and developing an internal training strategy based on future needs.
+Productivity could also be improved by recognizing both technical and sustainable skills, allowing for genuine professional engagement.
+To enhance client and partner trust, we need to make communication less opaque by clarifying technical aspects and their purposes as much as possible.
+For future challenges, anticipation through risk analysis and developing a forward-thinking mindset is crucial.
+Finally, to reduce the social impact of cyberattacks, we need to strengthen security-by-design policies, make cybersecurity a popular culture, and adopt a long-term vision for security policies to stay ahead of cybercriminals.
+
+![Impacts](https://github.com/CSbyGB/pentips/assets/96747355/bf6f46f3-aaa1-4551-b7d8-dec8770ff322)
+
+## Global Summary
+
+![Global Summary](https://github.com/CSbyGB/pentips/assets/96747355/c8c6fac5-de47-4fdf-a548-34e446508eb6)
+
+## Resources
+
+> See below
+
+# Roue des compétences durables
+> English above
 
 Cette roue a été créée suite à une reflexion sur la valorisation des compétences durables dans les métiers de la cybersécurité.  
 Cet outil a pour but d'identifier et d'évaluer les compétences durables dans notre pratique professionnelle.  
@@ -31,7 +104,6 @@ Il est créé par et pour la communauté et évoluera avec la contribution de to
 - L’adaptabilité pour rester efficaces face à un paysage de menaces dynamique et un environnement technologique en constante évolution. 
 - Le travail en équipe pour collaborer et construire ensemble des solutions.
 - La pensée critique pour questionner évaluer et analyser les situations de façon éthique.
-
 
 ## Évaluation par méta compétences
 
