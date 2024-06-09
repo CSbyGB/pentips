@@ -51,13 +51,13 @@ Examples of skills developed by professionals for each of the meta skills.
 
 ## Impacts
 
-Here, we discuss the impacts of skills on cybersecurity professions in practice.
-All the sustainable skills we have mastered have a long-term impact on operations, but especially on security.
+Here, we discuss the impacts of skills on cybersecurity professions in practice.  
+All the sustainable skills we have mastered have a long-term impact on operations, but especially on security.  
 For example, these skills can provide better security incident management through effective communication, rapid deployment of teams and solutions, and interdisciplinary collaboration.
-Additionally, we can reduce costs related to security breaches by adopting a proactive approach, having a good understanding of the company's context, and developing an internal training strategy based on future needs.
-Productivity could also be improved by recognizing both technical and sustainable skills, allowing for genuine professional engagement.
-To enhance client and partner trust, we need to make communication less opaque by clarifying technical aspects and their purposes as much as possible.
-For future challenges, anticipation through risk analysis and developing a forward-thinking mindset is crucial.
+Additionally, we can reduce costs related to security breaches by adopting a proactive approach, having a good understanding of the company's context, and developing an internal training strategy based on future needs.  
+Productivity could also be improved by recognizing both technical and sustainable skills, allowing for genuine professional engagement.  
+To enhance client and partner trust, we need to make communication less opaque by clarifying technical aspects and their purposes as much as possible.  
+For future challenges, anticipation through risk analysis and developing a forward-thinking mindset is crucial.  
 Finally, to reduce the social impact of cyberattacks, we need to strengthen security-by-design policies, make cybersecurity a popular culture, and adopt a long-term vision for security policies to stay ahead of cybercriminals.
 
 ![Impacts](https://github.com/CSbyGB/pentips/assets/96747355/bf6f46f3-aaa1-4551-b7d8-dec8770ff322)
