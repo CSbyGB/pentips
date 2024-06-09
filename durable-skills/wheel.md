@@ -60,7 +60,8 @@ To enhance client and partner trust, we need to make communication less opaque b
 For future challenges, anticipation through risk analysis and developing a forward-thinking mindset is crucial.  
 Finally, to reduce the social impact of cyberattacks, we need to strengthen security-by-design policies, make cybersecurity a popular culture, and adopt a long-term vision for security policies to stay ahead of cybercriminals.
 
-![Impacts](https://github.com/CSbyGB/pentips/assets/96747355/bf6f46f3-aaa1-4551-b7d8-dec8770ff322)
+![Impacts](https://github.com/CSbyGB/pentips/assets/96747355/2c4e8479-41fb-4f81-baeb-f3dc333469d8)
+
 
 ## Global Summary
 
