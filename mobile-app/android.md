@@ -752,6 +752,28 @@ def add_gadget_to_apk(self, architecture: str, gadget_source: str, gadget_config
 - If you want to patch the apk, and inject frida gadget this command should work `objection patchapk -s application.apk`.  
 If you want a practical example of this check out the writeup for the challenged Anchored [here](https://csbygb.gitbook.io/pentips/htb-tracks-writeups/htb-intro-to-android-exploitation-track#challenge-anchored).
 
+#### Disable SSL pinning with objection
+
+[This article](https://corsecure.blog/2023/09/07/patching-an-apk-with-objection/) from Corsecure explains it really. You can also use the related video [here](https://youtu.be/qaJBWcueCIA?si=UWSMLoYj3QXPBNxL)  
+To get further with Objection, you can check out hacktricks [here](https://book.hacktricks.xyz/mobile-pentesting/android-app-pentesting/frida-tutorial/objection-tutorial).
+
+Notes:
+
+- With an emulator you need to use the architecture flag. Example: `objection patchapk --source app.apk --architecture x86`
+
+### Debug frida or objection
+
+- If you get the error `Unable to connect to the frida server: need Gadget to attach on jailed Android; its default location is: /home/user/.cache/frida/gadget-android-arm64.so`
+- Get the gadget related to your to device and put it in the default location  
+
+- If you get `Unable to connect to the frida server: command failed: 99`
+- push frida server and launch it
+  - `adb push frida-server /data/local/tmp/frida-server`
+  - `adb shell "chmod 755 /data/local/tmp/frida-server"`
+  - `adb shell`
+    - `su`
+    - `/data/local/tmp/frida-server &`
+
 ## Wireshark
 
 - Turn your laptop as hotspot capture traffic
@@ -806,6 +828,7 @@ If you want a practical example of this check out the writeup for the challenged
 - [Zero to Hero - Mobile Application Testing - Android - Nilesh Sapariya](https://nileshsapariya.blogspot.com/2016/11/zero-to-hero-mobile-application-testing.html)
 - [Mobile App Penetration Testing Cheat Sheet - sh4hin](https://github.com/sh4hin/MobileApp-Pentest-Cheatsheet)
 - [Android Application Reversing 101 - evilsocket](https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/#.WQND0G3TTOM.reddit)
+- [Corsecure blog](https://corsecure.blog/)
 
 ### Practice
 
@@ -837,6 +860,7 @@ If you want a practical example of this check out the writeup for the challenged
 - [Android Application Pinning Bypass | Pinned @ HackTheBox by 0xbro](https://youtu.be/CJR_BSIStmE)  
 - [Intercept HTTPS on non-rooted Android devices | HackTheBox - Anchored by 0xbro](https://youtu.be/KGdCvJs9w7w)
 - [Configuring Burp Suite With Android Nougat](https://blog.ropnop.com/configuring-burp-suite-with-android-nougat/)
+- [ Bypass SSL Pinning without root | Android Security Crash Course  - CorSecure](https://youtu.be/qaJBWcueCIA?si=m5tPmhcaFBJ0OxiB)
 
 ### Resources for Smali, Dalvik and RE an android App
 

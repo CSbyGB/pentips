@@ -95,6 +95,7 @@
 
 * [Web Application and API Pentest Checklist](checklists/web-and-api-pentest-checklist.md)
 * [Linux Privesc Checklist](checklists/linux-privesc-checklist.md)
+* [Mobile App Pentest Checklist](checklists/mobile-app-pentest-checklist.md)
 
 ## Tools
 
