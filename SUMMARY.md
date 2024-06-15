@@ -58,9 +58,9 @@
   * [SSRF](web-pentest/ssrf.md)
   * [Bypass captcha](web-pentest/captcha-bypass.md)
   * [Template Injection (client and server side)](web-pentest/template-injection.md)
+  * [MFA bypass](web-pentest/mfa-bypass.md)
 * [Exposed git folder](web-pentest/exposed-git.md)
 * [Docker exploitation and Docker vulnerabilities](web-pentest/docker-exploitation.md)
-* [MFA bypass](web-pentest/mfa-bypass.md)
 * [Websockets](web-pentest/websockets.md)
 
 ## Mobile App Pentest
