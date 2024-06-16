@@ -14,6 +14,13 @@ It has been created by and for the community, and will evolve with everyone's co
 - [Gabrielle Botbol](https://www.linkedin.com/in/gabriellebotbol/) - Co Founder & CEO @ CS by GB
 - [Ayate Leshaf](https://www.linkedin.com/in/leshafayate/) - Co Founder & Executive Director @ CS by GB
 
+## Video Presentation of the wheel
+
+{% embed url="https://youtu.be/7CtPsFqH3aI?si=vmL4ud-i5nwAAoMQ" %} Presentation of the Wheel for ITSec 2024 {% endembed %}
+
+▶️🌐 𝗡𝗲𝗲𝗱 𝘀𝘂𝗯𝘁𝗶𝘁𝗹𝗲𝘀 𝗶𝗻 𝗮𝗻𝗼𝘁𝗵𝗲𝗿 𝗹𝗮𝗻𝗴𝘂𝗮𝗴𝗲? ▶️🌐
+In Youtube, simply click on CC, then on the gear icon, select Auto-translate, and choose your desired language.
+
 ## Global view
 
 ![Global view](https://github.com/CSbyGB/pentips/assets/96747355/0fb02d46-70b9-4e4a-b663-7f74cfc63164)
@@ -86,6 +93,10 @@ Il est créé par et pour la communauté et évoluera avec la contribution de to
 
 - [Gabrielle Botbol](https://www.linkedin.com/in/gabriellebotbol/) - Co Founder & CEO @ CS by GB
 - [Ayate Leshaf](https://www.linkedin.com/in/leshafayate/) - Co Founder & Executive Director @ CS by GB
+
+## Présentation vidéo de la roue
+
+{% embed url="https://youtu.be/7CtPsFqH3aI?si=vmL4ud-i5nwAAoMQ" %} Présentation de la roue pour ITSec 2024 {% endembed %}
 
 ## Vue globale
 
