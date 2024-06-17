@@ -712,6 +712,7 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 
 - Take [this script](https://raw.githubusercontent.com/httptoolkit/frida-android-unpinning/main/frida-script.js) kindly provided by our new friend Tim `wget https://raw.githubusercontent.com/httptoolkit/frida-android-unpinning/main/frida-script.js`
 - Then you just need to run `frida -D emulator-5554 -l ./frida-script.js -f com.example.pinned` or `frida -U -l ./frida-script.js -f com.example.pinned`
+- Turn out the best way to run the app with cert pinning is with this command `frida -U -l ./frida-script.js Appname` It will avoid bugs.
 
 > Note: Apparently the --no-pause is not necessary anymore see [here](https://github.com/frida/frida/issues/2277)
 
@@ -767,12 +768,7 @@ Notes:
 - Get the gadget related to your to device and put it in the default location  
 
 - If you get `Unable to connect to the frida server: command failed: 99`
-- push frida server and launch it
-  - `adb push frida-server /data/local/tmp/frida-server`
-  - `adb shell "chmod 755 /data/local/tmp/frida-server"`
-  - `adb shell`
-    - `su`
-    - `/data/local/tmp/frida-server &`
+- Instead of launching your app with `frida -U -l ./frida-script.js -f com.vendor.myapp` use `frida -U -l ./frida-script.js Appname`
 
 ## Wireshark
 
