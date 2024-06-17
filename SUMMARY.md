@@ -39,6 +39,7 @@
 * [Lateral Movement](ethical-hacking-general-methodology/lateral-movement.md)
 * [Proof-of-Concept](ethical-hacking-general-methodology/proof-of-concept.md)
 * [Post-Engagement](ethical-hacking-general-methodology/post-engagement.md)
+* [MITRE ATT&CK](ethical-hacking-general-methodology/mitre-attack.md)
 
 ## External Pentest
 
@@ -90,6 +91,10 @@
 ## Secure Code Review
 
 * [Secure code review](code-review/code-review.md)
+
+## AI Pentest
+
+* [MITRE ATLAS](AI/mitre-atlas.md)
 
 ## Checklist
 
