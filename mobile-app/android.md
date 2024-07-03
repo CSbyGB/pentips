@@ -254,10 +254,18 @@ adb install ../../../path/to/file/file.apk
 - `adb shell` -  Connect to device
 - `adb install` - sideload apks
 - `adb push` - PC to device
-- `adb pull` - Device to PC
+- `adb pull path/name.apk` - Device to PC
 - `adb logcat` - commande line took that dumps a log of system messages
 - `adb shell pm list packages` will give you a list of all installed package names
+- `adb shell pm list packages -f 3` will give you a list of all 3rd party installed package names. Both list packages commands will also give you the path, so it will be convenient to pull it
 - `adb uninstall <package-name>` uninstall a package
+- Launch activities (they should be exported)
+
+```bash
+adb shell am start com.example.package/.className
+adb shell am start "[data]" com.example.package/.className
+adb shell am start -a "action" -c "category" com.example.package/.className
+```
 
 ### Find the arch of your android Device or emulator
 
@@ -335,6 +343,12 @@ sudo ./run.sh 127.0.0.1:4444
 
 - [Here is the official Documentation](https://mobsf.github.io/docs/#/)
 
+### Mobsf nice features
+
+- Very helpful for static analysis
+- Will look into the source code and find secrets
+- You can also search in the code for specific strings
+
 ## Checklists
 
 On every pentest, it is always worth having a checklist. This will allow you to make sure that you do not forget anything.  
@@ -377,7 +391,7 @@ See [documentation](https://github.com/OWASP/owasp-mstg/blob/53ebd2ccc428623df7e
 
 #### Exportable activities
 
-Activities are the screens of the applications. Depending on the application and the activity, some of them should not be exportable because it means that they could be accessible from outside the application.  
+Activities are the screens of the applications. Depending on the application and the activity, some of them should not be exportable because it means that they could be accessible from outside the application. It means that you could execute it with abd without going through the main activity.  
 Here is an example of code on the pivaa application with exportable activities:  
 
 ```xml
@@ -770,6 +784,9 @@ Notes:
 - If you get `Unable to connect to the frida server: command failed: 99`
 - Instead of launching your app with `frida -U -l ./frida-script.js -f com.vendor.myapp` use `frida -U -l ./frida-script.js Appname`
 
+- If frida freezes your vm. It seems to be [this issue](https://github.com/frida/frida/issues/2362)
+- What worked for me was to take the latest frida-server version (16.3.3)
+
 ## Wireshark
 
 - Turn your laptop as hotspot capture traffic
@@ -895,6 +912,7 @@ Notes:
 - [Qark](https://github.com/linkedin/qark) dynamic analysis can be use for tapjacking PoC
   - [Good tutorial for Qark](https://resources.infosecinstitute.com/topic/android-penetration-tools-walkthrough-series-qark/)
 - [Inspeckage - Android Package Inspector](https://github.com/ac-pm/Inspeckage)
+- [Medusa is an extensible and modularized framework that automates processes and techniques practiced during the dynamic analysis of Android and iOS Applications](https://github.com/Ch0pin/medusa)
 
 #### Certificate pinning and bypass - Tools
 

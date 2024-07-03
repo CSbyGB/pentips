@@ -95,6 +95,7 @@
 ## AI Pentest
 
 * [MITRE ATLAS](AI/mitre-atlas.md)
+* [OWASP ML and LLM](AI/OWASP-ML-and-LLM.md)
 
 ## Checklist
 
@@ -309,6 +310,7 @@
   * [Cloud Labs](/writeups/vulnmachines-cloud.md)
 * [Mobile Hacking Lab](/writeups/MHLwriteups.md)
   * [Mobile Hacking Lab - Lab - Config Editor](/writeups/MHL-Lab-config.md)
+  * [Mobile Hacking Lab - Lab - Strings](/writeups/MHL-strings.md)
 * [Portswigger Web Security Academy Writeups](writeups/PSwriteups.md)
   * [PS - DomXSS](writeups/PS-DOMXSS.md)
 * [OWASP projects and challenges writeups](writeups/OWASP-writeups.md)
