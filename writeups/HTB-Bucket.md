@@ -96,3 +96,5 @@ And we get a shell as www-data
 We will still need to make a lateral movement to get the user because we can not see the user.txt file for now.  
 
 ## COMING SOON
+
+![Coming soon](../.res/coming-soon.png)  

@@ -119,6 +119,8 @@ login is `msfadmin` and password is `msfadmin`)
 
 - [Digital Ocean](https://www.digitalocean.com/pricing)
 
+![Coming soon](../.res/coming-soon.png)  
+
 ## Resources
 
 ### Alternative labs for general pentests

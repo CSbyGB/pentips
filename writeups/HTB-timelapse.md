@@ -241,3 +241,5 @@ exit
 - So the user is svc_deploy and the pass is "E3R$Q62^12p7PLlC%KWaxuaV"
 
 **Coming Soon**
+
+![Coming soon](../.res/coming-soon.png)  

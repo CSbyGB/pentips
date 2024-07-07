@@ -134,6 +134,154 @@ See the snippet I am referring to below (from the class Activity2)
 
 I know I should probably use Go or Python, but I just love bash 🤣🤣 So I will make a bash script to solve this.  
 
-## STAY TUNED! :D
+Here is the bash script (that finally worked lol)
 
-![Coming soon](../.res/2024-07-03-16-57-38.png)  
+```bash
+#!/bin/bash
+
+# The base64 cipher we have from the source code
+cipherText="bqGrDKdQ8zo26HflRsGvVA=="
+
+# The values we found in the code
+key="your_secret_key_1234567890123456"
+iv="1234567890123456"
+
+# Convert key and IV in hexadecimal format
+key_hex=$(echo -n "$key" | xxd -p | tr -d '\n')
+iv_hex=$(echo -n "$iv" | xxd -p | tr -d '\n')
+
+# Debug
+echo "Key (hex): $key_hex"
+echo "IV (hex): $iv_hex"
+
+# Decode from b64 and decipher
+decodedCipher=$(echo "$cipherText" | base64 --decode | openssl enc -d -aes-256-cbc -K "$key_hex" -iv "$iv_hex" 2>/dev/null)
+
+# Print results
+if [ $? -eq 0 ]; then
+    echo "Decoded cipher: $decodedCipher"
+else
+    echo "fail"
+fi
+```
+
+- Here is the result of our script
+
+![Decoded cipher](../.res/2024-07-07-08-11-52.png)  
+
+So the value is `mhl_secret_1337`.  
+We will need to convert in in base64 (if you remember what happens in Activity2), so let's add a line to our script `base64decoded=$(echo "$decodedCipher" | base64)`.  
+
+- Here is the new output of our script
+
+![new result](../.res/2024-07-07-08-24-38.png)  
+
+Our new string is `bWhsX3NlY3JldF8xMzM3Cg==`  
+
+So now we are almost able to use adb shell and start activity2 with our new uri `adb shell am start "mhl://labs/bWhsX3NlY3JldF8xMzM3Cg==" com.mobilehackinglab.challenge/.Activity2`.  
+But first, we need to write a frida script (I know I am not a fan of javascript either lol). This way we can ensure that our actions are performed in a specific order and we allow the application to be in the correct state before interacting with it.  
+Here is what our script does:
+
+- The script first hooks into the constructor of MainActivity to ensure it runs the getKLOW function after MainActivity is instantiated.
+- The getKLOW function finds instances of MainActivity and calls the KLOW method.
+- Once the KLOW method is called, the launchActivity2 function is triggered to find instances of Activity2 and interact with them by calling cd and attempting to call getflag.
+
+Here is our script
+
+```js
+/*
+GOAL:
+This script hooks into the application to invoke methods on MainActivity and Activity2. 
+The main goal is to interact with these activities to retrieve the flag.
+*/
+// Java.perform ensures that all the Java-related code runs in the context of the Java virtual machine (VM) used by the target application.
+Java.perform(function () {
+// This function uses Java.choose to find instances of MainActivity and invokes the KLOW method on each instance found.
+    function getKLOW() {
+        Java.choose("com.mobilehackinglab.challenge.MainActivity", {
+            onMatch: function (instance) {
+                instance.KLOW();
+                console.log("get the klow method");
+            },
+            onComplete: function () {
+                console.log("End of getklow.");
+                launchActivity2();
+            }
+        });
+    }
+// This function uses Java.choose to find instances of Activity2 and performs some actions on each instance found.
+    function launchActivity2() {
+        Java.choose("com.mobilehackinglab.challenge.Activity2", {
+            onMatch: function (instance) {
+                var res = instance.cd();
+                console.log(res);
+
+                try {
+                    var flag = instance.getflag();
+                    console.log("get the Flag: " + flag);
+                } catch (e) {
+                    console.log("Debug error in getflag: " + e.message);
+                }
+            },
+            onComplete: function () {
+                console.log("Done");
+            }
+        });
+    }
+// This section hooks into the initialization method of MainActivity to trigger the getKLOW function after a short delay.
+    var MainActivity = Java.use("com.mobilehackinglab.challenge.MainActivity");
+    MainActivity.$init.overload().implementation = function () {
+        var result = this.$init.apply(this, arguments);
+        setTimeout(getKLOW, 2000);
+        return result;
+    };
+});
+```
+
+If we launch the script our xml for the shared preferences is created.  
+See here the script launch from my terminal:  
+
+![Frida with our script](../.res/2024-07-07-09-11-26.png)  
+
+If we `ls` in android studio console, our xml is indeed created:  
+
+![XML created](../.res/2024-07-07-09-12-46.png)  
+
+So now let's try our adb command. This does not give anything quite yet. I was a little lost for a moment, and then I remembered this from the challenge description `Utilize Frida for tracing or employ Frida's memory scanning.`  
+So let's try to dump the memory.  
+We can do this with objection.  
+
+- `objection --gadget com.mobilehackinglab.challenge explore`
+- `memory dump all memory.txt`
+
+Apparently the memory is too big to dump it all with objection.  
+Let's try [fridump](https://github.com/Nightbringer21/fridump)
+
+```bash
+git clone https://github.com/Nightbringer21/fridump.git
+cd fridump/
+python3 fridump.py -U -s Strings
+```
+
+![Dump memory](../.res/2024-07-07-10-03-36.png)  
+
+Once the memory is dump you can get it in the dump folder and it is called strings.txt.  
+
+I was not able to find the flag in my dump.  
+I realized that my adb command was wrong and not working.  
+First I forgot to remove the 2 `=` symbols in the end of the uri.  
+Then I need to explicitly set the intent action and data with -a and -d. And finally I need to use -W to wait for the launch to complete. My initial command did not have this flag and thus did not wait for the activity to finish launching.  
+So our new command looks like this `adb shell am start -W -a android.intent.action.VIEW -d "mhl://labs/bWhsX3NlY3JldF8xMzM3" -n com.mobilehackinglab.challenge/.Activity2Starting: Intent { act=android.intent.action.VIEW dat=mhl://labs/bWhsX3NlY3JldF8xMzM3 cmp=com.mobilehackinglab.challenge/.Activity2 }`  
+
+This way we also get a screen I did not get before when launching the previous adb command.  
+![Screen](../.res/2024-07-07-10-23-15.png)
+
+And here is the result of our command:  
+
+![adb](../.res/2024-07-07-10-25-23.png)  
+
+Now let's try to dump the memory again and see if we can find the flag in our dump.  
+
+And it works! We finally get the flag.  
+
+![Flag](../.res/2024-07-07-10-27-57.png)

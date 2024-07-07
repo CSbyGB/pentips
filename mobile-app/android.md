@@ -794,6 +794,41 @@ Notes:
 - `adb shell tcpdump -s -s 0`
 - HTTP traffic: `adb shell tcpdump -C -s -s 0 port 80`
 
+## Medusa
+
+- Launch it with `medusa`
+
+![Medusa launch](../.res/2024-07-07-09-37-07.png)  
+
+Select your device (mine is 3)  
+
+![select device](../.res/2024-07-07-09-38-10.png)  
+
+After the selection you get the properties of the device and thr 3rd party installed app.  
+
+For more details check the wiki [here](https://github.com/Ch0pin/medusa/wiki)
+
+## Objection
+
+- [Here](https://github.com/sensepost/objection) is the repo
+- Install: `pip3 install objection`
+
+### Memory dump
+
+- Find the app you want to dump the memory from with `frida-ps -Uai`
+- Hook on it with explore `objection --gadget com.mobilehackinglab.challenge explore`
+- Dump the memory `memory dump all memory.txt` (memory.txt is the dump file you will get)
+
+## Fridump
+
+If you encounter issues with objection for the memory dump, you can also use [fridump](https://github.com/Nightbringer21/fridump).
+
+```bash
+git clone https://github.com/Nightbringer21/fridump.git
+cd fridump/
+python3 fridump.py -U -s Strings
+```
+
 ## Resources
 
 ### My writeups for Android related boxes and challenges

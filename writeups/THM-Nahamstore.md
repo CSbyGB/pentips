@@ -375,6 +375,8 @@ When looking around the app, we can see that if we click on the check stock for 
 
 ### COMING SOON
 
+![Coming soon](../.res/coming-soon.png)  
+
 ## Resources
 
 - [Using burp for open redirect - Portswigger](https://portswigger.net/support/using-burp-to-test-for-open-redirections)

@@ -12,6 +12,16 @@ You can execute a command on the result of another command using `command $(resu
 
 ## Change your hostname
 
+### Temporary
+
+```bash
+sudo hostname newhostname
+```
+
+> Will get back as it was after reboot
+
+### Permanently
+
 - `sudo nano /etc/hostname`
 - `sudo nano /etc/hosts`
 - `sudo reboot`

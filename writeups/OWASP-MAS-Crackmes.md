@@ -21,3 +21,5 @@ Once installed on an unrooted device we get this screen
 ![unrooted](../.res/2023-02-26-15-09-09.png)  
 
 ## COMING SOON
+
+![Coming soon](../.res/coming-soon.png)  

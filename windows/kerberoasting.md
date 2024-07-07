@@ -375,6 +375,8 @@ klist
 
 #### COMING SOON
 
+![Coming soon](../.res/coming-soon.png)  
+
 ## Resources
 
 {% embed url="https://lisandre.com/archives/14538" %} Kerberos - port 88 by Lisandre {% endembed %}  

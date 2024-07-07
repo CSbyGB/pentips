@@ -28,3 +28,5 @@ PORT      STATE SERVICE    VERSION
 - On port 22 we get asked for the root password
 
 ** Coming soon**
+
+![Coming soon](../.res/coming-soon.png)  

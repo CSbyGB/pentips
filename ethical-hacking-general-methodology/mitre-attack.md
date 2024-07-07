@@ -18,6 +18,8 @@ The MITRE ATT&CK framework consists of different elements:
 
 ## COMING SOON (more details on Mitre Attack)
 
+![Coming soon](../.res/coming-soon.png)  
+
 ## Methodology for Using MITRE ATT&CK in a Pentest
 
 ### 1. Preparation and Planning

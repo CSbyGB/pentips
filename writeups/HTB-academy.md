@@ -87,3 +87,5 @@ Nmap done: 1 IP address (1 host up) scanned in 45.77 seconds
 ![](../.res/2022-08-31-13-08-22.png)
 
 **Coming Soon**
+
+![Coming soon](../.res/coming-soon.png)  

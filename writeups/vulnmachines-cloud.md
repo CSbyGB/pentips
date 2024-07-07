@@ -72,3 +72,5 @@ Let's use nslookup on the IP
 ![nslookup](../.res/2023-07-07-10-16-00.png)  
 
 ### COMING SOON
+
+![Coming soon](../.res/coming-soon.png)  

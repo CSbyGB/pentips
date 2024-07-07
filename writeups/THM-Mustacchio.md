@@ -141,3 +141,5 @@ And it works
 And we get the user flag.
 
 ## COMING SOON
+
+![Coming soon](../.res/coming-soon.png)  

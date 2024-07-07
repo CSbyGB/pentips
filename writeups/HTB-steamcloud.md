@@ -197,6 +197,8 @@ spec:
 
 **Coming soon**
 
+![Coming soon](../.res/coming-soon.png)  
+
 ## Resources
 
 - [Kubernetes pentest methodology part 1](https://www.cyberark.com/resources/threat-research-blog/kubernetes-pentest-methodology-part-1)
