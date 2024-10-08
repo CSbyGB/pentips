@@ -91,6 +91,7 @@
 ## Secure Code Review
 
 * [Secure code review](code-review/code-review.md)
+* [Java notes for Secure Code Review](code-review/java-code-review.md)
 
 ## AI Pentest
 
@@ -106,6 +107,8 @@
 ## Tools
 
 * [Burpsuite](Tools/burpsuite.md)
+* [Android Studio](Tools/android-studio.md)
+* [Frida](Tools/frida.md)
 * [CrackMapExec](Tools/crackmapexec.md)
 * [Netcat and alternatives](Tools/netcat.md)
 * [Nmap](Tools/nmap.md)

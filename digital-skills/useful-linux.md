@@ -185,6 +185,20 @@ function set-title() {
 
 > [Source](https://code.mendhak.com/set-terminal-title/)
 
+## kdenlive
+
+> Useful gui tool to edit video and convert them
+
+### Convert an mkv to mp4
+
+- Drag and drop the mkv file in kdenlive
+- Make sure it is in the sources. Like this  
+![video in the sources](.res/2024-08-01-10-56-02.png)  
+
+- In Project choose render 
+- Choose the format you want
+- Then click on render to file
+
 ## Record a video from command line with ffmpeg
 
 ### Choose an external webcam if you have multiple

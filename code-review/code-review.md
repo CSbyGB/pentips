@@ -147,7 +147,7 @@ On a Unix, Linux, or macOS system, run the $SPOTBUGS_HOME/bin/spotbugs script, o
 #### Other tools
 
 - SemGrep
-- FindSecBugd (analyse dynamique)
+- FindSecBugd (dynamique analysis)
 - EsPReSSO plugin burp for oAuth: will analyze and describe communitcation with oAuth
 
 ### List of weaknesses to look for
@@ -173,6 +173,51 @@ On a Unix, Linux, or macOS system, run the $SPOTBUGS_HOME/bin/spotbugs script, o
 - send curl to proxy `export https_proxy=http://127.0.0.1:8080`
 - [Curl for multipart form data](https://stackoverflow.com/questions/46960397/using-curl-for-multipart-form-data-with-a-file-upload)
 - Grep is a very convernient linux command to search for string. Learn more about it [here](https://csbygb.gitbook.io/pentips/digital-skills/useful-linux#grep)
+
+## Misc Tips from pentesterlab code review training
+
+> This training is definitely worth it's price.
+
+- Syntax highlighting
+- Browse source tree
+- Brainsto with a rubber duck or willing person
+- use `find`
+- use `find` with `grep`
+- check comments
+- check test cases
+- Add your tests in the test cases
+- Take notes (project and meta)
+  - related to the project: notes on code, modelisation of code with uml etc
+  - Meta: about a specific language (everytine a note is taking on a specific language add the version)
+- Testing behavior
+  - Read-Eval-Print-Loop (REPL)
+    - Ruby shell: IRB
+    - PHP: - `php -a`
+    - Java `jshell`
+    - Go:
+      - https://go.dev/play/ (online)
+      - https://github.com/traefik/yaegi
+- Test Process
+  1. Make a hypothesis
+  2. Conduct experiments to test it
+  3. Analyze the data
+  4. Conclude whether the results support or refute your initial guess
+
+## Useful tools
+
+### Zeal
+
+> Offline documentation for various languages.
+
+- `sudo apt install zeal` to install
+- `zeal` to launch
+- Click on Docsets > Available and download the documentationf or the language you need.
+
+### devdocs
+
+> Online documentation for various languages
+
+- [devdocs](https://devdocs.io/)
 
 ## Resources
 
