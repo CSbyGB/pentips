@@ -126,6 +126,7 @@
 * [Payload Tools](Tools/payload-generation-tools.md)
 * [Out of band Servers](Tools/out-of-band-servers.md)
 * [STEWS](Tools/stews.md)
+* [Webcrawlers](Tools/web-crawlers.md)
 * [Websocat](Tools/websocat.md)
 
 ## VM and Labs
@@ -316,6 +317,7 @@
   * [Mobile Hacking Lab - Lab - Strings](/writeups/MHL-strings.md)
 * [Portswigger Web Security Academy Writeups](writeups/PSwriteups.md)
   * [PS - DomXSS](writeups/PS-DOMXSS.md)
+  * [PS - Exploiting vulnerabilities in LLM APIs](writeups/PS-Exploiting-vulnerabilities-in-llm-apis.md)
 * [OWASP projects and challenges writeups](writeups/OWASP-writeups.md)
   * [OWASP MAS Crackmes](writeups/OWASP-MAS-Crackmes.md)
 * [Vulnerable APIs](writeups/vulnerable-apis.md)

@@ -78,8 +78,40 @@ root@generic_x86_64:/ # /data/local/tmp/frida-server &
 ![Flag](../.res/2023-01-19-19-08-40.png)
 - If this did not work, check out this [article](https://blog.nviso.eu/2020/11/19/proxying-android-app-traffic-common-issues-checklist/#check10)
 
-#### Useful frida commands
+## Useful frida commands
 
 - `frida-ls-devices` list plugged in devices
 - `frida-ps -D <id> -ai` list installed apps on a specific device
+- `frida-ps -Uai` list all processes with details
 
+## Debug
+
+### Failed to spawn
+
+If you get
+
+```bash
+Failed to spawn: need Gadget to attach on jailed Android; its default location is: /home/user/.cache/frida/gadget-android-arm64.so
+```
+
+It means that Gadget is missing. Gadget is important to hook on jailed devices.
+
+Go to the official frida repo [here](https://github.com/frida/frida/releases)  
+An get Gadget, so here for example we would need this one (but your might be different)`frida-gadget-android-arm64.so`  
+
+You might need to click on "Show all XXX assets" to see all the Gadget's versions  
+
+![show assets](../.res/2024-10-09-16-37-37.png)  
+
+Once downloaded un zip it and then:  
+
+```bash
+# Create the directory if it does not exist
+mkdir /home/user/.cache/frida/
+# Move the file to the directory it need to be in
+mv frida-gadget-16.5.2-android-arm64.so /home/user/.cache/frida/gadget-android-arm64.so
+```
+
+## Resources
+
+- [Frida labs - series of challenges designed for learning Frida for Android by AD2001](https://github.com/DERE-ad2001/Frida-Labs/tree/main)

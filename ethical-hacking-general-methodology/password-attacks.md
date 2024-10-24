@@ -398,6 +398,18 @@ export KRB5CCNAME=/root/krb5cc_647402606_91JyEJ
 klist # to see if it worked
 smbclient //dc01/C$ -k -c ls -no-pass
 ```
+## Cracking Files
+
+### Protected files
+
+- List of extensions [here](https://fileinfo.com/filetypes/encoded)
+
+```bash
+# Find the most common files extensions
+for ext in $(echo ".xls .xls* .xltx .csv .od* .doc .doc* .pdf .pot .pot* .pp*");do echo -e "\nFile extension: " $ext; find / -name *$ext 2>/dev/null | grep -v "lib\|fonts\|share\|core" ;done
+```
+- `grep -rnw "PRIVATE KEY" /* 2>/dev/null | grep ":1"` find SSH keys
+- You can crack them with john, see the page of this tool [here](../Tools/passwords-tools.md)
 
 ## Resources
 

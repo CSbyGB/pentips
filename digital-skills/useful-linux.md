@@ -255,3 +255,25 @@ Unfortunately I could not find any solution to both visualize and record except 
   - `output.mp4` : The output file
 
 - Recording a Specific Portion of the Screen `ffmpeg -f x11grab -r 30 -s 1280x720 -i :0.0+0,0 -vcodec libx264 -preset ultrafast -crf 18 output.mp4`
+
+## Make your gnome terminal more fancy
+
+- Put this in your .bashrc
+
+```bash
+# Automatic coloration with ls and grep
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# colored prompt
+PS1='\[\e[0;32m\]\u@\h:\w\[\e[m\]\$ '
+
+# Command to define a title // found on stack overflow
+function set-title() {
+  if [[ -z "$ORIG" ]]; then
+    ORIG=$PS1
+  fi
+  TITLE="\[\e]2;$*\a\]"
+  PS1=${ORIG}${TITLE}
+}
+```
