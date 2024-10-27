@@ -289,6 +289,7 @@
   * [Hackthebox - Soccer](writeups/HTB-Soccer.md)
   * [Hackthebox - Steamcloud](writeups/HTB-steamcloud.md)
   * [Hackthebox - Toolbox](writeups/HTB-toolbox.md)
+  * [Hackthebox - Vault](writeups/HTB-Vault.md)
   * [Hackthebox - Updown](writeups/HTB-updown.md)
 * [TryHackme Writeups](writeups/THMwriteups.md)
   * [TryHackMe - Anonymous](writeups/THM-Anonymous.md)
