@@ -51,3 +51,14 @@ Microsoft SQL (MSSQL) is Microsoft's SQL-based relational database management sy
 - `SELECT name, database_id, create_date  FROM sys.databases;` list the databases
 - `use <dbname>;`
 - `SELECT * FROM INFORMATION_SCHEMA.TABLES;` list tables
+
+## Interact with mssql
+
+### Linux
+
+- `sqsh -S 10.129.20.13 -U username -P Password123`
+
+### Windows
+
+- `sqlcmd -S 10.129.20.13 -U username -P Password123`
+- [Documentation sqlcmd](https://docs.microsoft.com/en-us/sql/ssms/scripting/sqlcmd-use-the-utility)

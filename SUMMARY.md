@@ -97,6 +97,7 @@
 
 * [MITRE ATLAS](AI/mitre-atlas.md)
 * [OWASP ML and LLM](AI/OWASP-ML-and-LLM.md)
+* [Hugging face](AI/hugging-face.md)
 
 ## Checklist
 
