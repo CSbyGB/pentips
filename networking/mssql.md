@@ -57,6 +57,8 @@ Microsoft SQL (MSSQL) is Microsoft's SQL-based relational database management sy
 ### Linux
 
 - `sqsh -S 10.129.20.13 -U username -P Password123`
+- `mssqlclient.py -p 1433 julio@10.129.203.7` (from impacket tool mssqlclient)
+- `xp_cmdshell 'whoami'` execute a command
 
 ### Windows
 
