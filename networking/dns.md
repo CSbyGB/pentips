@@ -56,13 +56,15 @@ For the IP address to be resolved from the Fully Qualified Domain Name (FQDN), t
 |allow-transfer|Defines which hosts are allowed to receive zone transfers from the DNS server.|
 |zone-statistics|Collects statistical data of zones.|
 
+> Since nearly all network applications use DNS, attacks against DNS servers represent one of the most prevalent and significant threats today.
+
 ## Enumeration
 
 ### Nmap
 
 - `sudo nmap -T4 -sC -O -sV -p 53 --script dns-nsid 10.129.42.195`
 
-### Dig
+## Dig
 
 - `dig ns inlanefreight.htb @10.129.14.128` which other name servers are known
 - `dig CH TXT version.bind 10.129.120.85` query a DNS server's version
@@ -74,18 +76,52 @@ For the IP address to be resolved from the Fully Qualified Domain Name (FQDN), t
 Zone transfer refers to the transfer of zones to another server in DNS, which generally happens over TCP port 53. This procedure is abbreviated Asynchronous Full Transfer Zone (AXFR). Since a DNS failure usually has severe consequences for a company, the zone file is almost invariably kept identical on several name servers.
 
 - `dig axfr inlanefreight.htb @10.129.14.128`
-- `dig axfr internal.inlanefreight.htb @10.129.14.128`
+- `dig axfr internal.inlanefreight.htb @10.129.14.128`  
 
-### Subdomain bruteforce
+DIG - AXFR Zone Transfer
+- `dig AXFR @ns1.inlanefreight.htb inlanefreight.htb`
+
+Tools like [Fierce](https://github.com/mschwager/fierce) can also be used to enumerate all DNS servers of the root domain and scan for a DNS zone transfer:  
+
+- `fierce --domain zonetransfer.me`
+
+## Subdomain bruteforce
 
 - `for sub in $(cat /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt);do dig $sub.inlanefreight.htb @10.129.14.128 | grep -v ';\|SOA' | sed -r '/^\s*$/d' | grep $sub | tee -a subdomains.txt;done`
 
-#### DNSenum
+- [Subfinder](https://github.com/projectdiscovery/subfinder)
+- [DNSdumpster](https://dnsdumpster.com/)
+- [Sublist3r](https://github.com/aboul3la/Sublist3r)
+
+```bash
+./subfinder -d inlanefreight.com -v
+```
+
+- [subbrute](https://github.com/TheRook/subbrute)
+
+```bash
+git clone https://github.com/TheRook/subbrute.git >> /dev/null 2>&1
+cd subbrute
+echo "ns1.inlanefreight.com" > ./resolvers.txt
+./subbrute inlanefreight.com -s ./names.txt -r ./resolvers.txt
+```
+
+### DNSenum
 
 - [Github repo](https://github.com/fwaeytens/dnsenum)
 - `dnsenum --dnsserver 10.129.14.128 --enum -p 0 -s 0 -o subdomains.txt -f /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt inlanefreight.htb`
 
 > Do not forget to use the latest command on subdomains as well
+
+## DNS Spoofing
+
+DNS spoofing is also referred to as DNS Cache Poisoning. This attack involves altering legitimate DNS records with false information so that they can be used to redirect online traffic to a fraudulent website. Example attack paths for the DNS Cache Poisoning are as follows:
+
+- An attacker could intercept the communication between a user and a DNS server to route the user to a fraudulent destination instead of a legitimate one by performing a Man-in-the-Middle (MITM) attack.
+
+- Exploiting a vulnerability found in a DNS server could yield control over the server by an attacker to modify the DNS records.
+
+From a local network perspective, an attacker can also perform DNS Cache Poisoning using MITM tools like [Ettercap](https://www.ettercap-project.org/) or [Bettercap](https://www.bettercap.org/).
 
 ## Resources
 
