@@ -35,10 +35,16 @@ An essential function of an SMTP server is preventing spam using authentication 
 
 ## Enumeration
 
+- [MXToolbox](https://mxtoolbox.com/)
+- `host -t MX hackthebox.eu`
+- `dig mx plaintext.do | grep "MX" | grep -v ";"`
+- `host -t A mail1.inlanefreight.htb`
+
 ### Nmap
 
 - `sudo nmap 10.129.14.128 -sC -sV -p25`
 - `sudo nmap 10.129.14.128 -p25 --script smtp-open-relay -v`
+- `sudo nmap -Pn -sV -sC -p25,143,110,465,587,993,995 10.129.14.128`
 
 ### Telnet
 
@@ -55,7 +61,6 @@ HELO mail1.inlanefreight.htb
 EHLO mail1
 ```
 
-- `VRFY` can be used to enum users
 - [SMTP errors and reply codes](https://serversmtp.com/smtp-error/)
 
 ## Connect to the email account
@@ -65,6 +70,70 @@ EHLO mail1
 ## Password spray and bruteforce
 
 - `hydra -L users.txt TARGET-IP smtp-enum`
+- The SMTP server has different commands that can be used to enumerate valid usernames VRFY, EXPN, and RCPT TO. If we successfully enumerate valid usernames, we can attempt to password spray, brute-forcing, or guess a valid password. 
+
+```bash
+# VRFY
+VRFY root
+252 2.0.0 root
+VRFY www-data
+252 2.0.0 www-data
+VRFY new-user
+550 5.1.1 <new-user>: Recipient address rejected: User unknown in local recipient table
+# EXPN
+EXPN john
+250 2.1.0 john@inlanefreight.htb
+EXPN support-team
+250 2.0.0 carol@inlanefreight.htb
+250 2.1.5 elisa@inlanefreight.htb
+# RCPT TO
+MAIL FROM:test@htb.com
+it is
+250 2.1.0 test@htb.com... Sender ok
+RCPT TO:julio
+550 5.1.1 julio... User unknown
+RCPT TO:kate
+550 5.1.1 kate... User unknown
+RCPT TO:john
+250 2.1.5 john... Recipient ok
+
+# user enumeration
+USER julio
+-ERR
+USER john
++OK
+```
+
+- [smtp-user-enum](https://github.com/pentestmonkey/smtp-user-enum)
+- `smtp-user-enum -M RCPT -U userlist.txt -D inlanefreight.htb -t 10.129.203.7`
+
+## Cloud Enumeration
+
+Cloud service providers use their own implementation for email services. Those services commonly have custom features that we can abuse for operation, such as username enumeration.  
+
+- [O365spray](https://github.com/0xZDH/o365spray)
+
+```bash
+# Validate if target uses office 365
+python3 o365spray.py --validate --domain msplaintext.xyz
+# identify usernames
+python3 o365spray.py --enum -U users.txt --domain msplaintext.xyz
+```
+
+## Password Attacks
+
+- `hydra -L users.txt -p 'Company01!' -f 10.10.110.20 pop3`
+- `python3 o365spray.py --spray -U usersfound.txt -p 'March2022!' --count 1 --lockout 1 --domain msp`
+
+## Open Relay
+
+> See above for more info on this misconfiguration
+
+- `nmap -p25 -Pn --script smtp-open-relay 10.10.11.213`
+
+Next, we can use any mail client to connect to the mail server and send our email.  
+
+- `swaks --from notifications@inlanefreight.com --to employees@inlanefreight.com --header 'Subject: Company Notification' --body 'Hi All, we want to hear from you! Please complete the following survey. http://mycustomphishinglink.com/' --server 10.10.11.213`
 
 ## Resources
 
