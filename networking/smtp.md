@@ -73,6 +73,7 @@ EHLO mail1
 - The SMTP server has different commands that can be used to enumerate valid usernames VRFY, EXPN, and RCPT TO. If we successfully enumerate valid usernames, we can attempt to password spray, brute-forcing, or guess a valid password. 
 
 ```bash
+telnet 10.129.14.128 25
 # VRFY
 VRFY root
 252 2.0.0 root
