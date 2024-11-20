@@ -109,6 +109,19 @@ This annoying message when you need something that is not installed.
 - `-amin -60` accessed in the last 60 minutes
 - `-size 5M` get files that are 5MB
 
+## dd
+
+dd is a command used to convert and copy a file. It can also be useful to generate dummy files that you could need during a pentest (to test for unrestricted resource consumption for example).  
+
+```bash
+# create a file containing 30 random megabytes and assign it the .pdf extension
+dd if=/dev/urandom of=mypdf.pdf bs=1M count=30
+#  generate a file with the .exe extension, filling it with random bytes
+dd if=/dev/urandom of=reverse-shell.exe bs=1M count=10
+```
+
+- [dd man page](https://man7.org/linux/man-pages/man1/dd.1.html)
+
 ## Grep
 
 - If you are looking for a specific thing in a file you can grep a string on it.
