@@ -2,6 +2,7 @@
 
 - It is really useful for a pentester to know about python and be able to script something. Being able to automate things can definitely help us go quicker in our daily practice.
 Of course we do not need to be a developer but it is very helpful to be able to read code.
+> notes from my practice, TCM Academy and DeepLearning.AI
 
 ## shebang
 
@@ -19,8 +20,62 @@ print("""This string runs
 multiple lines""") # triple quotes for multiple lines
 print("This string is "+"awesome") # concatenation
 ```
+### Using f-Strings
+
+f-Strings is useful to mix strings with computations or data
+
+```python
+# Will print The temperature 75F in degrees celsius is 23.88888888888889C
+print(f"The temperature 75F in degrees celsius is {(75 - 32) * 5 / 9}C")
+# It works also with multiligne strings
+print(f"""
+    Most countries use the metric system for recipe measurement, 
+    but American bakers use a different system. For example, they use 
+    fluid ounces to measure liquids instead of milliliters (ml).
+    
+    So you need to convert recipe units to your local measuring system!
+    
+    For example, 8 fluid ounces of milk is {8 * 29.5735} ml.
+    And 100ml of water is {100 / 29.5735} fluid ounces.
+""")
+# This will print
+''' 
+ Most countries use the metric system for recipe measurement, 
+    but American bakers use a different system. For example, they use 
+    fluid ounces to measure liquids instead of milliliters (ml).
+    
+    So you need to convert recipe units to your local measuring system!
+    
+    For example, 8 fluid ounces of milk is 236.588 ml.
+    And 100ml of water is 3.381405650328842 fluid ounces.
+'''
+
+# It also works on variables
+my_name = "gabrielle"
+print(f"Hello {my_name}!")
+# this will print Hello gabrielle!
+# And we can mix var and computation as follow
+fav_num = 8
+print(f"Your favorite number plus 10 is {fav_num+10}")
+# this will print Your favorite number plus 10 is 18
+```
+
+## type()
+
+In Python, you can check the type of any data that you are using. To check the data type, you can use the type() function.
+
+```python
+# str
+type("mystring")
+# int
+type(100)
+# float
+type(2.99)
+```
 
 ## Math
+
+The order of operations in Python is the same as in arithmetic. First, you compute parentheses, then exponents, then you multiply and divide (from left to right), and finally, you add and subtract (from left to right).
 
 ```python
 #!/bin/python3
@@ -32,6 +87,8 @@ print(50 + 50 - 50 * 50 / 50) # will calculate the equation and print the result
 print(50 ** 2) # exponents
 print(50 % 6) # modulo
 print(50 // 6) # no leftovers
+# convert from from Fahrenheit to Celsius
+print((75 - 32) * 5 / 9)
 ```
 
 ## Variables and Methods
@@ -150,6 +207,22 @@ print(alcohol(20,4))
 ```    
 
 ## Lists (mutable)
+
+Declare a list
+
+```python
+friends_list = ["Tommy", "Isabel", "Daniel"]
+print(friends_list)
+# will print ['Tommy', 'Isabel', 'Daniel']
+len(friends_list)
+# will print 3
+print(friends_list[1]) 
+# Output: Isabel
+# add single element to list
+friends_list.append("Otto")
+#using remove
+friends_list.remove("Tommy")
+```
 
 ```python
 #!/bin/python3
