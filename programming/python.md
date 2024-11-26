@@ -318,12 +318,19 @@ print("my favorite movie is {}.".format(movie))
 ## Dictionaries
 
 - Key value pairs
+A Dictionnary is a data structure that helps you store key-value pairs. The main difference with list, is that dictionaries assign a key to each values instead of an index. 
 
 ```python
 #!/bin/python3
 
 drinks = {"Drink1": 7, "Drink2": 10, "Drink3": 8} # drink is the key, price is the value
 print(drinks)
+
+ice_cream_flavors = {
+    "Mint Chocolate Chip": "Refreshing mint ice cream studded with decadent chocolate chips.",
+    "Cookie Dough": "Vanilla ice cream loaded with chunks of chocolate chip cookie dough.",
+    "Salted Caramel": "Sweet and salty with a smooth caramel swirl and a hint of sea salt."
+}
 
 employees = { "Finance": ["Bob", "Linda", "Tina"], "IT": ["Gene", "Louise", "Nicole"], "HR": ["Jimmy", "Marty"]
 print(employees)
