@@ -573,6 +573,108 @@ And in our virtual environment we can install anything we need
 We can have multiple virtual environments running at the same time.
 One we finished with the virtualenv we can type deactivate
 
+## Using functions from a local file
+
+We can create a file called `helper_functions.py`  
+We can then import our file in our other python script by using import.  
+
+```python
+# Imports a specific function
+from helper_functions import myfunction
+# Imports every function
+import helper_functions
+# Imports every function using this we do not have to call the function using helper_functions.myfunction
+from helper_functions import *
+```
+
+## Built-in packages
+
+### The math package
+
+```python
+# Import from the math package the cos, sin and pi functions
+from math import cos, sin, pi
+print(pi)
+```
+
+### The statistics package
+
+```python
+from statistics import mean, stdev
+my_friends_heights = [160, 172, 155, 180, 165, 170, 158, 182, 175, 168]
+# calculate the mean value
+mean(my_friends_heights)
+# calculate the standard deviation
+stdev(my_friends_heights)
+```
+
+### The random package
+
+```python
+from random import sample
+spices = ["cumin", "turmeric", "oregano", "paprika"]
+vegetables = ["lettuce", "tomato", "carrot", "broccoli"]
+proteins = ["chicken", "tofu", "beef", "fish", "tempeh"]
+# The sample function takes two parameters: the list you want to select from, and the number of items you want to select
+random_spices = sample(spices, 2)
+random_vegetables = sample(vegetables, 2)
+random_protein = sample(proteins, 1)
+print(random_protein)
+```
+
+### The pandas package
+
+`import pandas as pd` creates a shortcut that you can use to avoid typing pandas. 
+
+```python
+# Dataset adapted from here https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho
+data = pd.read_csv('car_data.csv')
+
+print(data)
+# Code to show only the cars with a price >= 10000
+print(data[data["Price"]>=10000])
+# Show all the cars from the 2015 
+print(data[data["Year"]==2015])
+filtered_data = data[data["Year"]==2015]
+print(filtered_data["Price"].median())
+```
+
+### Package matplotlib
+
+```python
+# Note the .pyplot
+import matplotlib.pyplot as plt
+plt.scatter(data["Kilometer"], data["Price"])
+
+plt.title('Car Price vs. Kilometers Driven')
+plt.xlabel('Kilometers Driven')
+plt.ylabel('Price (in USD)')
+
+plt.show()
+
+# create a pie chart of the data showing how many cars were sold each year.
+import matplotlib.pyplot as plt
+
+# Assuming 'data' is your DataFrame and it has a 'Year' column
+# that indicates the year each car was sold
+
+# Step 1: Aggregate the data to count cars sold per year
+car_sales_per_year = data['Year'].value_counts()
+
+# Step 2: Create the pie chart
+plt.pie(car_sales_per_year, labels=car_sales_per_year.index, autopct='%1.1f%%')
+
+# Add a title
+plt.title('Cars Sold Per Year')
+
+# Show the plot
+plt.show()
+```
+
+### Package Beautiful soup
+
+Beautiful soup is a python package to interpret HTML webpages inside python programs
+
 ## Resources
 
 {% embed url="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course" %} Practical Ethical Hacking - TCM Security {% endembed %}
