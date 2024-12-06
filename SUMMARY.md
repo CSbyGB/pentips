@@ -27,6 +27,7 @@
 * [SSH](networking/ssh.md)
 * [Winrm](networking/winrm.md)
 * [WMI](networking/wmi.md)
+* [Useful tips when you find unknown ports](networking/unknown-ports.md)
 
 ## Ethical Hacking - General Methodology
 
