@@ -282,4 +282,5 @@ There are two key elements to finding sensitive information:
 {% embed url="https://skillsforall.com/course/getting-started-cisco-packet-tracer" %} Getting Started with Cisco Packet Tracer (this tool is very fun and useful to use when trying to understand networking) {% endembed %}
 {% embed url="https://skillsforall.com/course/networking-essentials" %} Networking Essentials by Cisco {% endembed %}
 {% embed url="https://youtu.be/ZxAwQB8TZsM" %} Professor Messer 7 second subnetting {% endembed %}
-{% embed url="https://tryhackme.com/room/thelayoftheland" %} TryHackMe - The Lay of the land {% endembed %}
+{% embed url="https://tryhackme.com/room/thelayoftheland" %} TryHackMe - The Lay of the land {% endembed %}  
+{% embed url="https://pentestbook.six2dez.com/enumeration/ports" %} Pentest book Enumeration Ports - six2dez {% endembed %}  

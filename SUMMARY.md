@@ -25,6 +25,7 @@
 * [SMTP](networking/smtp.md)
 * [SNMP](networking/snmp.md)
 * [SSH](networking/ssh.md)
+* [VOIP and related protocols](networking/voip.md)
 * [Winrm](networking/winrm.md)
 * [WMI](networking/wmi.md)
 * [Useful tips when you find unknown ports](networking/unknown-ports.md)
