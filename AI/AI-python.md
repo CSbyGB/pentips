@@ -8,7 +8,60 @@
 
 ## Create an environment to use AI in Python script
 
+### Installations
+
 ![Coming soon](../.res/coming-soon.png)
+
+### Setting up the API key
+
+```python
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# Get the OpenAI API key from the .env file
+## For security reason I recommend that you rather use a vault with password rotation if you want to deploy something more permanently
+load_dotenv('.env', override=True)
+openai_api_key = os.getenv('OPENAI_API_KEY')
+client = OpenAI(api_key = openai_api_key)
+
+# Method to get llm response
+def get_llm_response(prompt):
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI assistant.",
+            },
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.0,
+    )
+    response = completion.choices[0].message.content
+    return response
+
+# test our method
+prompt = "What is the capital of France?"
+response = get_llm_response(prompt)
+print(response)
+
+# We can modify the temperature to change the randomness of the output
+def get_llm_response_new_temp(prompt):
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are an AI assistant.", 
+            },
+            {"role": "user", "content": prompt},
+        ],
+        temperature=1.0, # change this to a value between 0 and 2
+    )
+    response = completion.choices[0].message.content
+    return response
+```
 
 ## Building LLM prompts with variables
 
