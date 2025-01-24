@@ -96,12 +96,13 @@
 * [Secure code review](code-review/code-review.md)
 * [Java notes for Secure Code Review](code-review/java-code-review.md)
 
-## AI Pentest
+## AI & AI Pentest
 
 * [MITRE ATLAS](AI/mitre-atlas.md)
 * [OWASP ML and LLM](AI/OWASP-ML-and-LLM.md)
 * [Hugging face](AI/hugging-face.md)
 * [AI Python](AI/AI-python.md)
+* [Gemini](AI/gemini.md)
 
 ## Checklist
 
