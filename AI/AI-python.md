@@ -10,7 +10,19 @@
 
 ### Installations
 
-![Coming soon](../.res/coming-soon.png)
+If you want an all made setup, you can install Anaconda from [here](https://www.anaconda.com/).  
+In linux you just have to run `bash Anaconda3-2024.10-1-Linux-x86_64.sh`  
+Once this is done you will have access to a gui to create your Jupyter notebook
+To launch said gui you can do as follow:  
+
+```bash
+cd anaconda3
+cd bin
+./anaconda-navigator
+```
+
+You will need to create and account in anaconda cloud and login.  
+- If you need any help, you can find the official doc [here](https://docs.anaconda.com/navigator/)
 
 ### Setting up the API key
 
