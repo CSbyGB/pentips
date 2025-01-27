@@ -103,6 +103,7 @@
 * [Hugging face](AI/hugging-face.md)
 * [AI Python](AI/AI-python.md)
 * [Gemini](AI/gemini.md)
+* [Ollama](AI/ollama.md)
 
 ## Checklist
 
