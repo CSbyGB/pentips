@@ -10,7 +10,7 @@
 Pentester, Cybersecurity Blogger and Advocate for CYBEREDUCATION FOR ALL.  
 
 🤓📅  
-Over 10 years of experience in Information Technology, including 5 years as Pentester  
+6 years of experience as a Pentester. AI RedTeaming enthusiast.  
 
 💻 , 🌐, 📖, 🤔  
 Passionate about cybersecurity, approaching it in a holistic way encourages me for lifelong learning and sharpens my critical thinking skills.  
