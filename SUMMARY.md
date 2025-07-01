@@ -326,6 +326,7 @@
 * [Portswigger Web Security Academy Writeups](writeups/PSwriteups.md)
   * [PS - DomXSS](writeups/PS-DOMXSS.md)
   * [PS - Exploiting vulnerabilities in LLM APIs](writeups/PS-Exploiting-vulnerabilities-in-llm-apis.md)
+  * [PS - Exploiting path mapping for web cache deception](writeups/PS-mapping-web-cache-deception.md)
 * [OWASP projects and challenges writeups](writeups/OWASP-writeups.md)
   * [OWASP MAS Crackmes](writeups/OWASP-MAS-Crackmes.md)
 * [Vulnerable APIs](writeups/vulnerable-apis.md)
