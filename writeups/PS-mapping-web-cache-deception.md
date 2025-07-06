@@ -26,6 +26,20 @@ The deception happens when:
 
 In our lab, "John's latte" is Carlos's private API key, and the "weird name" is a URL with a fake file extension!
 
+### Okay but is this cache on the client side?
+
+Not necessarily, especially for the type of Web Cache Deception we're exploiting here.  
+Think of it like this:
+
+Your computer's browser 💻 has its own cache (the "client-side cache"). It saves copies of things you visit often so pages load faster. This is like you keeping a few frequently used books right on your desk.  
+However, there are also intermediate caches that sit between your browser and the actual web server. 
+These are often:  
+
+- CDN Caches (Content Delivery Network): Imagine these as huge warehouses full of popular items scattered all over the world. When you request something, it's served from the closest warehouse instead of the main factory.
+- Proxy Caches: Sometimes, your company or even your internet provider might have a cache that all their users go through.
+
+For Web Cache Deception, we are usually targeting these intermediate caches (like CDNs or server-side proxies). Why? Because when your sensitive content gets cached by one of these, anyone else going through that same cache can potentially retrieve it if they know the "cached address."
+
 ### Lab Goal 🎯
 
 Our mission was to find the API key for the user `carlos`. We were given our own credentials (`wiener:peter`) to log in and explore the application.
