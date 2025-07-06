@@ -142,7 +142,8 @@ This is why `this.contentDocument` is the key to interacting with the content in
   - `this`: Within the onload attribute, `this` refers to the `<iframe>` HTML element itself.
   - `contentDocument`: This property allows you to access the Document Object Model (DOM) of the HTML page that is loaded within that specific `<iframe>`. It's like gaining a reference to the separate "room" the iframe represents.
   - `forms[1]`: Once we have access to the iframe's document (`this.contentDocument`), we can then target the forms within that inner document. `forms[1]` refers to the second form on the /my-account page (the "Delete account" form, as verified by examining the page's HTML structure).
-  - `.submit()`: Finally, this method programmatically submits the identified form.
+  - `.submit()`: Finally, this method programmatically submits the identified form.  
+
 So to summarize, by combining these elements, the payload causes Carlos's browser to:
 
 1. Render an invisible `<iframe>`.
