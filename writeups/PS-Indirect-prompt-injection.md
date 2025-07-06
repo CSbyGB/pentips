@@ -1,8 +1,10 @@
 # PortSwigger Web Security Academy - Indirect prompt injection
 
+- Acces the lab [here](https://portswigger.net/web-security/llm-attacks/lab-indirect-prompt-injection)
+
 ## Instructions
 
-![Instructions](../.res/2024-10-24-14-48-26.png)  
+![Instructions](../.res/2025-07-06-16-42-19.png)  
 
 ## What is Indirect prompt injection?
 

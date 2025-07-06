@@ -1,10 +1,10 @@
 # PortSwigger Web Security Academy -  Exploiting LLM APIs with excessive agency
 
+- Access the lab [here](https://portswigger.net/web-security/llm-attacks/lab-exploiting-llm-apis-with-excessive-agency)
+
 ## Instructions
 
-```txt
-To solve the lab, use the LLM to delete the user carlos.
-```
+![Instructions](../.res/2025-07-06-13-56-56.png)
 
 ## What is excessive agency
 
