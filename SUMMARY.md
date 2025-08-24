@@ -332,6 +332,8 @@
   * [Giskard - Einstein (Level 1)](/writeups/giskard-einstein1.md)
   * [Giskard - Einstein (Level 2)](/writeups/giskard-einstein2.md)
   * [Giskard - Einstein (Level 3)](/writeups/giskard-einstein3.md)
+  * [Giskard - Mozart biographer](/writeups/giskard-mozart-biographer.md)
+  * [Giskard - Mozart biographer, smarter](/writeups/giskard-mozart-biographer-smarter.md)
 * [Vulnmachines Writeups](/writeups/vulnmachines-writeups.md)
   * [Web Labs Basic](/writeups/vulnmachine-web-basic.md)
   * [Web Labs Intermediate](writeups/vulnmachine-web-intermediate.md)
