@@ -374,6 +374,7 @@
 * [VSCodium](/digital-skills/vscodium.md)
 * [Git Tips](/digital-skills/git-tips.md)
 * [Obsidian](/digital-skills/obsidian.md)
+* [Running Samsung Notes on Linux via a Windows VM](/digital-skills/samsung-notes.md)
 
 ## Durable skills
 
