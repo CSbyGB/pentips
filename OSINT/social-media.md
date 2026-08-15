@@ -9,7 +9,7 @@
 - We can use `from:username`
 - `to:username`
 - `@username`
-- `from:username since:YYY-MM-DD until:YYYY-MM-DD`
+- `from:username since:YYYY-MM-DD until:YYYY-MM-DD`
 - `to:username since:YYY-MM-DD until:YYYY-MM-DD`
 - `"sentence I am looking for" since:YYY-MM-DD until:YYYY-MM-DD`
 - `from:username keyword`
@@ -25,6 +25,7 @@
 - [Tweetbeaver](https://tweetbeaver.com/)
 - [Spoonbill.io](http://spoonbill.io/)
 - [Tinfoleak](https://tinfoleak.com/)
+- [Xquik](https://github.com/Xquik-dev/x-twitter-scraper) - Independent X (Twitter) data API for search, follower export, monitors, and MCP.
 
 ### Tweetdeck
 
