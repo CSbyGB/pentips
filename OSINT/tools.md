@@ -14,6 +14,10 @@
 
 - `exiftool filename`
 
+### Browser-local alternative
+
+- [Metadata Remover Viewer](https://metadataremover.ai/metadata-viewer) processes supported files locally in the browser; corroborate important findings with ExifTool.
+
 ## The Harverster
 
 - Tool to hunt emals and breached data
