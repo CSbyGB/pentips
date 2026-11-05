@@ -18,14 +18,10 @@
 
 ### Searching Twitter using web tools
 
-- [Social Bearing](https://socialbearing.com/)
 - [Twitonomy](https://www.twitonomy.com/)
-- [Sleeping Time](http://sleepingtime.org/)
-- [Mentionmapp](https://mentionmapp.com/)
-- [Tweetbeaver](https://tweetbeaver.com/)
-- [Spoonbill.io](http://spoonbill.io/)
 - [Tinfoleak](https://tinfoleak.com/)
 - [Xquik](https://github.com/Xquik-dev/x-twitter-scraper) - Independent X (Twitter) data API for search, follower export, monitors, and MCP.
+- [twtData trends archive](https://twtdata.com/twitter-trends/) - Free dated X trending topics per country and city, back to 2023. Its [one-handle check](https://twtdata.com/crypto-kol-checker/) gives a free bot-risk score from ten profile signals, no sign-up.
 
 ### Tweetdeck
 
