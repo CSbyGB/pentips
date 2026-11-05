@@ -50,6 +50,7 @@
 ## Snapchat
 
 - [Snapchat Maps](https://map.snapchat.com)
+- [SnapDataHub](https://snapdatahub.com/) - Look up a public Snapchat profile: subscriber counts, Spotlight performance and engagement
 
 ## Reddit
 
